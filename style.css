@@ -1,0 +1,13 @@
+.center {
+  width: auto;
+  text-align: center;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  color: #333333;
+}
