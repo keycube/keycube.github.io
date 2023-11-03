@@ -3,9 +3,16 @@
 layout : default
 title: Blog
 permalink: /blog/
+color : 319B7A
 ---
 
-## CECI EST LE BLOG
+## <i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> FEATURED
+
+
+## <i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> LAST POSTED
+
+
+
 <!-- This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
 You can find the source code for Minima at GitHub:

@@ -4,8 +4,10 @@
 
 layout: default
 title: About
+color : F1D248
 ---
-## WHAT IS KEYCUBE ?
+
+## <i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> WHAT IS KEYCUBE ?
 
 Our objective is to foster collaboration around the keycubes, essentially devices reminiscent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube. 
 
