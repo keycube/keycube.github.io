@@ -9,12 +9,14 @@ nav {
   align-items: center;
   justify-content: center;
   margin: 0 0 3% 0;
-  box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392);
+  box-shadow: 13px 13px 26px rgba(0, 0, 0, 0.1450980392);
+  background-color: #F6F6F6;
 }
 
 nav a {
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 600;
   margin: 1% 2%;
 }
 
@@ -24,6 +26,48 @@ nav a {
 
 h1, h2 {
   font-family: "Dela Gothic One", sans-serif;
+  margin-bottom: 5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #F6F6F6;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.text-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.button-white {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  background: #F6F6F6;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+  width: 20%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.button-white:hover {
+  box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
 }
 
 footer {
@@ -43,16 +87,17 @@ footer h3 {
   font-weight: 600;
   color: white;
 }
-
 footer p {
   color: white;
 }
-
 footer a {
   text-decoration: none;
   color: white;
 }
-
+footer a:hover {
+  text-decoration: none;
+  color: #444;
+}
 .footer-part {
   display: flex;
   flex-direction: column;
@@ -62,12 +107,14 @@ footer a {
 .social-networks {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .picto {
   color: white;
+}
+
+.picto:hover {
+  color: #444;
 }
 
 /*# sourceMappingURL=styles.css.map */
