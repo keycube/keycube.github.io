@@ -1,3 +1,5 @@
+@import "blog";
+
 *{
 	margin:0;
 	font-family: 'Poppins', sans-serif;
@@ -39,7 +41,7 @@ body{
 
 section{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	width: 80%;
 	margin: auto;
 	justify-content: space-around;

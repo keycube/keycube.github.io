@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Welcome to Keycube!"
-date:   2023-10-25 00:54:57 +0200
+title: "post 2"
+date: 2023-11-05 00:00:00 +0200
 categories: jekyll update
 image: "../assets/img/post1.jpg"
 ---
 
+test encore
