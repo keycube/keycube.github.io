@@ -1,3 +1,19 @@
+.category-filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem 0;
+}
+.category-filter .filter-button {
+  border: solid, 0.2px, red;
+  color: red;
+  border-radius: 15px;
+  background: none;
+  font-family: "poppins", sans-serif;
+  font-size: 1em;
+  font-weight: semi-bold;
+}
+
 .articles {
   display: flex;
   flex-wrap: wrap;
@@ -18,6 +34,59 @@
 .articles .article img {
   width: 100%;
   height: 10%;
+}
+
+.citation {
+  display: flex;
+  margin: auto;
+  padding: 2% 5%;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+}
+
+.citation p {
+  text-align: center;
+}
+
+.published-paper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2% 5%;
+  font-size: 1.2em;
+  transition: box-shadow 0.3s;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+  cursor: pointer;
+}
+
+.published-paper:hover {
+  box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
+}
+
+.color {
+  width: 2%;
+}
+
+.info-published-paper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.journal {
+  padding: 0.5% 1%;
+  border-radius: 15px;
+}
+
+.picto {
+  width: 2%;
 }
 
 * {
@@ -48,7 +117,7 @@ nav a {
 
 h1, h2 {
   font-family: "Dela Gothic One", sans-serif;
-  margin-bottom: 5%;
+  margin: 5% 0;
 }
 
 body {
@@ -75,15 +144,14 @@ section {
 
 .button-white {
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 2% 5%;
+  font-size: 1em;
   background: #F6F6F6;
   border: none;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
   transition: box-shadow 0.3s;
   cursor: pointer;
-  width: 20%;
   text-transform: uppercase;
   font-weight: 600;
 }
