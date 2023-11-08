@@ -1,3 +1,26 @@
+.category-filter 
+{
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    margin: 2rem 0; 
+
+    .filter-button
+    {
+        border : solid, 0.2px, red;
+        color : red;
+        border-radius: 15px;
+        background: none; 
+        font-family: 'poppins', sans-serif;
+        font-size: 1em; 
+        font-weight: semi-bold;
+    }
+}
+
+
+
+
+
 .articles 
 {
     display : flex; 
