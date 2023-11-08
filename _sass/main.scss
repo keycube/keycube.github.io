@@ -11,7 +11,7 @@
 nav{
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content:space-between;
 	margin: 0 0 3% 0;
 	box-shadow :13px 13px 26px #00000025;
 	background-color: #F6F6F6;
@@ -19,11 +19,23 @@ nav{
 
 }
 
+.link-page-nav{
+	display: flex;
+	flex-direction: row;
+	width: 60%;
+	align-items: center;
+	justify-content: center;
+}
+
 nav a{
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 600;
-	margin: 1% 2%;
+	margin: 2% 2%;
+}
+
+.extern{
+	margin: 0 10%;
 }
 
 .current {
@@ -50,16 +62,25 @@ section{
 }
 
 
+
 footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	align-items: center;
+	align-items: start	;
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
 	padding: 2% 0;
+
+	// // footer {
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	right: 0;
+	// //   }
+	  
 
 }
 
@@ -86,27 +107,35 @@ footer {
 		// padding: 0 10%;
 	}
 
+	.footer-part{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	
+	.social-networks{
+		display: flex;
+		flex-direction: row;
+		width: 30%;
+		justify-content:center;
+		align-items: center;
+	
+	}
+	
+	.social-networks a {
+		margin: 0 10%;
+	}
+	
+	.picto{
+		color:white;
+		margin-bottom: 50%;
+	}
+	
+	.picto:hover{
+		color:#444;
+	}
+
 } 
 
-.footer-part{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-
-.social-networks{
-	display: flex;
-	flex-direction: row;
-	// justify-content:space-between;
-	// align-items: center;
-
-}
-
-.picto{
-	color:white;
-}
-
-.picto:hover{
-	color:#444;
-}

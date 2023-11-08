@@ -127,8 +127,20 @@
   width: 2%;
 }
 
+.page-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.presentation-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .text-content {
-  width: 50%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -147,10 +159,15 @@
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 600;
+  margin: 10% 0;
 }
 
 .button-white:hover {
   box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
+}
+
+img {
+  width: 50%;
 }
 
 * {
@@ -162,17 +179,29 @@
 nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 0 3% 0;
   box-shadow: 13px 13px 26px rgba(0, 0, 0, 0.1450980392);
   background-color: #F6F6F6;
+}
+
+.link-page-nav {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 1% 2%;
+  margin: 2% 2%;
+}
+
+.extern {
+  margin: 0 10%;
 }
 
 .current {
@@ -202,7 +231,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  align-items: start;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -226,22 +255,27 @@ footer a:hover {
   text-decoration: none;
   color: #444;
 }
-.footer-part {
+footer .footer-part {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-
-.social-networks {
+footer .social-networks {
   display: flex;
   flex-direction: row;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
 }
-
-.picto {
+footer .social-networks a {
+  margin: 0 10%;
+}
+footer .picto {
   color: white;
+  margin-bottom: 50%;
 }
-
-.picto:hover {
+footer .picto:hover {
   color: #444;
 }
 
