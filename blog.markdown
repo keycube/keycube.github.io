@@ -6,12 +6,12 @@ permalink: /blog/
 color : 319B7A
 ---
 
-<style>
+<!-- <style>
     .filter-button {
         border : solid 0.2px {{page.color}};
         color : {{page.color}};
     }
-</style>
+</style> -->
 
 <section>
 
@@ -22,7 +22,7 @@ color : 319B7A
 <div class="category-filter">
   <button class="filter-button" data-category="Toutes les catégories">See all</button>
   <p> Or filter by : </p>
-  <button class="filter-button"  data-category="Tools">Tools</button>
+  <button class="filter-button"  style="color: #{{ page.color }}" data-category="Tools">Tools</button>
   <button class="filter-button" data-category="Games">Games</button>
   <button class="filter-button" data-category="Others">Others</button>
   <!-- Ajouter d'autres boutons pour chaque catégorie -->

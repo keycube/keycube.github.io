@@ -1,0 +1,31 @@
+
+.text-content{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: space-between;
+}
+
+.button-white {
+	display: inline-block;
+	padding: 2% 5%;
+	font-size: 1em;
+	background: #F6F6F6;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
+	transition: box-shadow 0.3s;
+	cursor: pointer;
+
+	// width: 20%; 
+	
+	text-transform: uppercase;
+	font-weight: 600;
+
+  }
+  
+  .button-white:hover {
+	box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
+  }
+  
