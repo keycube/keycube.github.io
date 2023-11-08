@@ -6,19 +6,27 @@ permalink: /blog/
 color : 319B7A
 ---
 
+<script src="{{ base.url | prepend: site.url }}/assets/js/blog-script.js"></script>
+
 <section>
 
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> FEATURED </h2>
 
 
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> LAST POSTED</h2>
+
 <div class="category-filter">
-  <button class="filter-button" style="color: #{{ page.color }}; border : solid 1px #{{page.color}}" data-category="Toutes les catégories">See all</button>
-  <p style="color: #{{ page.color }}"> Or filter by : </p>
-  <button class="filter-button"  style="color: #{{ page.color }}; border : solid 1px #{{page.color}}" data-category="Tools">Tools</button>
-  <button class="filter-button" style="color: #{{ page.color }}; border : solid 1px #{{page.color}}" data-category="Games">Games</button>
-  <button class="filter-button" style="color: #{{ page.color }}; border : solid 1px #{{page.color}}" data-category="Others">Others</button>
-  <!-- Ajouter d'autres boutons pour chaque catégorie -->
+  <button class="filter-button" style="color: #{{ page.color }}; border: solid 1px #{{ page.color }}" data-category="Toutes les catégories">See all</button>
+  <p style="color: #{{ page.color }}">Or filter by:</p>
+      {% capture uniqueCategories %}{% endcapture %}
+  {% for post in site.posts %}
+    {% for category in post.categories %}
+      {% unless uniqueCategories contains category %}
+        {% capture uniqueCategories %}{{ uniqueCategories }}{{ category }}{% endcapture %}
+        <button class="filter-button" style="color: #{{ page.color }}; border: solid 1px #{{ page.color }}" data-category="{{ category }}">{{ category }}</button>
+      {% endunless %}
+    {% endfor %}
+  {% endfor %}
 </div>
 
 <div class="articles">
@@ -31,7 +39,9 @@ color : 319B7A
         <p class="title">{{ post.title }}</p>
         <p>ici un court résumé</p>
         <div class ="filtres-container">
-            <p style="color : #{{page.color}}">{{post.categories}}</p>
+            {% for category in post.categories %}
+            <p style="color : #{{page.color}}">{{category}}</p>
+            {% endfor %}
         </div>
         <a href="{{ post.url }}" class="readMore-button">Read more</a>
     </div>
