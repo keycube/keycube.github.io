@@ -4,7 +4,7 @@
 
 layout: default
 title: About
-color : F1D248
+color : D45153
 ---
 
 <section>
