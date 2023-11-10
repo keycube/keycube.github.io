@@ -26,7 +26,9 @@
 .articles {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  column-gap: 3.1%;
+  row-gap: 5%;
 }
 .articles .article {
   display: flex;
@@ -35,7 +37,11 @@
   width: 25vw;
   height: 25vw;
   border-radius: 24px;
-  box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392);
+  transition: box-shadow 0.3s;
+  box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+}
+.articles .article:hover {
+  box-shadow: 0 0 0 transparent;
 }
 .articles .article .date {
   font-family: "poppins", sans-serif;
