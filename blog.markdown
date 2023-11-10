@@ -12,6 +12,26 @@ color : 319B7A
 
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> FEATURED </h2>
 
+    {% for post in site.posts %}
+    {% if post.featuredPost == true %}
+
+    <div class="featured-article">
+        <div class="img-container">
+            <img src="{{ post.image }}" alt="{{ post.title }}">
+        </div>
+        <p class="date" style="color : #{{page.color}}">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="title">{{ post.title }}</p>
+        <p>ici un court résumé</p>
+        <div class ="filtres-container">
+            {% for category in post.categories %}
+            <p style="color : #{{page.color}}">{{category}}</p>
+            {% endfor %}
+        </div>
+        <a href="{{ post.url }}" class="readMore-button">Read more</a>
+    </div>
+    {% endif %}
+    {% endfor %}
+
 
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> LAST POSTED</h2>
 

@@ -5,4 +5,5 @@ date:   2023-11-10 10:59:57 +0200
 categories: 
 - Tools
 image: "../assets/img/post1.jpg"
+featuredPost : false;
 ---
