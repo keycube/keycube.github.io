@@ -19,15 +19,17 @@ color : 319B7A
         <div class="img-container">
             <img src="{{ post.image }}" alt="{{ post.title }}">
         </div>
+        <div class = "featured-article-infos">
         <p class="date" style="color : #{{page.color}}">{{ post.date | date: "%B %d, %Y" }}</p>
         <p class="title">{{ post.title }}</p>
-        <p>ici un court résumé</p>
         <div class ="filtres-container">
             {% for category in post.categories %}
-            <p style="color : #{{page.color}}">{{category}}</p>
+            <p class="categorie" style="color : #{{page.color}}">{{category}}</p>
             {% endfor %}
         </div>
+        <p>{{post.resume }}</p>
         <a href="{{ post.url }}" class="readMore-button">Read more</a>
+        </div>
     </div>
     {% endif %}
     {% endfor %}
@@ -57,12 +59,12 @@ color : 319B7A
         </div>
         <p class="date" style="color : #{{page.color}}">{{ post.date | date: "%B %d, %Y" }}</p>
         <p class="title">{{ post.title }}</p>
-        <p>ici un court résumé</p>
         <div class ="filtres-container">
             {% for category in post.categories %}
-            <p style="color : #{{page.color}}">{{category}}</p>
+            <p class = "categorie" style="color : #{{page.color}}">{{category}}</p>
             {% endfor %}
         </div>
+        <p class="resume">{{post.resume }}</p>
         <a href="{{ post.url }}" class="readMore-button">Read more</a>
     </div>
     {% endfor %}

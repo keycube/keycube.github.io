@@ -5,5 +5,6 @@ date:   2023-11-10 10:59:57 +0200
 categories: 
 - Tools
 image: "../assets/img/post1.jpg"
+resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
 featuredPost : false;
 ---

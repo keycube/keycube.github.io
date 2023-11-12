@@ -1,12 +1,84 @@
 .featured-article {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 25vw;
+  width: 100%;
   height: 25vw;
   border-radius: 24px;
   transition: box-shadow 0.3s;
   box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+}
+.featured-article .featured-article-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 69%;
+  text-align: center;
+}
+.featured-article .date {
+  font-family: "poppins", sans-serif;
+  font-size: 1em;
+  font-weight: regular;
+  text-transform: uppercase;
+  margin: 5% 0 0 0;
+}
+.featured-article .title {
+  font-family: "poppins", sans-serif;
+  font-size: 1.2em;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  margin: 2% 0 !important;
+}
+.featured-article .img-container {
+  width: 31%;
+  height: 100%;
+}
+.featured-article .img-container img {
+  width: 100%; /* Utilisez max-width au lieu de width */
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px 0 24px 0;
+}
+.featured-article .filtres-container {
+  display: flex;
+  justify-content: center;
+  column-gap: 1%;
+  width: 100%;
+  margin: 0 0 5% 0;
+}
+.featured-article .categorie {
+  width: fit-content;
+  font-size: 1em;
+  font-weight: 600;
+  border: 1px solid #319B7A;
+  border-radius: 15px;
+  padding: 0% 1% 0 1%;
+}
+.featured-article p {
+  width: 70%;
+}
+.featured-article .readMore-button {
+  height: 10%;
+  width: 20%;
+  border-radius: 15px;
+  background-color: #319B7A;
+  font-family: "poppins", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 5% 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.featured-article .readMore-button:hover {
+  background: #fff;
+  border: 1px solid #319B7A;
+  color: #319B7A !important;
 }
 
 .category-filter {
@@ -19,11 +91,12 @@
   margin-left: 2%;
 }
 .category-filter .filter-button {
+  padding: 0 1% 0 1%;
   border-radius: 15px;
   background: none;
   font-family: "poppins", sans-serif;
   font-size: 1em;
-  font-weight: semi-bold;
+  font-weight: 600;
 }
 .category-filter .filter-button:hover {
   background: #319B7A;
@@ -45,6 +118,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
   width: 25vw;
   height: 25vw;
   border-radius: 24px;
@@ -64,7 +140,7 @@
 .articles .article .title {
   font-family: "poppins", sans-serif;
   font-size: 1.2em;
-  font-weight: regular !important;
+  font-weight: 600 !important;
   text-transform: uppercase;
   margin: 2% 0 !important;
 }
@@ -78,17 +154,41 @@
   object-fit: cover;
   border-radius: 24px 24px 0 0;
 }
-.articles .article .readMore-button {
-  border-radius: 15px;
-  background: none;
-  font-family: "poppins", sans-serif;
-  font-size: 1em;
-  font-weight: semi-bold;
-  margin: 2% 0 0 0;
+.articles .article .filtres-container {
+  display: flex;
+  justify-content: center;
+  column-gap: 1%;
+  width: 100%;
+  margin: 0 0 5% 0;
 }
-.articles .article .readMore-button:hover {
-  background: #319B7A;
-  color: #444 !important;
+.articles .article .categorie {
+  width: fit-content;
+  font-size: 1em;
+  font-weight: 600;
+  border: 1px solid #319B7A;
+  border-radius: 15px;
+  padding: 0% 1% 0 1%;
+}
+.articles .article .resume {
+  width: 80%;
+  margin: 0 auto;
+}
+.articles .article .readMore-button {
+  height: 10%;
+  width: 35%;
+  border-radius: 15px;
+  background-color: #319B7A;
+  font-family: "poppins", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 5% auto auto auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .citation {
