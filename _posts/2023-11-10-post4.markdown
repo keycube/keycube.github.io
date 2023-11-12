@@ -1,12 +1,10 @@
 ---
 layout: post
-title:  "Welcome to Keycube!"
-date:   2023-10-25 00:54:57 +0200
+title:  "post4"
+date:   2023-11-10 12:19:57 +0200
 categories: 
-- Others
+- Tools
 image: "../assets/img/post1.jpg"
 resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
 featuredPost : false;
-
 ---
-
