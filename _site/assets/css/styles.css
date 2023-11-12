@@ -287,6 +287,60 @@ img {
   width: 50%;
 }
 
+.citation-hardware {
+  width: 100%;
+  text-align: center;
+  padding: 2% 0%;
+  font-size: 1.2em;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+}
+
+.hardware {
+  display: flex;
+  align-items: center;
+  column-gap: 10%;
+  border-radius: 15px;
+  padding: 2% 0;
+}
+.hardware .description {
+  width: 50%;
+}
+.hardware .description p {
+  margin-bottom: 2%;
+}
+.hardware .description .github-link {
+  width: 30%;
+  border-radius: 15px;
+  background-color: #F1D248;
+  font-family: "poppins", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #f6f6f6;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 5% 0 0 0;
+  padding: 1.5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.hardware .description .github-link:hover {
+  background: none;
+  box-shadow: inset 0 0 1px #F1D248;
+  color: #F1D248 !important;
+}
+.hardware .img-container {
+  margin-top: 5%;
+  width: 50%;
+}
+
+p {
+  font-size: 1.2em;
+}
+
 * {
   margin: 0;
   font-family: "Poppins", sans-serif;
