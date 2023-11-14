@@ -10,7 +10,7 @@ color: DC800F
 	<p>Tools, games, and other dedicated software for the keycubes.</p>	
 </div>
 
-{% for software in site.software %}
+{% for software in site.data.software %}
 	<h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> {{software.title}} </h2>
     <div class = software>
         

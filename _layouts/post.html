@@ -1,0 +1,18 @@
+---
+layout : default
+---
+
+<img src="{{ post.image }}" alt="{{ post.title }}">
+
+<div class = categories> 
+{ %for category in categories % }
+    <p class="category">{{ categorie }}</p>
+{ % endfor % }
+</div>
+
+<h2><i class="fa-solid fa-square" style="color: #F1D248"></i>{{ post.title }}</h2>
+
+<p class = date>{{ post.date | date: "%B %d, %Y" }}</p>
+
+{{ post.content }}
+
