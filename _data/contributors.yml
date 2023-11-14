@@ -1,0 +1,11 @@
+- name : GRIGNOLA
+  firstname : Nina
+  image : "../assets/img/babykeycube.png"
+  url-linkedin : https://fr.linkedin.com/in/nina-grignola-4441031a4
+  url-git : https://github.com/grignolanina
+
+- name : AUGIER
+  firstname : Lucie
+  image : "../assets/img/babykeycube.png"
+  url-linkedin : https://www.linkedin.com/in/lucie-augier/
+  url-git : 
