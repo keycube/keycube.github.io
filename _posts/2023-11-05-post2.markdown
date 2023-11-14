@@ -2,8 +2,11 @@
 layout: post
 title: "post 2"
 date: 2023-11-05 00:00:00 +0200
-categories: jekyll update
+categories: 
+- Tools
 image: "../assets/img/post1.jpg"
+resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+featuredPost : false;
 ---
 
 test encore
