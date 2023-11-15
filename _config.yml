@@ -29,10 +29,23 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
+categories: 
+- Games
+- Tools
+- Others
+
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
+collections:
+  hardware:
+    output: true
+    permalink: /hardware/:path/
+  software:
+    output: true
+    permalink: /software/:path/
 
 # Exclude from processing.
 # The following items will not be processed, by default.

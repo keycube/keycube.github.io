@@ -1,5 +1,9 @@
 @import "blog";
 @import "research";
+@import "about";
+@import "hardware";
+@import "software";
+@import "post";
 
 *{
 	margin:0;
@@ -10,19 +14,29 @@
 nav{
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content:space-between;
 	margin: 0 0 3% 0;
 	box-shadow :13px 13px 26px #00000025;
 	background-color: #F6F6F6;
+}
 
-
+.link-page-nav{
+	display: flex;
+	flex-direction: row;
+	width: 60%;
+	align-items: center;
+	justify-content: center;
 }
 
 nav a{
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 600;
-	margin: 1% 2%;
+	margin: 2% 2%;
+}
+
+.extern{
+	margin: 0 10%;
 }
 
 .current {
@@ -48,47 +62,26 @@ section{
 	justify-content: space-around;
 }
 
-.text-content{
-	width: 50%;
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	justify-content: space-between;
-}
 
-.button-white {
-	display: inline-block;
-	padding: 2% 5%;
-	font-size: 1em;
-	background: #F6F6F6;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
-	transition: box-shadow 0.3s;
-	cursor: pointer;
-
-	// width: 20%; 
-	
-	text-transform: uppercase;
-	font-weight: 600;
-
-  }
-  
-  .button-white:hover {
-	box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
-  }
-  
 
 footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	align-items: center;
-	position: fixed;
-	bottom: 0;
-	left: 0;
+	align-items: start	;
+	// position: fixed;
+	// bottom: 0;
+	// left: 0;
 	width: 100%;
 	padding: 2% 0;
+
+	// // footer {
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	right: 0;
+	// //   }
+	  
 
 }
 
@@ -115,27 +108,35 @@ footer {
 		// padding: 0 10%;
 	}
 
+	.footer-part{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	
+	.social-networks{
+		display: flex;
+		flex-direction: row;
+		width: 30%;
+		justify-content:center;
+		align-items: center;
+	
+	}
+	
+	.social-networks a {
+		margin: 0 10%;
+	}
+	
+	.picto{
+		color:white;
+		margin-bottom: 50%;
+	}
+	
+	.picto:hover{
+		color:#444;
+	}
+
 } 
 
-.footer-part{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-
-.social-networks{
-	display: flex;
-	flex-direction: row;
-	// justify-content:space-between;
-	// align-items: center;
-
-}
-
-.picto{
-	color:white;
-}
-
-.picto:hover{
-	color:#444;
-}
