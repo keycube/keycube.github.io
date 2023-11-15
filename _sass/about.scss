@@ -42,22 +42,34 @@
 	width: 50%;
   }
 
+  .arrow:hover  .picto {
+	transform: scale(1.1);
+  }
+
+  .arrow .picto {
+	transition: transform 0.2s ease;
+  }
+
+
   .arrow {
-	position: absolute;
-	top: 110%;
-	transform: translateY(-50%);
-	font-size: 24px;
+	font-size: 2em;
 	cursor: pointer;
-	user-select: none;
+
+	.arrow:hover  .picto {
+		transform: scale(1.1);
+	  }
+	
+	  .picto {
+		transition: transform 0.2s ease;
+	  }
+
   }
-  
-  .left {
-	left: 10vw;
-	width: 5vw;
-  }
-  
-  .right {
-	right: 10vw;
+
+  .scroll-horizontal {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around	;
   }
 
 .contributor-content {
@@ -70,8 +82,9 @@
 	align-items: center;
 	overflow-x: auto; 
 	white-space: nowrap; 
-	// position: relative;
   	overflow: hidden; 
+	scroll-behavior:smooth; 
+
   }
   
   .contributor {
@@ -79,7 +92,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: end;
-	padding: 2% 2%;
+	padding: 1% 2%;
 	margin: 0% 2% 2%;
 	min-width: 15vw;
   	min-height: 15vw;
@@ -87,14 +100,15 @@
 	box-shadow: 3px 3px 6px #00000025, -5px -5px 10px #ffffff;
   
 	.contributor-image {
-		width: 100%;
-		height: 100%;
+		max-width: 80%;
 		object-fit: cover;
 		border-radius: 50%;
+		margin: 5%;
 	  }
   
 	.contributor-name {
 	  font-weight: 600;
+	  text-transform: uppercase;
 	}
   
 	.contributor-network {

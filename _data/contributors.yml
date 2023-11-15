@@ -1,55 +1,41 @@
-- name : GRIGNOLA
-  firstname : Nina
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://fr.linkedin.com/in/nina-grignola-4441031a4
-  url-git : https://github.com/grignolanina
-  url-personnal : 
+- name: GRIGNOLA
+  firstname: Nina
+  image: './assets/img/contributors/GRIGNOLA_Nina.jpeg'
+  url-linkedin: https://fr.linkedin.com/in/nina-grignola-4441031a4
+  url-git: https://github.com/grignolanina
+  url-personnal:
 
-- name : AUGIER
-  firstname : Lucie
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://www.linkedin.com/in/lucie-augier/
-  url-git : 
-  url-personnal : https://ninagrignola.fr/
+- name: AUGIER
+  firstname: Lucie
+  image: './assets/img/contributors/AUGIER_Lucie.jpeg'
+  url-linkedin: https://www.linkedin.com/in/lucie-augier/
+  url-git:
+  url-personnal: https://lucieaugier.fr/
 
-- name : GRIGNOLA
-  firstname : Nina
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://fr.linkedin.com/in/nina-grignola-4441031a4
-  url-git : https://github.com/grignolanina
-  url-personnal : 
+- name: BRUN
+  firstname: Damien
+  image: './assets/img/contributors/BRUN_Damien.jpeg'
+  url-linkedin:
+  url-git: https://github.com/makowildcat
+  url-personnal:
 
-- name : AUGIER
-  firstname : Lucie
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://www.linkedin.com/in/lucie-augier/
-  url-git : 
-  url-personnal : https://ninagrignola.fr/
+- name: BRETON
+  firstname: Thibaut
+  image:
+  url-linkedin:
+  url-git: https://github.com/AyrozDZN
+  url-personnal:
 
-- name : GRIGNOLA
-  firstname : Nina
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://fr.linkedin.com/in/nina-grignola-4441031a4
-  url-git : https://github.com/grignolanina
-  url-personnal : 
+- name:
+  firstname: Idriss
+  image:
+  url-linkedin:
+  url-git: https://github.com/grignolanina
+  url-personnal:
 
-- name : AUGIER
-  firstname : Lucie
-  image :
-  url-linkedin : https://www.linkedin.com/in/lucie-augier/
-  url-git : 
-  url-personnal : https://ninagrignola.fr/
-
-- name : GRIGNOLA
-  firstname : Nina
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://fr.linkedin.com/in/nina-grignola-4441031a4
-  url-git : https://github.com/grignolanina
-  url-personnal : 
-
-- name : AUGIER
-  firstname : Lucie
-  image : "../assets/img/babykeycube.png"
-  url-linkedin : https://www.linkedin.com/in/lucie-augier/
-  url-git : 
-  url-personnal : https://ninagrignola.fr/
+- name: BROCHARD
+  firstname: Louis
+  image:
+  url-linkedin:
+  url-git: https://github.com/fufu35370
+  url-personnal:

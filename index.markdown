@@ -4,8 +4,9 @@
 
 layout: default
 title: About
-color : D45153
+color: D45153
 ---
+
 <script src="./assets/js/index.js"></script>
 <section>
 <div class="page-content">
@@ -23,16 +24,14 @@ color : D45153
 		<img src="./assets/img/cube.png">
 	</div>
 
-
-
 <div class="contributor-content">
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> CONTRIBUTORS</h2>
 
+<div class="scroll-horizontal">
+
+<div class="arrow left"><i class="fa-solid fa-chevron-left fa-3x picto" style="color: #{{ page.color }}"></i></div>
+
 <div class="contributor-container">
-
-<div class="arrow left"><i class="fa-solid fa-chevron-left fa-3x"></i></div>
-<div class="arrow right"><i class="fa-solid fa-chevron-right fa-3x"></i></div>
-
 
 {% for contributor in site.data.contributors %}
 
@@ -40,6 +39,8 @@ color : D45153
 
 {% if contributor.image %}
 <img class="contributor-image" src="{{contributor.image}}"/>
+{% else %}
+<img class="contributor-image" src="./assets/img/contributors/no_picture.jpeg"/>
 {% endif %}
 
 <p class="contributor-name">{{contributor.name}}</p>
@@ -62,21 +63,15 @@ color : D45153
 
 </div>
 
-
+</div>
+{% endfor %}
 
 </div>
-{% endfor %}			
+<div class="arrow right"><i class="fa-solid fa-chevron-right fa-3x picto" style="color: #{{ page.color }}"></i></div>
 
 </div>
 
 </div>
 </div>
 
-
-
-
-
-
-
-</section> 
-  
+</section>
