@@ -2,17 +2,22 @@
 layout : default
 ---
 
-<img src="{{ post.image }}" alt="{{ post.title }}">
-
-<div class = categories> 
-{ %for category in categories % }
-    <p class="category">{{ categorie }}</p>
-{ % endfor % }
+<div class = "post-img-container">
+    <img src="{{ page.image }}" alt="{{ page.title }}">
 </div>
 
-<h2><i class="fa-solid fa-square" style="color: #F1D248"></i>{{ post.title }}</h2>
+<section>
+<div class = post-description>
+<div class = categories> 
+    {% for category in page.categories %}
+        <p class="category">{{ category }}</p>
+    {% endfor %}
+</div>
 
-<p class = date>{{ post.date | date: "%B %d, %Y" }}</p>
+<h2><i class="fa-solid fa-square" style="color: #319b7a"></i> {{ page.title }}</h2>
 
-{{ post.content }}
-
+<p class = date>{{ page.date | date: "%B %d, %Y" }}</p>
+<p class = author>By quelqun ?</p>
+{{ page.content }}
+</div>
+</section>

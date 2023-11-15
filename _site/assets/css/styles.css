@@ -400,6 +400,50 @@ p {
   font-size: 1.2em;
 }
 
+.post-img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 40vh;
+}
+.post-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-description {
+  margin-top: 32vh;
+}
+.post-description .categories {
+  display: flex;
+  column-gap: 1%;
+}
+.post-description .categories .category {
+  color: #319B7A;
+  font-size: 1.2em;
+  font-weight: 600;
+  border: 1px solid #319B7A;
+  border-radius: 15px;
+  padding: 0% 1% 0 1%;
+}
+.post-description h2 {
+  text-transform: uppercase;
+  margin: 3% 0 1% 0;
+}
+.post-description .date {
+  color: #319B7A;
+  text-transform: uppercase;
+  margin-bottom: 1%;
+}
+.post-description .author {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 3%;
+}
+
 * {
   margin: 0;
   font-family: "Poppins", sans-serif;
