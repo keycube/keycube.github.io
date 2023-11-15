@@ -6,6 +6,7 @@ layout: default
 title: About
 color : D45153
 ---
+<script src="./assets/js/index.js"></script>
 <section>
 <div class="page-content">
 	<div class="presentation-content">
@@ -29,11 +30,11 @@ color : D45153
 
 <div class="contributor-container">
 
+<div class="arrow left"><i class="fa-solid fa-chevron-left fa-3x"></i></div>
+<div class="arrow right"><i class="fa-solid fa-chevron-right fa-3x"></i></div>
 
 
 {% for contributor in site.data.contributors %}
-
-
 
 <div class="contributor">
 
@@ -55,8 +56,13 @@ color : D45153
 <a href="{{ contributor.url-git }}" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #{{page.color}}"></i></a>
 {% endif %}
 
+{% if contributor.url-personnal %}
+<a href="{{ contributor.url-personnal }}" target="_blank"><i class="fa-solid fa-user fa-2x picto" style="color: #{{page.color}}"></i></a>
+{% endif %}
 
 </div>
+
+
 
 </div>
 {% endfor %}			

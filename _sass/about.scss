@@ -42,64 +42,80 @@
 	width: 50%;
   }
 
-  .contributor-content{
+  .arrow {
+	position: absolute;
+	top: 110%;
+	transform: translateY(-50%);
+	font-size: 24px;
+	cursor: pointer;
+	user-select: none;
+  }
+  
+  .left {
+	left: 10vw;
+	width: 5vw;
+  }
+  
+  .right {
+	right: 10vw;
+  }
+
+.contributor-content {
 	margin-bottom: 10vh;
   }
-
-  .contributor-container{
+  
+  .contributor-container {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
 	align-items: center;
-	justify-content: center;
+	overflow-x: auto; 
+	white-space: nowrap; 
+	// position: relative;
+  	overflow: hidden; 
   }
-
-  .contributor{
+  
+  .contributor {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: end;
 	padding: 2% 2%;
-	margin: 2% 2%;
-	width: 10vw;
-	height: 10vw;
-	border-radius: 5%;
-
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
-
-	.contributor-image{
-
-	}
+	margin: 0% 2% 2%;
+	min-width: 15vw;
+  	min-height: 15vw;
+	border-radius: 15px;
+	box-shadow: 3px 3px 6px #00000025, -5px -5px 10px #ffffff;
   
-	.contributor-name{
+	.contributor-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+	  }
+  
+	.contributor-name {
 	  font-weight: 600;
-  
-	}
-	
-	.contributor-firstname{
-  
 	}
   
-  
-	.contributor-network{
+	.contributor-network {
 	  display: flex;
 	  flex-direction: row;
 	  align-items: center;
 	  justify-content: space-around;
 	}
   
-	.picto{
+	.picto {
 	  margin: 10px;
 	}
-
-
+  
 	.contributor-network a:hover .picto {
-		transform: scale(1.2); /* Ajustez la valeur selon la taille d'agrandissement souhaitée */
+	  transform: scale(1.2);
 	}
-
+  
 	.contributor-network a .picto {
-		transition: transform 0.3s ease; /* Ajoutez une transition pour une animation plus souple */
+	  transition: transform 0.3s ease;
 	}
-
   }
+  
 
   
