@@ -1,6 +1,9 @@
 @import "blog";
 @import "research";
 @import "about";
+@import "hardware";
+@import "software";
+@import "post";
 
 *{
 	margin:0;
@@ -15,8 +18,6 @@ nav{
 	margin: 0 0 3% 0;
 	box-shadow :13px 13px 26px #00000025;
 	background-color: #F6F6F6;
-
-
 }
 
 .link-page-nav{
