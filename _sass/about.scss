@@ -1,6 +1,16 @@
 
+.page-content{
+	display: flex;
+	flex-direction: column;
+}
+.presentation-content{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
 .text-content{
-	width: 50%;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -17,15 +27,109 @@
 	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
 	transition: box-shadow 0.3s;
 	cursor: pointer;
-
-	// width: 20%; 
 	
 	text-transform: uppercase;
 	font-weight: 600;
+	margin: 10% 0;
 
   }
   
   .button-white:hover {
 	box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
   }
+  
+  img{
+	width: 50%;
+  }
+
+  .arrow:hover  .picto {
+	transform: scale(1.1);
+  }
+
+  .arrow .picto {
+	transition: transform 0.2s ease;
+  }
+
+
+  .arrow {
+	font-size: 2em;
+	cursor: pointer;
+
+	.arrow:hover  .picto {
+		transform: scale(1.1);
+	  }
+	
+	  .picto {
+		transition: transform 0.2s ease;
+	  }
+
+  }
+
+  .scroll-horizontal {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around	;
+  }
+
+.contributor-content {
+	margin-bottom: 10vh;
+  }
+  
+  .contributor-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow-x: auto; 
+	white-space: nowrap; 
+  	overflow: hidden; 
+	scroll-behavior:smooth; 
+
+  }
+  
+  .contributor {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: end;
+	padding: 1% 2%;
+	margin: 0% 2% 2%;
+	min-width: 15vw;
+  	min-height: 15vw;
+	border-radius: 15px;
+	box-shadow: 3px 3px 6px #00000025, -5px -5px 10px #ffffff;
+  
+	.contributor-image {
+		max-width: 80%;
+		object-fit: cover;
+		border-radius: 50%;
+		margin: 5%;
+	  }
+  
+	.contributor-name {
+	  font-weight: 600;
+	  text-transform: uppercase;
+	}
+  
+	.contributor-network {
+	  display: flex;
+	  flex-direction: row;
+	  align-items: center;
+	  justify-content: space-around;
+	}
+  
+	.picto {
+	  margin: 10px;
+	}
+  
+	.contributor-network a:hover .picto {
+	  transform: scale(1.2);
+	}
+  
+	.contributor-network a .picto {
+	  transition: transform 0.3s ease;
+	}
+  }
+  
+
   
