@@ -17,18 +17,14 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	margin: 0 0 3% 0;
 	padding: 2% 5%;
 	font-size: 1.2em;
 	transition: box-shadow 0.3s;
 	border: none;
 	border-radius: 15px;
 	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff;
-	cursor: pointer;
-  }
-  
-.published-paper:hover {
-	box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
-	// box-shadow: -3px -3px -6px #00000025, - -5px 5px -10px #ffffff;
+	// cursor: pointer;
   }
   
 
@@ -42,13 +38,41 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 90%;
+
+	p{
+		font-size: 0.8em;
+	}
+
+	.titre-author{
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 0.9em;
+		text-align: center;
+		width: 50%;
+	}
+
+	.journal {
+		padding: 0.5% 1%;
+		border-radius: 15px;
+		width: 30%;
+		text-align: center;	
+	}
+
+
 }
 
-.journal {
-	padding: 0.5% 1%;
-	border-radius: 15px;
-}
+
+
+
+
 
 .picto{
-	width: 2%;
+	width: 5%;
+	font-size:2em;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.picto:hover{
+	transform: scale(1.2);
 }
