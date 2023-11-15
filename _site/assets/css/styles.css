@@ -299,9 +299,8 @@ img {
 .hardware {
   display: flex;
   align-items: center;
-  column-gap: 10%;
   border-radius: 15px;
-  padding: 2% 0;
+  margin-bottom: 2%;
 }
 .hardware .description {
   width: 50%;
@@ -335,6 +334,19 @@ img {
 .hardware .img-container {
   margin-top: 5%;
   width: 50%;
+  text-align: end;
+}
+.hardware:nth-child(odd) .description {
+  order: 2;
+  text-align: start;
+}
+.hardware:nth-child(odd) .img-container {
+  order: 1;
+  text-align: start;
+}
+.hardware:nth-child(even) .img-container {
+  order: 2;
+  text-align: end;
 }
 
 p {
