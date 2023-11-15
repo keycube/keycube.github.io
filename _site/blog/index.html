@@ -30,7 +30,7 @@
 	</div>
 	<a class="extern"><i class="fa-solid fa-language"></i></a>
   </nav>
-    <script src="/assets/js/blog-script.js"></script>
+    <script src="http://localhost:4000/assets/js/blog-script.js"></script>
 
 <section>
 
@@ -203,28 +203,19 @@
 </section>
 
 	<footer style="background-color: #319B7A;">
-	<div class="footer-part">
-		<h3>Legal notice</h3>
-		<a href="#">Privacy Policy</a>
-		<a href="#">Legal notice</a>
-		<a href="#">FAQ</a>
-	</div>
-	<div class="footer-part">
 		<div class="social-networks">
 			<a class="link-picto" href="#"><i class="fa-brands fa-discord fa-2x picto"></i></a>
 			<a class="link-picto" href="#"><i class="fa-brands fa-github fa-2x picto"></i></a>
 			<a class="link-picto" href="#"><i class="fa-brands fa-instagram fa-2x picto"></i></a>
 		</div>
-		<a href="#"><img src="../assets/img/logo.svg"/></a>
-		<p>©keycube - 2023</p>
-
-	</div>
-	<div class="footer-part">
-		<h3>Contact us</h3>
-		<p>UQAC, Chicoutimi, G7H 0S5, Québec</p>
-		<a href="mailto:keycube@gmail.com">keycube@gmail.com</a>
-		<a href="tel:+1 (255) 567 894">+1 (255) 567 894</a>
-	</div>
+		<a href="#"><img class="logo_footer" src="../assets/img/logo/grey_wlogo.svg"/></a>
+		<p>keycube - 2023</p>
 </footer>
+
+<script>
+	//recuperer l'annee en cours
+	var annee = new Date().getFullYear();
+	console.log(annee);
+</script>
   </body>
 </html>
