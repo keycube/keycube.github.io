@@ -535,6 +535,7 @@ p {
 
 .post-description {
   margin-top: 32vh;
+  margin-bottom: 3%;
 }
 .post-description .categories {
   display: flex;
