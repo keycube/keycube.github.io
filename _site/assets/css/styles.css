@@ -1,6 +1,7 @@
 .featured-article {
   display: flex;
   align-items: center;
+  overflow: hidden;
   width: 100%;
   height: 25vw;
   border-radius: 24px;
@@ -54,8 +55,13 @@
   border-radius: 15px;
   padding: 0% 1% 0 1%;
 }
-.featured-article p {
+.featured-article .resume {
   width: 70%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: pre-wrap;
 }
 .featured-article .readMore-button {
   height: 10%;
@@ -66,17 +72,17 @@
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  color: #fff;
+  color: #f6f6f6;
   font-size: 1.2em;
   font-weight: 600;
-  margin: 5% 0 0 0;
+  margin: 4% 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
 }
 .featured-article .readMore-button:hover {
-  background: #fff;
+  background: #f6f6f6;
   border: 1px solid #319B7A;
   color: #319B7A !important;
 }
@@ -100,35 +106,33 @@
 }
 .category-filter .filter-button:hover {
   background: #319B7A;
-  color: #444 !important;
+  color: #f6f6f6 !important;
 }
 .category-filter .filter-button.active {
   background: #319B7A;
-  color: #444 !important;
+  color: #f6f6f6 !important;
 }
 
 .articles {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  column-gap: 3.1%;
-  row-gap: 5%;
+  column-gap: 3%;
 }
 .articles .article {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: hidden;
   margin: 0;
   padding: 0;
-  width: 25vw;
-  height: 25vw;
+  width: 31.334%;
+  aspect-ratio: 1/1;
+  margin-bottom: 3%;
   border-radius: 24px;
   transition: box-shadow 0.3s;
   box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-}
-.articles .article:hover {
-  box-shadow: 0 0 0 transparent;
 }
 .articles .article .date {
   font-family: "poppins", sans-serif;
@@ -172,6 +176,11 @@
 .articles .article .resume {
   width: 80%;
   margin: 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: pre-wrap;
 }
 .articles .article .readMore-button {
   height: 10%;
@@ -182,13 +191,19 @@
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  color: #fff;
+  color: #f6f6f6;
   font-size: 1.2em;
   font-weight: 600;
   margin: 5% auto auto auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.articles .article .readMore-button:hover {
+  background: #f6f6f6;
+  border: 1px solid #319B7A;
+  color: #319B7A !important;
 }
 
 .citation {
@@ -210,17 +225,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: 0 0 3% 0;
   padding: 2% 5%;
   font-size: 1.2em;
   transition: box-shadow 0.3s;
   border: none;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-  cursor: pointer;
-}
-
-.published-paper:hover {
-  box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
 }
 
 .color {
@@ -234,14 +245,32 @@
   justify-content: space-between;
   width: 90%;
 }
-
-.journal {
+.info-published-paper p {
+  font-size: 0.8em;
+}
+.info-published-paper .titre-author {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9em;
+  text-align: center;
+  width: 50%;
+}
+.info-published-paper .journal {
   padding: 0.5% 1%;
   border-radius: 15px;
+  width: 30%;
+  text-align: center;
 }
 
 .picto {
-  width: 2%;
+  width: 5%;
+  font-size: 2em;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.picto:hover {
+  transform: scale(1.2);
 }
 
 .page-content {
@@ -287,6 +316,84 @@ img {
   width: 50%;
 }
 
+.arrow:hover .picto {
+  transform: scale(1.1);
+}
+
+.arrow .picto {
+  transition: transform 0.2s ease;
+}
+
+.arrow {
+  font-size: 2em;
+  cursor: pointer;
+}
+.arrow .arrow:hover .picto {
+  transform: scale(1.1);
+}
+.arrow .picto {
+  transition: transform 0.2s ease;
+}
+
+.scroll-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contributor-content {
+  margin-bottom: 10vh;
+}
+
+.contributor-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.contributor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  padding: 1% 2%;
+  margin: 0% 2% 2%;
+  min-width: 15vw;
+  min-height: 15vw;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+}
+.contributor .contributor-image {
+  max-width: 80%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 5%;
+}
+.contributor .contributor-name {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.contributor .contributor-network {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.contributor .picto {
+  margin: 10px;
+}
+.contributor .contributor-network a:hover .picto {
+  transform: scale(1.2);
+}
+.contributor .contributor-network a .picto {
+  transition: transform 0.3s ease;
+}
+
 .citation-hardware {
   width: 100%;
   text-align: center;
@@ -299,9 +406,8 @@ img {
 .hardware {
   display: flex;
   align-items: center;
-  column-gap: 10%;
   border-radius: 15px;
-  padding: 2% 0;
+  margin-bottom: 2%;
 }
 .hardware .description {
   width: 50%;
@@ -335,6 +441,19 @@ img {
 .hardware .img-container {
   margin-top: 5%;
   width: 50%;
+  text-align: end;
+}
+.hardware:nth-child(odd) .description {
+  order: 2;
+  text-align: start;
+}
+.hardware:nth-child(odd) .img-container {
+  order: 1;
+  text-align: start;
+}
+.hardware:nth-child(even) .img-container {
+  order: 2;
+  text-align: end;
 }
 
 p {
@@ -416,6 +535,7 @@ p {
 
 .post-description {
   margin-top: 32vh;
+  margin-bottom: 3%;
 }
 .post-description .categories {
   display: flex;
@@ -506,9 +626,6 @@ footer {
   flex-direction: row;
   justify-content: space-around;
   align-items: start;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   padding: 2% 0;
 }

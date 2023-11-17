@@ -5,6 +5,12 @@
 @import "software";
 @import "post";
 
+$black : #444;
+$white : #F6F6F6;
+$green : #319B7A;
+$yellow : #F1D248;
+
+
 *{
 	margin:0;
 	font-family: 'Poppins', sans-serif;
@@ -69,9 +75,9 @@ footer {
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: start	;
-	position: fixed;
-	bottom: 0;
-	left: 0;
+	// position: fixed;
+	// bottom: 0;
+	// left: 0;
 	width: 100%;
 	padding: 2% 0;
 

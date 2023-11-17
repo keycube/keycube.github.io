@@ -27,7 +27,7 @@ color : 319B7A
             <p class="categorie" style="color : #{{page.color}}">{{category}}</p>
             {% endfor %}
         </div>
-        <p>{{post.resume }}</p>
+        <p class = resume>{{post.resume }}</p>
         <a href="{{ post.url }}" class="readMore-button">Read more</a>
         </div>
     </div>
