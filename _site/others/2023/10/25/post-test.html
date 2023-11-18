@@ -52,18 +52,18 @@
 </section>
 	<footer style="background-color: #;">
 		<div class="social-networks">
-			<a class="link-picto" href="#"><i class="fa-brands fa-discord fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-github fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-instagram fa-2x picto"></i></a>
+			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
+			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
 		<a href="#"><img class="logo_footer" src="../assets/img/logo/grey_wlogo.svg"/></a>
-		<p>keycube - 2023</p>
+		<p></p>
 </footer>
 
 <script>
-	//recuperer l'annee en cours
 	var annee = new Date().getFullYear();
-	console.log(annee);
+	var footer = document.querySelector("footer p");
+	footer.innerHTML = "keycube - " + annee;
+
 </script>
   </body>
 </html>
