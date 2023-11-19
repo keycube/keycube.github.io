@@ -2,6 +2,7 @@
 .page-content{
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 }
 .presentation-content{
 	display: flex;
@@ -18,52 +19,49 @@
 }
 
 .button-white {
-	display: inline-block;
-	padding: 2% 5%;
-	font-size: 1em;
-	background: #F6F6F6;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
-	transition: box-shadow 0.3s;
-	cursor: pointer;
-	
-	text-transform: uppercase;
-	font-weight: 600;
-	margin: 10% 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 2% 5%;
+    font-size: 1em;
+    background: #F6F6F6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px #00000025, -5px -5px 10px #ffffff;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10% 0;
 
-  }
+    .button-text {
+        margin-right: 20px; 
+    }
+}
+
   
   .button-white:hover {
-	box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
+	box-shadow: 0 0 0 transparent; 
   }
   
   img{
 	width: 50%;
   }
 
-  .arrow:hover  .picto {
-	transform: scale(1.1);
-  }
-
-  .arrow .picto {
-	transition: transform 0.2s ease;
-  }
-
 
   .arrow {
-	font-size: 2em;
-	cursor: pointer;
+    margin: 2%;
+    font-size: 2em;
+    cursor: pointer;
 
-	.arrow:hover  .picto {
-		transform: scale(1.1);
-	  }
-	
-	  .picto {
-		transition: transform 0.2s ease;
-	  }
+    .arrow:hover  .picto {
+        transform: scale(1.1);
+    }
 
-  }
+    .picto {
+        transition: transform 0.2s ease;
+    }
+}
+
 
   .scroll-horizontal {
 	display: flex;
@@ -77,15 +75,21 @@
   }
   
   .contributor-container {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	overflow-x: auto; 
-	white-space: nowrap; 
-  	overflow: hidden; 
-	scroll-behavior:smooth; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto; 
+    overflow-y: hidden;  
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+    &::-webkit-scrollbar {
+        display: none; 
+    }
+}
 
-  }
+
   
   .contributor {
 	display: flex;

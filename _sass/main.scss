@@ -9,6 +9,8 @@ $black : #444;
 $white : #F6F6F6;
 $green : #319B7A;
 $yellow : #F1D248;
+$red : #D45153;
+$blue : #43AAD6;
 
 
 *{
@@ -23,7 +25,7 @@ nav{
 	justify-content:space-between;
 	margin: 0 0 3% 0;
 	box-shadow :13px 13px 26px #00000025;
-	background-color: #F6F6F6;
+	background-color: $white;
 }
 
 .link-page-nav{
@@ -57,7 +59,7 @@ h1, h2 {
 body{
 	display: flex;
 	flex-direction: column;
-	background-color: #F6F6F6;
+	background-color: $white;
 }
 
 section{
@@ -66,7 +68,9 @@ section{
 	align-items: center;
 	justify-content: center;
 	
-	width: 100%;
+	width: 80%;
+	margin: auto;
+	// padding: 0 10% 0 10%;
 	justify-content: space-around;
 }
 
@@ -80,11 +84,11 @@ footer {
         margin-bottom: 2%; 
 
 		.picto{
-			color:#F6F6F6;
+			color:$white;
 		}
 
 		.picto:hover{
-			color:#444;
+			color:$black;
 		}
 		
     }
@@ -98,7 +102,7 @@ footer {
     }
 
 	p {
-		color: #F6F6F6;
+		color: $white;
 	}
 }
 

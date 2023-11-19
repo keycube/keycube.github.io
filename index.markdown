@@ -1,13 +1,10 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: default
 title: About
 color: D45153
 ---
 
-<script src="./assets/js/index.js"></script>
+<script src="./assets/js/slider.js"></script>
 <section>
 <div class="page-content">
 	<div class="presentation-content">
@@ -19,7 +16,10 @@ color: D45153
 			<br>
 			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.
 		</div>
-		<button class="button-white" style="color: #{{ page.color }}">Read More</button>
+		<button class="button-white">
+			<span class="button-text" style="color: #{{ page.color }}">Read More</span>
+			<i class="fa-solid fa-chevron-right" style="color: #{{ page.color }}"></i>
+		</button>
 		</div>
 		<img src="./assets/img/cube.png">
 	</div>

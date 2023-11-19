@@ -243,7 +243,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
 }
 .info-published-paper p {
   font-size: 0.8em;
@@ -276,6 +276,7 @@
 .page-content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .presentation-content {
@@ -294,7 +295,8 @@
 }
 
 .button-white {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 2% 5%;
   font-size: 1em;
   background: #F6F6F6;
@@ -307,24 +309,20 @@
   font-weight: 600;
   margin: 10% 0;
 }
+.button-white .button-text {
+  margin-right: 20px;
+}
 
 .button-white:hover {
-  box-shadow: 0 0 0 transparent; /* Supprime l'ombre au survol */
+  box-shadow: 0 0 0 transparent;
 }
 
 img {
   width: 50%;
 }
 
-.arrow:hover .picto {
-  transform: scale(1.1);
-}
-
-.arrow .picto {
-  transition: transform 0.2s ease;
-}
-
 .arrow {
+  margin: 2%;
   font-size: 2em;
   cursor: pointer;
 }
@@ -351,9 +349,14 @@ img {
   flex-direction: row;
   align-items: center;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
-  overflow: hidden;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.contributor-container::-webkit-scrollbar {
+  display: none;
 }
 
 .contributor {
@@ -618,7 +621,8 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  margin: auto;
   justify-content: space-around;
 }
 

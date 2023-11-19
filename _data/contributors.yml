@@ -1,10 +1,3 @@
-- name: GRIGNOLA
-  firstname: Nina
-  image: './assets/img/contributors/GRIGNOLA_Nina.jpeg'
-  url-linkedin: https://fr.linkedin.com/in/nina-grignola-4441031a4
-  url-git: https://github.com/grignolanina
-  url-personnal:
-
 - name: AUGIER
   firstname: Lucie
   image: './assets/img/contributors/AUGIER_Lucie.jpeg'
@@ -16,8 +9,8 @@
   firstname: Damien
   image: './assets/img/contributors/BRUN_Damien.jpeg'
   url-linkedin:
-  url-git: https://github.com/makowildcat
-  url-personnal:
+  url-git:
+  url-personnal: https://www.damienb.run
 
 - name: BRETON
   firstname: Thibaut
@@ -26,11 +19,11 @@
   url-git: https://github.com/AyrozDZN
   url-personnal:
 
-- name:
+- name: Bonin
   firstname: Idriss
   image:
   url-linkedin:
-  url-git: https://github.com/grignolanina
+  url-git: 
   url-personnal:
 
 - name: BROCHARD
@@ -38,4 +31,32 @@
   image:
   url-linkedin:
   url-git: https://github.com/fufu35370
+  url-personnal:
+
+- name: Cartelot
+  firstname: Adrien
+  image:
+  url-linkedin:
+  url-git: 
+  url-personnal:
+
+- name: George
+  firstname: Sébastien
+  image:
+  url-linkedin:
+  url-git: 
+  url-personnal: 
+
+- name: Gouin-Vallerand
+  firstname: Charles
+  image:
+  url-linkedin:
+  url-git: 
+  url-personnal: https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/simqg/charles-gouin-vallerand
+
+- name: GRIGNOLA
+  firstname: Nina
+  image: './assets/img/contributors/GRIGNOLA_Nina.jpeg'
+  url-linkedin: https://fr.linkedin.com/in/nina-grignola-4441031a4
+  url-git: https://github.com/grignolanina
   url-personnal:
