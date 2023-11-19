@@ -1,4 +1,4 @@
-.citation-hardware {
+.citation-software {
 	width: 100%;
     text-align: center;
 	padding: 2% 0%;
@@ -7,11 +7,12 @@
 	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
 }
 
-.hardware {
+.software {
     display : flex;
-    align-items: center;
+    align-items:start;
+    column-gap: 10%;
     border-radius: 15px;
-    margin-bottom: 2%;
+    padding : 2% 0;
     
 
     .description 
@@ -20,7 +21,7 @@
 
         p 
         {
-            margin-bottom: 2%;
+            font-size: 1.2em;
         }
 
         .github-link 
@@ -54,31 +55,14 @@
     
     .img-container
     {
-        margin-top: 5%;
         width: 50%;
-        text-align: end;
-    }
 
-    &:nth-child(odd) {
-        .description {
-            order: 2; // Inverser l'ordre du texte et de l'image
-            text-align: start; // Aligner le texte à gauche
-        }
-
-        .img-container {
-            order: 1; // Garder l'ordre de l'image à droite
-            text-align: start; // Aligner l'image à droite
-        }
-    }
-
-    &:nth-child(even) {
-        .description {
-            // Garder l'ordre du texte à gauche
-        }
-
-        .img-container {
-            order: 2; // Inverser l'ordre de l'image à gauche
-            text-align: end; // Aligner l'image à gauche
+        img 
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
         }
     }
 }

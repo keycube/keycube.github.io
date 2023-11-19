@@ -1,9 +1,8 @@
 ---
-# research: page
-layout : default
+layout: default
 title: Research
 permalink: /research/
-color : 43AAD6
+color: 43AAD6
 ---
 
 <section>
@@ -14,19 +13,26 @@ color : 43AAD6
 
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> PUBLISHED PAPERS </h2>
 
-
+{% for research in site.data.research %}
 <div class="published-paper">
-	<div class="color" style="background-color: #{{ page.color }}"></div>
-	<div class="info-published-paper">
-		<p class="date" style="color: #{{ page.color }}">22-08-09</p>
-		<p class="titre-author" >La Révolution de l'Interface Utilisateur - JEREMY BACK</p>
-		<p class="journal" style="color: #{{ page.color }}; border: 1px solid #{{ page.color }}">Le Parisien</p>
-	</div>
-	<i class="fa-solid fa-chevron-right picto" style="color: #{{ page.color }}"></i>
+<div class="color" style="background-color: #{{ page.color }}"></div>
+<div class="info-published-paper">
+
+{% if research.date %}
+<p class="date" style="color: #{{ page.color }}">{{research.date}}</p>
+{% else %}
+<p class="date" style="color: #{{ page.color }}">XX-XX-XXXX</p>
+{% endif %}
+
+<p class="titre-author" >{{research.title}} - {{research.authors}}</p>
+
+<p class="journal" style="color: #{{ page.color }}; border: 1px solid #{{ page.color }}">{{research.venue-journal}}</p>
+</div>
+
+<a href="{{research.url}}" target="_blank"><i class="fa-solid fa-chevron-right picto" style="color: #{{ page.color }}"></i></a>
 
 </div>
 
-
-
+{% endfor %}
 
 </section>

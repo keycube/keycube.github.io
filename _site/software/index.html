@@ -31,32 +31,57 @@
 	<a class="extern"><i class="fa-solid fa-language"></i></a>
   </nav>
     <section>
-<h2><i class="fa-solid fa-square" style="color: #DC800F"></i> PUBLISHED PAPERS </h2>
+<div class="citation-software" style="background-color: #DC800F">
+	<p>Tools, games, and other dedicated software for the keycubes.</p>	
+</div>
+
+
+	<h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #DC800F"></i> 3D Typing Simulator </h2>
+    <div class="software">
+        
+		<div class="img-container">
+            <img src="../assets/img/keyboardcustomization.png" alt="3D Typing Simulator" />
+        </div>
+		<div class="description">
+        <p> Typing practice software that uses the cubic dimension to create an immersive experience. Users can practice typing on different faces of the cube.</p>
+		
+			<a href="" class="link">Play</a>
+		
+        </div>
+    </div>
+
+	<h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #DC800F"></i> Cubic Keyboard Customization Software </h2>
+    <div class="software">
+        
+		<div class="img-container">
+            <img src="../assets/img/keyboardcustomization.png" alt="Cubic Keyboard Customization Software" />
+        </div>
+		<div class="description">
+        <p> Software that allows users to customize key layouts, keyboard shortcuts, and LED colors to match their preferences.</p>
+		
+			<a href="" class="link">Download</a>
+		
+        </div>
+    </div>
+
+
+
 </section>
 
 	<footer style="background-color: #DC800F;">
-	<div class="footer-part">
-		<h3>Legal notice</h3>
-		<a href="#">Privacy Policy</a>
-		<a href="#">Legal notice</a>
-		<a href="#">FAQ</a>
-	</div>
-	<div class="footer-part">
 		<div class="social-networks">
-			<a class="link-picto" href="#"><i class="fa-brands fa-discord fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-github fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-instagram fa-2x picto"></i></a>
+			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
+			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
-		<a href="#"><img src="../assets/img/logo.svg"/></a>
-		<p>©keycube - 2023</p>
-
-	</div>
-	<div class="footer-part">
-		<h3>Contact us</h3>
-		<p>UQAC, Chicoutimi, G7H 0S5, Québec</p>
-		<a href="mailto:keycube@gmail.com">keycube@gmail.com</a>
-		<a href="tel:+1 (255) 567 894">+1 (255) 567 894</a>
-	</div>
+		<a href="#"><img class="logo_footer" src="../assets/img/logo/grey_wlogo.svg"/></a>
+		<p></p>
 </footer>
+
+<script>
+	var annee = new Date().getFullYear();
+	var footer = document.querySelector("footer p");
+	footer.innerHTML = "keycube - " + annee;
+
+</script>
   </body>
 </html>

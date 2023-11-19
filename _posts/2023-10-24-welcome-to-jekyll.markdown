@@ -2,14 +2,17 @@
 layout: post
 title:  "Welcome to keycube !"
 date:   2023-10-24 00:53:57 +0200
+author : someone
 categories:
 - Games
 - Tools
 - Divers
-image: "../assets/img/post1.jpg"
-resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+image: "/assets/img/post1.jpg"
+resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
 featuredPost : true
 ---
+
+#F1D248
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 Jekyll requires blog post files to be named according to the following format:

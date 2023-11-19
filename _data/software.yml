@@ -1,0 +1,12 @@
+- title : 3D Typing Simulator
+  description : Typing practice software that uses the cubic dimension to create an immersive experience. Users can practice typing on different faces of the cube.
+  category: game
+  link : https://github.com/keycube
+  image : "../assets/img/keyboardcustomization.png"
+
+
+- title : Cubic Keyboard Customization Software
+  description : Software that allows users to customize key layouts, keyboard shortcuts, and LED colors to match their preferences.
+  category : tool
+  link : https://github.com/keycube
+  image : "../assets/img/keyboardcustomization.png"
