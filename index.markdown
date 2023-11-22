@@ -27,51 +27,34 @@ color: D45153
 <div class="contributor-content">
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> CONTRIBUTORS</h2>
 
-<div class="scroll-horizontal">
-
-<div class="arrow left"><i class="fa-solid fa-chevron-left fa-3x picto" style="color: #{{ page.color }}"></i></div>
-
 <div class="contributor-container">
 
 {% for contributor in site.data.contributors %}
 
-<div class="contributor">
+<a href="{{contributor.url}}" target="_blank">
 
 {% if contributor.image %}
-<img class="contributor-image" src="{{contributor.image}}"/>
+<div class="contributor-profil" style="background-image: url('{{contributor.image}}');">
+<p class="contributor-pseudo">{{contributor.pseudo}}</p>
+</div>
 {% else %}
-<img class="contributor-image" src="./assets/img/contributors/no_picture.jpeg"/>
-{% endif %}
-
-<p class="contributor-name">{{contributor.name}}</p>
-<p class="contributor-firstname">{{contributor.firstname}}</p>
-
-<div class="contributor-network">
-
-{% if contributor.url-linkedin %}
-<a href="{{ contributor.url-linkedin }}" target="_blank">
-<i class="fa-brands fa-linkedin fa-2x picto " style="color: #{{page.color}}"></i></a>
-{% endif %}
-
-{% if contributor.url-git %}
-<a href="{{ contributor.url-git }}" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #{{page.color}}"></i></a>
-{% endif %}
-
-{% if contributor.url-personnal %}
-<a href="{{ contributor.url-personnal }}" target="_blank"><i class="fa-solid fa-user fa-2x picto" style="color: #{{page.color}}"></i></a>
-{% endif %}
-
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">{{contributor.pseudo}}</p>
 </div>
+{% endif %}
 
-</div>
+</a>
+
 {% endfor %}
 
 </div>
-<div class="arrow right"><i class="fa-solid fa-chevron-right fa-3x picto" style="color: #{{ page.color }}"></i></div>
+
+
+
+</div> 
 
 </div>
 
-</div>
-</div>
+<!-- <p class="test">ceci est un test</p> -->
 
 </section>
