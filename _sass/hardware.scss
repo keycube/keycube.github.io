@@ -5,22 +5,24 @@
 	font-size: 1.2em;
     border-radius: 15px;
 	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
+    margin-bottom : 5%;
 }
 
 .hardware {
     display : flex;
-    align-items: center;
-    border-radius: 15px;
-    margin-bottom: 2%;
-    
+    justify-content: space-between;
+    margin-bottom: 7%;
+    height : 40vh;
 
     .description 
     {
         width: 50%;
+        display : flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-        p 
-        {
-            margin-bottom: 2%;
+        h2{
+            margin: 0;
         }
 
         .github-link 
@@ -35,18 +37,16 @@
             color : #f6f6f6;
             font-size: 1.2em; 
             font-weight: 600;
-            margin: 5% 0 0 0;
             padding: 1.5% 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            border : 1.5px solid #F1D248;
             transition : all 0.3s ease-in-out;
 
             &:hover 
             {
                 background: none;  
-                box-shadow: inset 0 0 1px #F1D248;
-                //border : 1px solid #F1D248;
                 color : #F1D248 !important;
             }
         }
@@ -54,20 +54,30 @@
     
     .img-container
     {
-        margin-top: 5%;
-        width: 50%;
-        text-align: end;
+        width: 40%;
+        height: 100%;
+
+        img 
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
     }
 
     &:nth-child(odd) {
         .description {
             order: 2; // Inverser l'ordre du texte et de l'image
-            text-align: start; // Aligner le texte à gauche
+            text-align: end; // Aligner le texte à gauche
+        }
+
+        .github-link {
+            align-self: flex-end;
         }
 
         .img-container {
             order: 1; // Garder l'ordre de l'image à droite
-            text-align: start; // Aligner l'image à droite
         }
     }
 
