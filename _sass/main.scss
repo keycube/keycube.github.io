@@ -5,43 +5,138 @@
 @import "software";
 @import "post";
 
+$black : #444;
+$white : #F6F6F6;
+$green : #319B7A;
+$yellow : #F1D248;
+$red : #D45153;
+$blue : #43AAD6;
+
+
 *{
 	margin:0;
 	font-family: 'Poppins', sans-serif;
 	color: #444;
 }
 
-nav{
-	display: flex;
-	align-items: center;
-	justify-content:space-between;
-	margin: 0 0 3% 0;
-	box-shadow :13px 13px 26px #00000025;
-	background-color: #F6F6F6;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 3% 0;
+  box-shadow: 13px 13px 26px #00000025;
+  background-color: $white;
+  width: 100%;
+
+  .link-page-nav {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 2% 2%;
+    }
+  }
+
+  .extern {
+    margin: 0 10%;
+  }
+
+  .current {
+    text-decoration: none;
+  }
+
+  .logo {
+    width: 2%  ; 
+    height: auto; 
+  }
 }
 
-.link-page-nav{
-	display: flex;
-	flex-direction: row;
-	width: 60%;
-	align-items: center;
-	justify-content: center;
-}
 
-nav a{
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: 600;
-	margin: 2% 2%;
-}
 
-.extern{
-	margin: 0 10%;
-}
+//////////////////
 
-.current {
-	text-decoration: none;
-}
+// .normal-menu{
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content:space-between;
+// 	margin: 0 0 3% 0;
+// 	box-shadow :13px 13px 26px #00000025;
+// 	background-color: $white;
+
+// 	@media (max-width: 768px) {
+// 		display: none;
+// 	}
+// }
+
+
+// .link-page-nav{
+// 	display: flex;
+// 	flex-direction: row;
+// 	width: 60%;
+// 	align-items: center;
+// 	justify-content: center;
+// }
+
+// nav a{
+// 	text-decoration: none;
+// 	text-transform: uppercase;
+// 	font-weight: 600;
+// 	margin: 2% 2%;
+// }
+
+// .extern{
+// 	margin: 0 10%;
+// }
+
+// .current {
+// 	text-decoration: none;
+// }
+// }
+
+
+// .burger-menu {
+//     display: none;
+//     @media (max-width: 768px) {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+//         position: absolute;
+//         top: 60px; /* Adjust the top position as needed */
+//         right: 0;
+//         background-color: $white;
+//         box-shadow: 13px 13px 26px #00000025;
+
+//         a {
+//             margin: 2% 0;
+//         }
+//     }
+// }
+
+// #burger-icon {
+//     display: none;
+//     @media (max-width: 768px) {
+//         display: block;
+//     }
+// }
+
+// #burger-menu.active {
+//     display: flex;
+// }
+
+
+
+////////////////////////////////////////////
+
+
+
+
 
 h1, h2 {
 	font-family: 'Dela Gothic One', sans-serif;
@@ -51,92 +146,60 @@ h1, h2 {
 body{
 	display: flex;
 	flex-direction: column;
-	background-color: #F6F6F6;
+	background-color: $white;
 }
 
 section{
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
 	width: 80%;
 	margin: auto;
+	// padding: 0 10% 0 10%;
 	justify-content: space-around;
 }
 
-
-
 footer {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: start	;
-	// position: fixed;
-	// bottom: 0;
-	// left: 0;
-	width: 100%;
-	padding: 2% 0;
+    text-align: center;
+    padding: 2%;
 
-	// // footer {
-	// 	position: absolute;
-	// 	bottom: 0;
-	// 	left: 0;
-	// 	right: 0;
-	// //   }
-	  
+    .social-networks {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%; 
 
-}
+		.picto{
+			color:$white;
+      margin: 0 2px;
+		}
 
-footer {
-	h3{
-		text-transform: uppercase;
-		font-weight: 600;
-		color:white;
-	}
+		.picto:hover{
+			color:$black;
+		}
+		
+    }
+
+    .logo_footer {
+        display: block;
+        margin: 0 auto;
+		    width: 5%;
+        margin-bottom: 2%; 
+		
+    }
+  a{
+    text-decoration: none;
+    color:$white;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
 	p {
-		color:white;
-	
+		color: $white;
+    font-size:1em;
 	}
-	a{
-		text-decoration: none;
-		color:white;
-	}
-	a:hover{
-		text-decoration: none;
-		color:#444;
-	}
-
-	.link-picto{
-		// padding: 0 10%;
-	}
-
-	.footer-part{
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-	
-	
-	.social-networks{
-		display: flex;
-		flex-direction: row;
-		width: 30%;
-		justify-content:center;
-		align-items: center;
-	
-	}
-	
-	.social-networks a {
-		margin: 0 10%;
-	}
-	
-	.picto{
-		color:white;
-		margin-bottom: 50%;
-	}
-	
-	.picto:hover{
-		color:#444;
-	}
-
-} 
+}
 

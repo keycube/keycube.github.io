@@ -13,7 +13,7 @@
   
 	</head>
   <body>
-	  <nav>
+	  <!-- <nav>
 	<a class="extern" href="#"><img src="../assets/img/logo-319B7A.svg"/></a>
 	<div class="link-page-nav">
 	
@@ -29,7 +29,64 @@
 	
 	</div>
 	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav>
+  </nav> -->
+
+  <nav>
+    <img class="extern logo" src="../assets/img/logo/logo-319B7A.svg"/>
+    <div class="link-page-nav">
+        
+            <a href="/" >About</a>
+        
+            <a href="/blog/" style="color: #319B7A;" class="current">Blog</a>
+        
+            <a href="/research/" >Research</a>
+        
+            <a href="/hardware/" >Hardware</a>
+        
+            <a href="/software/" >Software</a>
+        
+    </div>
+	<a class="extern"><i class="fa-solid fa-language"></i></a>
+</nav>
+
+
+
+
+
+<!-- <div class="burger-menu">
+     <a class="extern" id="burger-icon"><i class="fa-solid fa-bars"></i></a>    
+	<p>lalalal</p>
+	 <div class="burger" id="burger">
+        
+            <a href="/" >About</a>
+        
+            <a href="/blog/" style="color: #319B7A;" class="current">Blog</a>
+        
+            <a href="/research/" >Research</a>
+        
+            <a href="/hardware/" >Hardware</a>
+        
+            <a href="/software/" >Software</a>
+        
+    </div> 
+
+</div>
+</nav> -->
+
+
+<!-- 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerIcon = document.getElementById('burger-icon');
+    const burgerMenu = document.getElementById('burger-menu');
+
+    burgerIcon.addEventListener('click', function () {
+        burgerMenu.classList.toggle('active');
+    });
+}); -->
+
+<!-- </script> -->
     <script src="http://localhost:4000/assets/js/blog-script.js"></script>
 
 <section>
@@ -63,7 +120,7 @@
             <p class="categorie" style="color : #319B7A">Divers</p>
             
         </div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
         <a href="/games/tools/divers/2023/10/24/welcome-to-jekyll.html" class="readMore-button">Read more</a>
         </div>
     </div>
@@ -193,7 +250,7 @@
             <p class="categorie" style="color : #319B7A">Divers</p>
             
         </div>
-        <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+        <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
         <a href="/games/tools/divers/2023/10/24/welcome-to-jekyll.html" class="readMore-button">Read more</a>
     </div>
     
@@ -203,28 +260,20 @@
 </section>
 
 	<footer style="background-color: #319B7A;">
-	<div class="footer-part">
-		<h3>Legal notice</h3>
-		<a href="#">Privacy Policy</a>
-		<a href="#">Legal notice</a>
-		<a href="#">FAQ</a>
-	</div>
-	<div class="footer-part">
 		<div class="social-networks">
-			<a class="link-picto" href="#"><i class="fa-brands fa-discord fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-github fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-instagram fa-2x picto"></i></a>
+			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
+			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
-		<a href="#"><img src="../assets/img/logo.svg"/></a>
-		<p>©keycube - 2023</p>
-
-	</div>
-	<div class="footer-part">
-		<h3>Contact us</h3>
-		<p>UQAC, Chicoutimi, G7H 0S5, Québec</p>
-		<a href="mailto:keycube@gmail.com">keycube@gmail.com</a>
-		<a href="tel:+1 (255) 567 894">+1 (255) 567 894</a>
-	</div>
+		<a href="#"><img class="logo_footer" src="../assets/img/logo/logo-FFFFFF.svg"/></a>
+		<a href="#">keycube</a>
+		<p></p>
 </footer>
+
+<script>
+	var annee = new Date().getFullYear();
+	var footer = document.querySelector("footer p");
+	footer.innerHTML = annee;
+
+</script>
   </body>
 </html>

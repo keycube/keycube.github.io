@@ -2,6 +2,7 @@
 {
     display : flex;
     align-items: center;
+    overflow : hidden;
     width: 100%; 
     height: 25vw; 
     border-radius: 24px;
@@ -70,8 +71,13 @@
         padding: 0% 1% 0 1%;
     }
 
-    p {
+    .resume {
         width: 70%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        white-space: pre-wrap; 
     }
 
     .readMore-button {
@@ -83,10 +89,10 @@
         text-transform: uppercase;
         text-decoration: none;
         text-align: center;
-        color : #fff;
+        color : #f6f6f6;
         font-size: 1.2em; 
         font-weight: 600;
-        margin: 5% 0 0 0;
+        margin: 4% 0 0 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -94,7 +100,7 @@
 
         &:hover 
         {
-            background: #fff;   
+            background: #f6f6f6;   
             border : 1px solid #319B7A;
             color : #319B7A !important;
         }
@@ -127,13 +133,13 @@
         &:hover 
         {
             background: #319B7A; 
-            color : #444 !important;
+            color : #f6f6f6 !important;
         }
 
         &.active 
         {
             background: #319B7A; 
-            color: #444 !important; 
+            color: #f6f6f6 !important; 
         }
     }
 }
@@ -147,8 +153,7 @@
     display : flex; 
     flex-wrap: wrap;
     justify-content: flex-start;
-    column-gap: 3.1%;
-    row-gap: 5%;
+    column-gap: 3%;
 
     .article 
     {
@@ -156,18 +161,15 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        overflow: hidden;
         margin : 0;
         padding: 0 ;
-        width: 25vw; 
-        height: 25vw; 
+        width: 31.334%; 
+        aspect-ratio: 1 / 1;
+        margin-bottom: 3%;
         border-radius: 24px;
         transition: box-shadow 0.3s;
         box-shadow :13px 13px 30px #00000025, -	5px -5px 10px #ffffff;
-
-        &:hover 
-        {
-            box-shadow: 0 0 0 transparent;
-        }
 
         .date 
         {
@@ -223,6 +225,11 @@
         .resume {
             width: 80%;
             margin: 0 auto; 
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            white-space: pre-wrap; 
         }
 
         .readMore-button {
@@ -234,13 +241,21 @@
             text-transform: uppercase;
             text-decoration: none;
             text-align: center;
-            color : #fff;
+            color : #f6f6f6;
             font-size: 1.2em; 
             font-weight: 600;
             margin: 5% auto auto auto;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition : all 0.3s ease-in-out;
+
+            &:hover 
+            {
+                background: #f6f6f6;   
+                border : 1px solid #319B7A;
+                color : #319B7A !important;
+            }
         }
     }
 }

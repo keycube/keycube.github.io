@@ -10,9 +10,8 @@
 .hardware {
     display : flex;
     align-items: center;
-    column-gap: 10%;
     border-radius: 15px;
-    padding : 2% 0;
+    margin-bottom: 2%;
     
 
     .description 
@@ -57,6 +56,30 @@
     {
         margin-top: 5%;
         width: 50%;
+        text-align: end;
+    }
+
+    &:nth-child(odd) {
+        .description {
+            order: 2; // Inverser l'ordre du texte et de l'image
+            text-align: start; // Aligner le texte à gauche
+        }
+
+        .img-container {
+            order: 1; // Garder l'ordre de l'image à droite
+            text-align: start; // Aligner l'image à droite
+        }
+    }
+
+    &:nth-child(even) {
+        .description {
+            // Garder l'ordre du texte à gauche
+        }
+
+        .img-container {
+            order: 2; // Inverser l'ordre de l'image à gauche
+            text-align: end; // Aligner l'image à gauche
+        }
     }
 }
 
