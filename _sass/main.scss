@@ -5,13 +5,9 @@
 @import "software";
 @import "post";
 
-$black : #444;
-$white : #F6F6F6;
-$green : #319B7A;
-$yellow : #F1D248;
-$red : #D45153;
-$blue : #43AAD6;
 
+$black: #444;
+$white: #f6f6f6;
 
 *{
 	margin:0;
@@ -141,6 +137,7 @@ nav {
 h1, h2 {
 	font-family: 'Dela Gothic One', sans-serif;
 	margin: 5% 0;
+  text-align: left;
 }
 
 body{

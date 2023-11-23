@@ -208,23 +208,24 @@
 
 .citation {
   display: flex;
-  margin: auto;
   padding: 2% 5%;
   font-size: 1.2em;
   border: none;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+  width: 100%;
 }
 
 .citation p {
   text-align: center;
+  color: #F6F6F6;
 }
 
 .published-paper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   margin: 0 0 3% 0;
   padding: 2% 5%;
   font-size: 1.2em;
@@ -232,45 +233,32 @@
   border: none;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-}
-
-.color {
-  width: 2%;
-}
-
-.info-published-paper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
   width: 100%;
 }
-.info-published-paper p {
-  font-size: 0.8em;
+.published-paper:hover {
+  box-shadow: 0 0 0 transparent;
 }
-.info-published-paper .titre-author {
+.published-paper p {
+  font-size: 0.8em;
+  margin: 0 2%;
+}
+.published-paper .info-published-paper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 80%;
+}
+.published-paper .info-published-paper .titre {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.9em;
   text-align: center;
-  width: 50%;
 }
-.info-published-paper .journal {
-  padding: 0.5% 1%;
+.published-paper .info-published-paper .journal {
   border-radius: 15px;
-  width: 30%;
-  text-align: center;
-}
-
-.picto {
-  width: 5%;
-  font-size: 2em;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.picto:hover {
-  transform: scale(1.2);
 }
 
 .page-content {
@@ -385,23 +373,30 @@ img {
 .citation-hardware {
   width: 100%;
   text-align: center;
+  margin-bottom: 5%;
   padding: 2% 0%;
   font-size: 1.2em;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
 }
+.citation-hardware p {
+  color: #f6f6f6;
+}
 
 .hardware {
+  height: 40vh;
   display: flex;
-  align-items: center;
-  border-radius: 15px;
-  margin-bottom: 2%;
+  justify-content: space-between;
+  margin-bottom: 7%;
 }
 .hardware .description {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.hardware .description p {
-  margin-bottom: 2%;
+.hardware .description h2 {
+  margin: 0;
 }
 .hardware .description .github-link {
   width: 30%;
@@ -414,34 +409,39 @@ img {
   color: #f6f6f6;
   font-size: 1.2em;
   font-weight: 600;
-  margin: 5% 0 0 0;
   padding: 1.5% 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1.5px solid #F1D248;
   transition: all 0.3s ease-in-out;
 }
 .hardware .description .github-link:hover {
   background: none;
-  box-shadow: inset 0 0 1px #F1D248;
   color: #F1D248 !important;
 }
 .hardware .img-container {
-  margin-top: 5%;
-  width: 50%;
-  text-align: end;
+  width: 40%;
+  height: 100%;
+}
+.hardware .img-container img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .hardware:nth-child(odd) .description {
   order: 2;
-  text-align: start;
+  text-align: end;
+}
+.hardware:nth-child(odd) .github-link {
+  align-self: flex-end;
 }
 .hardware:nth-child(odd) .img-container {
   order: 1;
-  text-align: start;
 }
 .hardware:nth-child(even) .img-container {
   order: 2;
-  text-align: end;
 }
 
 p {
@@ -451,29 +451,35 @@ p {
 .citation-software {
   width: 100%;
   text-align: center;
+  margin-bottom: 5%;
   padding: 2% 0%;
   font-size: 1.2em;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
 }
+.citation-software p {
+  color: #f6f6f6;
+}
 
 .software {
+  height: 35vh;
   display: flex;
-  align-items: start;
-  column-gap: 10%;
-  border-radius: 15px;
-  padding: 2% 0;
+  justify-content: space-between;
+  margin-bottom: 7%;
 }
 .software .description {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.software .description p {
-  font-size: 1.2em;
+.software .description h2 {
+  margin: 0;
 }
-.software .description .github-link {
+.software .description .link {
   width: 30%;
   border-radius: 15px;
-  background-color: #F1D248;
+  background-color: #DC800F;
   font-family: "poppins", sans-serif;
   text-transform: uppercase;
   text-decoration: none;
@@ -481,26 +487,35 @@ p {
   color: #f6f6f6;
   font-size: 1.2em;
   font-weight: 600;
-  margin: 5% 0 0 0;
   padding: 1.5% 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: solid 1.5px #DC800F;
   transition: all 0.3s ease-in-out;
 }
-.software .description .github-link:hover {
+.software .description .link:hover {
   background: none;
-  box-shadow: inset 0 0 1px #F1D248;
-  color: #F1D248 !important;
+  color: #DC800F !important;
 }
 .software .img-container {
-  width: 50%;
+  width: 40%;
+  height: 100%;
 }
 .software .img-container img {
+  border-radius: 15px;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 15px;
+}
+.software:nth-child(odd) .description {
+  order: 2;
+  align-items: flex-end;
+  text-align: end;
+}
+.software:nth-child(odd) .img-container {
+  order: 1;
+  text-align: start;
+}
+.software:nth-child(even) .img-container {
+  order: 2;
 }
 
 p {
@@ -564,7 +579,7 @@ nav {
   justify-content: space-between;
   margin: 0 0 3% 0;
   box-shadow: 13px 13px 26px rgba(0, 0, 0, 0.1450980392);
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   width: 100%;
 }
 nav .link-page-nav {
@@ -594,12 +609,13 @@ nav .logo {
 h1, h2 {
   font-family: "Dela Gothic One", sans-serif;
   margin: 5% 0;
+  text-align: left;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 
 section {
@@ -622,7 +638,7 @@ footer .social-networks {
   margin-bottom: 2%;
 }
 footer .social-networks .picto {
-  color: #F6F6F6;
+  color: #f6f6f6;
   margin: 0 2px;
 }
 footer .social-networks .picto:hover {
@@ -636,13 +652,13 @@ footer .logo_footer {
 }
 footer a {
   text-decoration: none;
-  color: #F6F6F6;
+  color: #f6f6f6;
 }
 footer a:hover {
   text-decoration: underline;
 }
 footer p {
-  color: #F6F6F6;
+  color: #f6f6f6;
   font-size: 1em;
 }
 
