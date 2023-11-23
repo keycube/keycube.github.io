@@ -32,7 +32,7 @@ color: 43AAD6
 </div>
 
 </a>
-
+	
 {% endfor %}
 
 </section>

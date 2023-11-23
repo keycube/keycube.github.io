@@ -29,7 +29,9 @@ color: D45153
 
 <div class="contributor-container">
 
-{% for contributor in site.data.contributors %}
+{% assign sorted_contributors = site.data.contributors | sort: 'pseudo' %}
+
+{% for contributor in sorted_contributors %}
 
 <a href="{{contributor.url}}" target="_blank">
 
