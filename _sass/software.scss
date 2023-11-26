@@ -1,19 +1,8 @@
-.citation-software {
-	width: 100%;
-    text-align: center;
-    margin-bottom : 5%;
-	padding: 2% 0%;
-	font-size: 1.2em;
-    border-radius: 15px;
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
-    
-    p{
-        color :#f6f6f6;
-    }
-}
+@import "colors";
+
 
 .software {
-    height: 35vh;
+    height: 40vh;
     display : flex;
     justify-content: space-between;
     margin-bottom : 7%;
@@ -27,29 +16,29 @@
         justify-content: space-between;
 
         h2 {
-            margin: 0;
+            margin: 0 0 2% 0;
         }
 
         .link 
         {
             width: 30%;
             border-radius: 15px;
-            background-color : #DC800F; 
+            background-color : $orange; 
             font-family: 'poppins', sans-serif;
             text-transform: uppercase;
             text-decoration: none;
             text-align: center;
-            color : #f6f6f6;
+            color : $white;
             font-size: 1.2em; 
             font-weight: 600;
             padding: 1.5% 0;
-            border: solid 1.5px #DC800F;
+            border: solid 1.5px $orange;
             transition : all 0.3s ease-in-out;
 
             &:hover 
             {
                 background: none;  
-                color : #DC800F !important;
+                color : $orange !important;
             }
         }
     }
@@ -69,6 +58,12 @@
     }
 
     &:nth-child(odd) {
+
+        h2 {
+            align-self: flex-end;
+            text-align: end;
+        }
+
         .description {
             order: 2; 
             align-items: flex-end;
@@ -78,6 +73,10 @@
         .img-container {
             order: 1; // Garder l'ordre de l'image à droite
             text-align: start; // Aligner l'image à droite
+        }
+
+        .link {
+            align-self: flex-end;
         }
     }
 

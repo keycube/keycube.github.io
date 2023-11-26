@@ -1,19 +1,5 @@
-$white: #F6F6F6;
+@import "colors";
 
-.citation {
-	display: flex;
-	padding: 2% 5%;
-	font-size: 1.2em;
-	border: none;
-	border-radius: 15px;
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
-	width: 100%;
-}
-
-.citation p {
-	text-align: center;
-	color: $white;
-}
 
 .published-paper{
 	display: flex;
@@ -21,7 +7,7 @@ $white: #F6F6F6;
 	align-items: center;
 	justify-content: start;
 	margin: 0 0 3% 0;
-	padding: 2% 5%;
+	padding: 2% 0%;
 	font-size: 1.2em;
 	transition: box-shadow 0.3s;
 	border: none;

@@ -6,7 +6,7 @@ color: DC800F
 ---
 
 <section>
-<div class="citation-software" style="background-color: #{{page.color}}">
+<div class="citation" style="background-color: #{{page.color}}">
 	<p>Tools, games, and other dedicated software for the keycubes.</p>	
 </div>
 

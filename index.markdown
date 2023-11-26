@@ -11,10 +11,10 @@ color: D45153
 		<div>
 		<div class="text-content">
 			<h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> WHAT IS KEYCUBE ?</h2>
-			Our objective is to foster collaboration around the kecent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube.
+			<p>Our objective is to foster collaboration around the kecent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube.
 			<br>
 			<br>
-			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.
+			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.</p>
 		</div>
 		<button class="button-white">
 			<span class="button-text" style="color: #{{ page.color }}">Read More</span>
