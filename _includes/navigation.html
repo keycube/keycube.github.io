@@ -1,4 +1,4 @@
-  <nav>
+  <!-- <nav>
 	<a class="extern" href="#"><img src="../assets/img/logo-{{page.color}}.svg"/></a>
 	<div class="link-page-nav">
 	{% for item in site.data.navigation %}
@@ -6,4 +6,45 @@
 	{% endfor %}
 	</div>
 	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav>
+  </nav> -->
+
+  <nav>
+    <img class="extern logo" src="/assets/img/logo/logo-{{page.color}}.svg"/>
+    <div class="link-page-nav">
+        {% for item in site.data.navigation %}
+            <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
+        {% endfor %}
+    </div>
+	<a class="extern"><i class="fa-solid fa-language"></i></a>
+</nav>
+
+
+
+
+
+<!-- <div class="burger-menu">
+     <a class="extern" id="burger-icon"><i class="fa-solid fa-bars"></i></a>    
+	<p>lalalal</p>
+	 <div class="burger" id="burger">
+        {% for item in site.data.navigation %}
+            <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
+        {% endfor %}
+    </div> 
+
+</div>
+</nav> -->
+
+
+<!-- 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerIcon = document.getElementById('burger-icon');
+    const burgerMenu = document.getElementById('burger-menu');
+
+    burgerIcon.addEventListener('click', function () {
+        burgerMenu.classList.toggle('active');
+    });
+}); -->
+
+<!-- </script> -->

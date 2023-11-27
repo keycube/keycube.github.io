@@ -1,41 +1,93 @@
-- name: GRIGNOLA
-  firstname: Nina
-  image: './assets/img/contributors/GRIGNOLA_Nina.jpeg'
-  url-linkedin: https://fr.linkedin.com/in/nina-grignola-4441031a4
-  url-git: https://github.com/grignolanina
-  url-personnal:
-
-- name: AUGIER
-  firstname: Lucie
+- pseudo: AUGIER Lucie
   image: './assets/img/contributors/AUGIER_Lucie.jpeg'
-  url-linkedin: https://www.linkedin.com/in/lucie-augier/
-  url-git:
-  url-personnal: https://lucieaugier.fr/
+  url: https://www.linkedin.com/in/lucie-augier/
 
-- name: BRUN
-  firstname: Damien
+- pseudo: GRIGNOLA Nina
+  image: './assets/img/contributors/GRIGNOLA_Nina.jpeg'
+  url: https://fr.linkedin.com/in/nina-grignola-4441031a4
+
+- pseudo: BRUN Damien
   image: './assets/img/contributors/BRUN_Damien.jpeg'
-  url-linkedin:
-  url-git: https://github.com/makowildcat
-  url-personnal:
+  url: https://www.damienb.run
 
-- name: BRETON
-  firstname: Thibaut
-  image:
-  url-linkedin:
-  url-git: https://github.com/AyrozDZN
-  url-personnal:
+- pseudo: BRETON Thibaut
+  image: 
+  url:
 
-- name:
-  firstname: Idriss
-  image:
-  url-linkedin:
-  url-git: https://github.com/grignolanina
-  url-personnal:
+- pseudo: Bonin Idriss
+  image: 
+  url:
 
-- name: BROCHARD
-  firstname: Louis
-  image:
-  url-linkedin:
-  url-git: https://github.com/fufu35370
-  url-personnal:
+- pseudo: BROCHARD Louis
+  image: 
+  url: 
+
+- pseudo: Cartelot Adrien
+  image: 
+  url:
+
+- pseudo: George Sébastien
+  image: 
+  url:
+
+- pseudo: Gouin-Vallerand Charles
+  image: 
+  url: https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/simqg/charles-gouin-vallerand
+
+
+
+# name: BRUN
+#   firstname: Damien
+#   image: './assets/img/contributors/BRUN_Damien.jpeg'
+#   url-linkedin:
+#   url-git:
+#   url-personnal: https://www.damienb.run
+
+# - name: BRETON
+#   firstname: Thibaut
+#   image:
+#   url-linkedin:
+#   url-git: https://github.com/AyrozDZN
+#   url-personnal:
+
+# - name: Bonin
+#   firstname: Idriss
+#   image:
+#   url-linkedin:
+#   url-git: 
+#   url-personnal:
+
+# - name: BROCHARD
+#   firstname: Louis
+#   image:
+#   url-linkedin:
+#   url-git: https://github.com/fufu35370
+#   url-personnal:
+
+# - name: Cartelot
+#   firstname: Adrien
+#   image:
+#   url-linkedin:
+#   url-git: 
+#   url-personnal:
+
+# - name: George
+#   firstname: Sébastien
+#   image:
+#   url-linkedin:
+#   url-git: 
+#   url-personnal: 
+
+# - name: Gouin-Vallerand
+#   firstname: Charles
+#   image:
+#   url-linkedin:
+#   url-git: 
+#   url-personnal: https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/simqg/charles-gouin-vallerand
+
+# - name: GRIGNOLA
+#   firstname: Nina
+#   image: './assets/img/contributors/GRIGNOLA_Nina.jpeg'
+#   url-linkedin: https://fr.linkedin.com/in/nina-grignola-4441031a4
+#   url-git: https://github.com/grignolanina
+#   url-personnal:

@@ -5,6 +5,8 @@
     <title>About</title>
 	<link rel="stylesheet" href="/assets/css/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 	<script src="https://kit.fontawesome.com/307082a286.js" crossorigin="anonymous"></script>
 
@@ -13,7 +15,7 @@
   
 	</head>
   <body>
-	  <nav>
+	  <!-- <nav>
 	<a class="extern" href="#"><img src="../assets/img/logo-D45153.svg"/></a>
 	<div class="link-page-nav">
 	
@@ -29,8 +31,65 @@
 	
 	</div>
 	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav>
-    <script src="./assets/js/index.js"></script>
+  </nav> -->
+
+  <nav>
+    <img class="extern logo" src="/assets/img/logo/logo-D45153.svg"/>
+    <div class="link-page-nav">
+        
+            <a href="/" style="color: #D45153;" class="current">About</a>
+        
+            <a href="/blog/" >Blog</a>
+        
+            <a href="/research/" >Research</a>
+        
+            <a href="/hardware/" >Hardware</a>
+        
+            <a href="/software/" >Software</a>
+        
+    </div>
+	<a class="extern"><i class="fa-solid fa-language"></i></a>
+</nav>
+
+
+
+
+
+<!-- <div class="burger-menu">
+     <a class="extern" id="burger-icon"><i class="fa-solid fa-bars"></i></a>    
+	<p>lalalal</p>
+	 <div class="burger" id="burger">
+        
+            <a href="/" style="color: #D45153;" class="current">About</a>
+        
+            <a href="/blog/" >Blog</a>
+        
+            <a href="/research/" >Research</a>
+        
+            <a href="/hardware/" >Hardware</a>
+        
+            <a href="/software/" >Software</a>
+        
+    </div> 
+
+</div>
+</nav> -->
+
+
+<!-- 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerIcon = document.getElementById('burger-icon');
+    const burgerMenu = document.getElementById('burger-menu');
+
+    burgerIcon.addEventListener('click', function () {
+        burgerMenu.classList.toggle('active');
+    });
+}); -->
+
+<!-- </script> -->
+    <script src="./assets/js/slider.js"></script>
 
 <section>
 <div class="page-content">
@@ -38,12 +97,15 @@
 		<div>
 		<div class="text-content">
 			<h2><i class="fa-solid fa-square" style="color: #D45153"></i> WHAT IS KEYCUBE ?</h2>
-			Our objective is to foster collaboration around the kecent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube.
+			<p>Our objective is to foster collaboration around the kecent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube.
 			<br />
 			<br />
-			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.
+			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.</p>
 		</div>
-		<button class="button-white" style="color: #D45153">Read More</button>
+		<button class="button-white">
+			<span class="button-text" style="color: #D45153">Read More</span>
+			<i class="fa-solid fa-chevron-right" style="color: #D45153"></i>
+		</button>
 		</div>
 		<img src="./assets/img/cube.png" />
 	</div>
@@ -51,172 +113,127 @@
 <div class="contributor-content">
 <h2><i class="fa-solid fa-square" style="color: #D45153"></i> CONTRIBUTORS</h2>
 
-<div class="scroll-horizontal">
-
-<div class="arrow left"><i class="fa-solid fa-chevron-left fa-3x picto" style="color: #D45153"></i></div>
-
 <div class="contributor-container">
 
 
 
-<div class="contributor">
-
-
-<img class="contributor-image" src="./assets/img/contributors/GRIGNOLA_Nina.jpeg" />
-
-
-<p class="contributor-name">GRIGNOLA</p>
-<p class="contributor-firstname">Nina</p>
-
-<div class="contributor-network">
-
-
-<a href="https://fr.linkedin.com/in/nina-grignola-4441031a4" target="_blank">
-<i class="fa-brands fa-linkedin fa-2x picto " style="color: #D45153"></i></a>
-
-
-
-<a href="https://github.com/grignolanina" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #D45153"></i></a>
-
-
-
-
-</div>
-
-</div>
-
-
-<div class="contributor">
-
-
-<img class="contributor-image" src="./assets/img/contributors/AUGIER_Lucie.jpeg" />
-
-
-<p class="contributor-name">AUGIER</p>
-<p class="contributor-firstname">Lucie</p>
-
-<div class="contributor-network">
 
 
 <a href="https://www.linkedin.com/in/lucie-augier/" target="_blank">
-<i class="fa-brands fa-linkedin fa-2x picto " style="color: #D45153"></i></a>
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/AUGIER_Lucie.jpeg');">
+<p class="contributor-pseudo">AUGIER Lucie</p>
+</div>
+
+
+</a>
 
 
 
+<a href="" target="_blank">
 
 
-<a href="https://lucieaugier.fr/" target="_blank"><i class="fa-solid fa-user fa-2x picto" style="color: #D45153"></i></a>
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">BRETON Thibaut</p>
+</div>
+
+
+</a>
+
+
+
+<a href="" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">BROCHARD Louis</p>
+</div>
+
+
+</a>
+
+
+
+<a href="https://www.damienb.run" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/BRUN_Damien.jpeg');">
+<p class="contributor-pseudo">BRUN Damien</p>
+</div>
+
+
+</a>
+
+
+
+<a href="" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">Bonin Idriss</p>
+</div>
+
+
+</a>
+
+
+
+<a href="" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">Cartelot Adrien</p>
+</div>
+
+
+</a>
+
+
+
+<a href="https://fr.linkedin.com/in/nina-grignola-4441031a4" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/GRIGNOLA_Nina.jpeg');">
+<p class="contributor-pseudo">GRIGNOLA Nina</p>
+</div>
+
+
+</a>
+
+
+
+<a href="" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">George Sébastien</p>
+</div>
+
+
+</a>
+
+
+
+<a href="https://www.usherbrooke.ca/ecole-gestion/personnel/professeurs/simqg/charles-gouin-vallerand" target="_blank">
+
+
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">Gouin-Vallerand Charles</p>
+</div>
+
+
+</a>
+
 
 
 </div>
 
-</div>
 
 
-<div class="contributor">
-
-
-<img class="contributor-image" src="./assets/img/contributors/BRUN_Damien.jpeg" />
-
-
-<p class="contributor-name">BRUN</p>
-<p class="contributor-firstname">Damien</p>
-
-<div class="contributor-network">
-
-
-
-
-<a href="https://github.com/makowildcat" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #D45153"></i></a>
-
-
-
+</div> 
 
 </div>
-
-</div>
-
-
-<div class="contributor">
-
-
-<img class="contributor-image" src="./assets/img/contributors/no_picture.jpeg" />
-
-
-<p class="contributor-name">BRETON</p>
-<p class="contributor-firstname">Thibaut</p>
-
-<div class="contributor-network">
-
-
-
-
-<a href="https://github.com/AyrozDZN" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #D45153"></i></a>
-
-
-
-
-</div>
-
-</div>
-
-
-<div class="contributor">
-
-
-<img class="contributor-image" src="./assets/img/contributors/no_picture.jpeg" />
-
-
-<p class="contributor-name"></p>
-<p class="contributor-firstname">Idriss</p>
-
-<div class="contributor-network">
-
-
-
-
-<a href="https://github.com/grignolanina" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #D45153"></i></a>
-
-
-
-
-</div>
-
-</div>
-
-
-<div class="contributor">
-
-
-<img class="contributor-image" src="./assets/img/contributors/no_picture.jpeg" />
-
-
-<p class="contributor-name">BROCHARD</p>
-<p class="contributor-firstname">Louis</p>
-
-<div class="contributor-network">
-
-
-
-
-<a href="https://github.com/fufu35370" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #D45153"></i></a>
-
-
-
-
-</div>
-
-</div>
-
-
-</div>
-<div class="arrow right"><i class="fa-solid fa-chevron-right fa-3x picto" style="color: #D45153"></i></div>
-
-</div>
-
-</div>
-</div>
-
 </section>
 
 	<footer style="background-color: #D45153;">
@@ -224,14 +241,15 @@
 			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
 			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
-		<a href="#"><img class="logo_footer" src="../assets/img/logo/grey_wlogo.svg"/></a>
+		<a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
+		<a href="#">keycube</a>
 		<p></p>
 </footer>
 
 <script>
 	var annee = new Date().getFullYear();
 	var footer = document.querySelector("footer p");
-	footer.innerHTML = "keycube - " + annee;
+	footer.innerHTML = annee;
 
 </script>
   </body>

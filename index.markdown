@@ -1,25 +1,25 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: default
 title: About
 color: D45153
 ---
 
-<script src="./assets/js/index.js"></script>
+<script src="./assets/js/slider.js"></script>
 <section>
 <div class="page-content">
 	<div class="presentation-content">
 		<div>
 		<div class="text-content">
 			<h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> WHAT IS KEYCUBE ?</h2>
-			Our objective is to foster collaboration around the kecent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube.
+			<p>Our objective is to foster collaboration around the kecent of a keyboard that have undergone a structural metamorphosis into the platonic solid that is a cube.
 			<br>
 			<br>
-			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.
+			A keycube facilitates and encourages the user to move around while typing, whether it's for text input in spatial computing environments, to maintain an active lifestyle, or simply to relish the joy of typing in various settings.</p>
 		</div>
-		<button class="button-white" style="color: #{{ page.color }}">Read More</button>
+		<button class="button-white">
+			<span class="button-text" style="color: #{{ page.color }}">Read More</span>
+			<i class="fa-solid fa-chevron-right" style="color: #{{ page.color }}"></i>
+		</button>
 		</div>
 		<img src="./assets/img/cube.png">
 	</div>
@@ -27,51 +27,33 @@ color: D45153
 <div class="contributor-content">
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> CONTRIBUTORS</h2>
 
-<div class="scroll-horizontal">
-
-<div class="arrow left"><i class="fa-solid fa-chevron-left fa-3x picto" style="color: #{{ page.color }}"></i></div>
-
 <div class="contributor-container">
 
-{% for contributor in site.data.contributors %}
+{% assign sorted_contributors = site.data.contributors | sort: 'pseudo' %}
 
-<div class="contributor">
+{% for contributor in sorted_contributors %}
+
+<a href="{{contributor.url}}" target="_blank">
 
 {% if contributor.image %}
-<img class="contributor-image" src="{{contributor.image}}"/>
+<div class="contributor-profil" style="background-image: url('{{contributor.image}}');">
+<p class="contributor-pseudo">{{contributor.pseudo}}</p>
+</div>
 {% else %}
-<img class="contributor-image" src="./assets/img/contributors/no_picture.jpeg"/>
-{% endif %}
-
-<p class="contributor-name">{{contributor.name}}</p>
-<p class="contributor-firstname">{{contributor.firstname}}</p>
-
-<div class="contributor-network">
-
-{% if contributor.url-linkedin %}
-<a href="{{ contributor.url-linkedin }}" target="_blank">
-<i class="fa-brands fa-linkedin fa-2x picto " style="color: #{{page.color}}"></i></a>
-{% endif %}
-
-{% if contributor.url-git %}
-<a href="{{ contributor.url-git }}" target="_blank"><i class="fa-brands fa-github fa-2x picto" style="color: #{{page.color}}"></i></a>
-{% endif %}
-
-{% if contributor.url-personnal %}
-<a href="{{ contributor.url-personnal }}" target="_blank"><i class="fa-solid fa-user fa-2x picto" style="color: #{{page.color}}"></i></a>
-{% endif %}
-
+<div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
+<p class="contributor-pseudo">{{contributor.pseudo}}</p>
 </div>
+{% endif %}
 
-</div>
+</a>
+
 {% endfor %}
 
 </div>
-<div class="arrow right"><i class="fa-solid fa-chevron-right fa-3x picto" style="color: #{{ page.color }}"></i></div>
+
+
+
+</div> 
 
 </div>
-
-</div>
-</div>
-
 </section>
