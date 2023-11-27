@@ -9,7 +9,7 @@
   </nav> -->
 
   <nav>
-    <img class="extern logo" src="../assets/img/logo/logo-{{page.color}}.svg"/>
+    <img class="extern logo" src="/assets/img/logo/logo-{{page.color}}.svg"/>
     <div class="link-page-nav">
         {% for item in site.data.navigation %}
             <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
