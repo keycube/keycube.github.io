@@ -1,4 +1,5 @@
 .featured-article {
+  margin: 0 0 5% 0;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -88,8 +89,9 @@
 }
 
 .category-filter {
+  width: 100%;
+  align-self: flex-start;
   display: flex;
-  justify-content: flex-start;
   column-gap: 1%;
   margin: 0 0 2% 0;
 }
@@ -206,28 +208,13 @@
   color: #319B7A !important;
 }
 
-.citation {
-  display: flex;
-  padding: 2% 5%;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-  width: 100%;
-}
-
-.citation p {
-  text-align: center;
-  color: #F6F6F6;
-}
-
 .published-paper {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: start;
   margin: 0 0 3% 0;
-  padding: 2% 5%;
+  padding: 2% 0%;
   font-size: 1.2em;
   transition: box-shadow 0.3s;
   border: none;
@@ -287,7 +274,7 @@
   align-items: center;
   padding: 2% 5%;
   font-size: 1em;
-  background: #F6F6F6;
+  background: #f6f6f6;
   border: none;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
@@ -360,7 +347,7 @@ img {
 }
 .contributor-container a .contributor-profil:hover .contributor-pseudo {
   display: flex;
-  color: #F6F6F6;
+  color: #f6f6f6;
   background-color: rgba(212, 81, 83, 0.4941176471);
   border-radius: 15px;
   justify-content: center;
@@ -368,19 +355,6 @@ img {
 }
 .contributor-container a .contributor-profil:hover {
   box-shadow: 0 0 0 transparent;
-}
-
-.citation-hardware {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 5%;
-  padding: 2% 0%;
-  font-size: 1.2em;
-  border-radius: 15px;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-}
-.citation-hardware p {
-  color: #f6f6f6;
 }
 
 .hardware {
@@ -396,9 +370,9 @@ img {
   justify-content: space-between;
 }
 .hardware .description h2 {
-  margin: 0;
+  margin: 0 0 2% 0;
 }
-.hardware .description .github-link {
+.hardware .description .link {
   width: 30%;
   border-radius: 15px;
   background-color: #F1D248;
@@ -406,9 +380,9 @@ img {
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  color: #f6f6f6;
   font-size: 1.2em;
   font-weight: 600;
+  color: #f6f6f6;
   padding: 1.5% 0;
   display: flex;
   align-items: center;
@@ -416,7 +390,7 @@ img {
   border: 1.5px solid #F1D248;
   transition: all 0.3s ease-in-out;
 }
-.hardware .description .github-link:hover {
+.hardware .description .link:hover {
   background: none;
   color: #F1D248 !important;
 }
@@ -430,11 +404,15 @@ img {
   height: 100%;
   object-fit: cover;
 }
+.hardware:nth-child(odd) h2 {
+  text-align: end;
+  align-self: flex-end;
+}
 .hardware:nth-child(odd) .description {
   order: 2;
   text-align: end;
 }
-.hardware:nth-child(odd) .github-link {
+.hardware:nth-child(odd) .link {
   align-self: flex-end;
 }
 .hardware:nth-child(odd) .img-container {
@@ -448,21 +426,8 @@ p {
   font-size: 1.2em;
 }
 
-.citation-software {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 5%;
-  padding: 2% 0%;
-  font-size: 1.2em;
-  border-radius: 15px;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-}
-.citation-software p {
-  color: #f6f6f6;
-}
-
 .software {
-  height: 35vh;
+  height: 40vh;
   display: flex;
   justify-content: space-between;
   margin-bottom: 7%;
@@ -474,7 +439,7 @@ p {
   justify-content: space-between;
 }
 .software .description h2 {
-  margin: 0;
+  margin: 0 0 2% 0;
 }
 .software .description .link {
   width: 30%;
@@ -505,6 +470,10 @@ p {
   height: 100%;
   object-fit: cover;
 }
+.software:nth-child(odd) h2 {
+  align-self: flex-end;
+  text-align: end;
+}
 .software:nth-child(odd) .description {
   order: 2;
   align-items: flex-end;
@@ -514,12 +483,31 @@ p {
   order: 1;
   text-align: start;
 }
+.software:nth-child(odd) .link {
+  align-self: flex-end;
+}
 .software:nth-child(even) .img-container {
   order: 2;
 }
 
 p {
   font-size: 1.2em;
+}
+
+h3 {
+  font-family: "Dela Gothic one", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+h4 {
+  font-family: "poppins", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 1%;
 }
 
 .post-img-container {
@@ -530,10 +518,11 @@ p {
   width: 100vw;
   height: 40vh;
 }
-.post-img-container img {
+.post-img-container .img-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 0;
 }
 
 .post-description {
@@ -542,9 +531,10 @@ p {
 }
 .post-description .categories {
   display: flex;
-  column-gap: 1%;
+  column-gap: 2%;
 }
 .post-description .categories .category {
+  margin: 0;
   color: #319B7A;
   font-size: 1.2em;
   font-weight: 600;
@@ -557,11 +547,13 @@ p {
   margin: 3% 0 1% 0;
 }
 .post-description .date {
+  font-size: 1.2em;
   color: #319B7A;
   text-transform: uppercase;
   margin-bottom: 1%;
 }
 .post-description .author {
+  font-size: 1.2em;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 3%;
@@ -577,7 +569,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0 3% 0;
+  margin: 0 0 5% 0;
   box-shadow: 13px 13px 26px rgba(0, 0, 0, 0.1450980392);
   background-color: #f6f6f6;
   width: 100%;
@@ -606,9 +598,22 @@ nav .logo {
   height: auto;
 }
 
+.citation {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5%;
+  padding: 2% 0%;
+  font-size: 1.2em;
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
+}
+.citation p {
+  color: #f6f6f6;
+}
+
 h1, h2 {
   font-family: "Dela Gothic One", sans-serif;
-  margin: 5% 0;
+  margin: 0 0 5% 0;
   text-align: left;
 }
 
@@ -621,7 +626,7 @@ body {
 section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   width: 80%;
   margin: auto;

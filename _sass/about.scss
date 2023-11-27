@@ -1,5 +1,4 @@
-$red : #d451537e;
-$white : #F6F6F6;
+@import "colors";
 
 .page-content{
 	display: flex;
@@ -25,7 +24,7 @@ $white : #F6F6F6;
     align-items: center;
     padding: 2% 5%;
     font-size: 1em;
-    background: #F6F6F6;
+    background: $white;
     border: none;
     border-radius: 15px;
     box-shadow: 3px 3px 6px #00000025, -5px -5px 10px #ffffff;

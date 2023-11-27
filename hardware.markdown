@@ -7,7 +7,7 @@ color : F1D248
 
 <section>
 
-<div class="citation-hardware" style="background-color: #{{page.color}}">
+<div class="citation" style="background-color: #{{page.color}}">
 	<p>Various flavors of keycube.</p>	
 </div>
 
@@ -18,7 +18,7 @@ color : F1D248
         <p>{{hardware.description}}</p>
         <p style="color: #{{ page.color }}"> Key features</p> 
         <p> {{hardware.key-features}} </p>
-        <a href="{{hardware.git-link}}" class = "github-link"> Voir le projet </a>
+        <a href="{{hardware.git-link}}" class = "link"> Voir le projet </a>
         </div>
         <div class = "img-container">
             <img src="{{ hardware.image }}" alt="{{ hardware.title }}">
