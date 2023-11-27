@@ -56,7 +56,4 @@ color: D45153
 </div> 
 
 </div>
-
-<!-- <p class="test">ceci est un test</p> -->
-
 </section>
