@@ -5,6 +5,8 @@
     <title>Research</title>
 	<link rel="stylesheet" href="/assets/css/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 	<script src="https://kit.fontawesome.com/307082a286.js" crossorigin="anonymous"></script>
 
@@ -13,23 +15,47 @@
   
 	</head>
   <body>
-	  <nav>
-	<a class="extern" href="#"><img src="../assets/img/logo-43AAD6.svg"/></a>
-	<div class="link-page-nav">
-	
-	  <a href="/" >About</a>
-	
-	  <a href="/blog/" >Blog</a>
-	
-	  <a href="/research/" style="color: #43AAD6;" class="current">Research</a>
-	
-	  <a href="/hardware/" >Hardware</a>
-	
-	  <a href="/software/" >Software</a>
-	
-	</div>
-	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav>
+	<nav>
+    <img class="extern logo" src="/assets/img/logo/logo-43AAD6.svg"/>
+    <div class="burger-menu">&#9776;</div> 
+    <div class="link-page-nav">
+        <!-- Vos liens de navigation existants -->
+        
+            <a href="/" >About</a>
+        
+            <a href="/blog/" >Blog</a>
+        
+            <a href="/research/" style="color: #43AAD6;" class="current">Research</a>
+        
+            <a href="/hardware/" >Hardware</a>
+        
+            <a href="/software/" >Software</a>
+        
+    </div>
+    <a class="extern"><i class="fa-solid fa-language"></i></a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const linkPageNav = document.querySelector('.link-page-nav');
+    const externIcon = document.querySelector('.fa-language');
+
+    burgerMenu.addEventListener('click', function () {
+        linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
+        
+        document.body.classList.toggle('burger-menu-opened');
+
+        externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
+    });
+});
+
+</script>
+
+
+
+
+
     <section>
 
 <div class="citation" style="background-color: #43AAD6">
@@ -39,86 +65,74 @@
 <h2><i class="fa-solid fa-square" style="color: #43AAD6"></i> PUBLISHED PAPERS </h2>
 
 
-<div class="published-paper">
-<div class="color" style="background-color: #43AAD6"></div>
+
+
+<a class="published-paper" href="https://lacris.ulapland.fi/ws/portalfiles/portal/16918906/SpaceCHI2021_Brun.pdf" target="_blank">
+
+
+
+<p class="date" style="color: #43AAD6">2021</p>
+
+
 <div class="info-published-paper">
-
-
-<p class="date" style="color: #43AAD6">XX-XX-XXXX</p>
-
-
-<p class="titre-author">Keycube is a Kind of Keyboard (k3) - Damien Brun, Charles Gouin-Vallerand, Sébastien George</p>
-
-<p class="journal" style="color: #43AAD6; border: 1px solid #43AAD6">CHI EA '19: Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems</p>
+<p class="titre">Concepting Personal Input Devices for Micro-Gravity</p>
+<p class="author">Damien Brun, Çağlar Genç, Jonna Häkkilä</p>
+<p class="journal" style="color: #43AAD6;">CHI 2021 Workshop SPACECHI Human-Computer Interaction for Space Exploration</p>
 </div>
 
-<a href="https://r-libre.teluq.ca/1691/2/INT034.pdf" target="_blank"><i class="fa-solid fa-chevron-right picto" style="color: #43AAD6"></i></a>
+</a>
+	
 
-</div>
+<a class="published-paper" href="https://hal.science/hal-02942093v1/document" target="_blank">
 
 
-<div class="published-paper">
-<div class="color" style="background-color: #43AAD6"></div>
+
+<p class="date" style="color: #43AAD6">2020</p>
+
+
 <div class="info-published-paper">
-
-
-<p class="date" style="color: #43AAD6">XX-XX-XXXX</p>
-
-
-<p class="titre-author">Keycube: Text Entry Evaluation with a Cubic Device - Damien Brun, Sébastien George, Charles Gouin-Vallerand</p>
-
-<p class="journal" style="color: #43AAD6; border: 1px solid #43AAD6">CHI EA '20: Extended Abstracts of the 2020 CHI Conference on Human Factors in Computing Systems</p>
+<p class="titre">Keycube: Text Entry Evaluation with a Cubic Device</p>
+<p class="author">Damien Brun, Sébastien George, Charles Gouin-Vallerand</p>
+<p class="journal" style="color: #43AAD6;">CHI EA '20: Extended Abstracts of the 2020 CHI Conference on Human Factors in Computing Systems</p>
 </div>
 
-<a href="https://hal.science/hal-02942093v1/document" target="_blank"><i class="fa-solid fa-chevron-right picto" style="color: #43AAD6"></i></a>
+</a>
+	
 
-</div>
+<a class="published-paper" href="https://r-libre.teluq.ca/1691/2/INT034.pdf" target="_blank">
 
 
-<div class="published-paper">
-<div class="color" style="background-color: #43AAD6"></div>
+
+<p class="date" style="color: #43AAD6">2019</p>
+
+
 <div class="info-published-paper">
-
-
-<p class="date" style="color: #43AAD6">XX-XX-XXXX</p>
-
-
-<p class="titre-author">Concepting Personal Input Devices for Micro-Gravity - Damien Brun, Çağlar Genç, Jonna Häkkilä</p>
-
-<p class="journal" style="color: #43AAD6; border: 1px solid #43AAD6">CHI 2021 Workshop SPACECHI Human-Computer Interaction for Space Exploration</p>
+<p class="titre">Keycube is a Kind of Keyboard (k3)</p>
+<p class="author">Damien Brun, Charles Gouin-Vallerand, Sébastien George</p>
+<p class="journal" style="color: #43AAD6;">CHI EA '19: Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems</p>
 </div>
 
-<a href="https://lacris.ulapland.fi/ws/portalfiles/portal/16918906/SpaceCHI2021_Brun.pdf" target="_blank"><i class="fa-solid fa-chevron-right picto" style="color: #43AAD6"></i></a>
-
-</div>
-
+</a>
+	
 
 
 </section>
 
 	<footer style="background-color: #43AAD6;">
-	<div class="footer-part">
-		<h3>Legal notice</h3>
-		<a href="#">Privacy Policy</a>
-		<a href="#">Legal notice</a>
-		<a href="#">FAQ</a>
-	</div>
-	<div class="footer-part">
 		<div class="social-networks">
-			<a class="link-picto" href="#"><i class="fa-brands fa-discord fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-github fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-instagram fa-2x picto"></i></a>
+			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
+			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
-		<a href="#"><img src="../assets/img/logo.svg"/></a>
-		<p>©keycube - 2023</p>
-
-	</div>
-	<div class="footer-part">
-		<h3>Contact us</h3>
-		<p>UQAC, Chicoutimi, G7H 0S5, Québec</p>
-		<a href="mailto:keycube@gmail.com">keycube@gmail.com</a>
-		<a href="tel:+1 (255) 567 894">+1 (255) 567 894</a>
-	</div>
+		<a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
+		<a href="#">keycube</a>
+		<p></p>
 </footer>
+
+<script>
+	var annee = new Date().getFullYear();
+	var footer = document.querySelector("footer p");
+	footer.innerHTML = annee;
+
+</script>
   </body>
 </html>

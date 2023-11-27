@@ -5,6 +5,8 @@
     <title>post 2</title>
 	<link rel="stylesheet" href="/assets/css/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 	<script src="https://kit.fontawesome.com/307082a286.js" crossorigin="anonymous"></script>
 
@@ -13,25 +15,49 @@
   
 	</head>
   <body>
-	  <nav>
-	<a class="extern" href="#"><img src="../assets/img/logo-.svg"/></a>
-	<div class="link-page-nav">
-	
-	  <a href="/" >About</a>
-	
-	  <a href="/blog/" >Blog</a>
-	
-	  <a href="/research/" >Research</a>
-	
-	  <a href="/hardware/" >Hardware</a>
-	
-	  <a href="/software/" >Software</a>
-	
-	</div>
-	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav>
+	<nav>
+    <img class="extern logo" src="/assets/img/logo/logo-.svg"/>
+    <div class="burger-menu">&#9776;</div> 
+    <div class="link-page-nav">
+        <!-- Vos liens de navigation existants -->
+        
+            <a href="/" >About</a>
+        
+            <a href="/blog/" >Blog</a>
+        
+            <a href="/research/" >Research</a>
+        
+            <a href="/hardware/" >Hardware</a>
+        
+            <a href="/software/" >Software</a>
+        
+    </div>
+    <a class="extern"><i class="fa-solid fa-language"></i></a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const linkPageNav = document.querySelector('.link-page-nav');
+    const externIcon = document.querySelector('.fa-language');
+
+    burgerMenu.addEventListener('click', function () {
+        linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
+        
+        document.body.classList.toggle('burger-menu-opened');
+
+        externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
+    });
+});
+
+</script>
+
+
+
+
+
     <div class = "post-img-container">
-    <img src="/assets/img/post1.jpg" alt="post 2">
+    <img class = "img-cover" src="/assets/img/post1.jpg" alt="post 2">
 </div>
 
 <section>
@@ -44,8 +70,8 @@
 
 <h2><i class="fa-solid fa-square" style="color: #319b7a"></i> post 2</h2>
 
-<p class = date>November 04, 2023</p>
-<p class = author>By someone</p>
+<div class = date>November 04, 2023</div>
+<div class = author>By someone</div>
 <p>test encore</p>
 
 </div>
@@ -55,28 +81,20 @@
 
 
 	<footer style="background-color: #;">
-	<div class="footer-part">
-		<h3>Legal notice</h3>
-		<a href="#">Privacy Policy</a>
-		<a href="#">Legal notice</a>
-		<a href="#">FAQ</a>
-	</div>
-	<div class="footer-part">
 		<div class="social-networks">
-			<a class="link-picto" href="#"><i class="fa-brands fa-discord fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-github fa-2x picto"></i></a>
-			<a class="link-picto" href="#"><i class="fa-brands fa-instagram fa-2x picto"></i></a>
+			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
+			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
-		<a href="#"><img src="../assets/img/logo.svg"/></a>
-		<p>©keycube - 2023</p>
-
-	</div>
-	<div class="footer-part">
-		<h3>Contact us</h3>
-		<p>UQAC, Chicoutimi, G7H 0S5, Québec</p>
-		<a href="mailto:keycube@gmail.com">keycube@gmail.com</a>
-		<a href="tel:+1 (255) 567 894">+1 (255) 567 894</a>
-	</div>
+		<a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
+		<a href="#">keycube</a>
+		<p></p>
 </footer>
+
+<script>
+	var annee = new Date().getFullYear();
+	var footer = document.querySelector("footer p");
+	footer.innerHTML = annee;
+
+</script>
   </body>
 </html>

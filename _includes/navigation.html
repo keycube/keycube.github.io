@@ -1,9 +1,32 @@
-  <nav>
-	<a class="extern" href="#"><img src="../assets/img/logo-{{page.color}}.svg"/></a>
-	<div class="link-page-nav">
-	{% for item in site.data.navigation %}
-	  <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
-	{% endfor %}
-	</div>
-	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav>
+<nav>
+    <img class="extern logo" src="/assets/img/logo/logo-{{page.color}}.svg"/>
+    <div class="burger-menu">&#9776;</div> 
+    <div class="link-page-nav">
+        <!-- Vos liens de navigation existants -->
+        {% for item in site.data.navigation %}
+            <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
+        {% endfor %}
+    </div>
+    <a class="extern"><i class="fa-solid fa-language"></i></a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const linkPageNav = document.querySelector('.link-page-nav');
+    const externIcon = document.querySelector('.fa-language');
+
+    burgerMenu.addEventListener('click', function () {
+        linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
+        
+        document.body.classList.toggle('burger-menu-opened');
+
+        externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
+    });
+});
+
+</script>
+
+
+
+
