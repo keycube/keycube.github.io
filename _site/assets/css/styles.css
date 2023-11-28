@@ -75,7 +75,6 @@
   text-decoration: none;
   text-align: center;
   color: #f6f6f6;
-  font-size: 1.2em;
   font-weight: 600;
   margin: 4% 0 0 0;
   display: flex;
@@ -87,6 +86,26 @@
   background: #f6f6f6;
   border: 1px solid #319B7A;
   color: #319B7A !important;
+}
+@media screen and (max-width: 768px) {
+  .featured-article {
+    flex-direction: column;
+    height: auto;
+  }
+  .featured-article .img-container {
+    width: 100%;
+  }
+  .featured-article .featured-article-infos {
+    width: 100%;
+  }
+  .featured-article .resume {
+    width: 90%;
+    font-size: 0.8em;
+  }
+  .featured-article .readMore-button {
+    width: 50%;
+    margin: 10% 0;
+  }
 }
 
 .category-filter {
@@ -114,6 +133,25 @@
 .category-filter .filter-button.active {
   background: #319B7A;
   color: #f6f6f6 !important;
+}
+@media screen and (max-width: 768px) {
+  .category-filter {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .category-filter .filter-button {
+    width: 45%;
+    margin: 2%;
+  }
+  .category-filter .button-all {
+    width: 100%;
+  }
+  .category-filter .text-filter {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .articles {
@@ -195,7 +233,6 @@
   text-decoration: none;
   text-align: center;
   color: #f6f6f6;
-  font-size: 1.2em;
   font-weight: 600;
   margin: 5% auto auto auto;
   display: flex;
@@ -207,6 +244,24 @@
   background: #f6f6f6;
   border: 1px solid #319B7A;
   color: #319B7A !important;
+}
+@media screen and (max-width: 768px) {
+  .articles {
+    justify-content: center;
+  }
+  .articles .article {
+    width: 100%;
+    margin: 10% 0;
+  }
+  .articles .resume {
+    width: 90%;
+    font-size: 0.8em;
+  }
+  .articles .readMore-button {
+    width: 100%;
+    margin: 2% 0;
+    font-size: 0.8em;
+  }
 }
 
 .published-paper {
@@ -695,6 +750,10 @@ nav {
 }
 .citation p {
   color: #f6f6f6;
+}
+
+p {
+  font-size: 1.2em;
 }
 
 h1, h2 {
