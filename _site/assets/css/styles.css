@@ -528,6 +528,31 @@ img {
 .hardware:nth-child(even) .img-container {
   order: 2;
 }
+@media screen and (max-width: 768px) {
+  .hardware {
+    flex-direction: column;
+    height: auto;
+    margin: 10% 0;
+  }
+  .hardware .description,
+  .hardware .img-container {
+    width: 100%;
+  }
+  .hardware:nth-child(odd) h2,
+  .hardware:nth-child(odd) .description, .hardware:nth-child(even) h2,
+  .hardware:nth-child(even) .description {
+    text-align: center;
+    align-self: center;
+  }
+  .hardware:nth-child(odd) .link, .hardware:nth-child(even) .link {
+    align-self: center;
+    width: 70%;
+    margin: 5% 0;
+  }
+  .hardware:nth-child(odd) .img-container, .hardware:nth-child(even) .img-container {
+    order: 2;
+  }
+}
 
 p {
   font-size: 1.2em;
@@ -595,6 +620,31 @@ p {
 }
 .software:nth-child(even) .img-container {
   order: 2;
+}
+@media screen and (max-width: 768px) {
+  .software {
+    flex-direction: column;
+    height: auto;
+    margin: 10% 0;
+  }
+  .software .description,
+  .software .img-container {
+    width: 100%;
+  }
+  .software:nth-child(odd) h2,
+  .software:nth-child(odd) .description, .software:nth-child(even) h2,
+  .software:nth-child(even) .description {
+    text-align: center;
+    align-self: center;
+  }
+  .software:nth-child(odd) .link, .software:nth-child(even) .link {
+    align-self: center;
+    width: 70%;
+    margin: 5% 0;
+  }
+  .software:nth-child(odd) .img-container, .software:nth-child(even) .img-container {
+    order: 2;
+  }
 }
 
 p {
