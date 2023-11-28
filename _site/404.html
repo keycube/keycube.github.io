@@ -5,6 +5,8 @@
     <title></title>
 	<link rel="stylesheet" href="/assets/css/styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 	<script src="https://kit.fontawesome.com/307082a286.js" crossorigin="anonymous"></script>
 
@@ -13,27 +15,11 @@
   
 	</head>
   <body>
-	  <!-- <nav>
-	<a class="extern" href="#"><img src="../assets/img/logo-.svg"/></a>
-	<div class="link-page-nav">
-	
-	  <a href="/" >About</a>
-	
-	  <a href="/blog/" >Blog</a>
-	
-	  <a href="/research/" >Research</a>
-	
-	  <a href="/hardware/" >Hardware</a>
-	
-	  <a href="/software/" >Software</a>
-	
-	</div>
-	<a class="extern"><i class="fa-solid fa-language"></i></a>
-  </nav> -->
-
-  <nav>
-    <img class="extern logo" src="../assets/img/logo/logo-.svg"/>
+	<nav>
+    <img class="extern logo" src="/assets/img/logo/logo-.svg"/>
+    <div class="burger-menu">&#9776;</div> 
     <div class="link-page-nav">
+        <!-- Vos liens de navigation existants -->
         
             <a href="/" >About</a>
         
@@ -46,47 +32,30 @@
             <a href="/software/" >Software</a>
         
     </div>
-	<a class="extern"><i class="fa-solid fa-language"></i></a>
+    <a class="extern"><i class="fa-solid fa-language"></i></a>
 </nav>
-
-
-
-
-
-<!-- <div class="burger-menu">
-     <a class="extern" id="burger-icon"><i class="fa-solid fa-bars"></i></a>    
-	<p>lalalal</p>
-	 <div class="burger" id="burger">
-        
-            <a href="/" >About</a>
-        
-            <a href="/blog/" >Blog</a>
-        
-            <a href="/research/" >Research</a>
-        
-            <a href="/hardware/" >Hardware</a>
-        
-            <a href="/software/" >Software</a>
-        
-    </div> 
-
-</div>
-</nav> -->
-
-
-<!-- 
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const burgerIcon = document.getElementById('burger-icon');
-    const burgerMenu = document.getElementById('burger-menu');
+    const burgerMenu = document.querySelector('.burger-menu');
+    const linkPageNav = document.querySelector('.link-page-nav');
+    const externIcon = document.querySelector('.fa-language');
 
-    burgerIcon.addEventListener('click', function () {
-        burgerMenu.classList.toggle('active');
+    burgerMenu.addEventListener('click', function () {
+        linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
+        
+        document.body.classList.toggle('burger-menu-opened');
+
+        externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
     });
-}); -->
+});
 
-<!-- </script> -->
+</script>
+
+
+
+
+
     <style type="text/css" media="screen">
   .container {
     margin: 10px auto;
@@ -113,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			<i class="fa-brands fa-discord fa-2x picto"><a href="https://discord.gg/JErUFhea" target="_blank"></a></i>
 			<i class="fa-brands fa-github fa-2x picto"><a href="https://github.com/keycube" target="_blank"></a></i>
 		</div>
-		<a href="#"><img class="logo_footer" src="../assets/img/logo/logo-FFFFFF.svg"/></a>
+		<a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
 		<a href="#">keycube</a>
 		<p></p>
 </footer>

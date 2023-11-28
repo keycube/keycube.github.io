@@ -1,5 +1,8 @@
+@import "colors";
+
 .featured-article 
 {
+    margin : 0 0 5% 0;
     display : flex;
     align-items: center;
     overflow : hidden;
@@ -66,7 +69,7 @@
         width: fit-content;
         font-size: 1em;
         font-weight: 600;
-        border: 1px solid #319B7A;
+        border: 1px solid $green;
         border-radius: 15px;
         padding: 0% 1% 0 1%;
     }
@@ -84,13 +87,13 @@
         height : 10%;
         width: 20%;
         border-radius: 15px;
-        background-color : #319B7A; 
+        background-color : $green; 
         font-family: 'poppins', sans-serif;
         text-transform: uppercase;
         text-decoration: none;
         text-align: center;
-        color : #f6f6f6;
-        font-size: 1.2em; 
+        color : $white;
+        // font-size: 1.2em; 
         font-weight: 600;
         margin: 4% 0 0 0;
         display: flex;
@@ -100,9 +103,33 @@
 
         &:hover 
         {
-            background: #f6f6f6;   
-            border : 1px solid #319B7A;
-            color : #319B7A !important;
+            background: $white;   
+            border : 1px solid $green;
+            color : $green !important;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        height: auto;
+
+        .img-container {
+            width: 100%;
+        }
+
+        .featured-article-infos {
+            width: 100%;
+        }
+
+        .resume {
+            width: 90%;
+            // padding: 2% 5%;
+            font-size: 0.8em;
+        }
+
+        .readMore-button {
+            width: 50%;
+            margin: 10% 0;
         }
     }
 }
@@ -112,9 +139,10 @@
 
 .category-filter 
 {
+    width: 100%;
+    align-self: flex-start;
     display: flex; 
-    justify-content: flex-start; 
-    column-gap: 1%;
+    column-gap: 1%;;
     margin: 0 0 2% 0; 
 
     p{
@@ -123,7 +151,7 @@
 
     .filter-button
     {
-        padding: 0 1% 0 1% ;
+        padding: 0 1% 0 1%;
         border-radius: 15px;
         background: none; 
         font-family: 'poppins', sans-serif;
@@ -132,14 +160,33 @@
 
         &:hover 
         {
-            background: #319B7A; 
-            color : #f6f6f6 !important;
+            background: $green; 
+            color : $white !important;
         }
 
         &.active 
         {
-            background: #319B7A; 
-            color: #f6f6f6 !important; 
+            background: $green; 
+            color: $white !important; 
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;        
+
+        .filter-button {
+            width:45%;
+            margin: 2%;
+        }
+        .button-all{
+            width: 100%;
+        }
+        .text-filter{
+            width: 100%;
+            text-align: center;
         }
     }
 }
@@ -217,7 +264,7 @@
             width: fit-content;
             font-size: 1em;
             font-weight: 600;
-            border: 1px solid #319B7A;
+            border: 1px solid $green;
             border-radius: 15px;
             padding: 0% 1% 0 1%;
         }
@@ -236,13 +283,13 @@
             height : 10%;
             width: 35%;
             border-radius: 15px;
-            background-color : #319B7A; 
+            background-color : $green; 
             font-family: 'poppins', sans-serif;
             text-transform: uppercase;
             text-decoration: none;
             text-align: center;
-            color : #f6f6f6;
-            font-size: 1.2em; 
+            color : $white;
+            // font-size: 1.2em; 
             font-weight: 600;
             margin: 5% auto auto auto;
             display: flex;
@@ -252,10 +299,31 @@
 
             &:hover 
             {
-                background: #f6f6f6;   
-                border : 1px solid #319B7A;
-                color : #319B7A !important;
+                background: $white;   
+                border : 1px solid $green;
+                color : $green !important;
             }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+
+        .article {
+            width: 100%;
+            margin: 10% 0;
+            // margin-bottom: 5%;
+        }
+
+        .resume {
+            width: 90%;
+            font-size: 0.8em;
+        }
+
+        .readMore-button {
+            width: 100%;
+            margin: 2% 0;
+            font-size: 0.8em;   
         }
     }
 }
