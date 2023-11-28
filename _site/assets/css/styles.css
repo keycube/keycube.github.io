@@ -379,6 +379,7 @@
 .button-white {
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
   padding: 2% 5%;
   font-size: 1em;
   background: #f6f6f6;
