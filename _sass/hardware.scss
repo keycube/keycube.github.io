@@ -123,6 +123,37 @@
             }
         }
     }
+
+    @media screen and (max-width: 1024px) {
+    
+        flex-direction: column;
+        height: auto;
+        margin: 10% 0;
+    
+        .description,
+        .img-container {
+            width: 100%;
+        }
+    
+        &:nth-child(odd),
+        &:nth-child(even) {
+            h2,
+            .description {
+                text-align: center;
+                align-self: center;
+            }
+    
+            .link {
+                align-self: center;
+                width: 70%;
+                margin:5% 0;
+            }
+    
+            .img-container {
+                order: 2;
+            }
+        }
+    }
     
 }
 
