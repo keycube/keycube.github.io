@@ -1,0 +1,28 @@
+---
+layout: default
+color : 319b7a
+styles:
+---
+
+<div class = "post-img-container">
+    <img class = "img-cover" src="{{ page.image }}" alt="{{ page.title }}">
+</div>
+
+<section>
+<div class = post-description>
+<div class = categories> 
+    {% for category in page.categories %}
+        <p class="category">{{ category }}</p>
+    {% endfor %}
+</div>
+
+<h2><i class="fa-solid fa-square" style="color: #319b7a"></i> {{ page.title }}</h2>
+
+<div class = date>{{ page.date | date: "%B %d, %Y" }}</div>
+<div class = author>By {{page.author}}</div>
+{{ page.content }}
+</div>
+</section>
+
+<style>footer{ background-color : #319b7a};</style>
+

@@ -1,18 +1,12 @@
-.citation-hardware {
-	width: 100%;
-    text-align: center;
-	padding: 2% 0%;
-	font-size: 1.2em;
-    border-radius: 15px;
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
-    margin-bottom : 5%;
-}
+@import "colors";
+
 
 .hardware {
+    height : 40vh;
     display : flex;
     justify-content: space-between;
     margin-bottom: 7%;
-    height : 40vh;
+    
 
     .description 
     {
@@ -22,32 +16,32 @@
         justify-content: space-between;
 
         h2{
-            margin: 0;
+            margin: 0 0 2% 0;
         }
 
-        .github-link 
+        .link 
         {
             width: 30%;
             border-radius: 15px;
-            background-color : #F1D248; 
+            background-color : $yellow; 
             font-family: 'poppins', sans-serif;
             text-transform: uppercase;
             text-decoration: none;
             text-align: center;
-            color : #f6f6f6;
             font-size: 1.2em; 
             font-weight: 600;
+            color : $white;
             padding: 1.5% 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            border : 1.5px solid #F1D248;
+            border : 1.5px solid $yellow;
             transition : all 0.3s ease-in-out;
 
             &:hover 
             {
                 background: none;  
-                color : #F1D248 !important;
+                color : $yellow !important;
             }
         }
     }
@@ -59,20 +53,27 @@
 
         img 
         {
+            border-radius: 15px;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px;
+            
         }
     }
 
     &:nth-child(odd) {
+
+        h2 {
+            text-align: end;
+            align-self: flex-end;
+        }
+
         .description {
             order: 2; // Inverser l'ordre du texte et de l'image
             text-align: end; // Aligner le texte à gauche
         }
 
-        .github-link {
+        .link {
             align-self: flex-end;
         }
 
@@ -88,7 +89,7 @@
 
         .img-container {
             order: 2; // Inverser l'ordre de l'image à gauche
-            text-align: end; // Aligner l'image à gauche
+            //text-align: end; // Aligner l'image à gauche
         }
     }
 }

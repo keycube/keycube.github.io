@@ -1,0 +1,97 @@
+@import "colors";
+
+
+.software {
+    height: 40vh;
+    display : flex;
+    justify-content: space-between;
+    margin-bottom : 7%;
+    
+
+    .description 
+    {
+        width: 50%;
+        display : flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h2 {
+            margin: 0 0 2% 0;
+        }
+
+        .link 
+        {
+            width: 30%;
+            border-radius: 15px;
+            background-color : $orange; 
+            font-family: 'poppins', sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            color : $white;
+            font-size: 1.2em; 
+            font-weight: 600;
+            padding: 1.5% 0;
+            border: solid 1.5px $orange;
+            transition : all 0.3s ease-in-out;
+
+            &:hover 
+            {
+                background: none;  
+                color : $orange !important;
+            }
+        }
+    }
+    
+    .img-container
+    {
+        width: 40%;
+        height : 100%;
+    
+        img 
+        {
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &:nth-child(odd) {
+
+        h2 {
+            align-self: flex-end;
+            text-align: end;
+        }
+
+        .description {
+            order: 2; 
+            align-items: flex-end;
+            text-align: end;// Inverser l'ordre du texte et de l'image    // Aligner le texte à gauche
+        }
+
+        .img-container {
+            order: 1; // Garder l'ordre de l'image à droite
+            text-align: start; // Aligner l'image à droite
+        }
+
+        .link {
+            align-self: flex-end;
+        }
+    }
+
+    &:nth-child(even) {
+        .description {
+            // Garder l'ordre du texte à gauche
+        }
+
+        .img-container {
+            order: 2; // Inverser l'ordre de l'image à gauche
+            // text-align: end; // Aligner l'image à gauche
+        }
+    }
+}
+
+p {
+    font-size: 1.2em;
+}

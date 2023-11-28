@@ -43,7 +43,9 @@ collections:
   hardware:
     output: true
     permalink: /hardware/:path/
-
+  software:
+    output: true
+    permalink: /software/:path/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
