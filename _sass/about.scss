@@ -19,9 +19,11 @@
 	justify-content: space-between;
 }
 
+
 .button-white {
     display: inline-flex;
     align-items: center;
+	text-decoration: none;
     padding: 2% 5%;
     font-size: 1em;
     background: $white;
@@ -37,6 +39,8 @@
     .button-text {
         margin-right: 20px; 
     }
+
+	
 }
 
   
@@ -80,10 +84,10 @@
 		text-decoration: none;
 		text-transform: uppercase;
 		font-weight: 600;
-		margin: 2% 2%;
+		margin: 2% 2% 2% 0;
 		.contributor-profil{
-			width: 10vw;
-			height: 10vw;
+			width: 5vw;
+			height: 5vw;
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
@@ -101,6 +105,9 @@
 				display: none;
 				width: 100%;
 				height: 100%;
+				font-size: 0.6em;
+				padding: 0 10%;
+				
 			}
 	
 			&:hover .contributor-pseudo{
@@ -108,16 +115,19 @@
 				color:$white;
 				background-color: $red;
 				border-radius: 15px;
+				max-width: 5vw;
+				max-height: 5vw;
 
+				p{
+					margin: 20%;
+				}
+
+				
 
 				justify-content: center;
 				align-items: center;
 			}
 	
-			&:hover .contributor-profil {
-				// background-color: $red;
-			}
-
 			&:hover{
 				box-shadow: 0 0 0 transparent; 
 
@@ -163,11 +173,64 @@
 		flex-wrap: wrap;
 	
 		a {
+			margin: 2%;
 			
-	
 			.contributor-profil {
 				min-width: 20vw; 
 				min-height: 20vw;
+
+				.contributor-pseudo{
+					font-size:10px;
+					width: 100%;
+					height: 100%;
+					display: flex;
+					color:$white;
+					background-color: $red;
+					border-radius: 15px;
+	
+	
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}
+}
+	
+}  
+
+@media screen and (max-width: 1064px) {
+    /* Styles pour les écrans de 768 pixels de largeur ou moins */
+	.presentation-content {
+		flex-direction: column; 
+	}
+	
+	.text-content {
+		width: 100%; 
+		align-items: center; 
+	}
+	
+	.button-white {
+		margin: 10% 0; 
+	}
+	
+	img {
+		width: 100%; 
+	}
+
+	.contributor-container {
+		display: flex;
+		flex-direction: row;
+		align-items:center;
+		justify-content: space-between;
+		text-align: center;
+		flex-wrap: wrap;
+	
+		a {
+			margin: 2%;
+			
+			.contributor-profil {
+				width: 10vw; 
+				height: 10vw;
 
 				.contributor-pseudo{
 					font-size:10px;

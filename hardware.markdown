@@ -8,7 +8,7 @@ color : F1D248
 <section>
 
 <div class="citation" style="background-color: #{{page.color}}">
-	<p>Various flavors of keycube.</p>	
+	<p>Various flavors of keycube</p>	
 </div>
 
   {% for hardware in site.data.hardware %}

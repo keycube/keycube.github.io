@@ -7,7 +7,7 @@ color: DC800F
 
 <section>
 <div class="citation" style="background-color: #{{page.color}}">
-	<p>Tools, games, and other dedicated software for the keycubes.</p>	
+	<p>Tools, games, and other dedicated software for the keycubes</p>	
 </div>
 
 {% for software in site.data.software %}
@@ -15,6 +15,8 @@ color: DC800F
 	<div class = "description">
 		<h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> {{software.title}} </h2>
 		<p> {{software.description}}</p>
+		<p style="color: #{{ page.color }}"> Key features</p> 
+        <p> {{software.key-features}} </p>
 		{% if software.category == "game" %}
 		<a href="{{ software.lien }}" class="link">Play</a>
 		{% elsif software.category == "tool" %}

@@ -21,6 +21,10 @@
 		box-shadow: 0 0 0 transparent;
 	}
 
+	&:last-child {
+		margin-bottom: 0; // Supprime la marge pour le dernier élément
+	}
+
 	p{
 		font-size: 0.8em;
 		margin: 0 2%;
@@ -48,24 +52,26 @@
 
 
   }
+
+  @media screen and (max-width: 768px) {
+
+	.published-paper{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 10% 0;
+		text-align: center;
+
+		p{
+			margin: 3%;
+		}
+	}
+
+}
+
   
 
 
 
 
 
-
-
-
-
-
-// .picto{
-// 	width: 5%;
-// 	font-size:2em;
-// 	cursor: pointer;
-// 	transition: transform 0.2s ease;
-// }
-
-// .picto:hover{
-// 	transform: scale(1.2);
-// }
