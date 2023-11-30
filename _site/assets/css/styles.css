@@ -434,11 +434,11 @@ img {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 2% 2%;
+  margin: 2% 2% 2% 0;
 }
 .contributor-container a .contributor-profil {
-  width: 10vw;
-  height: 10vw;
+  width: 5vw;
+  height: 5vw;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -454,14 +454,21 @@ img {
   display: none;
   width: 100%;
   height: 100%;
+  font-size: 0.6em;
+  padding: 0 10%;
 }
 .contributor-container a .contributor-profil:hover .contributor-pseudo {
   display: flex;
   color: #f6f6f6;
   background-color: rgba(212, 81, 83, 0.4941176471);
   border-radius: 15px;
+  max-width: 5vw;
+  max-height: 5vw;
   justify-content: center;
   align-items: center;
+}
+.contributor-container a .contributor-profil:hover .contributor-pseudo p {
+  margin: 20%;
 }
 .contributor-container a .contributor-profil:hover {
   box-shadow: 0 0 0 transparent;
@@ -490,9 +497,54 @@ img {
     text-align: center;
     flex-wrap: wrap;
   }
+  .contributor-container a {
+    margin: 2%;
+  }
   .contributor-container a .contributor-profil {
     min-width: 20vw;
     min-height: 20vw;
+  }
+  .contributor-container a .contributor-profil .contributor-pseudo {
+    font-size: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #f6f6f6;
+    background-color: rgba(212, 81, 83, 0.4941176471);
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1064px) {
+  /* Styles pour les écrans de 768 pixels de largeur ou moins */
+  .presentation-content {
+    flex-direction: column;
+  }
+  .text-content {
+    width: 100%;
+    align-items: center;
+  }
+  .button-white {
+    margin: 10% 0;
+  }
+  img {
+    width: 100%;
+  }
+  .contributor-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  .contributor-container a {
+    margin: 2%;
+  }
+  .contributor-container a .contributor-profil {
+    width: 10vw;
+    height: 10vw;
   }
   .contributor-container a .contributor-profil .contributor-pseudo {
     font-size: 10px;
