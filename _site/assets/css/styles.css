@@ -198,6 +198,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   column-gap: 3%;
+  margin-bottom: -3%;
 }
 .articles .article {
   display: flex;
@@ -205,11 +206,9 @@
   align-items: center;
   text-align: center;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 3%;
   width: 31.334%;
   aspect-ratio: 1/1;
-  margin-bottom: 3%;
   border-radius: 24px;
   transition: box-shadow 0.3s;
   box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
@@ -321,6 +320,9 @@
 }
 .published-paper:hover {
   box-shadow: 0 0 0 transparent;
+}
+.published-paper:last-child {
+  margin-bottom: 0;
 }
 .published-paper p {
   font-size: 0.8em;
@@ -551,6 +553,9 @@ img {
   height: 100%;
   object-fit: cover;
 }
+.hardware:last-child {
+  margin-bottom: 0;
+}
 .hardware:nth-child(odd) h2 {
   text-align: end;
   align-self: flex-end;
@@ -666,6 +671,9 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.software:last-child {
+  margin-bottom: 0;
 }
 .software:nth-child(odd) h2 {
   align-self: flex-end;
@@ -895,13 +903,14 @@ nav {
   width: 100%;
   text-align: center;
   margin-bottom: 5%;
-  padding: 2% 0%;
+  padding: 3% 0%;
   font-size: 1.2em;
   border-radius: 15px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
 }
 .citation p {
   color: #f6f6f6;
+  margin: 0 5%;
 }
 
 @media screen and (max-width: 768px) {
@@ -941,6 +950,7 @@ section {
 
 footer {
   text-align: center;
+  margin-top: 7%;
   padding: 2%;
 }
 footer .social-networks {

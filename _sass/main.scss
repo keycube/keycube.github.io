@@ -116,13 +116,14 @@ nav {
 	width: 100%;
   text-align: center;
 	margin-bottom : 5%;
-	padding: 2% 0%;
+	padding: 3% 0%;
 	font-size: 1.2em;
   border-radius: 15px;
 	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
     
     p{
         color :$white;
+        margin: 0 5%;
     }
     
 }
@@ -132,7 +133,7 @@ nav {
     width: 100%;
 
     font-size: 1em;
-    // padding: 5%;
+    //padding: 2%;
 
     p{
       margin: 5%;
@@ -174,6 +175,7 @@ section{
 ///////////////FOOTER/////////////////////
 footer {
     text-align: center;
+    margin-top : 7%;
     padding: 2%;
 
     .social-networks {

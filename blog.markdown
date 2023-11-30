@@ -39,7 +39,7 @@ color : 319B7A
 
 <div class="category-filter">
   <button class="filter-button button-all" style="color: #{{ page.color }}; border: solid 1px #{{ page.color }}" data-category="Toutes les catégories">See all</button>
-  <p  class="text-filter" style="color: #{{ page.color }}">Or filter by:</p>
+  <p  class="text-filter" style="color: #{{ page.color }}">Or filter by</p>
       {% capture uniqueCategories %}{% endcapture %}
   {% for post in site.posts %}
     {% for category in post.categories %}

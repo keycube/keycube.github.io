@@ -61,6 +61,10 @@
         }
     }
 
+    &:last-child {
+        margin-bottom: 0; // Supprime la marge pour le dernier élément
+    }
+
     &:nth-child(odd) {
 
         h2 {

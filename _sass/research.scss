@@ -21,6 +21,10 @@
 		box-shadow: 0 0 0 transparent;
 	}
 
+	&:last-child {
+		margin-bottom: 0; // Supprime la marge pour le dernier élément
+	}
+
 	p{
 		font-size: 0.8em;
 		margin: 0 2%;
