@@ -19,9 +19,11 @@
 	justify-content: space-between;
 }
 
+
 .button-white {
     display: inline-flex;
     align-items: center;
+	text-decoration: none;
     padding: 2% 5%;
     font-size: 1em;
     background: $white;
@@ -37,6 +39,8 @@
     .button-text {
         margin-right: 20px; 
     }
+
+	
 }
 
   

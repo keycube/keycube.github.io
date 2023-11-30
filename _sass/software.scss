@@ -57,6 +57,10 @@
         }
     }
 
+    &:last-child {
+        margin-bottom: 0; // Supprime la marge pour le dernier élément
+    }
+
     &:nth-child(odd) {
 
         h2 {
@@ -88,6 +92,66 @@
         .img-container {
             order: 2; // Inverser l'ordre de l'image à gauche
             // text-align: end; // Aligner l'image à gauche
+        }
+    }
+    @media screen and (max-width: 768px) {
+    
+        flex-direction: column;
+        height: auto;
+        margin: 10% 0;
+    
+        .description,
+        .img-container {
+            width: 100%;
+        }
+    
+        &:nth-child(odd),
+        &:nth-child(even) {
+            h2,
+            .description {
+                text-align: center;
+                align-self: center;
+            }
+    
+            .link {
+                align-self: center;
+                width: 70%;
+                margin:5% 0;
+            }
+    
+            .img-container {
+                order: 2;
+            }
+        }
+    }
+    @media screen and (max-width: 1024px) {
+    
+        flex-direction: column;
+        height: auto;
+        margin: 10% 0;
+    
+        .description,
+        .img-container {
+            width: 100%;
+        }
+    
+        &:nth-child(odd),
+        &:nth-child(even) {
+            h2,
+            .description {
+                text-align: center;
+                align-self: center;
+            }
+    
+            .link {
+                align-self: center;
+                width: 70%;
+                margin:5% 0;
+            }
+    
+            .img-container {
+                order: 2;
+            }
         }
     }
 }

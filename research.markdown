@@ -8,7 +8,7 @@ color: 43AAD6
 <section>
 
 <div class="citation" style="background-color: #{{page.color}}">
-	<p>Features of the keycube are informed by practical experiments, in-depth studies, and a body of published research.</p>	
+	<p>Features of the keycube are informed by practical experiments, in-depth studies, and a body of published research</p>	
 </div>
 
 <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> PUBLISHED PAPERS </h2>
