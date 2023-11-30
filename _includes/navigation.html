@@ -7,7 +7,7 @@
             <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
         {% endfor %}
     </div>
-    <a class="extern"><i class="fa-solid fa-language"></i></a>
+    <a class="extern language"><i class="fa-solid fa-language"></i></a>
 </nav>
 
 <script>
@@ -16,14 +16,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const linkPageNav = document.querySelector('.link-page-nav');
     const externIcon = document.querySelector('.fa-language');
 
-    burgerMenu.addEventListener('click', function () {
+    function toggleMenu() {
         linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
-        
         document.body.classList.toggle('burger-menu-opened');
-
         externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
+    }
+
+    burgerMenu.addEventListener('click', toggleMenu);
+
+    // Ajoutez le gestionnaire d'événements pour le redimensionnement de la fenêtre
+    window.addEventListener('resize', function () {
+        // Réinitialise la visibilité des éléments lorsque la largeur de la fenêtre dépasse 768px
+        if (window.innerWidth > 768) {
+            linkPageNav.style.display = 'flex';
+            document.body.classList.remove('burger-menu-opened');
+            externIcon.style.display = 'flex';
+        }
     });
 });
+
 
 </script>
 
