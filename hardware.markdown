@@ -18,10 +18,11 @@ color : F1D248
         <p>{{hardware.description}}</p>
         <p style="color: #{{ page.color }}"> Key features</p> 
         <p> {{hardware.key-features}} </p>
-        <a href="{{hardware.git-link}}" class = "link"> Voir le projet </a>
+        <a href="{{hardware.git-link}}" class = "link"><p>Voir le projet</p> </a>
         </div>
         <div class = "img-container">
             <img src="{{ hardware.image }}" alt="{{ hardware.title }}">
+            <div class = separator></div>
         </div>
     </div>
   {% endfor %}

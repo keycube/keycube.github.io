@@ -583,13 +583,17 @@ img {
   text-align: center;
   font-size: 1.2em;
   font-weight: 600;
-  color: #f6f6f6;
   padding: 1.5% 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1.5px solid #F1D248;
   transition: all 0.3s ease-in-out;
+}
+.hardware .description .link p {
+  font-size: 1em;
+  color: #f6f6f6;
+  margin: 0 3%;
 }
 .hardware .description .link:hover {
   background: none;
@@ -607,6 +611,9 @@ img {
 }
 .hardware:last-child {
   margin-bottom: 0;
+}
+.hardware:last-child .separator {
+  display: none;
 }
 .hardware:nth-child(odd) h2 {
   text-align: end;
@@ -655,6 +662,11 @@ img {
     flex-direction: column;
     height: auto;
     margin: 10% 0;
+  }
+  .hardware .separator {
+    width: 20%;
+    margin: 5% auto;
+    border-bottom: 5px solid #F1D248;
   }
   .hardware .description,
   .hardware .img-container {
@@ -710,6 +722,11 @@ p {
   border: solid 1.5px #DC800F;
   transition: all 0.3s ease-in-out;
 }
+.software .description .link p {
+  font-size: 1em;
+  color: #f6f6f6;
+  margin: 0 3%;
+}
 .software .description .link:hover {
   background: none;
   color: #DC800F !important;
@@ -726,6 +743,9 @@ p {
 }
 .software:last-child {
   margin-bottom: 0;
+}
+.software:last-child .separator {
+  display: none;
 }
 .software:nth-child(odd) h2 {
   align-self: flex-end;
@@ -762,6 +782,11 @@ p {
     text-align: center;
     align-self: center;
   }
+  .software:nth-child(odd) h2 p,
+  .software:nth-child(odd) .description p, .software:nth-child(even) h2 p,
+  .software:nth-child(even) .description p {
+    align-self: center;
+  }
   .software:nth-child(odd) .link, .software:nth-child(even) .link {
     align-self: center;
     width: 70%;
@@ -777,6 +802,11 @@ p {
     height: auto;
     margin: 10% 0;
   }
+  .software .separator {
+    width: 20%;
+    margin: 5% auto;
+    border-bottom: 5px solid #DC800F;
+  }
   .software .description,
   .software .img-container {
     width: 100%;
@@ -786,6 +816,12 @@ p {
   .software:nth-child(even) .description {
     text-align: center;
     align-self: center;
+  }
+  .software:nth-child(odd) h2 p,
+  .software:nth-child(odd) .description p, .software:nth-child(even) h2 p,
+  .software:nth-child(even) .description p {
+    align-self: center;
+    margin: 1% 0;
   }
   .software:nth-child(odd) .link, .software:nth-child(even) .link {
     align-self: center;

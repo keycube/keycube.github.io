@@ -30,13 +30,18 @@
             text-align: center;
             font-size: 1.2em; 
             font-weight: 600;
-            color : $white;
             padding: 1.5% 0;
             display: flex;
             align-items: center;
             justify-content: center;
             border : 1.5px solid $yellow;
             transition : all 0.3s ease-in-out;
+
+            p{
+                font-size : 1em;
+                color : $white;
+                margin : 0 3%;
+            }
 
             &:hover 
             {
@@ -63,6 +68,10 @@
 
     &:last-child {
         margin-bottom: 0; // Supprime la marge pour le dernier élément
+        .separator
+        {
+            display : none;
+        }
     }
 
     &:nth-child(odd) {
@@ -133,6 +142,12 @@
         flex-direction: column;
         height: auto;
         margin: 10% 0;
+
+        .separator {
+            width : 20%;
+            margin : 5% auto;
+            border-bottom : 5px solid $yellow;
+        }
     
         .description,
         .img-container {

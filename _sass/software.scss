@@ -35,6 +35,12 @@
             border: solid 1.5px $orange;
             transition : all 0.3s ease-in-out;
 
+            p{
+                font-size : 1em;
+                color : $white;
+                margin : 0 3%;
+            }
+
             &:hover 
             {
                 background: none;  
@@ -59,6 +65,10 @@
 
     &:last-child {
         margin-bottom: 0; // Supprime la marge pour le dernier élément
+        .separator
+        {
+            display : none;
+        }
     }
 
     &:nth-child(odd) {
@@ -111,6 +121,10 @@
             .description {
                 text-align: center;
                 align-self: center;
+
+                p{
+                    align-self : center;
+                }
             }
     
             .link {
@@ -129,6 +143,12 @@
         flex-direction: column;
         height: auto;
         margin: 10% 0;
+
+        .separator {
+            width : 20%;
+            margin : 5% auto;
+            border-bottom : 5px solid $orange;
+        }
     
         .description,
         .img-container {
@@ -141,6 +161,11 @@
             .description {
                 text-align: center;
                 align-self: center;
+
+                p{
+                    align-self : center;
+                    margin : 1% 0;
+                }
             }
     
             .link {
