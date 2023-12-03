@@ -18,14 +18,16 @@ color: DC800F
 		<p style="color: #{{ page.color }}"> Key features</p> 
         <p> {{software.key-features}} </p>
 		{% if software.category == "game" %}
-		<a href="{{ software.lien }}" class="link">Play</a>
+		<a href="{{ software.lien }}" class="link"><p>Play</p></a>
 		{% elsif software.category == "tool" %}
-		<a href="{{ software.lien }}" class="link">Download</a>
+		<a href="{{ software.lien }}" class="link"><p>Download</p></a>
 		{% endif %}
 	</div>
 	<div class = "img-container">
 		<img src="{{ software.image }}" alt="{{ software.title }}">
+		<div class = separator></div>
 	</div>
+	
 </div>
 {% endfor %}
 
