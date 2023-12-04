@@ -52,10 +52,9 @@
 .featured-article .categorie {
   width: fit-content;
   font-size: 1em;
-  font-weight: 600;
   border: 1px solid #319B7A;
   border-radius: 15px;
-  padding: 0% 1% 0 1%;
+  padding: 0% 2%;
 }
 .featured-article .resume {
   width: 70%;
@@ -100,7 +99,6 @@
   }
   .featured-article .resume {
     width: 90%;
-    font-size: 0.8em;
   }
   .featured-article .readMore-button {
     width: 50%;
@@ -120,7 +118,6 @@
   }
   .featured-article .resume {
     width: 90%;
-    font-size: 0.8em;
   }
   .featured-article .readMore-button {
     width: 50%;
@@ -160,6 +157,9 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+  }
+  .category-filter .categorie {
+    font-size: 0.1em;
   }
   .category-filter .filter-button {
     width: 45%;
@@ -201,31 +201,15 @@
   margin-bottom: -3%;
 }
 .articles .article {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  overflow: hidden;
   margin-bottom: 3%;
   width: 31.334%;
   aspect-ratio: 1/1;
   border-radius: 24px;
   transition: box-shadow 0.3s;
   box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
-}
-.articles .article .date {
-  font-family: "poppins", sans-serif;
-  font-size: 1em;
-  font-weight: regular;
-  text-transform: uppercase;
-  margin: 2% 0 0 0;
-}
-.articles .article .title {
-  font-family: "poppins", sans-serif;
-  font-size: 1.2em;
-  font-weight: 600 !important;
-  text-transform: uppercase;
-  margin: 2% 0 !important;
 }
 .articles .article .img-container {
   width: 100%; /* Utilisez max-width au lieu de width */
@@ -237,34 +221,60 @@
   object-fit: cover;
   border-radius: 24px 24px 0 0;
 }
-.articles .article .filtres-container {
+.articles .article .description {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.articles .article .description .date {
+  font-family: "poppins", sans-serif;
+  font-size: 1em;
+  font-weight: regular;
+  text-transform: uppercase;
+}
+.articles .article .description .title {
+  width: 80%;
+  font-family: "poppins", sans-serif;
+  font-size: 1.2em;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+}
+.articles .article .description .filtres-container {
   display: flex;
   justify-content: center;
   column-gap: 1%;
   width: 100%;
-  margin: 0 0 5% 0;
 }
-.articles .article .categorie {
-  width: fit-content;
+.articles .article .description .categorie {
   font-size: 1em;
-  font-weight: 600;
   border: 1px solid #319B7A;
   border-radius: 15px;
-  padding: 0% 1% 0 1%;
+  padding: 0% 2%;
 }
-.articles .article .resume {
+.articles .article .description .resume {
+  font-size: 1em;
   width: 80%;
-  margin: 0 auto;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   white-space: pre-wrap;
+  text-overflow: ellipsis;
+  /* Équivalent avec Firefox */
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-line-clamp: 3;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 }
-.articles .article .readMore-button {
-  height: 10%;
-  width: 35%;
-  border-radius: 15px;
+.articles .article .description .readMore-button {
+  padding: 2% 0;
+  width: 40%;
+  border-radius: 1em;
   background-color: #319B7A;
   font-family: "poppins", sans-serif;
   text-transform: uppercase;
@@ -272,13 +282,15 @@
   text-align: center;
   color: #f6f6f6;
   font-weight: 600;
-  margin: 5% auto auto auto;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
 }
-.articles .article .readMore-button:hover {
+.articles .article .description .readMore-button div {
+  color: #f6f6f6;
+}
+.articles .article .description .readMore-button:hover {
   background: #f6f6f6;
   border: 1px solid #319B7A;
   color: #319B7A !important;
@@ -288,17 +300,69 @@
     justify-content: center;
   }
   .articles .article {
-    width: 100%;
+    width: 100% !important;
     margin: 10% 0;
   }
+}
+@media screen and (max-width: 1024px) {
+  .articles .article {
+    width: 47%;
+  }
+  .articles .date {
+    font-size: 0.8em !important;
+  }
+  .articles .title {
+    font-size: 1em !important;
+  }
+  .articles .categorie {
+    font-size: 0.8em !important;
+  }
   .articles .resume {
-    width: 90%;
-    font-size: 0.8em;
+    font-size: 0.8em !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2 !important;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    /* Équivalent avec Firefox */
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-line-clamp: 2 !important;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
   }
   .articles .readMore-button {
     width: 100%;
-    margin: 2% 0;
-    font-size: 0.8em;
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .articles .date {
+    font-size: 0.9em !important;
+  }
+  .articles .title {
+    font-size: 1.1em !important;
+  }
+  .articles .categorie {
+    font-size: 0.9em !important;
+  }
+  .articles .resume {
+    font-size: 0.9em !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2 !important;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    /* Équivalent avec Firefox */
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-line-clamp: 2 !important;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+  }
+  .articles .readMore-button {
+    width: 100%;
+    font-size: 0.7em;
   }
 }
 

@@ -68,10 +68,9 @@
     {
         width: fit-content;
         font-size: 1em;
-        font-weight: 600;
         border: 1px solid $green;
         border-radius: 15px;
-        padding: 0% 1% 0 1%;
+        padding: 0% 2%;
     }
 
     .resume {
@@ -117,6 +116,7 @@
             width: 100%;
         }
 
+
         .featured-article-infos {
             width: 100%;
         }
@@ -124,7 +124,7 @@
         .resume {
             width: 90%;
             // padding: 2% 5%;
-            font-size: 0.8em;
+            // font-size: 0.8em;
         }
 
         .readMore-button {
@@ -148,7 +148,7 @@
         .resume {
             width: 90%;
             // padding: 2% 5%;
-            font-size: 0.8em;
+            // font-size: 0.8em;
         }
 
         .readMore-button {
@@ -199,7 +199,11 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;        
+        justify-content: center;    
+        
+        .categorie {
+            font-size : 0.1em;
+        }
 
         .filter-button {
             width:45%;
@@ -238,6 +242,8 @@
 
 
 
+
+
 .articles 
 {
     display : flex; 
@@ -248,11 +254,10 @@
 
     .article 
     {
-        display : flex;
+        display : flex !important;
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        overflow: hidden;
+        // overflow: hidden;   
         margin-bottom : 3%;
         width: 31.334%; 
         aspect-ratio: 1 / 1;
@@ -260,24 +265,6 @@
         transition: box-shadow 0.3s;
         box-shadow :13px 13px 30px #00000025, -	5px -5px 10px #ffffff;
 
-        .date 
-        {
-            font-family: 'poppins', sans-serif;
-            font-size: 1em; 
-            font-weight: regular;
-            text-transform: uppercase;
-            margin : 2% 0 0 0;
-        }
-
-        .title 
-        {
-            font-family: 'poppins', sans-serif;
-            font-size: 1.2em; 
-            font-weight: 600 !important;
-            text-transform: uppercase;
-            margin : 2% 0 !important;
-        }
-        
         .img-container 
         {
             width: 100%; /* Utilisez max-width au lieu de width */
@@ -292,52 +279,88 @@
             }
         }
 
+        .description
+        {
+            height: 75%;
+            width: 100%;
+            display : flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+        
+
+        .date 
+        {
+            font-family: 'poppins', sans-serif;
+            font-size: 1em; 
+            font-weight: regular;
+            text-transform: uppercase;
+        }
+
+        .title 
+        {
+            width : 80%;
+            font-family: 'poppins', sans-serif;
+            font-size: 1.2em; 
+            font-weight: 600 !important;
+            text-transform: uppercase;
+        }
+
         .filtres-container
         {
             display: flex;
             justify-content: center;
             column-gap: 1%;
             width:  100%;
-            margin : 0 0 5% 0;
         }
     
         .categorie
         {
-            width: fit-content;
             font-size: 1em;
-            font-weight: 600;
             border: 1px solid $green;
             border-radius: 15px;
-            padding: 0% 1% 0 1%;
+            padding: 0% 2%;
         }
 
-        .resume {
+        .resume { 
+            font-size: 1em;
             width: 80%;
-            margin: 0 auto; 
+
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
-            white-space: pre-wrap; 
-        }
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+        
+            /* Équivalent avec Firefox */
+            display: -moz-box;
+            -moz-box-orient: vertical;
+            -moz-line-clamp: 3;
+            white-space: pre-wrap;  
+            text-overflow: ellipsis;
+        }    
 
         .readMore-button {
-            height : 10%;
-            width: 35%;
-            border-radius: 15px;
+            padding : 2% 0;
+            width: 40%;
+            border-radius: 1em;
             background-color : $green; 
             font-family: 'poppins', sans-serif;
             text-transform: uppercase;
             text-decoration: none;
             text-align: center;
             color : $white;
-            // font-size: 1.2em; 
             font-weight: 600;
-            margin: 5% auto auto auto;
             display: flex;
             align-items: center;
             justify-content: center;
             transition : all 0.3s ease-in-out;
+
+            div{
+                color : $white;
+            }
 
             &:hover 
             {
@@ -346,6 +369,8 @@
                 color : $green !important;
             }
         }
+
+    }
     }
 
    
@@ -353,22 +378,137 @@
         justify-content: center;
 
         .article {
-            width: 100%;
+            width: 100% !important;
             margin: 10% 0;
-            // margin-bottom: 5%;
+        }
+    }
+
+
+    @media screen and (max-width: 1024px) {
+
+        .article {
+            width : 47%;
+        }
+
+        .date {
+            font-size : 0.8em !important;
+        }
+
+        .title {
+            font-size : 1em !important;
+        }
+
+        .categorie {
+            font-size : 0.8em !important;
         }
 
         .resume {
-            width: 90%;
-            font-size: 0.8em;
+            font-size : 0.8em !important;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2 !important;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+
+            /* Équivalent avec Firefox */
+            display: -moz-box;
+            -moz-box-orient: vertical;
+            -moz-line-clamp: 2 !important;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
         }
 
         .readMore-button {
             width: 100%;
-            margin: 2% 0;
-            font-size: 0.8em;   
+            font-size: 0.7em;
         }
     }
+
+    @media screen and (max-width: 1440px) {
+
+        .date {
+            font-size : 0.9em !important;
+        }
+
+        .title {
+            font-size : 1.1em !important;
+        }
+
+        .categorie {
+            font-size : 0.9em !important;
+        }
+
+        .resume {
+            font-size : 0.9em !important;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2 !important;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+
+            /* Équivalent avec Firefox */
+            display: -moz-box;
+            -moz-box-orient: vertical;
+            -moz-line-clamp: 2 !important;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+        }
+
+        .readMore-button {
+            width: 100%;
+            font-size: 0.7em;
+        }
+    }
+
+    // @media screen and (max-width: 1180px) {
+    //     .resume {
+    //         font-size: 1em;
+    //         overflow: hidden;
+    //         display: -webkit-box;
+    //         -webkit-box-orient: vertical;
+    //         -webkit-line-clamp: 1 !important;
+    //         white-space: pre-wrap;
+    //         text-overflow: ellipsis;
+        
+    //         /* Équivalent avec Firefox */
+    //         display: -moz-box;
+    //         -moz-box-orient: vertical;
+    //         -moz-line-clamp: 1 !important;
+    //         white-space: pre-wrap;  
+    //         text-overflow: ellipsis;
+    //     }
+    // }
+
+    // @media screen and (max-width: 1440px) {
+    //     justify-content: center;
+
+    //     .resume {
+    //         font-size: 1em;
+    //         width: 90%;
+    //         margin: 0 auto; 
+    //         overflow: hidden;
+    //         display: -webkit-box;
+    //         -webkit-box-orient: vertical;
+    //         -webkit-line-clamp: 2 !important;
+    //         white-space: pre-wrap;
+    //         text-overflow: ellipsis;
+        
+    //         /* Équivalent avec Firefox */
+    //         display: -moz-box;
+    //         -moz-box-orient: vertical;
+    //         -moz-line-clamp: 2 !important;
+    //         white-space: pre-wrap;  
+    //         text-overflow: ellipsis;
+    //     }
+
+    //     // .readMore-button {
+    //     //     width: 100%;
+    //     //     margin: 2% 0;
+    //     //     font-size: 0.8em;   
+    //     // }
+    // }
 }
 
 

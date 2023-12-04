@@ -24,7 +24,7 @@ color : 319B7A
         <p class="title">{{ post.title }}</p>
         <div class ="filtres-container">
             {% for category in post.categories %}
-            <p class="categorie" style="color : #{{page.color}}">{{category}}</p>
+            <div class="categorie" style="color : #{{page.color}}">{{category}}</div>
             {% endfor %}
         </div>
         <p class = resume>{{post.resume }}</p>
@@ -57,15 +57,17 @@ color : 319B7A
         <div class="img-container">
             <img src="{{ post.image }}" alt="{{ post.title }}">
         </div>
-        <p class="date" style="color : #{{page.color}}">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p class="title">{{ post.title }}</p>
-        <div class ="filtres-container">
-            {% for category in post.categories %}
-            <p class = "categorie" style="color : #{{page.color}}">{{category}}</p>
-            {% endfor %}
+        <div class = description>
+            <p class="date" style="color : #{{page.color}}">{{ post.date | date: "%B %d, %Y" }}</p>
+            <p class="title">{{ post.title }}</p>
+            <div class ="filtres-container">
+                {% for category in post.categories %}
+                <p class = "categorie" style="color : #{{page.color}}">{{category}}</p>
+                {% endfor %}
+            </div>
+            <p class="resume">{{post.resume }}</p>
+            <a href="{{ post.url }}" class="readMore-button"><div>Read more</div></a>
         </div>
-        <p class="resume">{{post.resume }}</p>
-        <a href="{{ post.url }}" class="readMore-button">Read more</a>
     </div>
     {% endfor %}
 </div>
