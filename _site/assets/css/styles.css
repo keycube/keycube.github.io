@@ -6,7 +6,7 @@
   overflow: hidden;
   width: 100%;
   height: 25vw;
-  border-radius: 24px;
+  border-radius: 1em;
   transition: box-shadow 0.3s;
   box-shadow: 13px 13px 30px rgba(0, 0, 0, 0.1450980392), -5px -5px 10px #ffffff;
 }
@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   height: 100%;
   width: 69%;
   text-align: center;
@@ -23,14 +24,12 @@
   font-size: 1em;
   font-weight: regular;
   text-transform: uppercase;
-  margin: 5% 0 0 0;
 }
 .featured-article .title {
   font-family: "poppins", sans-serif;
   font-size: 1.2em;
   font-weight: 600 !important;
   text-transform: uppercase;
-  margin: 2% 0 !important;
 }
 .featured-article .img-container {
   width: 31%;
@@ -40,14 +39,12 @@
   width: 100%; /* Utilisez max-width au lieu de width */
   height: 100%;
   object-fit: cover;
-  border-radius: 24px 0 24px 0;
 }
 .featured-article .filtres-container {
   display: flex;
   justify-content: center;
   column-gap: 1%;
   width: 100%;
-  margin: 0 0 5% 0;
 }
 .featured-article .categorie {
   width: fit-content;
@@ -63,11 +60,17 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   white-space: pre-wrap;
+  text-overflow: ellipsis;
+  /* Équivalent avec Firefox */
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-line-clamp: 3;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 }
 .featured-article .readMore-button {
-  height: 10%;
   width: 20%;
-  border-radius: 15px;
+  border-radius: 1em;
   background-color: #319B7A;
   font-family: "poppins", sans-serif;
   text-transform: uppercase;
@@ -75,7 +78,7 @@
   text-align: center;
   color: #f6f6f6;
   font-weight: 600;
-  margin: 4% 0 0 0;
+  padding: 1.5% 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,37 +94,42 @@
     flex-direction: column;
     height: auto;
   }
-  .featured-article .img-container {
-    width: 100%;
+  .featured-article .date {
+    font-size: 0.8em !important;
   }
-  .featured-article .featured-article-infos {
-    width: 100%;
+  .featured-article .title {
+    font-size: 1em !important;
+  }
+  .featured-article .categorie {
+    font-size: 0.8em !important;
   }
   .featured-article .resume {
-    width: 90%;
+    font-size: 0.8em !important;
   }
   .featured-article .readMore-button {
-    width: 50%;
-    margin: 10% 0;
+    font-size: 0.8em;
   }
 }
 @media screen and (max-width: 1024px) {
   .featured-article {
     flex-direction: column;
-    height: auto;
+    height: 80vw;
   }
   .featured-article .img-container {
     width: 100%;
+    height: 40%;
   }
   .featured-article .featured-article-infos {
+    height: 60%;
     width: 100%;
   }
-  .featured-article .resume {
-    width: 90%;
-  }
   .featured-article .readMore-button {
-    width: 50%;
-    margin: 10% 0;
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .featured-article .resume {
+    -webkit-line-clamp: 2 !important;
   }
 }
 
@@ -218,8 +226,8 @@
 .articles .article .img-container img {
   width: 100%; /* Utilisez max-width au lieu de width */
   height: 100%;
+  border-radius: 1em 1em 0 0;
   object-fit: cover;
-  border-radius: 24px 24px 0 0;
 }
 .articles .article .description {
   height: 75%;
@@ -305,8 +313,11 @@
   }
 }
 @media screen and (max-width: 1024px) {
+  .articles {
+    column-gap: 4%;
+  }
   .articles .article {
-    width: 47%;
+    width: 48%;
   }
   .articles .date {
     font-size: 0.8em !important;
@@ -319,17 +330,8 @@
   }
   .articles .resume {
     font-size: 0.8em !important;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 2 !important;
-    white-space: pre-wrap;
-    text-overflow: ellipsis;
-    /* Équivalent avec Firefox */
-    display: -moz-box;
-    -moz-box-orient: vertical;
     -moz-line-clamp: 2 !important;
-    white-space: pre-wrap;
-    text-overflow: ellipsis;
   }
   .articles .readMore-button {
     width: 100%;
@@ -348,21 +350,13 @@
   }
   .articles .resume {
     font-size: 0.9em !important;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
     -webkit-line-clamp: 2 !important;
-    white-space: pre-wrap;
-    text-overflow: ellipsis;
     /* Équivalent avec Firefox */
-    display: -moz-box;
-    -moz-box-orient: vertical;
     -moz-line-clamp: 2 !important;
-    white-space: pre-wrap;
-    text-overflow: ellipsis;
   }
   .articles .readMore-button {
     width: 100%;
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
 }
 

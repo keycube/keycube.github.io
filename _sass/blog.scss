@@ -8,7 +8,7 @@
     overflow : hidden;
     width: 100%; 
     height: 25vw; 
-    border-radius: 24px;
+    border-radius: 1em;
     transition: box-shadow 0.3s;
     box-shadow :13px 13px 30px #00000025, -	5px -5px 10px #ffffff;
 
@@ -18,6 +18,7 @@
             display : flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-evenly;
             height: 100%;
             width: 69%;
             text-align: center;
@@ -29,7 +30,6 @@
             font-size: 1em; 
             font-weight: regular;
             text-transform: uppercase;
-            margin : 5% 0 0 0;
         }
 
         .title 
@@ -38,7 +38,6 @@
             font-size: 1.2em; 
             font-weight: 600 !important;
             text-transform: uppercase;
-            margin : 2% 0 !important;
         }
 
     .img-container 
@@ -51,7 +50,7 @@
             width: 100%; /* Utilisez max-width au lieu de width */
             height: 100%;
             object-fit: cover;
-            border-radius: 24px 0 24px  0;
+            // border-radius: 1em 0 0 1em;
         }
     }
 
@@ -61,7 +60,6 @@
         justify-content: center;
         column-gap: 1%;
         width:  100%;
-        margin : 0 0 5% 0;
     }
 
     .categorie
@@ -80,21 +78,27 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         white-space: pre-wrap; 
+        text-overflow: ellipsis;
+
+        /* Équivalent avec Firefox */
+        display: -moz-box;
+        -moz-box-orient: vertical;
+        -moz-line-clamp: 3;
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
     }
 
     .readMore-button {
-        height : 10%;
         width: 20%;
-        border-radius: 15px;
+        border-radius: 1em;
         background-color : $green; 
         font-family: 'poppins', sans-serif;
         text-transform: uppercase;
         text-decoration: none;
         text-align: center;
         color : $white;
-        // font-size: 1.2em; 
         font-weight: 600;
-        margin: 4% 0 0 0;
+        padding: 1.5% 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -112,48 +116,50 @@
         flex-direction: column;
         height: auto;
 
-        .img-container {
-            width: 100%;
+        .date {
+            font-size : 0.8em !important;
         }
 
+        .title {
+            font-size : 1em !important;
+        }
 
-        .featured-article-infos {
-            width: 100%;
+        .categorie {
+            font-size : 0.8em !important;
         }
 
         .resume {
-            width: 90%;
-            // padding: 2% 5%;
-            // font-size: 0.8em;
+            font-size: 0.8em !important;    
         }
 
         .readMore-button {
-            width: 50%;
-            margin: 10% 0;
+            font-size: 0.8em;
         }
     }
 
     @media screen and (max-width: 1024px) {
         flex-direction: column;
-        height: auto;
+        height: 80vw;
 
         .img-container {
             width: 100%;
+            height : 40%;
         }
 
         .featured-article-infos {
+            height : 60%;
             width: 100%;
         }
 
-        .resume {
-            width: 90%;
-            // padding: 2% 5%;
-            // font-size: 0.8em;
-        }
-
         .readMore-button {
-            width: 50%;
-            margin: 10% 0;
+            width: 40%;  
+        }
+    }
+
+
+    @media screen and (max-width: 1440px) {
+        .resume {
+            -webkit-line-clamp: 2 !important;
         }
     }
 }
@@ -274,8 +280,9 @@
             {
                 width: 100%; /* Utilisez max-width au lieu de width */
                 height: 100%;
+                border-radius: 1em 1em 0 0;
                 object-fit: cover;
-                border-radius: 24px 24px 0 0;
+
             }
         }
 
@@ -386,8 +393,10 @@
 
     @media screen and (max-width: 1024px) {
 
+        column-gap: 4%;
+
         .article {
-            width : 47%;
+            width : 48%;
         }
 
         .date {
@@ -404,19 +413,8 @@
 
         .resume {
             font-size : 0.8em !important;
-
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
             -webkit-line-clamp: 2 !important;
-            white-space: pre-wrap;
-            text-overflow: ellipsis;
-
-            /* Équivalent avec Firefox */
-            display: -moz-box;
-            -moz-box-orient: vertical;
             -moz-line-clamp: 2 !important;
-            white-space: pre-wrap;
-            text-overflow: ellipsis;
         }
 
         .readMore-button {
@@ -441,74 +439,17 @@
 
         .resume {
             font-size : 0.9em !important;
-
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
             -webkit-line-clamp: 2 !important;
-            white-space: pre-wrap;
-            text-overflow: ellipsis;
 
             /* Équivalent avec Firefox */
-            display: -moz-box;
-            -moz-box-orient: vertical;
             -moz-line-clamp: 2 !important;
-            white-space: pre-wrap;
-            text-overflow: ellipsis;
         }
 
         .readMore-button {
             width: 100%;
-            font-size: 0.7em;
+            font-size: 0.8em;
         }
     }
-
-    // @media screen and (max-width: 1180px) {
-    //     .resume {
-    //         font-size: 1em;
-    //         overflow: hidden;
-    //         display: -webkit-box;
-    //         -webkit-box-orient: vertical;
-    //         -webkit-line-clamp: 1 !important;
-    //         white-space: pre-wrap;
-    //         text-overflow: ellipsis;
-        
-    //         /* Équivalent avec Firefox */
-    //         display: -moz-box;
-    //         -moz-box-orient: vertical;
-    //         -moz-line-clamp: 1 !important;
-    //         white-space: pre-wrap;  
-    //         text-overflow: ellipsis;
-    //     }
-    // }
-
-    // @media screen and (max-width: 1440px) {
-    //     justify-content: center;
-
-    //     .resume {
-    //         font-size: 1em;
-    //         width: 90%;
-    //         margin: 0 auto; 
-    //         overflow: hidden;
-    //         display: -webkit-box;
-    //         -webkit-box-orient: vertical;
-    //         -webkit-line-clamp: 2 !important;
-    //         white-space: pre-wrap;
-    //         text-overflow: ellipsis;
-        
-    //         /* Équivalent avec Firefox */
-    //         display: -moz-box;
-    //         -moz-box-orient: vertical;
-    //         -moz-line-clamp: 2 !important;
-    //         white-space: pre-wrap;  
-    //         text-overflow: ellipsis;
-    //     }
-
-    //     // .readMore-button {
-    //     //     width: 100%;
-    //     //     margin: 2% 0;
-    //     //     font-size: 0.8em;   
-    //     // }
-    // }
 }
 
 
