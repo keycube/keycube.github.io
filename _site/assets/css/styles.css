@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* Definition of all colors */
 .featured-article {
   margin: 0 0 5% 0;
   display: flex;
@@ -91,6 +92,7 @@
 }
 @media screen and (max-width: 768px) {
   .featured-article {
+    /* Styles for screens of 768 pixels width or less */
     flex-direction: column;
     height: auto;
   }
@@ -112,6 +114,7 @@
 }
 @media screen and (max-width: 1024px) {
   .featured-article {
+    /* Styles for screens of 1024px pixels width or less */
     flex-direction: column;
     height: 80vw;
   }
@@ -128,6 +131,9 @@
   }
 }
 @media screen and (max-width: 1440px) {
+  .featured-article {
+    /* Styles for screens of 1440px pixels width or less */
+  }
   .featured-article .resume {
     -webkit-line-clamp: 2 !important;
   }
@@ -161,6 +167,7 @@
 }
 @media screen and (max-width: 768px) {
   .category-filter {
+    /* Styles for screens of 768 pixels width or less */
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
@@ -183,6 +190,7 @@
 }
 @media screen and (max-width: 1024px) {
   .category-filter {
+    /* Styles for screens of 1024 pixels width or less */
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
@@ -305,6 +313,7 @@
 }
 @media screen and (max-width: 768px) {
   .articles {
+    /* Styles for screens of 768 pixels width or less */
     justify-content: center;
   }
   .articles .article {
@@ -314,6 +323,7 @@
 }
 @media screen and (max-width: 1024px) {
   .articles {
+    /* Styles for screens of 1024 pixels width or less */
     column-gap: 4%;
   }
   .articles .article {
@@ -339,6 +349,9 @@
   }
 }
 @media screen and (max-width: 1440px) {
+  .articles {
+    /* Styles for screens of 1440 pixels width or less */
+  }
   .articles .date {
     font-size: 0.9em !important;
   }
@@ -360,6 +373,7 @@
   }
 }
 
+/* Definition of all colors */
 .published-paper {
   display: flex;
   flex-direction: row;
@@ -404,6 +418,7 @@
 }
 
 @media screen and (max-width: 768px) {
+  /* Styles for screens of 768 pixels width or less */
   .published-paper {
     display: flex;
     flex-direction: column;
@@ -415,6 +430,7 @@
     margin: 3%;
   }
 }
+/* Definition of all colors */
 .page-content {
   display: flex;
   flex-direction: column;
@@ -533,7 +549,7 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  /* Styles pour les écrans de 768 pixels de largeur ou moins */
+  /* Styles for screens of 768 pixels width or less */
   .presentation-content {
     flex-direction: column;
   }
@@ -575,7 +591,7 @@ img {
   }
 }
 @media screen and (max-width: 1064px) {
-  /* Styles pour les écrans de 768 pixels de largeur ou moins */
+  /* Styles for screens of 1064px pixels width or less */
   .presentation-content {
     flex-direction: column;
   }
@@ -616,6 +632,7 @@ img {
     align-items: center;
   }
 }
+/* Definition of all colors */
 .hardware {
   height: 40vh;
   display: flex;
@@ -692,6 +709,7 @@ img {
 }
 @media screen and (max-width: 768px) {
   .hardware {
+    /* Styles for screens of 768 pixels width or less */
     flex-direction: column;
     height: auto;
     margin: 10% 0;
@@ -717,6 +735,7 @@ img {
 }
 @media screen and (max-width: 1024px) {
   .hardware {
+    /* Styles for screens of 1064px pixels width or less */
     flex-direction: column;
     height: auto;
     margin: 10% 0;
@@ -750,6 +769,7 @@ p {
   font-size: 1.2em;
 }
 
+/* Definition of all colors */
 .software {
   height: 40vh;
   display: flex;
@@ -826,6 +846,7 @@ p {
 }
 @media screen and (max-width: 768px) {
   .software {
+    /* Styles for screens of 768 pixels width or less */
     flex-direction: column;
     height: auto;
     margin: 10% 0;
@@ -856,6 +877,7 @@ p {
 }
 @media screen and (max-width: 1024px) {
   .software {
+    /* Styles for screens of 1024px pixels width or less */
     flex-direction: column;
     height: auto;
     margin: 10% 0;
@@ -895,6 +917,7 @@ p {
   font-size: 1.2em;
 }
 
+/* Definition of all colors */
 h3 {
   font-family: "Dela Gothic one", sans-serif;
   text-transform: uppercase;
@@ -960,6 +983,7 @@ h4 {
   margin-bottom: 3%;
 }
 
+/* Definition of all colors */
 * {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -1011,11 +1035,13 @@ nav {
 }
 
 @media screen and (min-width: 1064px) {
+  /* Styles for screens of 1064px pixels width or less */
   .link-page-nav {
     display: flex;
   }
 }
 @media screen and (max-width: 768px) {
+  /* Styles for screens of 768px pixels width or less */
   nav {
     display: flex;
     flex-direction: column;
@@ -1050,6 +1076,7 @@ nav {
   }
 }
 @media screen and (max-width: 1064px) {
+  /* Styles for screens of 1064px pixels width or less */
   nav {
     display: flex;
     flex-direction: column;
@@ -1172,6 +1199,7 @@ footer p {
 }
 
 @media screen and (max-width: 1064px) {
+  /* Styles for screens of 1064px pixels width or less */
   footer .logo_footer {
     width: 8%;
   }
@@ -1180,6 +1208,7 @@ footer p {
   }
 }
 @media screen and (max-width: 768px) {
+  /* Styles for screens of 768 pixels width or less */
   footer .logo_footer {
     width: 12%;
   }

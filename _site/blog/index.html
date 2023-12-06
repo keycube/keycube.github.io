@@ -1,28 +1,39 @@
 <!doctype html>
 <html>
   <head>
+    <!-- Set the character encoding for the document -->
     <meta charset="utf-8">
+    <!-- Set the title of the page using the data from Jekyll front matter -->
     <title>Blog</title>
-	<link rel="stylesheet" href="/assets/css/styles.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="/assets/img/logo/grey_black.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="/assets/img/logo/grey_black.ico" type="image/x-icon">
-
-
-
-	<script src="https://kit.fontawesome.com/307082a286.js" crossorigin="anonymous"></script>
-
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  
-	</head>
+    <!-- Link to the external stylesheet for styling -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Preconnect to the Google Fonts API to optimize font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Set the viewport width and initial scale for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the favicon for the website -->
+    <link rel="icon" href="/assets/img/logo/grey_black.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/logo/grey_black.ico" type="image/x-icon">
+    <!-- Include the Font Awesome Kit for icon usage -->
+    <script src="https://kit.fontawesome.com/307082a286.js" crossorigin="anonymous"></script>
+    <!-- Preconnect to the Google Fonts server with crossorigin attribute -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Link to Google Fonts for custom typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
   <body>
-	<nav>
+    <!-- Include the navigation section -->
+    <!-- Navigation bar -->
+<nav>
+    <!-- Logo for the navigation bar -->
     <img class="extern logo" src="/assets/img/logo/logo-319B7A.svg"/>
-    <div class="burger-menu">&#9776;</div> 
+
+    <!-- Burger menu icon for mobile navigation -->
+    <div class="burger-menu">&#9776;</div>
+
+    <!-- Navigation links container -->
     <div class="link-page-nav">
-        <!-- Vos liens de navigation existants -->
+        <!-- Existing navigation links -->
         
             <a href="/" >About</a>
         
@@ -35,26 +46,32 @@
             <a href="/software/" >Software</a>
         
     </div>
+
+    <!-- External icon for language selection -->
     <a class="extern language"><i class="fa-solid fa-language"></i></a>
 </nav>
 
+<!-- JavaScript code for handling the burger menu -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Selecting elements for burger menu functionality
     const burgerMenu = document.querySelector('.burger-menu');
     const linkPageNav = document.querySelector('.link-page-nav');
     const externIcon = document.querySelector('.fa-language');
 
+    // Function to toggle the menu visibility
     function toggleMenu() {
         linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
         document.body.classList.toggle('burger-menu-opened');
         externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
     }
 
+    // Adding click event listener to burger menu
     burgerMenu.addEventListener('click', toggleMenu);
 
-    // Ajoutez le gestionnaire d'événements pour le redimensionnement de la fenêtre
+    // Adding resize event listener to reset visibility on window resize
     window.addEventListener('resize', function () {
-        // Réinitialise la visibilité des éléments lorsque la largeur de la fenêtre dépasse 768px
+        // Resetting visibility when window width exceeds 768px
         if (window.innerWidth > 768) {
             linkPageNav.style.display = 'flex';
             document.body.classList.remove('burger-menu-opened');
@@ -62,20 +79,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
 </script>
 
-
-
-
-
-    <script src="/assets/js/blog-script.js"></script>
+    <!-- Include the main content of the page -->
+    <script src="http://localhost:4000/assets/js/blog-script.js"></script>
 
 <section>
-
-<h2><i class="fa-solid fa-square" style="color: #319B7A"></i> FEATURED </h2>
-
+    <!-- Featured Posts Section -->
+    <h2><i class="fa-solid fa-square" style="color: #319B7A"></i> FEATURED </h2>
     
     
     
@@ -86,188 +97,222 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     
-
     <div class="featured-article">
+        <!-- Featured Article Image Container -->
         <div class="img-container">
             <img src="/assets/img/post1.jpg" alt="Welcome to keycube!" />
         </div>
+        <!-- Featured Article Information -->
         <div class="featured-article-infos">
-        <p class="date" style="color : #319B7A">October 24, 2023</p>
-        <p class="title">Welcome to keycube!</p>
-        <div class="filtres-container">
-            
-            <div class="categorie" style="color : #319B7A">Games</div>
-            
-            <div class="categorie" style="color : #319B7A">Tools</div>
-            
-            <div class="categorie" style="color : #319B7A">Divers</div>
-            
-        </div>
-        <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        <a href="/games/tools/divers/2023/10/24/welcome-to-jekyll.html" class="readMore-button">Read more</a>
-        </div>
-    </div>
-    
-    
-
-
-<h2><i class="fa-solid fa-square" style="color: #319B7A"></i> LAST POSTED</h2>
-
-<div class="category-filter">
-  <button class="filter-button button-all" style="color: #319B7A; border: solid 1px #319B7A" data-category="Toutes les catégories">See all</button>
-  <p class="text-filter" style="color: #319B7A">Or filter by</p>
-      
-  
-    
-      
-        
-        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Tools">Tools</button>
-      
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-    
-      
-        
-        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Others">Others</button>
-      
-    
-  
-    
-      
-        
-        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Games">Games</button>
-      
-    
-      
-    
-      
-        
-        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Divers">Divers</button>
-      
-    
-  
-</div>
-
-<div class="articles">
-    
-    <div class="article">
-        <div class="img-container">
-            <img src="/assets/img/post1.jpg" alt="post4" />
-        </div>
-        <div class="description">
-            <p class="date" style="color : #319B7A">November 10, 2023</p>
-            <p class="title">post4</p>
-            <div class="filtres-container">
-                
-                <p class="categorie" style="color : #319B7A">Tools</p>
-                
-            </div>
-            <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-            <a href="/tools/2023/11/10/post4.html" class="readMore-button"><div>Read more</div></a>
-        </div>
-    </div>
-    
-    <div class="article">
-        <div class="img-container">
-            <img src="/assets/img/post1.jpg" alt="post3" />
-        </div>
-        <div class="description">
-            <p class="date" style="color : #319B7A">November 10, 2023</p>
-            <p class="title">post3</p>
-            <div class="filtres-container">
-                
-                <p class="categorie" style="color : #319B7A">Tools</p>
-                
-            </div>
-            <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-            <a href="/tools/2023/11/10/post3.html" class="readMore-button"><div>Read more</div></a>
-        </div>
-    </div>
-    
-    <div class="article">
-        <div class="img-container">
-            <img src="/assets/img/post1.jpg" alt="post 2" />
-        </div>
-        <div class="description">
-            <p class="date" style="color : #319B7A">November 04, 2023</p>
-            <p class="title">post 2</p>
-            <div class="filtres-container">
-                
-                <p class="categorie" style="color : #319B7A">Tools</p>
-                
-            </div>
-            <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-            <a href="/tools/2023/11/04/post2.html" class="readMore-button"><div>Read more</div></a>
-        </div>
-    </div>
-    
-    <div class="article">
-        <div class="img-container">
-            <img src="/assets/img/post1.jpg" alt="Welcome to Keycube!" />
-        </div>
-        <div class="description">
-            <p class="date" style="color : #319B7A">October 25, 2023</p>
-            <p class="title">Welcome to Keycube!</p>
-            <div class="filtres-container">
-                
-                <p class="categorie" style="color : #319B7A">Others</p>
-                
-            </div>
-            <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <a href="/others/2023/10/25/post-test.html" class="readMore-button"><div>Read more</div></a>
-        </div>
-    </div>
-    
-    <div class="article">
-        <div class="img-container">
-            <img src="/assets/img/post1.jpg" alt="Welcome to keycube!" />
-        </div>
-        <div class="description">
             <p class="date" style="color : #319B7A">October 24, 2023</p>
             <p class="title">Welcome to keycube!</p>
+            <!-- Categories of the Featured Post -->
             <div class="filtres-container">
                 
-                <p class="categorie" style="color : #319B7A">Games</p>
+                <div class="categorie" style="color : #319B7A">Games</div>
                 
-                <p class="categorie" style="color : #319B7A">Tools</p>
+                <div class="categorie" style="color : #319B7A">Tools</div>
                 
-                <p class="categorie" style="color : #319B7A">Divers</p>
+                <div class="categorie" style="color : #319B7A">Divers</div>
                 
             </div>
             <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <a href="/games/tools/divers/2023/10/24/welcome-to-jekyll.html" class="readMore-button"><div>Read more</div></a>
+            <!-- Read More Button -->
+            <a href="/games/tools/divers/2023/10/24/welcome-to-jekyll.html" class="readMore-button">Read more</a>
         </div>
     </div>
     
-</div>
-
-
+    
+    <!-- Last Posted Posts Section -->
+    <h2><i class="fa-solid fa-square" style="color: #319B7A"></i> LAST POSTED</h2>
+    <!-- Category Filter Buttons -->
+    <div class="category-filter">
+        <button class="filter-button button-all" style="color: #319B7A; border: solid 1px #319B7A" data-category="Toutes les catégories">See all</button>
+        <p class="text-filter" style="color: #319B7A">Or filter by</p>
+        
+        <!-- Loop through posts to get unique categories for filtering -->
+        
+        
+        
+        
+        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Tools">Tools</button>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Others">Others</button>
+        
+        
+        
+        
+        
+        
+        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Games">Games</button>
+        
+        
+        
+        
+        
+        
+        <button class="filter-button" style="color: #319B7A; border: solid 1px #319B7A" data-category="Divers">Divers</button>
+        
+        
+        
+    </div>
+    <!-- Articles Section -->
+    <div class="articles">
+        
+        <div class="article">
+            <!-- Article Image Container -->
+            <div class="img-container">
+                <img src="/assets/img/post1.jpg" alt="post4" />
+            </div>
+            <!-- Article Description -->
+            <div class="description">
+                <p class="date" style="color : #319B7A">November 10, 2023</p>
+                <p class="title">post4</p>
+                <!-- Categories of the Article -->
+                <div class="filtres-container">
+                    
+                    <p class="categorie" style="color : #319B7A">Tools</p>
+                    
+                </div>
+                <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <!-- Read More Button -->
+                <a href="/tools/2023/11/10/post4.html" class="readMore-button"><div>Read more</div></a>
+            </div>
+        </div>
+        
+        <div class="article">
+            <!-- Article Image Container -->
+            <div class="img-container">
+                <img src="/assets/img/post1.jpg" alt="post3" />
+            </div>
+            <!-- Article Description -->
+            <div class="description">
+                <p class="date" style="color : #319B7A">November 10, 2023</p>
+                <p class="title">post3</p>
+                <!-- Categories of the Article -->
+                <div class="filtres-container">
+                    
+                    <p class="categorie" style="color : #319B7A">Tools</p>
+                    
+                </div>
+                <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <!-- Read More Button -->
+                <a href="/tools/2023/11/10/post3.html" class="readMore-button"><div>Read more</div></a>
+            </div>
+        </div>
+        
+        <div class="article">
+            <!-- Article Image Container -->
+            <div class="img-container">
+                <img src="/assets/img/post1.jpg" alt="post 2" />
+            </div>
+            <!-- Article Description -->
+            <div class="description">
+                <p class="date" style="color : #319B7A">November 04, 2023</p>
+                <p class="title">post 2</p>
+                <!-- Categories of the Article -->
+                <div class="filtres-container">
+                    
+                    <p class="categorie" style="color : #319B7A">Tools</p>
+                    
+                </div>
+                <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                <!-- Read More Button -->
+                <a href="/tools/2023/11/04/post2.html" class="readMore-button"><div>Read more</div></a>
+            </div>
+        </div>
+        
+        <div class="article">
+            <!-- Article Image Container -->
+            <div class="img-container">
+                <img src="/assets/img/post1.jpg" alt="Welcome to Keycube!" />
+            </div>
+            <!-- Article Description -->
+            <div class="description">
+                <p class="date" style="color : #319B7A">October 25, 2023</p>
+                <p class="title">Welcome to Keycube!</p>
+                <!-- Categories of the Article -->
+                <div class="filtres-container">
+                    
+                    <p class="categorie" style="color : #319B7A">Others</p>
+                    
+                </div>
+                <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <!-- Read More Button -->
+                <a href="/others/2023/10/25/post-test.html" class="readMore-button"><div>Read more</div></a>
+            </div>
+        </div>
+        
+        <div class="article">
+            <!-- Article Image Container -->
+            <div class="img-container">
+                <img src="/assets/img/post1.jpg" alt="Welcome to keycube!" />
+            </div>
+            <!-- Article Description -->
+            <div class="description">
+                <p class="date" style="color : #319B7A">October 24, 2023</p>
+                <p class="title">Welcome to keycube!</p>
+                <!-- Categories of the Article -->
+                <div class="filtres-container">
+                    
+                    <p class="categorie" style="color : #319B7A">Games</p>
+                    
+                    <p class="categorie" style="color : #319B7A">Tools</p>
+                    
+                    <p class="categorie" style="color : #319B7A">Divers</p>
+                    
+                </div>
+                <p class="resume">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <!-- Read More Button -->
+                <a href="/games/tools/divers/2023/10/24/welcome-to-jekyll.html" class="readMore-button"><div>Read more</div></a>
+            </div>
+        </div>
+        
+    </div>
 </section>
 
-	<footer style="background-color: #319B7A;">
-		<div class="social-networks">
-			<a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
-			<a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
-			<a href="/feed.xml"" target="_blank"><img class="picto" src="/assets/img/pictos/rss-solid.svg" /></a>
-		</div>
-		<a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
-		<a href="#">keycube</a>
-		<p></p>
+    <!-- Include the footer section -->
+    <!-- Footer section -->
+<footer style="background-color: #319B7A;">
+    <!-- Social networks icons -->
+    <div class="social-networks">
+        <a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
+        <a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
+        <a href="/feed.xml" target="_blank"><img class="picto" src="/assets/img/pictos/rss-solid.svg" /></a>
+    </div>
+
+    <!-- Logo in the footer -->
+    <a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
+
+    <!-- Footer text -->
+    <a href="#">keycube</a>
+    <p></p> <!-- Placeholder for additional content -->
 </footer>
 
+<!-- JavaScript code to update the footer with the current year -->
 <script>
-	var annee = new Date().getFullYear();
-	var footer = document.querySelector("footer p");
-	footer.innerHTML = annee;
+    // Get the current year
+    var currentYear = new Date().getFullYear();
 
+    // Select the paragraph element in the footer
+    var footerParagraph = document.querySelector("footer p");
+
+    // Update the content of the paragraph with the current year
+    footerParagraph.innerHTML = currentYear;
 </script>
+
   </body>
 </html>

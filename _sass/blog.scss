@@ -113,6 +113,7 @@
     }
 
     @media screen and (max-width: 768px) {
+        /* Styles for screens of 768 pixels width or less */    
         flex-direction: column;
         height: auto;
 
@@ -138,6 +139,7 @@
     }
 
     @media screen and (max-width: 1024px) {
+        /* Styles for screens of 1024px pixels width or less */    
         flex-direction: column;
         height: 80vw;
 
@@ -158,6 +160,7 @@
 
 
     @media screen and (max-width: 1440px) {
+        /* Styles for screens of 1440px pixels width or less */    
         .resume {
             -webkit-line-clamp: 2 !important;
         }
@@ -202,6 +205,7 @@
     }
 
     @media screen and (max-width: 768px) {
+        /* Styles for screens of 768 pixels width or less */    
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
@@ -225,6 +229,7 @@
     }
 
     @media screen and (max-width: 1024px) {
+        /* Styles for screens of 1024 pixels width or less */    
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
@@ -382,6 +387,7 @@
 
    
     @media screen and (max-width: 768px) {
+            /* Styles for screens of 768 pixels width or less */    
         justify-content: center;
 
         .article {
@@ -392,7 +398,7 @@
 
 
     @media screen and (max-width: 1024px) {
-
+        /* Styles for screens of 1024 pixels width or less */    
         column-gap: 4%;
 
         .article {
@@ -424,6 +430,7 @@
     }
 
     @media screen and (max-width: 1440px) {
+        /* Styles for screens of 1440 pixels width or less */    
 
         .date {
             font-size : 0.9em !important;

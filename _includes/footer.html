@@ -1,17 +1,28 @@
+<!-- Footer section -->
 <footer style="background-color: #{{page.color}};">
-		<div class="social-networks">
-			<a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
-			<a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
-			<a href="{{ "/feed.xml" | relative_url }}"" target="_blank"><img class="picto" src="/assets/img/pictos/rss-solid.svg" /></a>
-		</div>
-		<a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
-		<a href="#">keycube</a>
-		<p></p>
+    <!-- Social networks icons -->
+    <div class="social-networks">
+        <a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
+        <a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
+        <a href="{{ "/feed.xml" | relative_url }}" target="_blank"><img class="picto" src="/assets/img/pictos/rss-solid.svg" /></a>
+    </div>
+
+    <!-- Logo in the footer -->
+    <a href="#"><img class="logo_footer" src="/assets/img/logo/logo-FFFFFF.svg"/></a>
+
+    <!-- Footer text -->
+    <a href="#">keycube</a>
+    <p></p> <!-- Placeholder for additional content -->
 </footer>
 
+<!-- JavaScript code to update the footer with the current year -->
 <script>
-	var annee = new Date().getFullYear();
-	var footer = document.querySelector("footer p");
-	footer.innerHTML = annee;
+    // Get the current year
+    var currentYear = new Date().getFullYear();
 
+    // Select the paragraph element in the footer
+    var footerParagraph = document.querySelector("footer p");
+
+    // Update the content of the paragraph with the current year
+    footerParagraph.innerHTML = currentYear;
 </script>

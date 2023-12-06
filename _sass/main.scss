@@ -61,6 +61,7 @@ nav {
 }
 
 @media screen and (min-width: 1064px) {
+  /* Styles for screens of 1064px pixels width or less */    
   .link-page-nav{
     display: flex;
   }
@@ -68,6 +69,8 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+  /* Styles for screens of 768px pixels width or less */    
+
   nav {
       display: flex;
       flex-direction: column;
@@ -111,6 +114,7 @@ nav {
 }
 
 @media screen and (max-width: 1064px) {
+  /* Styles for screens of 1064px pixels width or less */    
   nav {
       display: flex;
       flex-direction: column;
@@ -272,6 +276,7 @@ footer {
 }
 
 @media screen and (max-width: 1064px) {
+  /* Styles for screens of 1064px pixels width or less */    
   footer {
     .logo_footer{
       width: 8%;
@@ -284,6 +289,7 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+  /* Styles for screens of 768 pixels width or less */    
   footer {
     .logo_footer{
       width: 12%;

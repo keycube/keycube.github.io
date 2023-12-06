@@ -95,16 +95,14 @@
     }
 
     &:nth-child(even) {
-        .description {
-            // Garder l'ordre du texte à gauche
-        }
 
         .img-container {
             order: 2; // Inverser l'ordre de l'image à gauche
-            // text-align: end; // Aligner l'image à gauche
         }
     }
     @media screen and (max-width: 768px) {
+        /* Styles for screens of 768 pixels width or less */    
+
     
         flex-direction: column;
         height: auto;
@@ -139,7 +137,7 @@
         }
     }
     @media screen and (max-width: 1024px) {
-    
+        /* Styles for screens of 1024px pixels width or less */    
         flex-direction: column;
         height: auto;
         margin: 10% 0;
