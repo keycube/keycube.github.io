@@ -67,22 +67,18 @@
     }
 }
 
-.contributor-content {
-	margin-bottom: 10vh;
-}
-
 
   .contributor-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap : wrap;
 	align-items: center;
 	justify-content: start;
 	text-align: center;
-	flex-wrap: wrap;
 
 	a {
 		text-decoration: none;
-		text-transform: uppercase;
+		text-transform: capitalize;
 		font-weight: 600;
 		margin: 2% 2% 2% 0;
 		.contributor-profil{
@@ -226,7 +222,7 @@
 		flex-wrap: wrap;
 	
 		a {
-			margin: 2%;
+			// margin: 2%;
 			
 			.contributor-profil {
 				width: 10vw; 

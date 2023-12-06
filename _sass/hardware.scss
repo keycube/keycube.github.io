@@ -15,8 +15,19 @@
         flex-direction: column;
         justify-content: space-between;
 
-        h2{
+        .title{
+            width: 100%;   
+            display : flex;
+            align-items: center;
             margin: 0 0 2% 0;
+
+            h2{
+                margin : 0;
+            }
+
+            i{
+                margin-right : 1%;
+            }
         }
 
         .link 
@@ -46,7 +57,9 @@
             &:hover 
             {
                 background: none;  
-                color : $yellow !important;
+                p{
+                    color : $yellow;
+                }
             }
         }
     }
@@ -76,9 +89,19 @@
 
     &:nth-child(odd) {
 
-        h2 {
-            text-align: end;
-            align-self: flex-end;
+        .title{
+            align-items: center;
+            margin: 0 0 2% 0;
+            justify-content: end;
+
+            h2{
+                order : 1;
+            }
+
+            i{
+                order : 2;
+                margin-left :1%;
+            }
         }
 
         .description {
@@ -144,9 +167,9 @@
         margin: 10% 0;
 
         .separator {
-            width : 20%;
+            width : 70%;
             margin : 5% auto;
-            border-bottom : 5px solid $yellow;
+            border-bottom : 1px solid $yellow;
         }
     
         .description,

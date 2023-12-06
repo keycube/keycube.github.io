@@ -44,7 +44,9 @@
             &:hover 
             {
                 background: none;  
-                color : $orange !important;
+                p{
+                    color : $orange;
+                }
             }
         }
     }
@@ -143,9 +145,9 @@
         margin: 10% 0;
 
         .separator {
-            width : 20%;
+            width : 70%;
             margin : 5% auto;
-            border-bottom : 5px solid $orange;
+            border-bottom : 1px solid $orange;
         }
     
         .description,

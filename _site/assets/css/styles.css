@@ -146,9 +146,6 @@
   column-gap: 1%;
   margin: 0 0 2% 0;
 }
-.category-filter p {
-  margin-left: 2%;
-}
 .category-filter .filter-button {
   padding: 0 1% 0 1%;
   border-radius: 15px;
@@ -492,21 +489,17 @@ img {
   transition: transform 0.2s ease;
 }
 
-.contributor-content {
-  margin-bottom: 10vh;
-}
-
 .contributor-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: start;
   text-align: center;
-  flex-wrap: wrap;
 }
 .contributor-container a {
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 600;
   margin: 2% 2% 2% 0;
 }
@@ -613,9 +606,6 @@ img {
     text-align: center;
     flex-wrap: wrap;
   }
-  .contributor-container a {
-    margin: 2%;
-  }
   .contributor-container a .contributor-profil {
     width: 10vw;
     height: 10vw;
@@ -645,8 +635,17 @@ img {
   flex-direction: column;
   justify-content: space-between;
 }
-.hardware .description h2 {
+.hardware .description .title {
+  width: 100%;
+  display: flex;
+  align-items: center;
   margin: 0 0 2% 0;
+}
+.hardware .description .title h2 {
+  margin: 0;
+}
+.hardware .description .title i {
+  margin-right: 1%;
 }
 .hardware .description .link {
   width: 30%;
@@ -672,7 +671,9 @@ img {
 }
 .hardware .description .link:hover {
   background: none;
-  color: #F1D248 !important;
+}
+.hardware .description .link:hover p {
+  color: #F1D248;
 }
 .hardware .img-container {
   width: 40%;
@@ -690,9 +691,17 @@ img {
 .hardware:last-child .separator {
   display: none;
 }
-.hardware:nth-child(odd) h2 {
-  text-align: end;
-  align-self: flex-end;
+.hardware:nth-child(odd) .title {
+  align-items: center;
+  margin: 0 0 2% 0;
+  justify-content: end;
+}
+.hardware:nth-child(odd) .title h2 {
+  order: 1;
+}
+.hardware:nth-child(odd) .title i {
+  order: 2;
+  margin-left: 1%;
 }
 .hardware:nth-child(odd) .description {
   order: 2;
@@ -741,9 +750,9 @@ img {
     margin: 10% 0;
   }
   .hardware .separator {
-    width: 20%;
+    width: 70%;
     margin: 5% auto;
-    border-bottom: 5px solid #F1D248;
+    border-bottom: 1px solid #F1D248;
   }
   .hardware .description,
   .hardware .img-container {
@@ -807,7 +816,9 @@ p {
 }
 .software .description .link:hover {
   background: none;
-  color: #DC800F !important;
+}
+.software .description .link:hover p {
+  color: #DC800F;
 }
 .software .img-container {
   width: 40%;
@@ -883,9 +894,9 @@ p {
     margin: 10% 0;
   }
   .software .separator {
-    width: 20%;
+    width: 70%;
     margin: 5% auto;
-    border-bottom: 5px solid #DC800F;
+    border-bottom: 1px solid #DC800F;
   }
   .software .description,
   .software .img-container {

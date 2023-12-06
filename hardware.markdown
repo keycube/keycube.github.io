@@ -15,7 +15,7 @@ color: F1D248  # Set the color variable for the page
     <div class="hardware">
         <div class="description">
             <!-- Hardware Title and Description -->
-            <h2 style="text-transform: uppercase"><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> {{hardware.title}} </h2>
+            <div class = title><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> <h2 style="text-transform: uppercase">{{hardware.title}}</h2></div>
             <p>{{hardware.description}}</p>
             <!-- Key Features of the Hardware -->
             <p style="color: #{{ page.color }}"> Key features</p>
