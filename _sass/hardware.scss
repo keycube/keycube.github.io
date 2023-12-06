@@ -107,7 +107,7 @@
     }
 
     @media screen and (max-width: 768px) {
-    
+        /* Styles for screens of 768 pixels width or less */    
         flex-direction: column;
         height: auto;
         margin: 10% 0;
@@ -138,7 +138,7 @@
     }
 
     @media screen and (max-width: 1024px) {
-    
+        /* Styles for screens of 1064px pixels width or less */    
         flex-direction: column;
         height: auto;
         margin: 10% 0;

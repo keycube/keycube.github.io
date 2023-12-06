@@ -4,25 +4,39 @@ color : 319b7a
 styles:
 ---
 
-<div class = "post-img-container">
-    <img class = "img-cover" src="{{ page.image }}" alt="{{ page.title }}">
+<!-- Container for the post image -->
+<div class="post-img-container">
+    <!-- Cover image for the post -->
+    <img class="img-cover" src="{{ page.image }}" alt="{{ page.title }}">
 </div>
 
+<!-- Main content section for the post -->
 <section>
-<div class = post-description>
-<div class = categories> 
-    {% for category in page.categories %}
-        <p class="category">{{ category }}</p>
-    {% endfor %}
-</div>
+    <div class="post-description">
+        <!-- Categories associated with the post -->
+        <div class="categories"> 
+            {% for category in page.categories %}
+                <p class="category">{{ category }}</p>
+            {% endfor %}
+        </div>
 
-<h2><i class="fa-solid fa-square" style="color: #319b7a"></i> {{ page.title }}</h2>
+        <!-- Title of the post -->
+        <h2><i class="fa-solid fa-square" style="color: #319b7a"></i> {{ page.title }}</h2>
 
-<div class = date>{{ page.date | date: "%B %d, %Y" }}</div>
-<div class = author>By {{page.author}}</div>
-{{ page.content }}
-</div>
+        <!-- Date of the post -->
+        <div class="date">{{ page.date | date: "%B %d, %Y" }}</div>
+
+        <!-- Author of the post -->
+        <div class="author">By {{ page.author }}</div>
+
+        <!-- Content of the post -->
+        {{ page.content }}
+    </div>
 </section>
 
-<style>footer{ background-color : #319b7a};</style>
-
+<!-- Inline styles to set the background color of the footer -->
+<style>
+    footer {
+        background-color: #319b7a;
+    }
+</style>

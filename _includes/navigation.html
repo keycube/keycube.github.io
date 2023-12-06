@@ -1,32 +1,44 @@
+<!-- Navigation bar -->
 <nav>
+    <!-- Logo for the navigation bar -->
     <img class="extern logo" src="/assets/img/logo/logo-{{page.color}}.svg"/>
-    <div class="burger-menu">&#9776;</div> 
+
+    <!-- Burger menu icon for mobile navigation -->
+    <div class="burger-menu">&#9776;</div>
+
+    <!-- Navigation links container -->
     <div class="link-page-nav">
-        <!-- Vos liens de navigation existants -->
+        <!-- Existing navigation links -->
         {% for item in site.data.navigation %}
             <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
         {% endfor %}
     </div>
+
+    <!-- External icon for language selection -->
     <a class="extern language"><i class="fa-solid fa-language"></i></a>
 </nav>
 
+<!-- JavaScript code for handling the burger menu -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Selecting elements for burger menu functionality
     const burgerMenu = document.querySelector('.burger-menu');
     const linkPageNav = document.querySelector('.link-page-nav');
     const externIcon = document.querySelector('.fa-language');
 
+    // Function to toggle the menu visibility
     function toggleMenu() {
         linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
         document.body.classList.toggle('burger-menu-opened');
         externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
     }
 
+    // Adding click event listener to burger menu
     burgerMenu.addEventListener('click', toggleMenu);
 
-    // Ajoutez le gestionnaire d'événements pour le redimensionnement de la fenêtre
+    // Adding resize event listener to reset visibility on window resize
     window.addEventListener('resize', function () {
-        // Réinitialise la visibilité des éléments lorsque la largeur de la fenêtre dépasse 768px
+        // Resetting visibility when window width exceeds 768px
         if (window.innerWidth > 768) {
             linkPageNav.style.display = 'flex';
             document.body.classList.remove('burger-menu-opened');
@@ -34,10 +46,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
 </script>
-
-
-
-
