@@ -73,9 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', function () {
         // Resetting visibility when window width exceeds 768px
         if (window.innerWidth > 768) {
-            linkPageNav.style.display = 'flex';
+            linkPageNav.style.display = '';
             document.body.classList.remove('burger-menu-opened');
-            externIcon.style.display = 'flex';
         }
     });
 });
@@ -191,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="social-networks">
         <a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
         <a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
-        <a href="/feed.xml" target="_blank"><img class="picto" src="/assets/img/pictos/rss-solid.svg" /></a>
+        <a href="/feed.xml" target="_blank"><img class="picto rss" src="/assets/img/pictos/rss-solid.svg" /></a>
     </div>
 
     <!-- Logo in the footer -->

@@ -73,9 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', function () {
         // Resetting visibility when window width exceeds 768px
         if (window.innerWidth > 768) {
-            linkPageNav.style.display = 'flex';
+            linkPageNav.style.display = '';
             document.body.classList.remove('burger-menu-opened');
-            externIcon.style.display = 'flex';
         }
     });
 });
@@ -109,11 +108,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <div class="hardware">
         <div class="description">
-        <h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #F1D248"></i> Keycube designer edition </h2>
-        <p>The "KeyCube Designer Edition" caters to creative professionals. It features specialized keys for designers and artists, making it a powerful tool for graphic design and 3D modeling.</p>
-        <p style="color: #F1D248"> Key features</p> 
-        <p> Custom keycaps for shortcuts, pressure-sensitive keys for digital art, high color accuracy backlighting, and design software compatibility. </p>
-        <a href="https://github.com/keycube" class="link"><p>Voir le projet</p> </a>
+            <!-- Hardware Title and Description -->
+            <div class="title"><i class="fa-solid fa-square" style="color: #F1D248"></i> <h2 style="text-transform: uppercase">Keycube designer edition</h2></div>
+            <p>The "KeyCube Designer Edition" caters to creative professionals. It features specialized keys for designers and artists, making it a powerful tool for graphic design and 3D modeling.</p>
+            <!-- Key Features of the Hardware -->
+            <p style="color: #F1D248"> Key features</p>
+            <p> Custom keycaps for shortcuts, pressure-sensitive keys for digital art, high color accuracy backlighting, and design software compatibility. </p>
+            <!-- Link to the Project on GitHub -->
+            <a href="https://github.com/keycube" class="link"><p>Voir le projet</p> </a>
         </div>
         <!-- Hardware Image Container -->
         <div class="img-container">
@@ -124,11 +126,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <div class="hardware">
         <div class="description">
-        <h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #F1D248"></i> baby Keycube </h2>
-        <p>The "Baby KeyCube" is a compact and portable version of the original cubic keyboard, designed for users on the go or those with limited desk space. It maintains the same innovative cubic design but in a smaller form factor.</p>
-        <p style="color: #F1D248"> Key features</p> 
-        <p> Compact size, wireless connectivity, customizable LED lighting, ideal for travel and small workspaces. </p>
-        <a href="https://github.com/keycube" class="link"><p>Voir le projet</p> </a>
+            <!-- Hardware Title and Description -->
+            <div class="title"><i class="fa-solid fa-square" style="color: #F1D248"></i> <h2 style="text-transform: uppercase">baby Keycube</h2></div>
+            <p>The "Baby KeyCube" is a compact and portable version of the original cubic keyboard, designed for users on the go or those with limited desk space. It maintains the same innovative cubic design but in a smaller form factor.</p>
+            <!-- Key Features of the Hardware -->
+            <p style="color: #F1D248"> Key features</p>
+            <p> Compact size, wireless connectivity, customizable LED lighting, ideal for travel and small workspaces. </p>
+            <!-- Link to the Project on GitHub -->
+            <a href="https://github.com/keycube" class="link"><p>Voir le projet</p> </a>
         </div>
         <!-- Hardware Image Container -->
         <div class="img-container">
@@ -139,11 +144,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <div class="hardware">
         <div class="description">
-        <h2 style="text-transform : uppercase"><i class="fa-solid fa-square" style="color: #F1D248"></i> Keycube designer edition </h2>
-        <p>The "KeyCube Designer Edition" caters to creative professionals. It features specialized keys for designers and artists, making it a powerful tool for graphic design and 3D modeling.</p>
-        <p style="color: #F1D248"> Key features</p> 
-        <p> Custom keycaps for shortcuts, pressure-sensitive keys for digital art, high color accuracy backlighting, and design software compatibility. </p>
-        <a href="https://github.com/keycube" class="link"><p>Voir le projet</p> </a>
+            <!-- Hardware Title and Description -->
+            <div class="title"><i class="fa-solid fa-square" style="color: #F1D248"></i> <h2 style="text-transform: uppercase">Keycube designer edition</h2></div>
+            <p>The "KeyCube Designer Edition" caters to creative professionals. It features specialized keys for designers and artists, making it a powerful tool for graphic design and 3D modeling.</p>
+            <!-- Key Features of the Hardware -->
+            <p style="color: #F1D248"> Key features</p>
+            <p> Custom keycaps for shortcuts, pressure-sensitive keys for digital art, high color accuracy backlighting, and design software compatibility. </p>
+            <!-- Link to the Project on GitHub -->
+            <a href="https://github.com/keycube" class="link"><p>Voir le projet</p> </a>
         </div>
         <!-- Hardware Image Container -->
         <div class="img-container">
@@ -162,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="social-networks">
         <a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
         <a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
-        <a href="/feed.xml" target="_blank"><img class="picto" src="/assets/img/pictos/rss-solid.svg" /></a>
+        <a href="/feed.xml" target="_blank"><img class="picto rss" src="/assets/img/pictos/rss-solid.svg" /></a>
     </div>
 
     <!-- Logo in the footer -->
