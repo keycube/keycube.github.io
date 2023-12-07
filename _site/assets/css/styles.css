@@ -524,21 +524,23 @@ img {
   font-size: 0.6em;
   padding: 0 10%;
 }
-.contributor-container a .contributor-profil:hover .contributor-pseudo {
-  display: flex;
-  color: #f6f6f6;
-  background-color: rgba(212, 81, 83, 0.4941176471);
-  border-radius: 15px;
-  max-width: 5vw;
-  max-height: 5vw;
-  justify-content: center;
-  align-items: center;
-}
-.contributor-container a .contributor-profil:hover .contributor-pseudo p {
-  margin: 20%;
-}
-.contributor-container a .contributor-profil:hover {
-  box-shadow: 0 0 0 transparent;
+@media screen and (min-width: 1064px) {
+  .contributor-container a .contributor-profil:hover .contributor-pseudo {
+    display: flex;
+    color: #f6f6f6;
+    background-color: rgba(212, 81, 83, 0.4941176471);
+    border-radius: 15px;
+    max-width: 5vw;
+    max-height: 5vw;
+    justify-content: center;
+    align-items: center;
+  }
+  .contributor-container a .contributor-profil:hover .contributor-pseudo p {
+    margin: 20%;
+  }
+  .contributor-container a .contributor-profil:hover {
+    box-shadow: 0 0 0 transparent;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -548,7 +550,7 @@ img {
   }
   .text-content {
     width: 100%;
-    align-items: center;
+    align-items: start;
   }
   .button-white {
     margin: 10% 0;
@@ -590,7 +592,7 @@ img {
   }
   .text-content {
     width: 100%;
-    align-items: center;
+    align-items: start;
   }
   .button-white {
     margin: 10% 0;
@@ -1171,6 +1173,10 @@ section {
 }
 
 footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-top: 7%;
   padding: 2%;
@@ -1181,21 +1187,19 @@ footer .social-networks {
   align-items: center;
   margin-bottom: 2%;
 }
-footer .social-networks a {
-  width: auto;
-}
 footer .social-networks .picto {
   margin: 0 10px;
   width: 40px;
   transition: transform 0.2s ease;
 }
+footer .social-networks .picto .rss {
+  padding: 10px;
+}
 footer .social-networks .picto:hover {
   transform: scale(1.2);
 }
 footer .logo_footer {
-  display: block;
-  margin: 0 auto;
-  width: 4%;
+  width: 30%;
 }
 footer a {
   text-decoration: none;
@@ -1211,18 +1215,12 @@ footer p {
 
 @media screen and (max-width: 1064px) {
   /* Styles for screens of 1064px pixels width or less */
-  footer .logo_footer {
-    width: 8%;
-  }
   footer .picto {
     width: 30px;
   }
 }
 @media screen and (max-width: 768px) {
   /* Styles for screens of 768 pixels width or less */
-  footer .logo_footer {
-    width: 12%;
-  }
   footer .picto {
     width: 30px;
   }

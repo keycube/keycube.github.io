@@ -225,78 +225,74 @@ section{
 
 
 
-///////////////FOOTER/////////////////////
-footer {
-    text-align: center;
-    margin-top : 7%;
-    padding: 2%;
+  ///////////////FOOTER/////////////////////
+  footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top : 7%;
+      padding: 2%;
 
-    .social-networks {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 2%; 
+      .social-networks {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 2%; 
 
-        a{
-          width: auto;
+          // a{
+          //   width: auto;
+          // }
+
+      .picto{
+        margin: 0 10px;
+        width: 40px;
+        transition: transform 0.2s ease;
+
+        .rss {
+          padding: 10px;
         }
+      }
 
-		.picto{
-      margin: 0 10px;
-      width: 40px;
-      transition: transform 0.2s ease;
-		}
+      .picto:hover{
+        transform: scale(1.2);
+      }
+      
+      }
 
-		.picto:hover{
-      transform: scale(1.2);
-		}
-		
+      .logo_footer {
+          width: 30%;      
+      }
+    a{
+      text-decoration: none;
+      color:$white;
+
+      &:hover{
+        text-decoration: underline;
+      }
     }
 
-    .logo_footer {
-        display: block;
-        margin: 0 auto;
-		    width: 4%;
-        // margin-bottom: 2%; 
-		
-    }
-  a{
-    text-decoration: none;
-    color:$white;
-
-    &:hover{
-      text-decoration: underline;
+    p {
+      color: $white;
+      font-size:0.6em;
     }
   }
 
-	p {
-		color: $white;
-    font-size:0.6em;
-	}
-}
-
-@media screen and (max-width: 1064px) {
-  /* Styles for screens of 1064px pixels width or less */    
-  footer {
-    .logo_footer{
-      width: 8%;
-    }
-    
-    .picto{
-    width: 30px;
+  @media screen and (max-width: 1064px) {
+    /* Styles for screens of 1064px pixels width or less */    
+    footer {
+      .picto{
+      width: 30px;
+      }
     }
   }
-}
 
-@media screen and (max-width: 768px) {
-  /* Styles for screens of 768 pixels width or less */    
-  footer {
-    .logo_footer{
-      width: 12%;
-    }
-    
-    .picto{
-    width: 30px;
+  @media screen and (max-width: 768px) {
+    /* Styles for screens of 768 pixels width or less */    
+    footer {      
+      .picto{
+      width: 30px;
+      }
     }
   }
-}

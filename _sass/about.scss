@@ -11,6 +11,7 @@
 	align-items: center;
 	justify-content: center;
 }
+
 .text-content{
 	width: 80%;
 	display: flex;
@@ -105,6 +106,8 @@
 				padding: 0 10%;
 				
 			}
+			@media screen and (min-width: 1064px) {
+
 	
 			&:hover .contributor-pseudo{
 				display: flex;
@@ -128,6 +131,7 @@
 				box-shadow: 0 0 0 transparent; 
 
 			}
+		}
 			
 		}
 
@@ -149,7 +153,7 @@
 	
 	.text-content {
 		width: 100%; 
-		align-items: center; 
+		align-items: start; 
 	}
 	
 	.button-white {
@@ -202,7 +206,7 @@
 	
 	.text-content {
 		width: 100%; 
-		align-items: center; 
+		align-items: start; 
 	}
 	
 	.button-white {
