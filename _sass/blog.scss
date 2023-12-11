@@ -47,10 +47,9 @@
 
         img 
         {
-            width: 100%; /* Utilisez max-width au lieu de width */
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            // border-radius: 1em 0 0 1em;
         }
     }
 
@@ -80,7 +79,7 @@
         white-space: pre-wrap; 
         text-overflow: ellipsis;
 
-        /* Équivalent avec Firefox */
+        /*Firefox equivalent*/
         display: -moz-box;
         -moz-box-orient: vertical;
         -moz-line-clamp: 3;
@@ -274,12 +273,12 @@
 
         .img-container 
         {
-            width: 100%; /* Utilisez max-width au lieu de width */
+            width: 100%; 
             height: 25%;
 
             img 
             {
-                width: 100%; /* Utilisez max-width au lieu de width */
+                width: 100%; 
                 height: 100%;
                 border-radius: 1em 1em 0 0;
                 object-fit: cover;
@@ -342,7 +341,7 @@
             white-space: pre-wrap;
             text-overflow: ellipsis;
         
-            /* Équivalent avec Firefox */
+            /*Firefox equivalent*/
             display: -moz-box;
             -moz-box-orient: vertical;
             -moz-line-clamp: 3;

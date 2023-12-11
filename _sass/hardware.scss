@@ -80,7 +80,7 @@
     }
 
     &:last-child {
-        margin-bottom: 0; // Supprime la marge pour le dernier élément
+        margin-bottom: 0; // Delete margin for last child
         .separator
         {
             display : none;
@@ -105,8 +105,8 @@
         }
 
         .description {
-            order: 2; // Inverser l'ordre du texte et de l'image
-            text-align: end; // Aligner le texte à gauche
+            order: 2; // reverse order of text and image
+            text-align: end; 
         }
 
         .link {
@@ -114,18 +114,18 @@
         }
 
         .img-container {
-            order: 1; // Garder l'ordre de l'image à droite
+            order: 1;
         }
     }
 
     &:nth-child(even) {
         .description {
-            // Garder l'ordre du texte à gauche
+            
         }
 
         .img-container {
-            order: 2; // Inverser l'ordre de l'image à gauche
-            //text-align: end; // Aligner l'image à gauche
+            order: 2; 
+            
         }
     }
 
