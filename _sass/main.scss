@@ -179,6 +179,13 @@ nav {
     
 }
 
+@media screen and (max-width : 400px)
+{
+  h2{
+    font-size: 1.3em;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .citation{
     width: 100%;
@@ -220,6 +227,7 @@ section{
 	margin: auto;
 	justify-content: space-around;
 }
+
 
 
 

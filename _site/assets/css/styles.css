@@ -496,16 +496,20 @@ img {
   align-items: center;
   justify-content: start;
   text-align: center;
+  column-gap: 2%;
+  margin-bottom: -1.75%;
 }
 .contributor-container a {
   text-decoration: none;
   text-transform: capitalize;
   font-weight: 600;
-  margin: 2% 2% 2% 0;
+  width: 8.2%;
+  aspect-ratio: 1/1;
+  margin-bottom: 1.75%;
 }
 .contributor-container a .contributor-profil {
-  width: 5vw;
-  height: 5vw;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -530,8 +534,8 @@ img {
     color: #f6f6f6;
     background-color: rgba(212, 81, 83, 0.4941176471);
     border-radius: 15px;
-    max-width: 5vw;
-    max-height: 5vw;
+    max-width: 100%;
+    max-height: 100%;
     justify-content: center;
     align-items: center;
   }
@@ -543,46 +547,32 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
-  /* Styles for screens of 768 pixels width or less */
-  .presentation-content {
-    flex-direction: column;
+@media screen and (max-width: 360px) {
+  .contributor-pseudo {
+    font-size: 5px !important;
   }
-  .text-content {
-    width: 100%;
-    align-items: start;
-  }
-  .button-white {
-    margin: 10% 0;
-  }
-  img {
-    width: 100%;
-  }
+}
+@media screen and (max-width: 540px) {
   .contributor-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    flex-wrap: wrap;
+    margin-bottom: -2%;
+    column-gap: 2.6%;
   }
   .contributor-container a {
-    margin: 2%;
+    width: 14.5% !important;
   }
-  .contributor-container a .contributor-profil {
-    min-width: 20vw;
-    min-height: 20vw;
+}
+@media screen and (max-width: 740px) {
+  /* Styles pour les écrans de 350 pixels de large ou moins */
+  .contributor-container {
+    margin-bottom: -2%;
+    column-gap: 2%;
   }
-  .contributor-container a .contributor-profil .contributor-pseudo {
-    font-size: 10px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    color: #f6f6f6;
-    background-color: rgba(212, 81, 83, 0.4941176471);
-    border-radius: 15px;
-    justify-content: center;
-    align-items: center;
+  .contributor-container a {
+    margin-bottom: 2%;
+    width: 10.75%;
+  }
+  .contributor-pseudo {
+    font-size: 0.4em !important;
   }
 }
 @media screen and (max-width: 1064px) {
@@ -600,22 +590,14 @@ img {
   img {
     width: 100%;
   }
-  .contributor-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    flex-wrap: wrap;
-  }
   .contributor-container a .contributor-profil {
-    width: 10vw;
-    height: 10vw;
-  }
-  .contributor-container a .contributor-profil .contributor-pseudo {
-    font-size: 10px;
     width: 100%;
     height: 100%;
+  }
+  .contributor-container a .contributor-profil .contributor-pseudo {
+    font-size: 8px;
+    max-width: 100%;
+    max-height: 100%;
     display: flex;
     color: #f6f6f6;
     background-color: rgba(212, 81, 83, 0.4941176471);
@@ -1137,6 +1119,11 @@ nav {
   margin: 0 5%;
 }
 
+@media screen and (max-width: 400px) {
+  h2 {
+    font-size: 1.3em;
+  }
+}
 @media screen and (max-width: 768px) {
   .citation {
     width: 100%;
