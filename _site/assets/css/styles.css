@@ -608,7 +608,7 @@ img {
 }
 /* Definition of all colors used in the website. change one here and it will be changed everywhere the color is used*/
 .hardware {
-  height: 40vh;
+  height: 40%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 7%;
@@ -630,6 +630,7 @@ img {
 }
 .hardware .description .title i {
   margin-right: 1%;
+  font-size: 24px;
 }
 .hardware .description .link {
   width: 30%;
@@ -682,6 +683,7 @@ img {
 }
 .hardware:nth-child(odd) .title h2 {
   order: 1;
+  text-align: right;
 }
 .hardware:nth-child(odd) .title i {
   order: 2;
@@ -742,9 +744,18 @@ img {
   .hardware .img-container {
     width: 100%;
   }
-  .hardware:nth-child(odd) h2,
-  .hardware:nth-child(odd) .description, .hardware:nth-child(even) h2,
-  .hardware:nth-child(even) .description {
+  .hardware:nth-child(odd) .title, .hardware:nth-child(even) .title {
+    align-items: center;
+    margin: 0 0 2% 0;
+    justify-content: center;
+  }
+  .hardware:nth-child(odd) .title h2, .hardware:nth-child(even) .title h2 {
+    order: 2;
+  }
+  .hardware:nth-child(odd) .title i, .hardware:nth-child(even) .title i {
+    order: 1;
+  }
+  .hardware:nth-child(odd) .description, .hardware:nth-child(even) .description {
     text-align: center;
     align-self: center;
   }
@@ -764,7 +775,7 @@ p {
 
 /* Definition of all colors used in the website. change one here and it will be changed everywhere the color is used*/
 .software {
-  height: 40vh;
+  height: 40%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 7%;
@@ -775,8 +786,18 @@ p {
   flex-direction: column;
   justify-content: space-between;
 }
-.software .description h2 {
+.software .description .title {
+  width: 100%;
+  display: flex;
+  align-items: center;
   margin: 0 0 2% 0;
+}
+.software .description .title h2 {
+  margin: 0;
+}
+.software .description .title i {
+  margin-right: 1%;
+  font-size: 24px;
 }
 .software .description .link {
   width: 30%;
@@ -820,9 +841,18 @@ p {
 .software:last-child .separator {
   display: none;
 }
-.software:nth-child(odd) h2 {
-  align-self: flex-end;
-  text-align: end;
+.software:nth-child(odd) .title {
+  align-items: center;
+  margin: 0 0 2% 0;
+  justify-content: end;
+}
+.software:nth-child(odd) .title h2 {
+  order: 1;
+  text-align: right;
+}
+.software:nth-child(odd) .title i {
+  order: 2;
+  margin-left: 1%;
 }
 .software:nth-child(odd) .description {
   order: 2;
@@ -886,15 +916,23 @@ p {
   .software .img-container {
     width: 100%;
   }
-  .software:nth-child(odd) h2,
-  .software:nth-child(odd) .description, .software:nth-child(even) h2,
-  .software:nth-child(even) .description {
+  .software:nth-child(odd) .title, .software:nth-child(even) .title {
+    align-items: center;
+    margin: 0 0 2% 0;
+    justify-content: center;
+  }
+  .software:nth-child(odd) .title h2, .software:nth-child(even) .title h2 {
+    text-align: center;
+    order: 2;
+  }
+  .software:nth-child(odd) .title i, .software:nth-child(even) .title i {
+    order: 1;
+  }
+  .software:nth-child(odd) .description, .software:nth-child(even) .description {
     text-align: center;
     align-self: center;
   }
-  .software:nth-child(odd) h2 p,
-  .software:nth-child(odd) .description p, .software:nth-child(even) h2 p,
-  .software:nth-child(even) .description p {
+  .software:nth-child(odd) .description p, .software:nth-child(even) .description p {
     align-self: center;
     margin: 1% 0;
   }
