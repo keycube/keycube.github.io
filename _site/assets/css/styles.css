@@ -83,6 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #f6f6f6;
   transition: all 0.3s ease-in-out;
 }
 .featured-article .readMore-button:hover {
@@ -210,15 +211,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  column-gap: 3%;
-  margin-bottom: -3%;
+  column-gap: 2.75%;
+  margin-bottom: -2.75%;
 }
 .articles .article {
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 3%;
-  width: 31.334%;
+  margin-bottom: 2.75%;
+  width: 31.5%;
   aspect-ratio: 1/1;
   border-radius: 24px;
   transition: box-shadow 0.3s;
@@ -298,6 +299,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #f6f6f6;
   transition: all 0.3s ease-in-out;
 }
 .articles .article .description .readMore-button div {
@@ -306,7 +308,9 @@
 .articles .article .description .readMore-button:hover {
   background: #f6f6f6;
   border: 1px solid #319B7A;
-  color: #319B7A !important;
+}
+.articles .article .description .readMore-button:hover div {
+  color: #319B7A;
 }
 @media screen and (max-width: 768px) {
   .articles {
