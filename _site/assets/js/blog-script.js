@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Lorsque le document est prêt
+    // When the DOM is ready, run this function
 
-    // Récupère tous les boutons de filtre
+    // get all filter buttons   
     var filterButtons = document.querySelectorAll('.filter-button');
 
-    // Récupère tous les articles
+    // get all articles
     var articles = document.querySelectorAll('.article');
-    // Fonction pour filtrer les articles en fonction de la catégorie
-        // Fonction pour filtrer les articles en fonction des catégories sélectionnées
+    // filter articles by category
         function blogFilter(selectedCategories) {
   
             articles.forEach(function(article) {
@@ -15,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 var categories = filtersContainer.querySelectorAll('p');
     
                 if (selectedCategories.length === 0 || selectedCategories.includes('Toutes les catégories')) {
-                    // Affiche l'article si le bouton "See all" a été cliqué ou si aucune catégorie n'est sélectionnée
+                    // display the article if See all is selected or if there are no categories selected
                     article.style.display = 'block';
                 } else {
                     var showArticle = false;
                     
     
-                    // Vérifie si l'article appartient à au moins l'une des catégories sélectionnées
+                    // check if the article has any of the selected categories
                     categories.forEach(function(category) {
                         if (selectedCategories.includes(category.textContent)) {
                             showArticle = true;
@@ -37,22 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-    // Ajoute des écouteurs d'événements aux boutons de filtrage
+    // add event listeners to filter buttons
     filterButtons.forEach(function(button) {
         button.addEventListener('click', function() {
-            // Désactive la classe "active" pour tous les boutons
+            // deactive active class for all buttons
             filterButtons.forEach(function(btn) {
                 btn.classList.remove('active');
             });
 
-            // Active la classe "active" pour le bouton actuellement cliqué
+            // activate the clicked button
             button.classList.add('active');
 
-            // Continuez avec votre logique de filtrage ici
+            // get the category of the clicked button
             var category = button.getAttribute('data-category');
             blogFilter(category);
         });
-    });    // Ajoute des écouteurs d'événements aux boutons de filtrage
+    });  //add event listeners to filter buttons
     filterButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             var category = button.getAttribute('data-category');
@@ -60,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cliquez sur le bouton "See all" au chargement de la page
+    // click on See all button when the page loads
     var seeAllButton = document.querySelector('.filter-button[data-category="Toutes les catégories"]');
     seeAllButton.click();
 
-    // Affiche tous les articles au chargement de la page
+    // display all articles when the page loads
     blogFilter('Toutes les catégories');
 });

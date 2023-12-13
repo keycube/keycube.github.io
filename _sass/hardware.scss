@@ -2,12 +2,12 @@
 
 
 .hardware {
-    height : 40vh;
+    height : 40%;
     display : flex;
     justify-content: space-between;
     margin-bottom: 7%;
     
-
+    
     .description 
     {
         width: 50%;
@@ -27,6 +27,7 @@
 
             i{
                 margin-right : 1%;
+                font-size: 24px;
             }
         }
 
@@ -94,8 +95,9 @@
             margin: 0 0 2% 0;
             justify-content: end;
 
-            h2{
+            h2 {
                 order : 1;
+                text-align: right;
             }
 
             i{
@@ -179,7 +181,18 @@
     
         &:nth-child(odd),
         &:nth-child(even) {
-            h2,
+
+            .title {
+                align-items: center;
+                margin: 0 0 2% 0;
+                justify-content: center;
+                h2{
+                    order :2;
+                }
+                i{
+                    order :1;
+                }
+            }
             .description {
                 text-align: center;
                 align-self: center;

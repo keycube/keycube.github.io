@@ -15,7 +15,7 @@ color: DC800F  # Set the color variable for the page
     <div class="software">
         <div class="description">
             <!-- Software Title and Description -->
-            <h2 style="text-transform: uppercase"><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> {{software.title}} </h2>
+            <div class = title><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> <h2 class = "right" style="text-transform: uppercase">{{software.title}}</h2></div>
             <p> {{software.description}}</p>
             <!-- Key Features of the Software -->
             <p style="color: #{{ page.color }}"> Key features</p>
