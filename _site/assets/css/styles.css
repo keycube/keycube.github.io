@@ -612,7 +612,7 @@ img {
 }
 /* Definition of all colors used in the website. change one here and it will be changed everywhere the color is used*/
 .hardware {
-  height: 40%;
+  height: 40vh;
   display: flex;
   justify-content: space-between;
   margin-bottom: 7%;
@@ -634,6 +634,7 @@ img {
 }
 .hardware .description .title i {
   margin-right: 1%;
+  margin-top: 0.2%;
   font-size: 24px;
 }
 .hardware .description .link {
@@ -779,7 +780,7 @@ p {
 
 /* Definition of all colors used in the website. change one here and it will be changed everywhere the color is used*/
 .software {
-  height: 40%;
+  height: 40vh;
   display: flex;
   justify-content: space-between;
   margin-bottom: 7%;
@@ -801,6 +802,7 @@ p {
 }
 .software .description .title i {
   margin-right: 1%;
+  margin-top: 0.2%;
   font-size: 24px;
 }
 .software .description .link {
