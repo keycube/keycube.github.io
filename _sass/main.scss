@@ -260,13 +260,19 @@ section{
       }
 
       .picto:hover{
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
         transform: scale(1.2);
       }
       
       }
 
       .logo_footer {
-          width: 30%;      
+          width: 5%; 
+          margin-bottom: 0.3%;
+          height: auto;      
       }
     a{
       text-decoration: none;
