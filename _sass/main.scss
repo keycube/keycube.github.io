@@ -1,166 +1,19 @@
-@import "blog";
-@import "research";
-@import "about";
-@import "hardware";
-@import "software";
-@import "post";
-@import "colors";
-
-
+@import 
+	"header",
+	"blog",
+	"research",
+	"about",
+	"hardware",
+	"software",
+	"post",
+	"colors"
+;
 
 *{
 	margin:0;
 	font-family: 'Poppins', sans-serif;
 	color: #444;
 }
-
-////////////NAVBAR/////////////
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 0 5% 0;
-  box-shadow: 13px 13px 26px #00000025;
-  background-color: $white;
-  width: 100%;
-  position: relative; 
-}
-
-.link-page-nav {
-  display: flex;
-  flex-direction: row;
-  width: 60%;
-  align-items: center;
-  justify-content: center;
-
-  a {
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin: 2% 2%;
-  }
-}
-
-.extern {
-  margin: 0 10%;
-}
-
-.current {
-  text-decoration: none;
-}
-
-.logo {
-  width: 1.3%;
-  height: auto;
-}
-
-.burger-menu {
-  display: none;
-  cursor: pointer;
-  font-size: 1.5em;
-}
-
-@media screen and (min-width: 1064px) {
-  /* Styles for screens of 1064px pixels width or less */    
-  .link-page-nav{
-    display: flex;
-  }
-  
-}
-
-@media screen and (max-width: 768px) {
-  /* Styles for screens of 768px pixels width or less */    
-
-  nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-  }
-
-  .link-page-nav {
-      display: none;
-      flex-direction: column;
-      margin: 5% 0;
-      width: 100%;
-      text-align: center;
-  }
-
-  .link-page-nav a {
-      margin: 2% 0;
-  }
-
-  .extern {
-      margin: 2% 0;
-  }
-
-  .logo {
-      width: 10%;
-      margin: 5% 0;
-  }
-
-  .burger-menu {
-      display: flex;
-  }
-
-  .burger-menu-opened .extern .fa-language {
-      display: block;
-  }
-
-  .extern .fa-language {
-      display: none;
-
-  }
-}
-
-@media screen and (max-width: 1064px) {
-  /* Styles for screens of 1064px pixels width or less */    
-  nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-  }
-
-  .link-page-nav {
-      display: none;
-      flex-direction: column;
-      margin: 5% 0;
-      width: 100%;
-      text-align: center;
-  }
-
-  .link-page-nav a {
-      margin: 2% 0;
-  }
-
-  .language{
-    margin-bottom: 1%;
-  }
-
-  .logo {
-      width: 6%;
-      margin: 2% 0 1%;
-  }
-
-  .burger-menu {
-      display: flex;
-  }
-
-  .burger-menu-opened .extern .fa-language {
-      display: block;
-  }
-
-  .extern .fa-language {
-      display: none;
-
-  }
-}
-
-
-
-
-
 
 ///////////////CONTENTALLSITE/////////////////////
 .citation {
