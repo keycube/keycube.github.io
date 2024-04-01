@@ -1,48 +1,31 @@
-<!-- Navigation bar -->
-<nav>
-    <!-- Logo for the navigation bar -->
-    <img class="extern logo" src="/assets/img/logo/logo-{{page.color}}.svg"/>
+<header class="site-header" role="banner">
+    <!-- navigation bar -->
+    <nav class="site-nav">
+        <!-- logo for the navigation bar -->
+        <img class="extern logo" src="/assets/img/logo/logo-{{page.color}}.svg"/>
 
-    <!-- Burger menu icon for mobile navigation -->
-    <div class="burger-menu">&#9776;</div>
+        <!-- menu input/icon -->
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+            <span class="menu-icon burger-menu">
+                &#9776;
+                <!--
+                <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+                </svg>
+                -->
+            </span>
+        </label>
 
-    <!-- Navigation links container -->
-    <div class="link-page-nav">
-        <!-- Existing navigation links -->
-        {% for item in site.data.navigation %}
-            <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current"{% endif %}>{{ item.name }}</a>
-        {% endfor %}
-    </div>
+        <!-- navigation links container -->
+        <div class="link-page-nav trigger">
+            <!-- existing navigation links -->
+            {% for item in site.data.navigation %}
+                <a class="page-link" href="{{ item.link }}" {% if page.url == item.link %}style="color: #{{ page.color }};" class="current page-link"{% endif %}>{{ item.name }}</a>
+            {% endfor %}
+        </div>
 
-    <!-- External icon for language selection -->
-    <a class="extern language"><i class="fa-solid fa-language"></i></a>
-</nav>
-
-<!-- JavaScript code for handling the burger menu -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Selecting elements for burger menu functionality
-    const burgerMenu = document.querySelector('.burger-menu');
-    const linkPageNav = document.querySelector('.link-page-nav');
-    const externIcon = document.querySelector('.fa-language');
-
-    // Function to toggle the menu visibility
-    function toggleMenu() {
-        linkPageNav.style.display = linkPageNav.style.display === 'none' || linkPageNav.style.display === '' ? 'flex' : 'none';
-        document.body.classList.toggle('burger-menu-opened');
-        externIcon.style.display = externIcon.style.display === 'none' || externIcon.style.display === '' ? 'flex' : 'none';
-    }
-
-    // Adding click event listener to burger menu
-    burgerMenu.addEventListener('click', toggleMenu);
-
-    // Adding resize event listener to reset visibility on window resize
-    window.addEventListener('resize', function () {
-        // Resetting visibility when window width exceeds 768px
-        if (window.innerWidth > 768) {
-            linkPageNav.style.display = '';
-            document.body.classList.remove('burger-menu-opened');
-        }
-    });
-});
-</script>
+        <!-- external icon for language selection -->
+        <a class="extern language"><i class="fa-solid fa-language"></i></a>
+    </nav>
+</header>
