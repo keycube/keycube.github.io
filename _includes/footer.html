@@ -1,12 +1,10 @@
-<footer style="background-color: #{{page.color}};">
-    
-    <div class="social-networks">
-        <a href="https://discord.gg/JErUFhea" target="_blank"><img class="picto" src="/assets/img/pictos/discord.svg" /></a>
-        <a href="https://github.com/keycube" target="_blank"><img class="picto" src="/assets/img/pictos/github.svg" /></a>
-        <a href="{{ "/feed.xml" | relative_url }}" target="_blank"><img class="picto rss" src="/assets/img/pictos/rss-solid.svg" /></a>
-    </div>
+<footer class="site-footer" style="background-color: #{{page.color}};">
 
-    <img class="logo_footer" src="../assets/img/logo/logo-FFFFFF.svg" alt="logo keycube" />
-    <a href="#">keycube</a>
+    <div class="wrapper">
+
+        {%- include social.html -%}
+        <img class="footer-logo" src="../assets/img/logo/logo-FFFFFF.svg" alt="keycube logo" />
+    
+    </div>
     
 </footer>
