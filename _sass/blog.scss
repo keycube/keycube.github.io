@@ -1,7 +1,6 @@
 @import "colors";
 
-.featured-article 
-{
+.featured-article {
     margin : 0 0 5% 0;
     display : flex;
     align-items: center;
@@ -10,11 +9,9 @@
     height: 25vw; 
     border-radius: 1em;
     transition: box-shadow 0.3s;
-    box-shadow :13px 13px 30px #00000025, -	5px -5px 10px #ffffff;
+    box-shadow :13px 13px 30px #00000025, -5px -5px 10px #ffffff;
 
-
-        .featured-article-infos
-        {
+        .featured-article-infos {
             display : flex;
             flex-direction: column;
             align-items: center;
@@ -24,45 +21,39 @@
             text-align: center;
         }
 
-        .date 
-        {
+        .date {
             font-family: 'poppins', sans-serif;
             font-size: 1em; 
             font-weight: regular;
             text-transform: uppercase;
         }
 
-        .title 
-        {
+        .title {
             font-family: 'poppins', sans-serif;
             font-size: 1.2em; 
             font-weight: 600 !important;
             text-transform: uppercase;
         }
 
-    .img-container 
-    {
+    .img-container {
         width: 31%;
         height: 100%;
 
-        img 
-        {
+        img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
 
-    .filtres-container
-    {
+    .filtres-container {
         display: flex;
         justify-content: center;
         column-gap: 1%;
         width:  100%;
     }
 
-    .categorie
-    {
+    .categorie {
         width: fit-content;
         font-size: 1em;
         border: 1px solid $green;
@@ -79,7 +70,7 @@
         white-space: pre-wrap; 
         text-overflow: ellipsis;
 
-        /*Firefox equivalent*/
+        // Firefox equivalent
         display: -moz-box;
         -moz-box-orient: vertical;
         -moz-line-clamp: 3;
@@ -104,8 +95,7 @@
         border : 1px solid $white;
         transition : all 0.3s ease-in-out;
 
-        &:hover 
-        {
+        &:hover {
             background: $white;   
             border : 1px solid $green;
             color : $green !important;
@@ -113,7 +103,7 @@
     }
 
     @media screen and (max-width: 768px) {
-        /* Styles for screens of 768 pixels width or less */    
+        // Styles for screens of 768 pixels width or less
         flex-direction: column;
         height: auto;
 
@@ -139,7 +129,7 @@
     }
 
     @media screen and (max-width: 1024px) {
-        /* Styles for screens of 1024px pixels width or less */    
+        // Styles for screens of 1024px pixels width or less
         flex-direction: column;
         height: 80vw;
 
@@ -158,28 +148,22 @@
         }
     }
 
-
     @media screen and (max-width: 1440px) {
-        /* Styles for screens of 1440px pixels width or less */    
+        // Styles for screens of 1440px pixels width or less
         .resume {
             -webkit-line-clamp: 2 !important;
         }
     }
 }
 
-
-
-
-.category-filter 
-{
+.category-filter {
     width: 100%;
     align-self: flex-start;
     display: flex; 
     column-gap: 1%;;
     margin: 0 0 2% 0; 
 
-    .filter-button
-    {
+    .filter-button {
         padding: 0 1% 0 1%;
         border-radius: 15px;
         background: none; 
@@ -187,21 +171,19 @@
         font-size: 1em; 
         font-weight: 600;
 
-        &:hover 
-        {
+        &:hover {
             background: $green; 
             color : $white !important;
         }
 
-        &.active 
-        {
+        &.active {
             background: $green; 
             color: $white !important; 
         }
     }
 
     @media screen and (max-width: 768px) {
-        /* Styles for screens of 768 pixels width or less */    
+        // Styles for screens of 768 pixels width or less
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
@@ -215,17 +197,17 @@
             width:45%;
             margin: 2%;
         }
-        .button-all{
+        .button-all {
             width: 100%;
         }
-        .text-filter{
+        .text-filter {
             width: 100%;
             text-align: center;
         }
     }
 
     @media screen and (max-width: 1024px) {
-        /* Styles for screens of 1024 pixels width or less */    
+        // Styles for screens of 1024 pixels width or less
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
@@ -245,22 +227,14 @@
     }
 }
 
-
-
-
-
-
-
-.articles 
-{
+.articles {
     display : flex; 
     flex-wrap: wrap;
     justify-content: flex-start;
     column-gap: 2.75%;
     margin-bottom : -2.75%;
 
-    .article 
-    {
+    .article {
         display : flex !important;
         flex-direction: column;
         align-items: center; 
@@ -271,13 +245,11 @@
         transition: box-shadow 0.3s;
         box-shadow :13px 13px 30px #00000025, -	5px -5px 10px #ffffff;
 
-        .img-container 
-        {
+        .img-container {
             width: 100%; 
             height: 25%;
 
-            img 
-            {
+            img {
                 width: 100%; 
                 height: 100%;
                 border-radius: 1em 1em 0 0;
@@ -286,8 +258,7 @@
             }
         }
 
-        .description
-        {
+        .description {
             height: 75%;
             width: 100%;
             display : flex;
@@ -295,99 +266,90 @@
             justify-content: space-evenly;
             align-items: center;
             text-align: center;
-        
 
-        .date 
-        {
-            font-family: 'poppins', sans-serif;
-            font-size: 1em; 
-            font-weight: regular;
-            text-transform: uppercase;
-        }
-
-        .title 
-        {
-            width : 80%;
-            font-family: 'poppins', sans-serif;
-            font-size: 1.2em; 
-            font-weight: 600 !important;
-            text-transform: uppercase;
-        }
-
-        .filtres-container
-        {
-            display: flex;
-            justify-content: center;
-            column-gap: 1%;
-            width:  100%;
-        }
-    
-        .categorie
-        {
-            font-size: 1em;
-            border: 1px solid $green;
-            border-radius: 15px;
-            padding: 0% 2%;
-        }
-
-        .resume { 
-            font-size: 1em;
-            width: 80%;
-
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
-            white-space: pre-wrap;
-            text-overflow: ellipsis;
-        
-            /*Firefox equivalent*/
-            display: -moz-box;
-            -moz-box-orient: vertical;
-            -moz-line-clamp: 3;
-            white-space: pre-wrap;  
-            text-overflow: ellipsis;
-        }    
-
-        .readMore-button {
-            padding : 2% 0;
-            width: 40%;
-            border-radius: 1em;
-            background-color : $green; 
-            font-family: 'poppins', sans-serif;
-            text-transform: uppercase;
-            text-decoration: none;
-            text-align: center;
-            color : $white;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border : 1px solid $white;
-            transition : all 0.3s ease-in-out;
-
-            div{
-                color : $white;
+            .date {
+                font-family: 'poppins', sans-serif;
+                font-size: 1em; 
+                font-weight: regular;
+                text-transform: uppercase;
             }
 
-            &:hover 
-            {
-                background: $white;   
-                border : 1px solid $green;
+            .title {
+                width : 80%;
+                font-family: 'poppins', sans-serif;
+                font-size: 1.2em; 
+                font-weight: 600 !important;
+                text-transform: uppercase;
+            }
+
+            .filtres-container {
+                display: flex;
+                justify-content: center;
+                column-gap: 1%;
+                width:  100%;
+            }
+        
+            .categorie {
+                font-size: 1em;
+                border: 1px solid $green;
+                border-radius: 15px;
+                padding: 0% 2%;
+            }
+
+            .resume { 
+                font-size: 1em;
+                width: 80%;
+
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                white-space: pre-wrap;
+                text-overflow: ellipsis;
+            
+                /*Firefox equivalent*/
+                display: -moz-box;
+                -moz-box-orient: vertical;
+                -moz-line-clamp: 3;
+                white-space: pre-wrap;  
+                text-overflow: ellipsis;
+            }    
+
+            .readMore-button {
+                padding : 2% 0;
+                width: 40%;
+                border-radius: 1em;
+                background-color : $green; 
+                font-family: 'poppins', sans-serif;
+                text-transform: uppercase;
+                text-decoration: none;
+                text-align: center;
+                color : $white;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border : 1px solid $white;
+                transition : all 0.3s ease-in-out;
 
                 div {
-                color : $green;
+                    color : $white;
                 }
 
+                &:hover {
+                    background: $white;   
+                    border : 1px solid $green;
+
+                    div {
+                    color : $green;
+                    }
+                }
             }
         }
-
     }
-    }
-
    
     @media screen and (max-width: 768px) {
-            /* Styles for screens of 768 pixels width or less */    
+        // Styles for screens of 768 pixels width or less
         justify-content: center;
 
         .article {
@@ -396,9 +358,8 @@
         }
     }
 
-
     @media screen and (max-width: 1024px) {
-        /* Styles for screens of 1024 pixels width or less */    
+        // Styles for screens of 1024 pixels width or less
         column-gap: 4%;
 
         .article {
@@ -430,7 +391,7 @@
     }
 
     @media screen and (max-width: 1440px) {
-        /* Styles for screens of 1440 pixels width or less */    
+        // Styles for screens of 1440 pixels width or less
 
         .date {
             font-size : 0.9em !important;

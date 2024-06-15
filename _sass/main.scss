@@ -53,46 +53,41 @@ $on-laptop:        800px !default;
 	"post",
 	"colors",
 	"keycube/header",
-  "keycube/base",
-  "keycube/footer"
+  	"keycube/base",
+  	"keycube/footer"
 ;
 
 
 ///////////////CONTENTALLSITE/////////////////////
 .citation {
 	width: 100%;
-  text-align: center;
+  	text-align: center;
 	margin-bottom : 5%;
 	padding: 3% 0%;
 	font-size: 1.2em;
-  border-radius: 15px;
-	box-shadow: 3px 3px 6px #00000025, -	5px -5px 10px #ffffff; 
+  	border-radius: 15px;
+	box-shadow: 3px 3px 6px #00000025, -5px -5px 10px #ffffff; 
     
-    p{
+    p {
         color :$white;
         margin: 0 5%;
     }
-    
 }
 
-@media screen and (max-width : 400px)
-{
-  h2{
-    font-size: 1.3em;
-  }
+@media screen and (max-width : 400px) {
+  	h2 {
+    	font-size: 1.3em;
+  	}
 }
 
 @media screen and (max-width: 768px) {
-  .citation{
-    width: 100%;
-
-    font-size: 1em;
-    p{
-      margin: 5%;
-    }
-  
-  }
-		
+  	.citation {
+    	width: 100%;
+    	font-size: 1em;
+    	p {
+      		margin: 5%;
+    	}
+  	}
 }
 
 p {
@@ -105,14 +100,14 @@ h1, h2 {
   text-align: left;
 }
 
-body{
+body {
 	//font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
 	display: flex;
 	flex-direction: column;
 	background-color: $white;
 }
 
-section{
+section {
 	display: flex;
 	flex-direction: column;
 	align-items: start;

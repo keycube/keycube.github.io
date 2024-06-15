@@ -1,80 +1,73 @@
 @import "colors";
 
-    h3 {
-        font-family: 'Dela Gothic one', sans-serif;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin-top : 2%;
-        margin-bottom: 2%;
+h3 {
+    font-family: 'Dela Gothic one', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top : 2%;
+    margin-bottom: 2%;
+}
+
+h4 {
+    font-family: 'poppins', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top : 1%;
+}
+
+.post-img-container {
+    position: absolute;
+    top : 0;
+    left: 0;
+    z-index : -1;
+    width : 100vw;
+    height : 40vh;
+
+    .img-cover {
+        width: 100%; 
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0;
     }
+}
 
-    h4 {
-        font-family: 'poppins', sans-serif;
-        text-transform: uppercase;
-        font-size: 1.2em;
-        font-weight: 600;
-        margin-top : 1%;
-    }
+.post-description {
+    margin-top : 32vh;
+    margin-bottom: 3%;
 
-    .post-img-container
-    {
-        position: absolute;
-        top : 0;
-        left: 0;
-        z-index : -1;
-        width : 100vw;
-        height : 40vh;
+    .categories {
+        display : flex;
+        column-gap: 2%;
 
-        .img-cover {
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0;
-        }
-    }
-
-    .post-description 
-    {
-        margin-top : 32vh;
-        margin-bottom: 3%;
-
-        .categories 
-        {
-            display : flex;
-            column-gap: 2%;
-
-            .category
-            {
-                margin: 0;
-                color : $green;
-                font-size: 1.2em;
-                font-weight: 600;
-                border : 1px solid $green;
-                border-radius: 15px;
-                padding: 0% 1% 0 1%;
-            }
-        }
-
-        h2 {
-            text-transform : uppercase;
-            margin: 3% 0 1% 0;
-        }
-
-        .date 
-        {
-            font-size: 1.2em;
-            color :$green;
-            text-transform: uppercase;
-            margin-bottom: 1%;
-        }
-
-        .author 
-        {
+        .category {
+            margin: 0;
+            color : $green;
             font-size: 1.2em;
             font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom : 3%;
+            border : 1px solid $green;
+            border-radius: 15px;
+            padding: 0% 1% 0 1%;
         }
-
     }
+
+    h2 {
+        text-transform : uppercase;
+        margin: 3% 0 1% 0;
+    }
+
+    .date {
+        font-size: 1.2em;
+        color :$green;
+        text-transform: uppercase;
+        margin-bottom: 1%;
+    }
+
+    .author {
+        font-size: 1.2em;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom : 3%;
+    }
+}
 

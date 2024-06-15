@@ -1,25 +1,25 @@
 @import "colors";
 
-.page-content{
+.page-content {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
-.presentation-content{
+
+.presentation-content {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 }
 
-.text-content{
+.text-content {
 	width: 80%;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
 	justify-content: space-between;
 }
-
 
 .button-white {
     display: inline-flex;
@@ -40,21 +40,17 @@
     .button-text {
         margin-right: 20px; 
     }
-
-	
 }
 
-  
-  .button-white:hover {
+.button-white:hover {
 	box-shadow: 0 0 0 transparent; 
-  }
+}
   
-  img{
+img {
 	width: 50%;
-  }
+}
 
-
-  .arrow {
+.arrow {
     margin: 2%;
     font-size: 2em;
     cursor: pointer;
@@ -68,8 +64,7 @@
     }
 }
 
-
-  .contributor-container {
+.contributor-container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap : wrap;
@@ -87,7 +82,7 @@
 		aspect-ratio: 1/1;
 		margin-bottom : 1.75%;
 
-		.contributor-profil{
+		.contributor-profil {
 			width: 100%;
 			height: 100%;
 			background-repeat: no-repeat;
@@ -100,96 +95,77 @@
 		
 			display: flex;
 			flex-direction: row;
-			align-items: center;
-			
+			align-items: center;			
 	
-			.contributor-pseudo{
+			.contributor-pseudo {
 				display: none;
 				width: 100%;
 				height: 100%;
 				font-size: 0.6em;
-				padding: 0 10%;
-				
+				padding: 0 10%;	
 			}
-			
 			
 			@media screen and (min-width: 1064px) {
+				&:hover .contributor-pseudo {
+					display: flex;
+					color:$white;
+					background-color: $red;
+					border-radius: 15px;
+					max-width: 100%;
+					max-height: 100%;
 
-	
-			&:hover .contributor-pseudo{
-				display: flex;
-				color:$white;
-				background-color: $red;
-				border-radius: 15px;
-				max-width: 100%;
-				max-height: 100%;
+					p {
+						margin: 20%;
+					}
 
-				p{
-					margin: 20%;
+					justify-content: center;
+					align-items: center;
 				}
-
-				
-
-				justify-content: center;
-				align-items: center;
-			}
 	
-			&:hover{
-				box-shadow: 0 0 0 transparent; 
-
-			}
-		}
-			
-		}
-
-		
+				&:hover {
+					box-shadow: 0 0 0 transparent; 
+				}
+			}		
+		}	
 	}
+}
 
-	
-
-
-	
-  }
-  @media screen and (max-width: 360px) {
-	.contributor-pseudo{
+@media screen and (max-width: 360px) {
+	.contributor-pseudo {
 		font-size: 5px !important;
 	}
-  }
+}
 
-  @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
 	.contributor-container {
 		margin-bottom: -2%;
 		column-gap: 2.6%;
 	}
 
-	.contributor-container a{
-	  width : 14.5% !important;
+	.contributor-container a {
+	  	width : 14.5% !important;
 	}
-  }
+}
 
-
-
-  @media screen and (max-width: 740px) {
-	/* Styles for screens of 740 pixels width or less */
+@media screen and (max-width: 740px) {
+	// Styles for screens of 740 pixels width or less
 	.contributor-container {
-	  margin-bottom: -2%;
-	  column-gap: 2%;
+	  	margin-bottom: -2%;
+	  	column-gap: 2%;
 	}
   
 	.contributor-container a {
-	  margin-bottom: 2%;
-	  width: 10.75%;
+	  	margin-bottom: 2%;
+	  	width: 10.75%;
 	}
 
 	.contributor-pseudo{
 		font-size: 0.4em !important;
 	}
-  }
-
-	
+}
 
 @media screen and (max-width: 1064px) {
-    /* Styles for screens of 1064 pixels width or less */
+    // Styles for screens of 1064 pixels width or less
 	.presentation-content {
 		flex-direction: column; 
 	}
@@ -208,14 +184,12 @@
 	}
 
 	.contributor-container {
-	
 		a {
-			
 			.contributor-profil {
 				width : 100%;
 				height : 100%;
 
-				.contributor-pseudo{
+				.contributor-pseudo {
 					font-size:8px;
 					max-width: 100%;
 					max-height: 100%;
@@ -224,15 +198,10 @@
 					background-color: $red;
 					border-radius: 15px;
 	
-	
 					justify-content: center;
 					align-items: center;
 				}
 			}
 		}
-}
-
-
-	
-	
+	}
 }
