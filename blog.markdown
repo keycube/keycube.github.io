@@ -40,15 +40,9 @@ color: 319B7A  # Set the color variable for the page
     <div class="category-filter">
         <button class="filter-button button-all" style="color: #{{ page.color }}; border: solid 1px #{{ page.color }}" data-category="Toutes les catégories">See all</button>
         <p class="text-filter" style="color: #{{ page.color }}">Or filter by</p>
-        {% capture uniqueCategories %}{% endcapture %}
-        <!-- Loop through posts to get unique categories for filtering -->
-        {% for post in site.posts %}
-        {% for category in post.categories %}
-        {% unless uniqueCategories contains category %}
-        {% capture uniqueCategories %}{{ uniqueCategories }}{{ category }}{% endcapture %}
-        <button class="filter-button" style="color: #{{ page.color }}; border: solid 1px #{{ page.color }}" data-category="{{ category }}">{{ category }}</button>
-        {% endunless %}
-        {% endfor %}
+        {% for category in site.categories %}
+        {% capture category_name %}{{ category | first }}{% endcapture %}
+        <button class="filter-button" style="color: #{{ page.color }}; border: solid 1px #{{ page.color }}" data-category="{{ category_name }}">{{ category_name }}</button>
         {% endfor %}
     </div>
     <!-- Articles Section -->

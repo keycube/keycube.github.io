@@ -3,10 +3,7 @@ layout: post
 title:  "Welcome to keycube!"
 date:   2023-10-24 00:53:57 +0200
 author : someone
-categories:
-- Games
-- Tools
-- Divers
+categories: [Games, Tools, Divers]
 image: "/assets/img/post1.jpg"
 resume: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 featuredPost : true
