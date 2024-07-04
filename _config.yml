@@ -33,15 +33,11 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: keycube
 rss: subscribe
 
-categories: 
-- Games
-- Tools
-- Others
-
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-archives
 
 collections:
   hardware:
@@ -50,6 +46,13 @@ collections:
   software:
     output: true
     permalink: /software/:path/
+
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/blog/:name/'
 
 # Exclude from processing.
 # The following items will not be processed, by default.
