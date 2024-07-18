@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<header class="post-header">
+  {%- if page.lang != site.active_lang -%}
+    {%- include no-translation.html -%}
+  {%- endif -%}
+  <h1 class="post-title">{{ page.title | escape }}</h1>
+</header>
+
+<div class="post-content">
+  <b>{{ content }}</b>
+</div>
+
+<ul class="post-list">
+  {% for hardware in site.data.hardware %}
+  <li>
+    <span class="post-meta">{{ hardware.keywords }}</span>
+    <br/>{{ hardware.description }}
+    <h3>
+      <a class="post-link" href="{{ hardware.url }}">
+        {{ hardware.title }}
+      </a>
+    </h3>
+    
+  </li>
+  {% endfor %}
+</ul>
