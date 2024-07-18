@@ -3,9 +3,9 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: about
-title: À propos
+title: About
 permalink: /
-lang: fr
+lang: en
 ---
 
-Le keycube est une sorte de clavier. Un appareil cubique dédié à la saisie de texte.
+The keycube is a kind of keyboard. A cubic device dedicated to text entry.
