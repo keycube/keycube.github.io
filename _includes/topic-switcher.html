@@ -1,0 +1,19 @@
+<p>
+{% if page.title %}
+<a href="/blog/">{{ site.data.strings.all }}</a> 
+{% else %}
+{{ site.data.strings.all }}
+{% endif %}
+| 
+{% for category in site.categories %}
+  {% assign topic_name = category[0] %}
+  {% if topic_name == page.title %}
+  {{ site.data.strings.topics[topic_name] }}
+  {% else %}
+  <a href="/topic/{{ topic_name }}">{{ site.data.strings.topics[topic_name] }}</a>
+  {% endif %}
+  {% if forloop.last == false %}
+  |
+  {% endif %}
+{% endfor %}
+</p>

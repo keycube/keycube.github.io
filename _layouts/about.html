@@ -1,41 +1,16 @@
 ---
 layout: default
 ---
+<article class="post">
 
-<div class="home">
-    <div class="presentation-content">
-        <div>
-            <div class="text-content">
-                <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> WHAT IS KEYCUBE ?</h2>
-                <p>{{ content }}</p>
-            </div>
-            <a href="https://github.com/keycube" target="_blank" class="button-white">
-                <span class="button-text" style="color: #{{ page.color }}">Read More</span>
-                <i class="fa-solid fa-chevron-right" style="color: #{{ page.color }}"></i>
-            </a>
-        </div>
-        <img src="./assets/img/cube.png">
-    </div>  
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
 
-  {%- if site.data.contributors.size > 0 -%}
-  <div class="contributor-content">
-    <h2><i class="fa-solid fa-square" style="color: #{{ page.color }}"></i> CONTRIBUTORS</h2>
-    <div class="contributor-container">
-        {% assign sorted_contributors = site.data.contributors | sort: 'pseudo' %}
-        {% for contributor in sorted_contributors %}
-        <a href="{{contributor.url}}" target="_blank">
-            {% if contributor.image %}
-            <div class="contributor-profil" style="background-image: url('{{contributor.image}}');">
-                <p class="contributor-pseudo">{{contributor.pseudo}}</p>
-            </div>
-            {% else %}
-            <div class="contributor-profil" style="background-image: url('./assets/img/contributors/no_picture.jpeg');">
-                <p class="contributor-pseudo">{{contributor.pseudo}}</p>
-            </div>
-            {% endif %}
-        </a>
-        {% endfor %}
-    </div>
+  <div class="post-content">
+    {{ content }}
   </div>
-  {%- endif -%}
-</div>
+
+  {%- include contributors.html -%}
+
+</article>

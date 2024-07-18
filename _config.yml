@@ -21,38 +21,31 @@
 title: Keycube
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description. lalala cest un test de mise a jour
+  The keycube is a kind of keyboard. A cubic device dedicated to text entry.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-
-# social links
-#instagram_username: keycube
-#youtube_username: keycube
 github_username: keycube
-rss: subscribe
+rss: rss
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-archives
-
-collections:
-  hardware:
-    output: true
-    permalink: /hardware/:path/
-  software:
-    output: true
-    permalink: /software/:path/
+  - jekyll-polyglot
 
 jekyll-archives:
   enabled:
     - categories
-  layout: archive
+  layout: topic
   permalinks:
-    category: '/blog/:name/'
+    category: '/topic/:name/'
+
+# jekyll-polyglot preferences
+languages: ["en", "fr"]
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

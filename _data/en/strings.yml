@@ -1,0 +1,11 @@
+lang_name: English
+title: Keycube
+description: "The keycube is a kind of keyboard. A cubic device dedicated to text entry."
+about: About
+blog: Blog
+contributors: Contributors
+no_translation: This page is not available in English.
+all: All topics
+topics:
+  update: Update
+  jekyll: Jekyll

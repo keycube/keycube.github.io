@@ -1,5 +1,5 @@
 ---
 layout: blog
 permalink: /blog/
-lang: fr
+lang: en
 ---

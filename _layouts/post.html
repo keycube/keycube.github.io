@@ -1,42 +1,37 @@
 ---
 layout: default
-color : 319b7a
-styles:
 ---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-<!-- Container for the post image -->
-<div class="post-img-container">
-    <!-- Cover image for the post -->
-    <img class="img-cover" src="{{ page.image }}" alt="{{ page.title }}">
-</div>
+  <header class="post-header">
+    {%- if page.lang != site.active_lang -%}
+      {%- include no-translation.html -%}
+    {%- endif -%}
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%F" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }} </span></span>
+      {%- endif -%}
+      {% for category in site.categories %}
+        {% if forloop.first %}
+        •
+        {% endif %}
+        {% assign topic_name = category[0] %}
+        <a href="/topic/{{ topic_name }}">{{ site.data.strings.topics[topic_name] }}</a>
+        {% if forloop.last == false %}
+        |
+        {% endif %}
+      {% endfor %}
+    </p>
+  </header>
 
-<!-- Main content section for the post -->
-<section>
-    <div class="post-description">
-        <!-- Categories associated with the post -->
-        <div class="categories"> 
-            {% for category in page.categories %}
-                <p class="category">{{ category }}</p>
-            {% endfor %}
-        </div>
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
 
-        <!-- Title of the post -->
-        <h2><i class="fa-solid fa-square" style="color: #319b7a"></i> {{ page.title }}</h2>
-
-        <!-- Date of the post -->
-        <div class="date">{{ page.date | date: "%B %d, %Y" }}</div>
-
-        <!-- Author of the post -->
-        <div class="author">By {{ page.author }}</div>
-
-        <!-- Content of the post -->
-        {{ page.content }}
-    </div>
-</section>
-
-<!-- Inline styles to set the background color of the footer -->
-<style>
-    footer {
-        background-color: #319b7a;
-    }
-</style>
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
