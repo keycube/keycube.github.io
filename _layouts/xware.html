@@ -14,13 +14,14 @@ layout: default
 </div>
 
 <ul class="post-list">
-  {% for hardware in site.data.hardware %}
+  {% assign title = page.title | downcase %}
+  {% for xware in site.data[title] %}
   <li>
-    <span class="post-meta">{{ hardware.keywords }}</span>
-    <br/>{{ hardware.description }}
+    <span class="post-meta">{{ xware.keywords }}</span>
+    <br/>{{ xware.description }}
     <h3>
-      <a class="post-link" href="{{ hardware.url }}">
-        {{ hardware.title }}
+      <a class="post-link" href="{{ xware.url }}">
+        {{ xware.title }}
       </a>
     </h3>
     

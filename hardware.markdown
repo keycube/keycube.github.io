@@ -1,5 +1,5 @@
 ---
-layout: hardware
+layout: xware
 permalink: /hardware/
 title: Hardware
 lang: en
