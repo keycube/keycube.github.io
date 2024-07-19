@@ -13,18 +13,20 @@ layout: default
   <b>{{ content }}</b>
 </div>
 
-<ul class="post-list">
+<ul class="xware-list">
   {% assign title = page.title | downcase %}
   {% for xware in site.data[title] %}
   <li>
-    <span class="post-meta">{{ xware.keywords }}</span>
-    <br/>{{ xware.description }}
+    <img class="xware-img" src="{{ xware.image }}" alt="{{ xware.title }}"/>
     <h3>
       <a class="post-link" href="{{ xware.url }}">
         {{ xware.title }}
       </a>
     </h3>
-    
+    <span class="post-meta">{{ xware.keywords }}</span>
+    <p class="xware-meta">
+      {{ xware.description }}
+    </p>
   </li>
   {% endfor %}
 </ul>

@@ -2,10 +2,10 @@
   description : "The bbk3 stand for baby keycube, a very compact version of the original with only one switch per face."
   keywords : 1x1, backlight, IMU, small
   url : https://github.com/keycube/bbk3
-  image : "../assets/img/post1.jpg"
+  image : "../assets/img/hardware/bbk3.jpg"
 
 - title : k3Plush
   description : "The k3plush is a cube-shaped plush game controller."
   keywords : 2x2, fabric, sewing, soft
   url : https://github.com/keycube/k3plush
-  image : "../assets/img/post1.jpg"
+  image : "../assets/img/hardware/k3plush.jpg"
