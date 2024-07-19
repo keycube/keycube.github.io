@@ -10,7 +10,7 @@
   {% if topic_name == page.title %}
   {{ site.data.strings.topics[topic_name] }}
   {% else %}
-  <a href="/topic/{{ topic_name }}">{{ site.data.strings.topics[topic_name] }}</a>
+  <a href="/blog/topic/{{ topic_name }}">{{ site.data.strings.topics[topic_name] }}</a>
   {% endif %}
   {% if forloop.last == false %}
   |

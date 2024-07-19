@@ -14,7 +14,11 @@
 
       <div class="trigger">
         {% for item in site.data.navigation %}
+          {% if page.url contains item.name or page.layout == item.name %}
+          <span class="page-link">{{ site.data.strings[item.name] }}</span>
+          {% else %}
           <a class="page-link" href="{{ item.url | relative_url }}">{{ site.data.strings[item.name] }}</a>
+          {% endif %}
         {% endfor %}
       </div>
     </nav>

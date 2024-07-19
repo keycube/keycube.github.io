@@ -39,7 +39,7 @@ jekyll-archives:
     - categories
   layout: topic
   permalinks:
-    category: '/topic/:name/'
+    category: '/blog/topic/:name/'
 
 # jekyll-polyglot preferences
 languages: ["en", "fr"]
