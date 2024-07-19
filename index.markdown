@@ -6,6 +6,7 @@ layout: about
 title: About
 permalink: /
 lang: en
+code: about
 ---
 
 The keycube is a kind of keyboard. A cubic device dedicated to text entry.

@@ -7,4 +7,16 @@
   
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
+
+  {% for item in site.data.navigation %}
+    {% if page.url contains item.name or page.code == item.name %}
+    {% assign cname = item.name %}
+    {% endif %}
+  {% endfor %}
+
+  <style>
+    a {
+      color: #{{site.data.colors[cname]}};
+    }
+  </style>  
 </head>
