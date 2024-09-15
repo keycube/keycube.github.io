@@ -7,4 +7,12 @@ lang: fr
 author: Damien
 code: blog
 ---
-Nous sommes ravis d'annoncer le lancement officiel du site web du keycube ! Ce site sans prétention servira à promouvoir et partager des mises à jour sur le keycube.
+<em>(Mis à jour le 15/09/2024)</em>
+
+Nous sommes ravis d'annoncer le lancement du site Web officiel du **keycube**, votre destination de référence pour tout ce qui concerne le keycube ! Que vous soyez une personne passionnée ou simplement curieuse de ces appareils cubiques innovants, ce site Web est votre espace pour explorer, apprendre et vous connecter avec la communauté croissante du keycube.
+
+Le site est conçu pour être convivial, fonctionnel et facilement accessible. Hébergé sur [GitHub Pages](https://pages.github.com) et basé sur [Jekyll](https://jekyllrb.com), le code source est ouvert et disponible dans un [dépôt](https://github.com/keycube/keycube.github.io) public. La première version du site Web et son logo ont été initialement conçus et mis en œuvre par **Lucie Augier** et **Nina Grignola** dans le cadre d'un projet académique. Plus tard, certains éléments ont été adaptés pour s'aligner plus étroitement sur le thème Jekyll [Minima](https://github.com/jekyll/minima), garantissant une maintenance et des mises à jour plus faciles.
+
+Dans un esprit de transparence et de collaboration communautaire, tout ce qui concerne le keycube est ouvert et libre d'accès. Nous encourageons tout le monde à contribuer et à suivre l'évolution du keycube. N'oubliez pas d'explorer l'[organisation](https://github.com/keycube) GitHub dédiée, où vous trouverez une large gamme de projets liés au keycube.
+
+Restez au courant des dernières mises à jour et actualités en vous abonnant au [flux RSS]({% link feed.xml %}) !

@@ -7,4 +7,12 @@ lang: en
 author: Damien
 code: blog
 ---
-We are excited to announce the official launch of the keycube website! This straightforward site will serve to promote and share updates about the keycube.
+<em>(Updated on 2024-09-15)</em>
+
+We are excited to announce the launch of the official **keycube** website, your go-to destination for everything related to the keycube! Whether you're an enthusiast, or simply curious about these innovative cubic input devices, this website is your space to explore, learn, and connect with the growing keycube community.
+
+The site is designed to be user-friendly, functional, and easily accessible. Hosted on [GitHub Pages](https://pages.github.com) and powered by [Jekyll](https://jekyllrb.com), its entire source code is open and available in a public [repository](https://github.com/keycube/keycube.github.io). The first version of the website and its logo were originally designed and implemented by **Lucie Augier** and **Nina Grignola** as part of an academic project. Later, some elements were refined to align more closely with the Jekyll [Minima](https://github.com/jekyll/minima) Theme, ensuring easier maintenance and updates.
+
+In the spirit of transparency and community collaboration, everything about the keycube is open-source. Everyone is encouraged to contribute and track the keycube's evolution. Don’t forget to explore the dedicated GitHub [organization](https://github.com/keycube), where you’ll find a range of keycube-related projects.
+
+Stay engaged! Keep up with the latest updates and news by subscribing to the [RSS feed]({% link feed.xml %})!
