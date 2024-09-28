@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "A baby is born"
+date:   2024-09-28 15:00:00 +0200
+categories: update
+lang: en
+author: Damien
+code: blog
+---
+The keycube family is expanding! Introducing the **baby keycube** (**bbk3**), a compact version of the original, featuring just one key per face. But it's not just one device — it’s a pair of twins! These two units magnetically snap together to form a single, versatile controller.
+
+![A photograph of two baby keycubes]({% link /assets/img/blog/bbk3_two.jpg %})
+
+The first functional prototypes were developed by **Adrien Cartelot** as part of an academic project (autumn 2023). Since then, the 3D models have been refined and simplified using [OpenSCAD](https://openscad.org), a free and open-source programmer-oriented solid-modeling software. Before reaching this stage, early cardboard prototypes and design iterations were made a couple of years ago. 
+
+![A photograph of two cardboard prototypes]({% link /assets/img/blog/bbk3_prototyping.jpg %})
+
+Finally, structure and keycaps were entirely 3D-printed (with resin).
+
+![A close-up photograph of the 3D printed keycaps]({% link /assets/img/blog/bbk3_3dprinting_keycaps.jpg %})
+
+... and a thin layer of clear paint was applied to any surface meant to be touched, ensuring a smoother tactile experience.
+
+![A photograph of parts of the baby keycube being painted]({% link /assets/img/blog/bbk3_painting.jpg %})
+
+For more technical details about the baby keycube — including 3D model files, sizes and a list of hardware components — visit the dedicated GitHub [repository](https://github.com/keycube/bbk3).
