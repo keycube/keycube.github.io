@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Keycu..ddly"
+date:   2024-11-28 22:00:00 +0200
+categories: update
+lang: en
+author: Damien
+code: blog
+---
+
+Introducing the keycu...ddly, well, a **plush** keycube!
+
+This iteration softens the hard edges of the original cubic keyboard, transforming it into something more inviting, friendly, and playful. Crafted from textile and conductive fabric, this exploratory version feels more like a stuffed toy than a traditional input device. Yet, the plush keycube retains its functionality, featuring five active faces with compact 2x2 matrices, for a total of 20 switches.
+
+This first cuddly prototype, conceived by **Emeline Pellan** as part of an academic project (winter 2024), blurs the lines between technology and comfort, offering a captivating mix of functionality and tactile exploration. It serves as a tool, a toy, and a thought experiment—demonstrating how design can gently redefine the boundaries between human and machine.
+
+For technical details, including fabrication models, dimensions, and a list of hardware components, visit the dedicated GitHub [repository](https://github.com/k3Plush).
