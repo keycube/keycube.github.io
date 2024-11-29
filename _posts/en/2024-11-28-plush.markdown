@@ -14,4 +14,4 @@ This iteration softens the hard edges of the original cubic keyboard, transformi
 
 This first cuddly prototype, conceived by **Emeline Pellan** as part of an academic project (winter 2024), blurs the lines between technology and comfort, offering a captivating mix of functionality and tactile exploration. It serves as a tool, a toy, and a thought experiment—demonstrating how design can gently redefine the boundaries between human and machine.
 
-For technical details, including fabrication models, dimensions, and a list of hardware components, visit the dedicated GitHub [repository](https://github.com/k3Plush).
+For technical details, including fabrication models, dimensions, and a list of hardware components, visit the dedicated GitHub [repository](https://github.com/keycube/k3Plush).
