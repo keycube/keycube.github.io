@@ -23,13 +23,14 @@ email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   The keycube is a kind of keyboard. A cubic device dedicated to text entry.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://keycube.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: keycube
 rss: rss
 
 # Build settings
 theme: minima
 plugins:
+  - jekyll-sitemap
   - jekyll-feed
   - jekyll-archives
   - jekyll-polyglot
