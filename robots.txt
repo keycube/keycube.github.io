@@ -4,8 +4,6 @@ layout: none
 User-agent: *
 Allow: /
 
-# lien vers votre sitemap généré
 Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml
 
-# (optionnel) pour préciser l’hôte
 Host: {{ site.url }}{{ site.baseurl }}
