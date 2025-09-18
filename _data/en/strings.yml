@@ -11,4 +11,5 @@ no_translation: This page is not available in English.
 all: All topics
 topics:
   update: Update
+  library: Library
   jekyll: Jekyll
