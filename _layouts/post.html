@@ -16,12 +16,11 @@ layout: default
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }} </span></span>
       {%- endif -%}
-      {% for category in site.categories %}
+      {% for category in page.categories %}
         {% if forloop.first %}
         •
         {% endif %}
-        {% assign topic_name = category[0] %}
-        <a href="/blog/topic/{{ topic_name }}">{{ site.data.strings.topics[topic_name] }}</a>
+        <a href="/blog/topic/{{ category }}">{{ site.data.strings.topics[category] }}</a>
         {% if forloop.last == false %}
         |
         {% endif %}
