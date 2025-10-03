@@ -1,9 +1,9 @@
 ---
 layout: xware
 permalink: /hardware/
-title: Hardware
-lang: en
+title: Matériel
+lang: fr
 code: hardware
 ---
 
-Various flavors of the keycube
+Les déclinaisons du keycube

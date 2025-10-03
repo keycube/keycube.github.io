@@ -14,8 +14,8 @@ layout: default
 </div>
 
 <ul class="xware-list">
-  {% assign title = page.title | downcase %}
-  {% for xware in site.data[title] %}
+  {% assign code = page.code | downcase %}
+  {% for xware in site.data[code] %}
   <li>
     <img class="xware-img" src="{{ xware.image }}" alt="{{ xware.title }}"/>
     <h3>
