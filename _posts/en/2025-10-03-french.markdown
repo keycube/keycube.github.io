@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Bonjour, hi!"
+date:   2025-10-03 23:30:00 +0200
+categories: update
+lang: en
+author: Damien
+code: blog
+---
+We’re excited to announce that the official **keycube** website is now available in both **French** and **English**.
+
+This step feels natural, because the keycube itself was born at the crossroads of two French-speaking worlds: **France** and **Quebec**. The first prototypes, ideas, and discussions that shaped the project grew out of research conducted in these two regions. Having the website in both languages is a way of recognizing that history and keeping a strong connection with the communities that helped give life to the keycube.
+
+At the same time, sharing the site in English opens the door to a wider international audience, making it easier for more people to discover the project, learn from it, and contribute.
+
+The keycube has always been about openness: open research, open hardware, and open sharing of ideas. Making the site accessible in both French and English is one more step in that direction.
