@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Un bébé voit le jour"
+date:   2024-09-28 15:00:00 +0200
+categories: update
+lang: fr
+author: Damien
+code: blog
+---
+La famille Keycube s’agrandit ! Voici le **baby keycube** (**bbk3**), une version compacte de l’original, avec une seule touche par face. Et il ne s’agit pas d’un seul appareil, mais d'une paire de jumeaux ! Ces deux unités s’aimantent pour former un contrôleur unique et polyvalent.
+
+![Une photographie de deux baby keycubes]({% link /assets/img/blog/bbk3_two.jpg %})
+
+Les premiers prototypes fonctionnels ont été développés par **Adrien Cartelot** dans le cadre d’un projet académique (automne 2023). Depuis, les modèles 3D ont été affinés et simplifiés à l’aide d’[OpenSCAD](https://openscad.org), un logiciel libre et open-source de modélisation 3D orienté programmation. Avant d’en arriver là, des prototypes en carton et des itérations de conception 3D avaient été réalisés quelques années plus tôt.
+
+![Une photographie de deux prototypes en carton]({% link /assets/img/blog/bbk3_prototyping.jpg %})
+
+Enfin, la structure et les touches ont été entièrement imprimées en 3D (avec de la résine).
+
+![Une photographie en gros plan des touches imprimées en 3D]({% link /assets/img/blog/bbk3_3dprinting_keycaps.jpg %})
+
+... et une fine couche de vernis transparent a été appliquée sur toutes les surfaces destinées à être touchées, pour une expérience tactile plus douce.
+
+![Une photographie des pièces du baby keycube en cours de peinture]({% link /assets/img/blog/bbk3_painting.jpg %})
+
+Pour plus de détails techniques sur le baby keycube, y compris les fichiers des modèles 3D, les dimensions et la liste des composants matériels, consultez le dépôt GitHub [dédié](https://github.com/keycube/bbk3).

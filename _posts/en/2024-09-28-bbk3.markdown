@@ -7,7 +7,7 @@ lang: en
 author: Damien
 code: blog
 ---
-The keycube family is expanding! Introducing the **baby keycube** (**bbk3**), a compact version of the original, featuring just one key per face. But it's not just one device — it’s a pair of twins! These two units magnetically snap together to form a single, versatile controller.
+The keycube family is expanding! Introducing the **baby keycube** (**bbk3**), a compact version of the original, featuring just one key per face. But it's not just one device, it’s a pair of twins! These two units magnetically snap together to form a single, versatile controller.
 
 ![A photograph of two baby keycubes]({% link /assets/img/blog/bbk3_two.jpg %})
 
@@ -23,4 +23,4 @@ Finally, structure and keycaps were entirely 3D-printed (with resin).
 
 ![A photograph of parts of the baby keycube being painted]({% link /assets/img/blog/bbk3_painting.jpg %})
 
-For more technical details about the baby keycube — including 3D model files, sizes and a list of hardware components — visit the dedicated GitHub [repository](https://github.com/keycube/bbk3).
+For more technical details about the baby keycube, including 3D model files, sizes and a list of hardware components, visit the dedicated GitHub [repository](https://github.com/keycube/bbk3).
