@@ -1,11 +1,11 @@
 - title : k3Light
-  description : "A light management module to create any sequential effect or use effects such as rainbow, breathing or ripple."
+  description : "A light management module to create any sequential effect or use effects such as rainbow, breathing or ripple"
   keywords : backlight, effect, library
   url : https://github.com/keycube/lightManager
   image : "../assets/img/post1.jpg"
 
 - title : k3Scratch
-  description : "A typing game designed to push the limits of Scratch."
+  description : "A typing game designed to push the limits of Scratch"
   keywords : scratch, game, character entry
   url : https://github.com/keycube/k3-Scratch
   image : "../assets/img/post1.jpg"

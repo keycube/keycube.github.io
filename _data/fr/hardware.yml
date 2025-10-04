@@ -1,0 +1,11 @@
+- title : bbk3
+  description : "Le bbk3 signifie baby keycube, une version très compacte de l'original, avec un seul interrupteur par face"
+  keywords : 1x1, rétroéclairage, IMU (unité de mesure inertielle), compact
+  url : https://github.com/keycube/bbk3
+  image : "../assets/img/hardware/hw_sq_bbk3.jpg"
+
+- title : k3Plush
+  description : "Le k3plush est un contrôleur cubique en peluche"
+  keywords : 2x2, tissu, couture, souple
+  url : https://github.com/keycube/k3plush
+  image : "../assets/img/hardware/k3plush.jpg"
