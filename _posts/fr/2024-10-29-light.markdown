@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Lumière !"
+date:   2024-10-29 16:00:00 +0200
+categories: update
+lang: fr
+author: Damien
+code: blog
+---
+Le keycube est une interface innovante dotée de **touches rétroéclairées** disposées autour d’un cube, et la gestion de son éclairage permet de créer des expériences visuelles dynamiques et captivantes. Une petite bibliothèque de développement a été conçue pour simplifier la gestion de ces effets lumineux, tout en offrant une large gamme d’animations.
+
+Des effets prédéfinis permettent de créer des retours visuels apaisants ou engageants, comme les **transitions arc-en-ciel**, avec les couleurs se déplaçant en douceur sur le cube, ou l’**effet de respiration**, avec l’intensité lumineuse variant délicatement. Un autre effet populaire, **l’onde**, déclenche une vague de lumière sur les touches lorsqu’une seule est activée.
+
+Cette bibliothèque offre une manière intuitive et flexible de contrôler l’éclairage du Keycube, avec des options de personnalisation faciles pour les couleurs et les transitions. Elle ouvre des possibilités passionnantes pour enrichir les interactions avec cette interface unique.
+
+Pour plus de détails techniques sur la bibliothèque de gestion de l’éclairage, développée par **Thibaut Breton** dans le cadre d’un projet académique (à l’automne 2023), consultez le dépôt GitHub [dédié](https://github.com/keycube/lightManager).

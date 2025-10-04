@@ -13,4 +13,4 @@ Predefined effects like **rainbow transitions**, where colors smoothly move acro
 
 This library provides an intuitive and flexible way to control the keycube's lighting, with easy customization options for colors and transitions. It opens up exciting possibilities for enhancing interactions with this unique interface.
 
-For more technical details about the light management library developed by Thibaut Breton as part of an academic project (in fall 2023), visit the dedicated GitHub [repository](https://github.com/keycube/lightManager).
+For more technical details about the light management library developed by **Thibaut Breton** as part of an academic project (in fall 2023), visit the dedicated GitHub [repository](https://github.com/keycube/lightManager).
