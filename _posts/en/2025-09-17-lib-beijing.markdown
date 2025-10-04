@@ -13,6 +13,6 @@ Why libraries, you ask? Because the keycube is all about text. And what better c
 
 The first stop in this adventure: the new [Beijing Library](https://en.wikipedia.org/wiki/Beijing_Library) in Tongzhou, Beijing. It officially opened its doors in December 2023, and by mid-2024, just six months later, I had the good fortune to visit. The architecture is nothing short of stunning: vast, luminous, and inspiring. Against this backdrop, the keycube looked perfectly at ease, as if it too had come to read, write, and dream.
 
-![A photograph of two baby keycubes]({% link /assets/img/blog/lib_beijing.jpg %})
+![A photograph of the keycube inside the library]({% link /assets/img/blog/lib_beijing.jpg %})
 
 And so begins the **keycube**’s globetrotting tour of libraries. Who knows where it will pop up next? Maybe in your favorite library, so keep an eye out!
