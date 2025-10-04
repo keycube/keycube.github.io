@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Une peluche ?"
+date:   2024-11-28 22:00:00 +0200
+categories: update
+lang: fr
+author: Damien
+code: blog
+---
+**Un keycube en peluche !**
+
+Cette itération adoucit les angles durs du clavier cubique original, le transformant en un objet plus accueillant, convivial et ludique. Fabriqué avec du tissu conducteur, cette version exploratoire ressemble davantage à une peluche qu’à un périphérique d’entrée traditionnel. Pourtant, le keycube en peluche conserve (presque) toute sa fonctionnalité, avec cinq faces actives équipées de matrices compactes 2x2, soit un total de 20 interrupteurs.
+
+Ce premier prototype douillet, imaginé par **Emeline Pellan** dans le cadre d’un projet académique (hiver 2024), brouille les frontières entre technologie et confort, offrant un mélange captivant de fonctionnalité et d’exploration tactile. Il se situe à la fois entre l’outil, le jouet et l’expérience conceptuelle, illustrant comment la stylique peut redéfinir en douceur les interactions entre l’humain et la machine.
+
+Pour plus de détails techniques, y compris les modèles de fabrication, les dimensions et la liste des composants matériels, consultez le dépôt GitHub [dédié](https://github.com/keycube/k3Plush).
