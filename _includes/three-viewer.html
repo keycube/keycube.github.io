@@ -1,0 +1,58 @@
+<div id="{{ include.id | default: 'three-container' }}" 
+     style="width: {{ include.width | default: '400px' }}; 
+            height: {{ include.height | default: '300px' }};">
+</div>
+
+<!--script src="{{ '/assets/js/three.core.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/STLLoader.js' | relative_url }}"></script-->
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "/assets/js/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from "three";
+import { STLLoader } from '/assets/js/STLLoader.js';
+
+(function() {
+  const container = document.getElementById("{{ include.id | default: 'three-container' }}");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(width, height);
+  container.appendChild(renderer.domElement);
+
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(1, 1, 1).normalize();
+  scene.add(light);
+
+  const loader = new STLLoader();
+  loader.load("{{ include.model }}", function (geometry) {
+    const material = new THREE.MeshNormalMaterial();
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.rotation.x = -Math.PI / 2;
+    scene.add(mesh);
+
+    const box = new THREE.Box3().setFromObject(mesh);
+    const size = box.getSize(new THREE.Vector3()).length();
+    const center = box.getCenter(new THREE.Vector3());
+    camera.position.copy(center);
+    camera.position.z += size * 1.5;
+    camera.lookAt(center);
+
+    animate();
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+})();
+</script>

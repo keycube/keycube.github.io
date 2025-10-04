@@ -10,3 +10,9 @@ code: about
 ---
 
 The keycube is a kind of keyboard. A cubic device dedicated to text entry.
+
+{% include three-viewer.html
+     id="cube1" 
+     width="400px" 
+     height="400px" 
+     model="/assets/models/cover_cube-v6.stl" %}
