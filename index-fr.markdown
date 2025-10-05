@@ -10,3 +10,7 @@ code: about
 ---
 
 Le keycube est une sorte de clavier. Un appareil cubique dédié à la saisie de texte.
+
+{% include three-viewer.html
+     id="k3official"
+     model="/assets/models/k3v2assembly.stl" %}
