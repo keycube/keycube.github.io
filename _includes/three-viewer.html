@@ -1,10 +1,5 @@
-<div id="{{ include.id | default: 'three-container' }}" 
-     style="width: {{ include.width | default: '400px' }}; 
-            height: {{ include.height | default: '300px' }};">
+<div class="threeViewer" id="{{ include.id | default: 'three-container' }}">
 </div>
-
-<!--script src="{{ '/assets/js/three.core.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/STLLoader.js' | relative_url }}"></script-->
 
 <script type="importmap">
 {
@@ -24,35 +19,67 @@ import { STLLoader } from '/assets/js/STLLoader.js';
   const height = container.clientHeight;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+
   const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setClearColor(0xfdfdfd);
   renderer.setSize(width, height);
+  renderer.setAnimationLoop( animate );
   container.appendChild(renderer.domElement);
 
-  const light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(1, 1, 1).normalize();
-  scene.add(light);
+  let mesh;
 
   const loader = new STLLoader();
-  loader.load("{{ include.model }}", function (geometry) {
+  loader.load("{{ include.model }}", function ( geometry ) {
+    geometry.center();
+
     const material = new THREE.MeshNormalMaterial();
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.rotation.x = -Math.PI / 2;
+    mesh = new THREE.Mesh( geometry, material );
     scene.add(mesh);
 
-    const box = new THREE.Box3().setFromObject(mesh);
-    const size = box.getSize(new THREE.Vector3()).length();
-    const center = box.getCenter(new THREE.Vector3());
-    camera.position.copy(center);
-    camera.position.z += size * 1.5;
-    camera.lookAt(center);
+    // Compute bounding box and size
+    const box = new THREE.Box3().setFromObject( mesh );
+    const size = box.getSize( new THREE.Vector3() );
+    const maxDim = Math.max( size.x, size.y, size.z );
+    const fov = camera.fov * ( Math.PI / 180 ); // convert FOV to radians
 
-    animate();
+    // Calculate appropriate distance so the model fits the screen width
+    let cameraZ = maxDim / (2 * Math.tan(fov / 2));
+
+    // Add some padding (optionally)
+    cameraZ *= 1.5;
+
+    camera.position.set( 0, 0, cameraZ );
+    camera.lookAt( 0, 0, 0 );
+
+    updateMeshScale();
   });
 
-  function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
+  window.addEventListener('resize', () => {
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+    renderer.setSize( container.clientWidth, container.clientWidth );
+
+    updateMeshScale();
+  });
+
+  function updateMeshScale() {
+    if (!mesh) return;
+    const baseWidth = 1680;
+    const scale = container.clientWidth / baseWidth;
+    const scaleFactor = Math.pow(scale, 0.2); // gentler curve
+    mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
   }
+
+  function animate() {
+    if (mesh) {
+      mesh.rotation.x += 0.001;
+      mesh.rotation.y += 0.001;
+    }
+
+    renderer.render( scene, camera );
+  }
+
 })();
+
 </script>
