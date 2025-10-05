@@ -10,3 +10,7 @@ code: about
 ---
 
 The keycube is a kind of keyboard. A cubic device dedicated to text entry.
+
+{% include three-viewer.html
+     id="k3official"
+     model="/assets/models/k3v2assembly.stl" %}

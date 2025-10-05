@@ -1,0 +1,85 @@
+<div class="threeViewer" id="{{ include.id | default: 'three-container' }}">
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "/assets/js/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from "three";
+import { STLLoader } from '/assets/js/STLLoader.js';
+
+(function() {
+  const container = document.getElementById("{{ include.id | default: 'three-container' }}");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setClearColor(0xfdfdfd);
+  renderer.setSize(width, height);
+  renderer.setAnimationLoop( animate );
+  container.appendChild(renderer.domElement);
+
+  let mesh;
+
+  const loader = new STLLoader();
+  loader.load("{{ include.model }}", function ( geometry ) {
+    geometry.center();
+
+    const material = new THREE.MeshNormalMaterial();
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add(mesh);
+
+    // Compute bounding box and size
+    const box = new THREE.Box3().setFromObject( mesh );
+    const size = box.getSize( new THREE.Vector3() );
+    const maxDim = Math.max( size.x, size.y, size.z );
+    const fov = camera.fov * ( Math.PI / 180 ); // convert FOV to radians
+
+    // Calculate appropriate distance so the model fits the screen width
+    let cameraZ = maxDim / (2 * Math.tan(fov / 2));
+
+    // Add some padding (optionally)
+    cameraZ *= 1.5;
+
+    camera.position.set( 0, 0, cameraZ );
+    camera.lookAt( 0, 0, 0 );
+
+    updateMeshScale();
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+    renderer.setSize( container.clientWidth, container.clientWidth );
+
+    updateMeshScale();
+  });
+
+  function updateMeshScale() {
+    if (!mesh) return;
+    const baseWidth = 1680;
+    const scale = container.clientWidth / baseWidth;
+    const scaleFactor = Math.pow(scale, 0.2); // gentler curve
+    mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
+  }
+
+  function animate() {
+    if (mesh) {
+      mesh.rotation.x += 0.001;
+      mesh.rotation.y += 0.001;
+    }
+
+    renderer.render( scene, camera );
+  }
+
+})();
+
+</script>
