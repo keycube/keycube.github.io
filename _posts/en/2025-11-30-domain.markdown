@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "The cube rolled... and landed at keycube.org"
+date:   2025-11-30 16:30:00 +0200
+categories: update
+lang: en
+author: Damien
+code: blog
+---
+The keycube finally has its own place on the internet, and it feels great to say it: the project now lives at **[keycube.org](https://keycube.org)**.
+
+Nothing else changes behind the scenes. The site is still hosted on [GitHub Pages](https://docs.github.com/en/pages), and the classic [keycube.github.io](https://keycube.github.io) link continues to work just fine. It now redirects smoothly to the new domain, so you can use whichever link you prefer.
+
+This new domain makes the project easier to find, easier to share and, honestly, a bit more real. It’s a small step, but it feels like an important one in the journey of the keycube.

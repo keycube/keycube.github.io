@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Le cube est jeté... et atterrit sur keycube.org"
+date:   2025-11-30 16:30:00 +0200
+categories: update
+lang: fr
+author: Damien
+code: blog
+---
+Le keycube a maintenant sa propre place sur le Web et cela fait vraiment plaisir de l'écrire : le projet vit désormais à l’adresse **[keycube.org](https://keycube.org)**.
+
+Rien ne change en coulisses. Le site est toujours hébergé avec [GitHub Pages](https://docs.github.com/fr/pages) comme avant, et l’adresse [keycube.github.io](https://keycube.github.io) fonctionne encore parfaitement. Elle redirige simplement vers le nouveau domaine, donc tu peux continuer à utiliser le lien que tu préfères.
+
+Ce nouveau domaine rend le projet plus facile à trouver, plus simple à partager et, honnêtement, un peu plus réel. C’est une petite étape, mais elle compte dans l’évolution du keycube.
