@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Des lettres en lumière"
+date:   2025-12-27 18:00:00 +0200
+categories: update
+lang: fr
+author: Damien
+code: blog
+---
+Pour terminer l’année sur une note plus lumineuse, voici une petite fabrication réalisée en décembre.
+
+![A photograph of small neon-like signs]({% link /assets/img/blog/k3kbk_neonsign.jpg %})
+
+Deux petits panneaux (enseignes) style **néon** ont été réalisés à l’aide de supports imprimés en 3D et de diodes électroluminescentes (DEL) sous forme de filaments flexibles. Il s’agit simplement d’une exploration rapide de la lumière, de la forme et de l’atmosphère, qui correspond bien à l’ambiance de fin d’année.
+
+En regardant vers l’avenir, ce type d’éclairage pourrait naturellement trouver sa place dans le keycube lui-même, en particulier le long des arêtes de sa structure. Une lumière intégrée supplémentaire pourrait aider à mettre en valeur la forme cubique, fournir un retour visuel, ou simplement apporter une présence douce à l’objet.

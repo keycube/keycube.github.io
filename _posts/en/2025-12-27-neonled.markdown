@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Letters in Light"
+date:   2025-12-27 18:00:00 +0200
+categories: update
+lang: en
+author: Damien
+code: blog
+---
+To close the year on a _lighter_ note, here is a small fabrication made in December.
+
+![A photograph of small neon-like signs]({% link /assets/img/blog/k3kbk_neonsign.jpg %})
+
+Two tiny **neon-style** signs were built using simple 3D-printed supports and flexible LED filaments. They are not meant as finished prototypes, but rather as a quick exploration of light, form, and atmosphere, which fits well with the end-of-year mood.
+
+Looking ahead, this kind of neon-like lighting could naturally find its way into the keycube itself, especially along the edges of its structure. Integrated light could help emphasize the cubic geometry, provide visual feedback, or simply add a gentle presence to the device.
