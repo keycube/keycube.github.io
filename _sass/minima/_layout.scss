@@ -312,3 +312,16 @@ h3 {
   width: 100%; 
   aspect-ratio: 1 / 1;
 }
+
+/**
+ * xware iframe embed
+ */
+.xware-iframe-card {
+  clear: both;
+}
+
+.xware-iframe-link {
+  display: inline-block;
+  margin-top: $spacing-unit / 3;
+  font-weight: 600;
+}
