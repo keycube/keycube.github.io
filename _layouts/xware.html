@@ -20,7 +20,7 @@ layout: default
     {% if xware.iframe %}
     <div class="xware-iframe-card">
       <h3>
-        <a class="post-link" href="{{ xware.iframe }}">
+        <a class="post-link" href="{{ xware.url }}">
           {{ xware.title }}
         </a>
       </h3>
@@ -28,8 +28,11 @@ layout: default
       <p class="xware-meta">
         {{ xware.description }}
       </p>
-      <a class="xware-iframe-link" href="{{ xware.iframe }}" target="_blank">
-        {% if page.lang == "fr" %}Ouvrir l'application ↗{% else %}Open application ↗{% endif %}
+      <div class="xware-iframe-wrapper">
+        <iframe src="{{ xware.iframe | relative_url }}" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <a class="xware-iframe-fullscreen" href="{{ xware.iframe | relative_url }}" target="_blank">
+        {% if page.lang == "fr" %}Ouvrir en plein écran ↗{% else %}Open fullscreen ↗{% endif %}
       </a>
     </div>
     {% else %}

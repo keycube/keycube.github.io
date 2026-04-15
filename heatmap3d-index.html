@@ -1,0 +1,149 @@
+---
+layout: default
+title: Heatmap 3D
+permalink: /heatmap3d/
+lang: en
+---
+
+<style>
+/* Landing page for Heatmap 3D integrated in keycube.io */
+.heatmap3d-landing {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.heatmap3d-landing h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.heatmap3d-landing .subtitle {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 2.5rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a2e;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.nav-btn:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn .btn-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn:hover .btn-icon {
+  transform: scale(1.15);
+}
+
+.nav-btn .btn-label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-btn .btn-desc {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.nav-btn.preference-btn:hover {
+  border-color: rgba(255, 107, 107, 0.6);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 0 25px rgba(255, 107, 107, 0.15);
+}
+
+.nav-btn.reachability-btn:hover {
+  border-color: rgba(81, 207, 102, 0.6);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 0 25px rgba(81, 207, 102, 0.15);
+}
+
+.heatmap3d-info {
+  margin-top: 3rem;
+  max-width: 600px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.heatmap3d-info a {
+  color: #43AAD6;
+}
+
+@media (max-width: 480px) {
+  .heatmap3d-landing h1 {
+    font-size: 1.8rem;
+  }
+  .nav-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+</style>
+
+<div class="heatmap3d-landing">
+  <h1>Heatmap 3D</h1>
+  <p class="subtitle">Interactive visualization of experimental data</p>
+
+  <nav class="nav-buttons">
+    <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="nav-btn preference-btn">
+      <span class="btn-icon">👤</span>
+      <span class="btn-label">Preference</span>
+      <span class="btn-desc">Individual &amp; aggregate preference data from user studies</span>
+    </a>
+    <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="nav-btn reachability-btn">
+      <span class="btn-icon">🖐️</span>
+      <span class="btn-label">Reachability</span>
+      <span class="btn-desc">Finger-to-key heatmap across all keycube faces</span>
+    </a>
+  </nav>
+
+  <div class="heatmap3d-info">
+    <p>These visualizations are based on data from two user studies involving 31 and 22 participants respectively. The studies identified the preferred diagonal holding position (chosen by 77.4% of participants) and mapped finger-to-key preferences and reachability.</p>
+    <p style="margin-top: 1rem;"><a href="https://github.com/keycube/heatmap3d" target="_blank">View source on GitHub →</a></p>
+  </div>
+</div>

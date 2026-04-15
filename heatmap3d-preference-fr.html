@@ -1,0 +1,90 @@
+---
+layout: heatmap3d
+title: Préférence – Keycube Heatmap 3D
+default_mode: preference
+permalink: /heatmap3d/preference/
+lang: fr
+---
+
+<a href="{{ '/software/' | relative_url }}" class="nav-link">← Logiciel</a>
+
+<!-- Full-screen 3D viewer -->
+<div id="model-container"></div>
+
+<!-- Floating overlay controls -->
+<div class="overlay-controls">
+
+  <!-- ── Top bar: participant select + face buttons ── -->
+  <div class="top-bar">
+    <select id="participant-select">
+      <option value="">Choisir un participant...</option>
+      <option value="aggregate">📊 Agrégé (Moyenne des 22)</option>
+      {% for row in site.data.preferences %}
+        <option value="{{ forloop.index0 }}">
+          P{{ row.Number }} ({{ row.Handedness | capitalize }}, envergure {{ row.SpanRightHand }}mm)
+        </option>
+      {% endfor %}
+    </select>
+
+    <div class="face-buttons glass-panel" style="padding: 6px 10px;">
+      <button class="color-btn" data-color="R" style="background: #ff6b6b; color: white;">R</button>
+      <button class="color-btn" data-color="B" style="background: #4dabf7; color: white;">B</button>
+      <button class="color-btn" data-color="G" style="background: #51cf66; color: white;">G</button>
+      <button class="color-btn" data-color="W" style="background: #f8f9fa; color: black; border: 1px solid #ccc;">W</button>
+      <button class="color-btn" data-color="Y" style="background: #ffd43b; color: black;">Y</button>
+      <button class="reset-btn" style="background: #868e96; color: white;">Tout</button>
+    </div>
+  </div>
+
+  <!-- ── Bottom bar: badge + legend + reset view ── -->
+  <div class="bottom-bar">
+    <div class="selection-badge" id="selection-badge">
+      <span class="selection-icon" id="selection-icon">🎯</span>
+      <span class="selection-text" id="selection-text">Aucun participant sélectionné</span>
+    </div>
+
+    <div class="heatmap-legend">
+      <span>Faible préf.</span>
+      <div class="heatmap-gradient"></div>
+      <span>Haute préf.</span>
+    </div>
+
+    <button class="reset-view-btn" id="reset-view-btn">↻ Réinitialiser</button>
+  </div>
+
+</div>
+
+<!-- Side panel toggle -->
+<button class="side-panel-toggle" onclick="document.getElementById('info-panel').classList.toggle('hidden')">ℹ️ Info</button>
+
+<!-- Side panel -->
+<div id="info-panel" class="side-panel glass-panel hidden">
+
+  <h4>Sélection</h4>
+  <div id="mode-description">
+    <p>Sélectionnez un participant pour voir ses données de préférence, ou choisissez <strong>Agrégé</strong> pour la moyenne de tous les participants.</p>
+  </div>
+
+  <!-- Participant summary (hidden until selection) -->
+  <div id="participant-summary" style="display: none;">
+    <h4>Participant</h4>
+    <p><strong>Latéralité:</strong> <span id="summary-handedness"></span></p>
+    <p><strong>Circonférence:</strong> <span id="summary-circumference"></span> mm</p>
+    <p><strong>Longueur:</strong> <span id="summary-length"></span> mm</p>
+    <p><strong>Envergure:</strong> <span id="summary-span"></span> mm</p>
+  </div>
+
+  <h4>Informations sur l'étude</h4>
+  <div class="study-info">
+    <div class="study-stat-grid">
+      <div class="study-stat-item"><strong>31</strong>Étude 1</div>
+      <div class="study-stat-item"><strong>22</strong>Étude 2</div>
+      <div class="study-stat-item"><strong>77,4%</strong>Diagonale</div>
+      <div class="study-stat-item"><strong>80</strong>Touches</div>
+    </div>
+    <p><strong>Étude 1:</strong> Identification des positions de tenue préférées. Diagonale choisie par 77,4%.</p>
+    <p><strong>Étude 2:</strong> Cartographie des préférences doigt-touche (1 = plus préféré → 10 = moins préféré).</p>
+    <p>Échelle de couleur: <span style="color:#51cf66">Vert</span> (haute préférence) → <span style="color:#ffd43b">Jaune</span> → <span style="color:#ff6b6b">Rouge</span> (faible préférence).</p>
+  </div>
+
+</div>

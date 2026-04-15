@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="baseurl" content="{{ site.baseurl }}">
+  <meta name="default-mode" content="{{ page.default_mode | default: 'preference' }}">
+  <title>{{ page.title | default: "Keycube Heatmap 3D" }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/heatmap3d/dataviz.css' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" type="image/x-icon">
+</head>
+<body>
+  {{ content }}
+  <!-- Three.js import map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  {% include heatmap3d-model-viewer.html %}
+  {% include heatmap3d-data.html %}
+  <script src="{{ '/assets/js/heatmap3d/dataviz.js' | relative_url }}"></script>
+</body>
+</html>
