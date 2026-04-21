@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var reachabilityData = window.reachabilityData;
   var perFingerReachability = window.perFingerReachability;
 
-  var defaultModeMeta = document.querySelector('meta[name="default-mode"]');
-  var currentMode = defaultModeMeta ? defaultModeMeta.getAttribute('content') : 'preference';
+  var currentMode = document.body.getAttribute('data-default-mode') || 'preference';
   var currentParticipant = null;
   var currentFace = null;
   var FACES = ['R','B','G','W','Y'];
@@ -91,6 +90,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selectionText) selectionText.textContent = text;
   }
 
+  function bindPanelToggles() {
+    document.querySelectorAll('[data-panel-toggle]').forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        var panelId = toggle.getAttribute('data-panel-toggle');
+        var panel = panelId ? document.getElementById(panelId) : null;
+        if (!panel) return;
+        var isHidden = panel.classList.toggle('hidden');
+        toggle.setAttribute('aria-expanded', String(!isHidden));
+      });
+    });
+  }
+
   // ─── Participant selector ───
   var participantSelect = document.getElementById('participant-select');
   var colorButtons = document.querySelectorAll('.color-btn');
@@ -164,6 +175,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!fingerEl) return;
     var data = fingerEl.value === 'total' ? aggregateReachability : getFingerReachability(fingerEl.value);
     var range = getRange(data);
+    var legendMin = document.getElementById('reachability-legend-min');
+    var legendMax = document.getElementById('reachability-legend-max');
+    if (legendMin) legendMin.textContent = range.min;
+    if (legendMax) legendMax.textContent = range.max;
     window.updateModel({ 
       heatmap: data, 
       heatmapMin: range.min, 
@@ -190,12 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.aggregatePreference = aggregatePreference;
   window.aggregateReachability = aggregateReachability;
 
-  // Collapsible sections
-  document.querySelectorAll('.controls-section h3').forEach(function (header) {
-    header.addEventListener('click', function () {
-      header.closest('.controls-section').classList.toggle('active');
-    });
-  });
+  bindPanelToggles();
 
   // Helper for simple control bindings
   function bindControl(id, event, handler) {
@@ -203,22 +213,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (el) el.addEventListener(event, handler);
   }
 
-  bindControl('wireframe-toggle', 'change', function (e) {
-    if (window.updateModel) window.updateModel({ wireframe: e.target.checked });
-  });
-
-  bindControl('bg-color-picker', 'input', function (e) {
-    if (window.updateModel) window.updateModel({ backgroundColor: e.target.value });
-  });
-
   bindControl('reset-view-btn', 'click', function () {
     if (window.updateModel) window.updateModel({ resetView: true });
-  });
-
-  var lightValueSpan = document.getElementById('light-intensity-value');
-  bindControl('light-intensity', 'input', function (e) {
-    if (lightValueSpan) lightValueSpan.textContent = e.target.value;
-    if (window.updateModel) window.updateModel({ lightingIntensity: parseInt(e.target.value) / 100 });
   });
 
   // Auto-apply default mode on page load

@@ -13,5 +13,5 @@
 - title : Heatmap 3D
   description : "Interactive 3D visualization of preference and reachability data collected from user studies on the keycube"
   keywords : visualization, heatmap, 3D, preference, reachability, research
-  url : https://github.com/keycube/heatmap3d
+  url : /heatmap3d/
   iframe : "/heatmap3d/"

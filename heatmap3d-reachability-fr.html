@@ -4,9 +4,10 @@ title: Accessibilité – Keycube Heatmap 3D
 default_mode: reachability
 permalink: /heatmap3d/reachability/
 lang: fr
+nav_section: software
+extra_css:
+  - /assets/css/heatmap3d/dataviz.css
 ---
-
-<a href="{{ '/software/' | relative_url }}" class="nav-link">← Logiciel</a>
 
 <!-- Full-screen 3D viewer -->
 <div id="model-container"></div>
@@ -14,37 +15,43 @@ lang: fr
 <!-- Floating overlay controls -->
 <div class="overlay-controls">
 
-  <!-- ── Top bar: hand selector + quick actions ── -->
+  <!-- ── Top bar: app nav + hand selector + quick actions ── -->
   <div class="top-bar">
+    <div class="app-nav glass-panel" aria-label="Navigation Heatmap">
+      <a href="{{ '/heatmap3d/' | relative_url }}" class="app-nav-link">Accueil</a>
+      <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="app-nav-link">Préférence</a>
+      <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="app-nav-link is-active" aria-current="page">Accessibilité</a>
+      <a href="{{ '/software/' | relative_url }}" class="app-nav-link">Logiciel</a>
+    </div>
+
     <div class="glass-panel" style="padding: 8px 14px;">
       <div class="hand-selector-container">
-        <!-- Left Hand -->
         <div class="hand-analog" id="left-hand-analog">
           <div class="analog-label">Gauche</div>
           <div class="analog-ring" data-hand="left">
             <div class="analog-stick"><span class="hand-emoji">G</span></div>
-            <button class="finger-dot finger-thumb-left" data-finger="LT" data-tooltip="Pouce gauche"><span class="finger-letter">P</span></button>
-            <button class="finger-dot finger-index-left" data-finger="LI" data-tooltip="Index gauche"><span class="finger-letter">I</span></button>
-            <button class="finger-dot finger-middle-left" data-finger="LM" data-tooltip="Majeur gauche"><span class="finger-letter">M</span></button>
-            <button class="finger-dot finger-ring-left" data-finger="LR" data-tooltip="Annulaire gauche"><span class="finger-letter">A</span></button>
-            <button class="finger-dot finger-little-left" data-finger="LL" data-tooltip="Auriculaire gauche"><span class="finger-letter">Au</span></button>
+            <button type="button" class="finger-dot finger-thumb-left" data-finger="LT" data-tooltip="Pouce gauche"><span class="finger-letter">P</span></button>
+            <button type="button" class="finger-dot finger-index-left" data-finger="LI" data-tooltip="Index gauche"><span class="finger-letter">I</span></button>
+            <button type="button" class="finger-dot finger-middle-left" data-finger="LM" data-tooltip="Majeur gauche"><span class="finger-letter">M</span></button>
+            <button type="button" class="finger-dot finger-ring-left" data-finger="LR" data-tooltip="Annulaire gauche"><span class="finger-letter">A</span></button>
+            <button type="button" class="finger-dot finger-little-left" data-finger="LL" data-tooltip="Auriculaire gauche"><span class="finger-letter">Au</span></button>
           </div>
         </div>
-        <!-- Center: All + Best buttons -->
+
         <div class="hand-divider" style="display: flex; flex-direction: column; gap: 6px;">
-          <button class="hand-action-btn active" id="btn-all-fingers" data-tooltip="Tous les doigts combinés">Tout</button>
-          <button class="hand-action-btn" id="btn-best-finger" data-tooltip="Meilleur doigt par touche">⭐ Meilleur</button>
+          <button type="button" class="hand-action-btn active" id="btn-all-fingers" data-tooltip="Tous les doigts combinés">Tout</button>
+          <button type="button" class="hand-action-btn" id="btn-best-finger" data-tooltip="Meilleur doigt par touche">⭐ Meilleur</button>
         </div>
-        <!-- Right Hand -->
+
         <div class="hand-analog" id="right-hand-analog">
           <div class="analog-label">Droite</div>
           <div class="analog-ring" data-hand="right">
             <div class="analog-stick"><span class="hand-emoji">D</span></div>
-            <button class="finger-dot finger-thumb-right" data-finger="RT" data-tooltip="Pouce droit"><span class="finger-letter">P</span></button>
-            <button class="finger-dot finger-index-right" data-finger="RI" data-tooltip="Index droit"><span class="finger-letter">I</span></button>
-            <button class="finger-dot finger-middle-right" data-finger="RM" data-tooltip="Majeur droit"><span class="finger-letter">M</span></button>
-            <button class="finger-dot finger-ring-right" data-finger="RR" data-tooltip="Annulaire droit"><span class="finger-letter">A</span></button>
-            <button class="finger-dot finger-little-right" data-finger="RL" data-tooltip="Auriculaire droit"><span class="finger-letter">Au</span></button>
+            <button type="button" class="finger-dot finger-thumb-right" data-finger="RT" data-tooltip="Pouce droit"><span class="finger-letter">P</span></button>
+            <button type="button" class="finger-dot finger-index-right" data-finger="RI" data-tooltip="Index droit"><span class="finger-letter">I</span></button>
+            <button type="button" class="finger-dot finger-middle-right" data-finger="RM" data-tooltip="Majeur droit"><span class="finger-letter">M</span></button>
+            <button type="button" class="finger-dot finger-ring-right" data-finger="RR" data-tooltip="Annulaire droit"><span class="finger-letter">A</span></button>
+            <button type="button" class="finger-dot finger-little-right" data-finger="RL" data-tooltip="Auriculaire droit"><span class="finger-letter">Au</span></button>
           </div>
         </div>
       </div>
@@ -63,17 +70,16 @@ lang: fr
     </div>
 
     <div class="heatmap-legend">
-      <span>Inaccessible (0)</span>
+      <span id="reachability-legend-min">0</span>
       <div class="heatmap-gradient"></div>
-      <span>Accessible (3)</span>
+      <span id="reachability-legend-max">0</span>
     </div>
 
-    <button class="reset-view-btn" id="reset-view-btn">↻ Réinitialiser</button>
+    <button type="button" class="reset-view-btn" id="reset-view-btn">↻ Réinitialiser</button>
   </div>
 
 </div>
 
-<!-- Hidden select for dataviz.js compatibility -->
 <select class="finger-select" id="finger-select" style="display:none;">
   <option value="total">Tous les doigts (Total)</option>
   <option value="LT">Pouce gauche</option>
@@ -88,10 +94,8 @@ lang: fr
   <option value="RL">Auriculaire droit</option>
 </select>
 
-<!-- Side panel toggle -->
-<button class="side-panel-toggle" onclick="document.getElementById('info-panel').classList.toggle('hidden')">ℹ️ Info</button>
+<button type="button" class="side-panel-toggle" data-panel-toggle="info-panel" aria-expanded="false" aria-controls="info-panel">ℹ️ Info</button>
 
-<!-- Side panel -->
 <div id="info-panel" class="side-panel glass-panel hidden">
 
   <h4>Comment utiliser</h4>
@@ -141,6 +145,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var selectionText = document.getElementById('selection-text');
   var selectionIcon = document.querySelector('#selection-badge .selection-icon');
   var fingerContext = document.getElementById('finger-context');
+  var legendMin = document.getElementById('reachability-legend-min');
+  var legendMax = document.getElementById('reachability-legend-max');
   var allFingerDots = document.querySelectorAll('.finger-dot');
   var analogRings = document.querySelectorAll('.analog-ring');
   var btnAllFingers = document.getElementById('btn-all-fingers');
@@ -149,47 +155,65 @@ document.addEventListener('DOMContentLoaded', function () {
   var FACES = ['R','B','G','W','Y'];
 
   var fingerData = {
-    'total': { name: 'Tous les doigts (Total)', icon: '🖐️', info: 'Accessibilité combinée des 10 doigts et 22 participants. Score max ~220.' },
-    'best': { name: 'Meilleur doigt (par touche)', icon: '⭐', info: 'Affiche le score du meilleur doigt pour chaque touche. Score max = 66 par touche.' },
-    'left-all': { name: 'Main gauche (Tous)', icon: '🤚', info: 'La main gauche couvre Bleu (externe), Blanc (interne), et moitié gauche de Rouge (haut).' },
-    'right-all': { name: 'Main droite (Tous)', icon: '🤚', info: 'La main droite couvre Jaune (externe), Vert (interne), et moitié droite de Rouge (haut).' },
+    'total': { name: 'Tous les doigts (Total)', icon: '🖐️', info: 'Accessibilité combinée des 10 doigts et 22 participants.' },
+    'best': { name: 'Meilleur doigt (par touche)', icon: '⭐', info: 'Affiche le score du meilleur doigt pour chaque touche.' },
+    'left-all': { name: 'Main gauche (Tous)', icon: '🤚', info: 'La main gauche couvre Bleu, Blanc et la moitié gauche de Rouge.' },
+    'right-all': { name: 'Main droite (Tous)', icon: '🤚', info: 'La main droite couvre Jaune, Vert et la moitié droite de Rouge.' },
     'LT': { name: 'Pouce gauche', icon: '👍', info: 'Pouce gauche — portée la plus large côté gauche.' },
-    'LI': { name: 'Index gauche', icon: '☝️', info: 'Index gauche — rangées supérieures face Bleue.' },
-    'LM': { name: 'Majeur gauche', icon: '🖕', info: 'Majeur gauche — rangées du milieu face Bleue.' },
-    'LR': { name: 'Annulaire gauche', icon: '💍', info: 'Annulaire gauche — rangées inférieures face Bleue.' },
-    'LL': { name: 'Auriculaire gauche', icon: '🤙', info: 'Auriculaire gauche — coin inférieur Bleu uniquement.' },
+    'LI': { name: 'Index gauche', icon: '☝️', info: 'Index gauche — rangées supérieures de la face Bleue.' },
+    'LM': { name: 'Majeur gauche', icon: '🖕', info: 'Majeur gauche — rangées centrales de la face Bleue.' },
+    'LR': { name: 'Annulaire gauche', icon: '💍', info: 'Annulaire gauche — rangées inférieures de la face Bleue.' },
+    'LL': { name: 'Auriculaire gauche', icon: '🤙', info: 'Auriculaire gauche — coin inférieur de Bleu uniquement.' },
     'RT': { name: 'Pouce droit', icon: '👍', info: 'Pouce droit — portée la plus large côté droit.' },
-    'RI': { name: 'Index droit', icon: '☝️', info: 'Index droit — rangées supérieures face Jaune.' },
-    'RM': { name: 'Majeur droit', icon: '🖕', info: 'Majeur droit — rangées du milieu face Jaune.' },
-    'RR': { name: 'Annulaire droit', icon: '💍', info: 'Annulaire droit — rangées inférieures face Jaune.' },
-    'RL': { name: 'Auriculaire droit', icon: '🤙', info: 'Auriculaire droit — coin inférieur Jaune uniquement.' }
+    'RI': { name: 'Index droit', icon: '☝️', info: 'Index droit — rangées supérieures de la face Jaune.' },
+    'RM': { name: 'Majeur droit', icon: '🖕', info: 'Majeur droit — rangées centrales de la face Jaune.' },
+    'RR': { name: 'Annulaire droit', icon: '💍', info: 'Annulaire droit — rangées inférieures de la face Jaune.' },
+    'RL': { name: 'Auriculaire droit', icon: '🤙', info: 'Auriculaire droit — coin inférieur de Jaune uniquement.' }
   };
+
+  function updateLegend(min, max) {
+    if (legendMin) legendMin.textContent = min;
+    if (legendMax) legendMax.textContent = max;
+  }
 
   function updateUI(key, activeFingers) {
     var data = fingerData[key] || { name: key, icon: '🖐️', info: '' };
     if (selectionText) selectionText.textContent = data.name;
     if (selectionIcon) selectionIcon.textContent = data.icon;
     if (fingerContext) fingerContext.textContent = data.info;
-    
+
     allFingerDots.forEach(function (dot) {
-      var f = dot.getAttribute('data-finger');
-      dot.classList.toggle('active', activeFingers ? activeFingers.indexOf(f) !== -1 : f === key);
+      var finger = dot.getAttribute('data-finger');
+      dot.classList.toggle('active', activeFingers ? activeFingers.indexOf(finger) !== -1 : finger === key);
     });
+
     analogRings.forEach(function (ring) { ring.classList.remove('active'); });
     if (key.charAt(0) === 'L' || key === 'left-all') {
-      var lr = document.querySelector('.analog-ring[data-hand="left"]');
-      if (lr) lr.classList.add('active');
+      var leftRing = document.querySelector('.analog-ring[data-hand="left"]');
+      if (leftRing) leftRing.classList.add('active');
     } else if (key.charAt(0) === 'R' || key === 'right-all') {
-      var rr = document.querySelector('.analog-ring[data-hand="right"]');
-      if (rr) rr.classList.add('active');
+      var rightRing = document.querySelector('.analog-ring[data-hand="right"]');
+      if (rightRing) rightRing.classList.add('active');
     }
   }
 
+  function getRange(data) {
+    var min = Infinity;
+    var max = -Infinity;
+    FACES.forEach(function (face) {
+      data[face].forEach(function (value) {
+        if (value < min) min = value;
+        if (value > max) max = value;
+      });
+    });
+    return { min: min, max: max };
+  }
+
   function applyHeatmap(data) {
-    var min = Infinity, max = -Infinity;
-    FACES.forEach(function (f) { data[f].forEach(function (v) { if (v < min) min = v; if (v > max) max = v; }); });
+    var range = getRange(data);
+    updateLegend(range.min, range.max);
     if (window.updateModel) {
-      window.updateModel({ heatmap: data, heatmapMin: min, heatmapMax: max, scores: data, showScores: true, isReachability: true });
+      window.updateModel({ heatmap: data, heatmapMin: range.min, heatmapMax: range.max, scores: data, showScores: true, isReachability: true });
     }
   }
 
@@ -199,9 +223,13 @@ document.addEventListener('DOMContentLoaded', function () {
       result[face] = [];
       for (var i = 0; i < 16; i++) {
         var sum = 0;
-        fingers.forEach(function (f) {
-          var fData = window.perFingerReachability[f];
-          if (fData) fData.forEach(function (p) { sum += p[face][i]; });
+        fingers.forEach(function (finger) {
+          var fingerDataSet = window.perFingerReachability[finger];
+          if (fingerDataSet) {
+            fingerDataSet.forEach(function (participant) {
+              sum += participant[face][i];
+            });
+          }
         });
         result[face].push(sum);
       }
@@ -210,10 +238,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateSelection(fingerValue) {
-    if (fingerSelect) { fingerSelect.value = fingerValue; fingerSelect.dispatchEvent(new Event('change')); }
+    if (fingerSelect) {
+      fingerSelect.value = fingerValue;
+      fingerSelect.dispatchEvent(new Event('change'));
+    }
     updateUI(fingerValue);
     handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
-    if (fingerValue === 'total') btnAllFingers.classList.add('active');
+    if (fingerValue === 'total' && btnAllFingers) btnAllFingers.classList.add('active');
   }
 
   function handleHandAll(hand) {
@@ -230,9 +261,15 @@ document.addEventListener('DOMContentLoaded', function () {
       result[face] = [];
       for (var i = 0; i < 16; i++) {
         var best = 0;
-        allFingers.forEach(function (f) {
-          var fData = window.perFingerReachability[f];
-          if (fData) { var s = 0; fData.forEach(function (p) { s += p[face][i]; }); if (s > best) best = s; }
+        allFingers.forEach(function (finger) {
+          var fingerDataSet = window.perFingerReachability[finger];
+          if (fingerDataSet) {
+            var score = 0;
+            fingerDataSet.forEach(function (participant) {
+              score += participant[face][i];
+            });
+            if (score > best) best = score;
+          }
         });
         result[face].push(best);
       }
@@ -240,15 +277,22 @@ document.addEventListener('DOMContentLoaded', function () {
     applyHeatmap(result);
     updateUI('best');
     handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
-    btnBestFinger.classList.add('active');
+    if (btnBestFinger) btnBestFinger.classList.add('active');
   }
 
   allFingerDots.forEach(function (dot) {
-    dot.addEventListener('click', function (e) { e.stopPropagation(); updateSelection(dot.getAttribute('data-finger')); });
+    dot.addEventListener('click', function (event) {
+      event.stopPropagation();
+      updateSelection(dot.getAttribute('data-finger'));
+    });
   });
+
   analogRings.forEach(function (ring) {
-    ring.addEventListener('click', function (e) { if (!e.target.closest('.finger-dot')) handleHandAll(ring.getAttribute('data-hand')); });
+    ring.addEventListener('click', function (event) {
+      if (!event.target.closest('.finger-dot')) handleHandAll(ring.getAttribute('data-hand'));
+    });
   });
+
   if (btnAllFingers) btnAllFingers.addEventListener('click', function () { updateSelection('total'); });
   if (btnBestFinger) btnBestFinger.addEventListener('click', handleBestFinger);
 });

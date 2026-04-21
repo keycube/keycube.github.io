@@ -6,16 +6,23 @@
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
 
   {%- seo title=false -%}
-  <title>{{ site.data.strings.title }}</title>
+  <title>{% if page.title %}{{ page.title | escape }} | {{ site.data.strings.title | escape }}{% else %}{{ site.data.strings.title | escape }}{% endif %}</title>
   
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {% if page.extra_css %}
+    {% for stylesheet in page.extra_css %}
+  <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
+    {% endfor %}
+  {% endif %}
   {%- feed_meta -%}
 
+  {% assign cname = page.nav_section | default: page.code %}
   {% for item in site.data.navigation %}
-    {% if page.url contains item.name or page.code == item.name %}
+    {% if cname == nil and page.url contains item.name %}
     {% assign cname = item.name %}
     {% endif %}
   {% endfor %}
+  {% assign cname = cname | default: "about" %}
 
   <style>
     a {

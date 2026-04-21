@@ -3,147 +3,87 @@ layout: default
 title: Heatmap 3D
 permalink: /heatmap3d/
 lang: fr
+nav_section: software
+extra_css:
+  - /assets/css/heatmap3d/landing.css
 ---
 
-<style>
-/* Landing page for Heatmap 3D integrated in keycube.io */
-.heatmap3d-landing {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-}
-
-.heatmap3d-landing h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #1a1a2e;
-  margin-bottom: 0.5rem;
-}
-
-.heatmap3d-landing .subtitle {
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 300;
-  letter-spacing: 1px;
-  margin-bottom: 2.5rem;
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.nav-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 220px;
-  padding: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1a1a2e;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.nav-btn:hover {
-  border-color: rgba(0, 0, 0, 0.2);
-  background: #fff;
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-}
-
-.nav-btn .btn-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease;
-}
-
-.nav-btn:hover .btn-icon {
-  transform: scale(1.15);
-}
-
-.nav-btn .btn-label {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.nav-btn .btn-desc {
-  font-size: 0.75rem;
-  color: rgba(0, 0, 0, 0.5);
-  margin-top: 0.5rem;
-  line-height: 1.4;
-}
-
-.nav-btn.preference-btn:hover {
-  border-color: rgba(255, 107, 107, 0.6);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 0 25px rgba(255, 107, 107, 0.15);
-}
-
-.nav-btn.reachability-btn:hover {
-  border-color: rgba(81, 207, 102, 0.6);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 0 25px rgba(81, 207, 102, 0.15);
-}
-
-.heatmap3d-info {
-  margin-top: 3rem;
-  max-width: 600px;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.heatmap3d-info a {
-  color: #43AAD6;
-}
-
-@media (max-width: 480px) {
-  .heatmap3d-landing h1 {
-    font-size: 1.8rem;
-  }
-  .nav-buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .nav-btn {
-    width: 100%;
-    max-width: 280px;
-  }
-}
-</style>
-
-<div class="heatmap3d-landing">
-  <h1>Heatmap 3D</h1>
-  <p class="subtitle">Visualisation interactive des données expérimentales</p>
-
-  <nav class="nav-buttons">
-    <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="nav-btn preference-btn">
-      <span class="btn-icon">👤</span>
-      <span class="btn-label">Préférence</span>
-      <span class="btn-desc">Données de préférence individuelles et agrégées des études utilisateurs</span>
-    </a>
-    <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="nav-btn reachability-btn">
-      <span class="btn-icon">🖐️</span>
-      <span class="btn-label">Accessibilité</span>
-      <span class="btn-desc">Carte thermique doigt-touche sur toutes les faces du keycube</span>
-    </a>
-  </nav>
-
-  <div class="heatmap3d-info">
-    <p>Ces visualisations sont basées sur des données provenant de deux études utilisateurs impliquant respectivement 31 et 22 participants. Les études ont identifié la position de tenue diagonale préférée (choisie par 77,4% des participants) et cartographié les préférences et l'accessibilité doigt-touche.</p>
-    <p style="margin-top: 1rem;"><a href="https://github.com/keycube/heatmap3d" target="_blank">Voir le code source sur GitHub →</a></p>
+<section class="heatmap3d-hero">
+  <div class="heatmap3d-hero-copy">
+    <p class="heatmap3d-eyebrow">Logiciel / Visualisation de recherche</p>
+    <h1>Heatmap 3D</h1>
+    <p class="heatmap3d-lead">Analyse visuelle interactive des études keycube, avec les scores de préférence par participant et l’accessibilité des doigts projetés directement sur l’objet 3D.</p>
+    <div class="heatmap3d-actions">
+      <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="heatmap3d-primary-link">Ouvrir la vue Préférence</a>
+      <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="heatmap3d-secondary-link">Ouvrir la vue Accessibilité</a>
+    </div>
   </div>
-</div>
+  <aside class="heatmap3d-summary">
+    <h2>Contenu de l’application</h2>
+    <ul class="heatmap3d-summary-list">
+      <li>Jeu de données de préférence sur 22 participants avec vue agrégée</li>
+      <li>Analyse d’accessibilité par doigt et en cumul sur toutes les faces</li>
+      <li>Visualiseur 3D interactif relié directement aux études</li>
+    </ul>
+  </aside>
+</section>
+
+<section class="heatmap3d-section">
+  <div class="heatmap3d-section-heading">
+    <h2>Explorer les deux modes d’étude</h2>
+    <p>Les deux visualisations partagent le même modèle 3D, mais exposent des lectures différentes des études.</p>
+  </div>
+
+  <div class="heatmap3d-card-grid">
+    <article class="heatmap3d-card heatmap3d-card-preference">
+      <p class="heatmap3d-card-kicker">Mode 01</p>
+      <h3>Préférence</h3>
+      <p>Inspecte un participant précis ou la moyenne complète de l’étude. Le viewer peut isoler une face ou montrer tout le keycube en même temps.</p>
+      <ul class="heatmap3d-card-points">
+        <li>Sélection participant par participant</li>
+        <li>Moyenne agrégée sur les 22 participants</li>
+        <li>Filtrage par face avec scores visibles sur chaque touche</li>
+      </ul>
+      <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="heatmap3d-card-link">Lancer Préférence</a>
+    </article>
+
+    <article class="heatmap3d-card heatmap3d-card-reachability">
+      <p class="heatmap3d-card-kicker">Mode 02</p>
+      <h3>Accessibilité</h3>
+      <p>Mesure ce que chaque doigt peut réellement atteindre, puis compare la portée totale, par main, ou le meilleur doigt pour chaque touche.</p>
+      <ul class="heatmap3d-card-points">
+        <li>Heatmaps par doigt</li>
+        <li>Vues main gauche, main droite, total et meilleur doigt</li>
+        <li>Échelle dynamique adaptée au jeu de données affiché</li>
+      </ul>
+      <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="heatmap3d-card-link">Lancer Accessibilité</a>
+    </article>
+  </div>
+</section>
+
+<section class="heatmap3d-section heatmap3d-section-metrics">
+  <div class="heatmap3d-metric">
+    <strong>31</strong>
+    <span>participants dans l’étude 1</span>
+  </div>
+  <div class="heatmap3d-metric">
+    <strong>22</strong>
+    <span>participants dans l’étude 2</span>
+  </div>
+  <div class="heatmap3d-metric">
+    <strong>77,4%</strong>
+    <span>ont préféré la prise diagonale</span>
+  </div>
+  <div class="heatmap3d-metric">
+    <strong>80</strong>
+    <span>touches visualisées en 3D</span>
+  </div>
+</section>
+
+<section class="heatmap3d-section heatmap3d-section-note">
+  <div>
+    <h2>Contexte du projet</h2>
+    <p>Le site officiel héberge désormais Heatmap 3D comme une expérience dédiée, au lieu d’une page prototype détachée. La section logicielle pointe maintenant ici comme point d’entrée canonique, tout en laissant le code source accessible.</p>
+  </div>
+  <a href="https://github.com/keycube/heatmap3d" target="_blank" rel="noopener noreferrer" class="heatmap3d-secondary-link">Voir le code source sur GitHub</a>
+</section>

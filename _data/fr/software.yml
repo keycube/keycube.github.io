@@ -13,5 +13,5 @@
 - title : Heatmap 3D
   description : "Visualisation 3D interactive des données de préférence et d'accessibilité collectées lors d'études utilisateurs sur le keycube"
   keywords : visualisation, carte thermique, 3D, préférence, accessibilité, recherche
-  url : https://github.com/keycube/heatmap3d
+  url : /heatmap3d/
   iframe : "/heatmap3d/"

@@ -234,12 +234,6 @@ window.addEventListener('orientationchange', () => setTimeout(handleResize, 100)
 
 // Update model function
 window.updateModel = function(data) {
-  console.log('Updating model with data:', data);
-  
-  if (data.handedness) {
-    keycubeGroup.scale.x = data.handedness === 'left' ? -1 : 1;
-  }
-  
   if (data.reset) {
     // Reset all colors and positions to original
     keycubeGroup.children.forEach(child => {
@@ -260,10 +254,12 @@ window.updateModel = function(data) {
     });
     // Reset cube scale
     keycubeGroup.scale.setScalar(1);
-    keycubeGroup.scale.x = 1;
     // Preserve diagonal holding rotation (never reset it)
     keycubeGroup.rotation.set(0, DIAGONAL_ROTATION, 0);
-    return;
+  }
+
+  if (data.handedness) {
+    keycubeGroup.scale.x = data.handedness === 'left' ? -1 : 1;
   }
 
   // Show/hide score labels

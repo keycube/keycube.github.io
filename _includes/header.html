@@ -1,4 +1,14 @@
-<header class="site-header" role="banner" style="border-top: 5px solid #{{site.data.colors[cname]}}">  
+{% assign current_nav = page.nav_section | default: page.code %}
+{% if current_nav == nil %}
+  {% for item in site.data.navigation %}
+    {% if page.url contains item.name %}
+      {% assign current_nav = item.name %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign current_nav = current_nav | default: "about" %}
+<header class="site-header" role="banner" style="border-top: 5px solid #{{site.data.colors[current_nav]}}">
   <div class="wrapper">
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
       <img class="site-logo" src="{{ "/assets/img/k3logo.png" | relative_url }}" alt="Keycube"/>
@@ -16,7 +26,7 @@
 
       <div class="trigger">
         {% for item in site.data.navigation %}
-          {% if page.url contains item.name or page.layout == item.name %}
+          {% if current_nav == item.name or page.layout == item.name %}
           <span class="page-link">{{ site.data.strings[item.name] }}</span>
           {% else %}
           <a class="page-link" href="{{ item.url | relative_url }}">{{ site.data.strings[item.name] }}</a>

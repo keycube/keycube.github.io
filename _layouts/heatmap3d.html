@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: 'en' }}">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="baseurl" content="{{ site.baseurl }}">
-  <meta name="default-mode" content="{{ page.default_mode | default: 'preference' }}">
-  <title>{{ page.title | default: "Keycube Heatmap 3D" }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/heatmap3d/dataviz.css' | relative_url }}">
-  <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" type="image/x-icon">
-</head>
-<body>
-  {{ content }}
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" class="heatmap3d-app">
+  {%- include head.html -%}
+<body class="heatmap3d-app" data-default-mode="{{ page.default_mode | default: 'preference' }}">
+  {%- include header.html -%}
+  <main class="page-content heatmap3d-page-content" aria-label="Heatmap 3D">
+    {{ content }}
+  </main>
   <!-- Three.js import map -->
   <script type="importmap">
     {
