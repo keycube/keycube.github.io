@@ -9,9 +9,3 @@
   keywords : scratch, jeu, saisie de caractères
   url : https://github.com/keycube/k3-Scratch
   image : "../assets/img/post1.jpg"
-
-- title : Heatmap 3D
-  description : "Visualisation 3D interactive des données de préférence et d'accessibilité collectées lors d'études utilisateurs sur le keycube"
-  keywords : visualisation, carte thermique, 3D, préférence, accessibilité, recherche
-  url : /heatmap3d/
-  iframe : "/heatmap3d/"
