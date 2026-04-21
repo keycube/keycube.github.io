@@ -26,23 +26,48 @@ if (container) {
   camera.aspect = window.innerWidth / window.innerHeight;
 }
 camera.updateProjectionMatrix();
+renderer.domElement.style.touchAction = 'none';
 
 // Controls — smooth rotation like Playdate
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.05;  // Smooth inertia effect
-controls.rotateSpeed = 0.5;     // Slower, more controlled rotation
+controls.dampingFactor = 0.08;  // Slightly stronger inertia keeps movement deliberate
+controls.rotateSpeed = 0.42;    // Make face changes possible, but not too immediate
 
-// Zoom disabled (Playdate style)
-controls.enableZoom = false;
+// Keep the interaction object-centric: orbit only, with a tightly bounded zoom.
+controls.enablePan = false;
+const fixedDistance = camera.position.length();
+controls.enableZoom = true;
+controls.zoomSpeed = 0.85;
+controls.minDistance = fixedDistance * 0.82;
+controls.maxDistance = fixedDistance * 1.12;
 
-// Vertical rotation limits (keep cube upright, like Playdate)
-controls.minPolarAngle = Math.PI * 0.25;  // 45° from top
-controls.maxPolarAngle = Math.PI * 0.65;  // 117° (slight view from below)
+// Keep the cube upright while leaving every exposed face reachable.
+controls.minPolarAngle = Math.PI * 0.12;  // close enough to inspect the top face
+controls.maxPolarAngle = Math.PI * 0.88;  // low enough to inspect side faces comfortably
 
 // Auto-rotation settings (integrated with OrbitControls)
 controls.autoRotate = true;
 controls.autoRotateSpeed = 1.0;  // Slow rotation (degrees per second)
+let autoRotateResumeTimer = null;
+
+function pauseAutoRotate() {
+  controls.autoRotate = false;
+  if (autoRotateResumeTimer) clearTimeout(autoRotateResumeTimer);
+  autoRotateResumeTimer = setTimeout(() => {
+    controls.autoRotate = true;
+  }, 2400);
+}
+
+function captureViewerGesture(event) {
+  event.preventDefault();
+  pauseAutoRotate();
+}
+
+renderer.domElement.addEventListener('wheel', captureViewerGesture, { passive: false });
+renderer.domElement.addEventListener('touchmove', captureViewerGesture, { passive: false });
+renderer.domElement.addEventListener('gesturestart', captureViewerGesture, { passive: false });
+renderer.domElement.addEventListener('gesturechange', captureViewerGesture, { passive: false });
 
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -204,7 +229,7 @@ const DIAGONAL_ROTATION = -Math.PI * 3 / 4;
 
 // ─── Auto-rotation control ───
 ['pointerdown', 'wheel', 'touchstart'].forEach(evt => 
-  renderer.domElement.addEventListener(evt, () => controls.autoRotate = false)
+  renderer.domElement.addEventListener(evt, pauseAutoRotate)
 );
 
 // ─── Orbit pivot ───
@@ -234,6 +259,12 @@ window.addEventListener('orientationchange', () => setTimeout(handleResize, 100)
 
 // Update model function
 window.updateModel = function(data) {
+  console.log('Updating model with data:', data);
+  
+  if (data.handedness) {
+    keycubeGroup.scale.x = data.handedness === 'left' ? -1 : 1;
+  }
+
   if (data.reset) {
     // Reset all colors and positions to original
     keycubeGroup.children.forEach(child => {
@@ -254,12 +285,10 @@ window.updateModel = function(data) {
     });
     // Reset cube scale
     keycubeGroup.scale.setScalar(1);
+    keycubeGroup.scale.x = 1;
     // Preserve diagonal holding rotation (never reset it)
     keycubeGroup.rotation.set(0, DIAGONAL_ROTATION, 0);
-  }
-
-  if (data.handedness) {
-    keycubeGroup.scale.x = data.handedness === 'left' ? -1 : 1;
+    return;
   }
 
   // Show/hide score labels
@@ -299,6 +328,8 @@ window.updateModel = function(data) {
   if (data.resetView) {
     camera.position.copy(initialCameraPosition);
     controls.target.copy(initialControlsTarget);
+    controls.autoRotate = true;
+    if (autoRotateResumeTimer) clearTimeout(autoRotateResumeTimer);
     camera.zoom = 1;
     camera.updateProjectionMatrix();
     controls.update();

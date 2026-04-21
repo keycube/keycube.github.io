@@ -4,10 +4,9 @@ title: Préférence – Keycube Heatmap 3D
 default_mode: preference
 permalink: /heatmap3d/preference/
 lang: fr
-nav_section: software
-extra_css:
-  - /assets/css/heatmap3d/dataviz.css
 ---
+
+<a href="{{ '/heatmap3d/' | relative_url }}" class="nav-link">← Home</a>
 
 <!-- Full-screen 3D viewer -->
 <div id="model-container"></div>
@@ -15,15 +14,8 @@ extra_css:
 <!-- Floating overlay controls -->
 <div class="overlay-controls">
 
-  <!-- ── Top bar: app nav + participant select + face buttons ── -->
+  <!-- ── Top bar: participant select + face buttons ── -->
   <div class="top-bar">
-    <div class="app-nav glass-panel" aria-label="Navigation Heatmap">
-      <a href="{{ '/heatmap3d/' | relative_url }}" class="app-nav-link">Accueil</a>
-      <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="app-nav-link is-active" aria-current="page">Préférence</a>
-      <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="app-nav-link">Accessibilité</a>
-      <a href="{{ '/software/' | relative_url }}" class="app-nav-link">Logiciel</a>
-    </div>
-
     <select id="participant-select">
       <option value="">Choisir un participant...</option>
       <option value="aggregate">📊 Agrégé (Moyenne des 22)</option>
@@ -35,12 +27,12 @@ extra_css:
     </select>
 
     <div class="face-buttons glass-panel" style="padding: 6px 10px;">
-      <button type="button" class="color-btn" data-color="R" style="background: #ff6b6b; color: white;">R</button>
-      <button type="button" class="color-btn" data-color="B" style="background: #4dabf7; color: white;">B</button>
-      <button type="button" class="color-btn" data-color="G" style="background: #51cf66; color: white;">G</button>
-      <button type="button" class="color-btn" data-color="W" style="background: #f8f9fa; color: black; border: 1px solid #ccc;">W</button>
-      <button type="button" class="color-btn" data-color="Y" style="background: #ffd43b; color: black;">Y</button>
-      <button type="button" class="reset-btn" style="background: #868e96; color: white;">Tout</button>
+      <button class="color-btn" data-color="R" style="background: #ff6b6b; color: white;">R</button>
+      <button class="color-btn" data-color="B" style="background: #4dabf7; color: white;">B</button>
+      <button class="color-btn" data-color="G" style="background: #51cf66; color: white;">G</button>
+      <button class="color-btn" data-color="W" style="background: #f8f9fa; color: black; border: 1px solid #ccc;">W</button>
+      <button class="color-btn" data-color="Y" style="background: #ffd43b; color: black;">Y</button>
+      <button class="reset-btn" style="background: #868e96; color: white;">Tout</button>
     </div>
   </div>
 
@@ -57,13 +49,13 @@ extra_css:
       <span>Haute préf.</span>
     </div>
 
-    <button type="button" class="reset-view-btn" id="reset-view-btn">↻ Réinitialiser</button>
+    <button class="reset-view-btn" id="reset-view-btn">↻ Réinitialiser</button>
   </div>
 
 </div>
 
 <!-- Side panel toggle -->
-<button type="button" class="side-panel-toggle" data-panel-toggle="info-panel" aria-expanded="false" aria-controls="info-panel">ℹ️ Info</button>
+<button class="side-panel-toggle" onclick="document.getElementById('info-panel').classList.toggle('hidden')">ℹ️ Info</button>
 
 <!-- Side panel -->
 <div id="info-panel" class="side-panel glass-panel hidden">
@@ -73,6 +65,7 @@ extra_css:
     <p>Sélectionnez un participant pour voir ses données de préférence, ou choisissez <strong>Agrégé</strong> pour la moyenne de tous les participants.</p>
   </div>
 
+  <!-- Participant summary (hidden until selection) -->
   <div id="participant-summary" style="display: none;">
     <h4>Participant</h4>
     <p><strong>Latéralité:</strong> <span id="summary-handedness"></span></p>

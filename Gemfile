@@ -35,3 +35,6 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "jekyll-archives"
 gem "jekyll-polyglot"
+gem "logger"
+gem "csv"
+gem "base64"
