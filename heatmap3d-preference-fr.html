@@ -18,7 +18,7 @@ lang: fr
   <div class="top-bar">
     <select id="participant-select">
       <option value="">Choisir un participant...</option>
-      <option value="aggregate">📊 Agrégé (Moyenne des 22)</option>
+      <option value="aggregate">📊 Vue agrégée de l'étude (22 participants)</option>
       {% for row in site.data.preferences %}
         <option value="{{ forloop.index0 }}">
           P{{ row.Number }} ({{ row.Handedness | capitalize }}, envergure {{ row.SpanRightHand }}mm)
@@ -26,7 +26,7 @@ lang: fr
       {% endfor %}
     </select>
 
-    <div class="face-buttons glass-panel" style="padding: 6px 10px;">
+    <div class="face-buttons glass-panel" id="preference-face-buttons" style="padding: 6px 10px;">
       <button class="color-btn" data-color="R" style="background: #ff6b6b; color: white;">R</button>
       <button class="color-btn" data-color="B" style="background: #4dabf7; color: white;">B</button>
       <button class="color-btn" data-color="G" style="background: #51cf66; color: white;">G</button>
@@ -43,10 +43,43 @@ lang: fr
       <span class="selection-text" id="selection-text">Aucun participant sélectionné</span>
     </div>
 
-    <div class="heatmap-legend">
-      <span>Faible préf.</span>
+    <div class="heatmap-legend" id="preference-heatmap-legend">
+      <span>Faible confiance</span>
       <div class="heatmap-gradient"></div>
-      <span>Haute préf.</span>
+      <span>Forte confiance</span>
+    </div>
+
+    <div class="finger-preference-legend glass-panel hidden" id="finger-preference-legend">
+      <div class="finger-legend-header">
+        <span></span>
+        <span>Gauche</span>
+        <span>Droite</span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Pouce</span>
+        <span class="finger-swatch finger-swatch-lt"></span>
+        <span class="finger-swatch finger-swatch-rt"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Index</span>
+        <span class="finger-swatch finger-swatch-li"></span>
+        <span class="finger-swatch finger-swatch-ri"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Majeur</span>
+        <span class="finger-swatch finger-swatch-lm"></span>
+        <span class="finger-swatch finger-swatch-rm"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Annulaire</span>
+        <span class="finger-swatch finger-swatch-lr"></span>
+        <span class="finger-swatch finger-swatch-rr"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Auriculaire</span>
+        <span class="finger-swatch finger-swatch-ll"></span>
+        <span class="finger-swatch finger-swatch-rl"></span>
+      </div>
     </div>
 
     <button class="reset-view-btn" id="reset-view-btn">↻ Réinitialiser</button>
@@ -62,7 +95,7 @@ lang: fr
 
   <h4>Sélection</h4>
   <div id="mode-description">
-    <p>Sélectionnez un participant pour voir ses données de préférence, ou choisissez <strong>Agrégé</strong> pour la moyenne de tous les participants.</p>
+    <p>Sélectionnez <strong>Agrégé</strong> pour voir le ratio de sélection du doigt dominant du paper, ou inspectez le codage brut des choix de doigt d'un participant.</p>
   </div>
 
   <!-- Participant summary (hidden until selection) -->
@@ -83,8 +116,8 @@ lang: fr
       <div class="study-stat-item"><strong>80</strong>Touches</div>
     </div>
     <p><strong>Étude 1:</strong> Identification des positions de tenue préférées. Diagonale choisie par 77,4%.</p>
-    <p><strong>Étude 2:</strong> Cartographie des préférences doigt-touche (1 = plus préféré → 10 = moins préféré).</p>
-    <p>Échelle de couleur: <span style="color:#51cf66">Vert</span> (haute préférence) → <span style="color:#ffd43b">Jaune</span> → <span style="color:#ff6b6b">Rouge</span> (faible préférence).</p>
+    <p><strong>Étude 2:</strong> Le mode agrégé affiche le ratio de sélection du doigt dominant par touche de la Figure 6.</p>
+    <p>Échelle de couleur: <span style="color:#ff6b6b">Rouge</span> (faible confiance) → <span style="color:#ffd43b">Jaune</span> → <span style="color:#51cf66">Vert</span> (forte confiance).</p>
   </div>
 
 </div>

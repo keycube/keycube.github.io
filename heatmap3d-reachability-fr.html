@@ -20,9 +20,8 @@ lang: fr
       <div class="hand-selector-container">
         <!-- Left Hand -->
         <div class="hand-analog" id="left-hand-analog">
-          <div class="analog-label">Gauche</div>
           <div class="analog-ring" data-hand="left">
-            <div class="analog-stick"><span class="hand-emoji">G</span></div>
+            <div class="analog-stick"><span class="analog-center-label">Gauche</span></div>
             <button class="finger-dot finger-thumb-left" data-finger="LT" data-tooltip="Pouce gauche"><span class="finger-letter">P</span></button>
             <button class="finger-dot finger-index-left" data-finger="LI" data-tooltip="Index gauche"><span class="finger-letter">I</span></button>
             <button class="finger-dot finger-middle-left" data-finger="LM" data-tooltip="Majeur gauche"><span class="finger-letter">M</span></button>
@@ -33,13 +32,12 @@ lang: fr
         <!-- Center: All + Best buttons -->
         <div class="hand-divider" style="display: flex; flex-direction: column; gap: 6px;">
           <button class="hand-action-btn active" id="btn-all-fingers" data-tooltip="Tous les doigts combinés">Tout</button>
-          <button class="hand-action-btn" id="btn-best-finger" data-tooltip="Meilleur doigt par touche">⭐ Meilleur</button>
+          <button class="hand-action-btn" id="btn-best-finger" data-tooltip="Doigt préféré par touche (Figure 7 droite)">⭐ Préféré</button>
         </div>
         <!-- Right Hand -->
         <div class="hand-analog" id="right-hand-analog">
-          <div class="analog-label">Droite</div>
           <div class="analog-ring" data-hand="right">
-            <div class="analog-stick"><span class="hand-emoji">D</span></div>
+            <div class="analog-stick"><span class="analog-center-label">Droite</span></div>
             <button class="finger-dot finger-thumb-right" data-finger="RT" data-tooltip="Pouce droit"><span class="finger-letter">P</span></button>
             <button class="finger-dot finger-index-right" data-finger="RI" data-tooltip="Index droit"><span class="finger-letter">I</span></button>
             <button class="finger-dot finger-middle-right" data-finger="RM" data-tooltip="Majeur droit"><span class="finger-letter">M</span></button>
@@ -98,7 +96,7 @@ lang: fr
   <div class="mode-description">
     <p style="margin-bottom: 8px;">1. Cliquez sur un <strong>point de doigt</strong> pour voir son accessibilité</p>
     <p style="margin-bottom: 8px;">2. Cliquez sur le <strong>centre de la main</strong> pour les 5 doigts</p>
-    <p>3. Utilisez <strong>Tout / Meilleur</strong> pour un filtrage rapide</p>
+    <p>3. Utilisez <strong>Tout / Préféré</strong> pour un filtrage rapide</p>
   </div>
 
   <h4>Correspondance Main-Face</h4>
@@ -130,7 +128,7 @@ lang: fr
       <div class="study-stat-item"><strong>3-pt</strong>Échelle</div>
     </div>
     <p>Score: <span style="color:#51cf66">3</span> = facilement accessible, <span style="color:#ffd43b">1</span> = avec effort, <span style="color:#ff6b6b">0</span> = inaccessible.</p>
-    <p>Données: Somme des 22 participants. Max par touche par doigt = 66.</p>
+    <p>Données: Somme des 22 participants. Max par touche par doigt = 66, max total par touche = 660, échelle de couleur plafonnée à 198 comme dans le paper.</p>
   </div>
 
 </div>
@@ -149,8 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var FACES = ['R','B','G','W','Y'];
 
   var fingerData = {
-    'total': { name: 'Tous les doigts (Total)', icon: '🖐️', info: 'Accessibilité combinée des 10 doigts et 22 participants. Score max ~220.' },
-    'best': { name: 'Meilleur doigt (par touche)', icon: '⭐', info: 'Affiche le score du meilleur doigt pour chaque touche. Score max = 66 par touche.' },
+    'total': { name: 'Tous les doigts (Total)', icon: '🖐️', info: 'Accessibilité combinée des 10 doigts et 22 participants. Figure 7 gauche.' },
+    'best': { name: 'Doigt préféré (par touche)', icon: '⭐', info: 'Affiche le score d’accessibilité du doigt préféré pour chaque touche, corrélé à la Figure 6. Figure 7 droite.' },
     'left-all': { name: 'Main gauche (Tous)', icon: '🤚', info: 'La main gauche couvre Bleu (externe), Blanc (interne), et moitié gauche de Rouge (haut).' },
     'right-all': { name: 'Main droite (Tous)', icon: '🤚', info: 'La main droite couvre Jaune (externe), Vert (interne), et moitié droite de Rouge (haut).' },
     'LT': { name: 'Pouce gauche', icon: '👍', info: 'Pouce gauche — portée la plus large côté gauche.' },
@@ -185,11 +183,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function applyHeatmap(data) {
-    var min = Infinity, max = -Infinity;
-    FACES.forEach(function (f) { data[f].forEach(function (v) { if (v < min) min = v; if (v > max) max = v; }); });
+  function applyHeatmap(data, fixedRange) {
+    var min = fixedRange ? fixedRange.min : Infinity;
+    var max = fixedRange ? fixedRange.max : -Infinity;
+    if (!fixedRange) {
+      FACES.forEach(function (f) { data[f].forEach(function (v) { if (v < min) min = v; if (v > max) max = v; }); });
+    }
     if (window.updateModel) {
-      window.updateModel({ heatmap: data, heatmapMin: min, heatmapMax: max, scores: data, showScores: true, isReachability: true });
+      window.updateModel({ heatmap: data, heatmapMin: min, heatmapMax: max, scores: data, showScores: true, isReachability: true, scoreFormat: 'integer', figure6View: false });
     }
   }
 
@@ -224,20 +225,22 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function handleBestFinger() {
-    var allFingers = ['LT','LI','LM','LR','LL','RT','RI','RM','RR','RL'];
+    var preferenceAggregate = window.preferenceAggregate;
+    if (!preferenceAggregate) return;
     var result = {};
     FACES.forEach(function (face) {
       result[face] = [];
       for (var i = 0; i < 16; i++) {
         var best = 0;
-        allFingers.forEach(function (f) {
+        var preferredFingers = preferenceAggregate.tiedFingers[face][i];
+        preferredFingers.forEach(function (f) {
           var fData = window.perFingerReachability[f];
           if (fData) { var s = 0; fData.forEach(function (p) { s += p[face][i]; }); if (s > best) best = s; }
         });
         result[face].push(best);
       }
     });
-    applyHeatmap(result);
+    applyHeatmap(result, { min: 0, max: 66 });
     updateUI('best');
     handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
     btnBestFinger.classList.add('active');

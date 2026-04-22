@@ -18,7 +18,7 @@ lang: en
   <div class="top-bar">
     <select id="participant-select">
       <option value="">Choose a participant...</option>
-      <option value="aggregate">📊 Aggregate (Mean of all 22)</option>
+      <option value="aggregate">📊 Aggregate Study View (22 participants)</option>
       {% for row in site.data.preferences %}
         <option value="{{ forloop.index0 }}">
           P{{ row.Number }} ({{ row.Handedness | capitalize }}, span {{ row.SpanRightHand }}mm)
@@ -26,7 +26,7 @@ lang: en
       {% endfor %}
     </select>
 
-    <div class="face-buttons glass-panel" style="padding: 6px 10px;">
+    <div class="face-buttons glass-panel" id="preference-face-buttons" style="padding: 6px 10px;">
       <button class="color-btn" data-color="R" style="background: #ff6b6b; color: white;">R</button>
       <button class="color-btn" data-color="B" style="background: #4dabf7; color: white;">B</button>
       <button class="color-btn" data-color="G" style="background: #51cf66; color: white;">G</button>
@@ -43,10 +43,43 @@ lang: en
       <span class="selection-text" id="selection-text">No participant selected</span>
     </div>
 
-    <div class="heatmap-legend">
-      <span>Low pref.</span>
+    <div class="heatmap-legend" id="preference-heatmap-legend">
+      <span>Low confidence</span>
       <div class="heatmap-gradient"></div>
-      <span>High pref.</span>
+      <span>High confidence</span>
+    </div>
+
+    <div class="finger-preference-legend glass-panel hidden" id="finger-preference-legend">
+      <div class="finger-legend-header">
+        <span></span>
+        <span>Left</span>
+        <span>Right</span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Thumb</span>
+        <span class="finger-swatch finger-swatch-lt"></span>
+        <span class="finger-swatch finger-swatch-rt"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Index</span>
+        <span class="finger-swatch finger-swatch-li"></span>
+        <span class="finger-swatch finger-swatch-ri"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Middle</span>
+        <span class="finger-swatch finger-swatch-lm"></span>
+        <span class="finger-swatch finger-swatch-rm"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Ring</span>
+        <span class="finger-swatch finger-swatch-lr"></span>
+        <span class="finger-swatch finger-swatch-rr"></span>
+      </div>
+      <div class="finger-legend-row">
+        <span>Little</span>
+        <span class="finger-swatch finger-swatch-ll"></span>
+        <span class="finger-swatch finger-swatch-rl"></span>
+      </div>
     </div>
 
     <button class="reset-view-btn" id="reset-view-btn">↻ Reset View</button>
@@ -62,7 +95,7 @@ lang: en
 
   <h4>Selection</h4>
   <div id="mode-description">
-    <p>Select a participant to view their preference data, or choose <strong>Aggregate</strong> for the mean across all participants.</p>
+    <p>Select <strong>Aggregate</strong> to view the paper's finger-to-key preference confidence ratio, or inspect a participant's raw finger-choice coding.</p>
   </div>
 
   <!-- Participant summary (hidden until selection) -->
@@ -83,8 +116,8 @@ lang: en
       <div class="study-stat-item"><strong>80</strong>Keys</div>
     </div>
     <p><strong>Study 1:</strong> Identified preferred holding positions. Diagonal chosen by 77.4%.</p>
-    <p><strong>Study 2:</strong> Mapped finger-to-key preferences (1 = most preferred → 10 = least).</p>
-    <p>Color scale: <span style="color:#51cf66">Green</span> (high preference) → <span style="color:#ffd43b">Yellow</span> → <span style="color:#ff6b6b">Red</span> (low preference).</p>
+    <p><strong>Study 2:</strong> Aggregate mode shows the dominant finger selection ratio per key from Figure 6.</p>
+    <p>Color scale: <span style="color:#ff6b6b">Red</span> (low confidence) → <span style="color:#ffd43b">Yellow</span> → <span style="color:#51cf66">Green</span> (high confidence).</p>
     <p>Faces: <span style="color:#ff6b6b">Red</span> (top), <span style="color:#4dabf7">Blue</span> &amp; <span style="color:#ffd43b">Yellow</span> (external), <span style="color:#f8f9fa;background:#333;padding:0 4px;border-radius:2px;">White</span> &amp; <span style="color:#51cf66">Green</span> (internal).</p>
   </div>
 
