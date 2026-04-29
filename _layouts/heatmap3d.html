@@ -6,28 +6,19 @@
   <meta name="baseurl" content="{{ site.baseurl }}">
   <meta name="default-mode" content="{{ page.default_mode | default: 'preference' }}">
   <title>{{ page.title | default: "Keycube Heatmap 3D" }}</title>
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/heatmap3d/dataviz.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" type="image/x-icon">
 </head>
-<body>
-  <nav class="heatmap3d-site-nav glass-panel" aria-label="Main">
-    {% for item in site.data.navigation %}
-      {% if page.url contains item.name or item.name == 'heatmap3d' %}
-        {% assign current_heatmap_nav = item.name %}
-      {% endif %}
-    {% endfor %}
-    {% assign current_heatmap_nav = page.nav_section | default: current_heatmap_nav | default: 'heatmap3d' %}
+<body class="dataviz-with-shell">
+  {%- include header.html -%}
 
-    {% for item in site.data.navigation %}
-      {% if item.name == current_heatmap_nav %}
-        <span class="heatmap3d-site-nav-link active">{{ site.data.strings[item.name] }}</span>
-      {% else %}
-        <a class="heatmap3d-site-nav-link" href="{{ item.url | relative_url }}">{{ site.data.strings[item.name] }}</a>
-      {% endif %}
-    {% endfor %}
-  </nav>
+  <main class="dataviz-content" aria-label="Content">
+    {{ content }}
+  </main>
 
-  {{ content }}
+  {%- include footer.html -%}
+
   <!-- Three.js import map -->
   <script type="importmap">
     {

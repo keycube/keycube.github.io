@@ -1,10 +1,6 @@
----
-layout: heatmap3d
-title: Preference – Keycube Heatmap 3D
-default_mode: preference
-permalink: /keycube-heatmap3d/preference/
-lang: en
----
+<!-- Deprecated duplicate file kept only as migration marker.
+Canonical source is `heatmap3d-preference.markdown` + `_layouts/heatmap3d-preference.html`.
+Do not use this file for routing/content. -->
 
 <a href="{{ '/keycube-heatmap3d/' | relative_url }}" class="nav-link">← Home</a>
 
@@ -21,7 +17,7 @@ lang: en
       <option value="aggregate">📊 Aggregate Study View (22 participants)</option>
       {% for row in site.data.preferences %}
         <option value="{{ forloop.index0 }}">
-          P{{ row.Number }} ({{ row.Handedness | capitalize }}, span {{ row.SpanRightHand }}mm)
+          P{{ row.Number }} ({{ row.Handedness | capitalize }}, span {{ row.SpanRightHand }}mm, circ. {{ row.CircumferenceRightHand }}mm, len. {{ row.LengthRightHand }}mm)
         </option>
       {% endfor %}
     </select>

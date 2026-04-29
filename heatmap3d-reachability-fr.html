@@ -1,10 +1,6 @@
----
-layout: heatmap3d
-title: Accessibilité – Keycube Heatmap 3D
-default_mode: reachability
-permalink: /keycube-heatmap3d/reachability/
-lang: fr
----
+<!-- Deprecated duplicate file kept only as migration marker.
+Canonical source is `heatmap3d-reachability-fr.markdown` + `_layouts/heatmap3d-reachability-fr.html`.
+Do not use this file for routing/content. -->
 
 <a href="{{ '/keycube-heatmap3d/' | relative_url }}" class="nav-link">← Home</a>
 
@@ -145,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var btnBestFinger = document.getElementById('btn-best-finger');
   var handActionBtns = document.querySelectorAll('.hand-action-btn');
   var FACES = ['R','B','G','W','Y'];
+  var ALL_FINGERS = ['LT','LI','LM','LR','LL','RT','RI','RM','RR','RL'];
 
   var fingerData = {
     'total': { name: 'Tous les doigts (Total)', icon: '🖐️', info: 'Accessibilité combinée des 10 doigts et 22 participants. Figure 7 gauche.' },
@@ -174,7 +171,12 @@ document.addEventListener('DOMContentLoaded', function () {
       dot.classList.toggle('active', activeFingers ? activeFingers.indexOf(f) !== -1 : f === key);
     });
     analogRings.forEach(function (ring) { ring.classList.remove('active'); });
-    if (key.charAt(0) === 'L' || key === 'left-all') {
+    if (activeFingers && activeFingers.length === ALL_FINGERS.length) {
+      var leftRing = document.querySelector('.analog-ring[data-hand="left"]');
+      var rightRing = document.querySelector('.analog-ring[data-hand="right"]');
+      if (leftRing) leftRing.classList.add('active');
+      if (rightRing) rightRing.classList.add('active');
+    } else if (key.charAt(0) === 'L' || key === 'left-all') {
       var lr = document.querySelector('.analog-ring[data-hand="left"]');
       if (lr) lr.classList.add('active');
     } else if (key.charAt(0) === 'R' || key === 'right-all') {
@@ -212,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateSelection(fingerValue) {
     if (fingerSelect) { fingerSelect.value = fingerValue; fingerSelect.dispatchEvent(new Event('change')); }
-    updateUI(fingerValue);
+    updateUI(fingerValue, fingerValue === 'total' ? ALL_FINGERS : null);
     handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
     if (fingerValue === 'total') btnAllFingers.classList.add('active');
   }
@@ -241,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     applyHeatmap(result, { min: 0, max: 66 });
-    updateUI('best');
+    updateUI('best', ALL_FINGERS);
     handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
     btnBestFinger.classList.add('active');
   }
