@@ -9,11 +9,14 @@ Visit the website at [https://keycube.github.io](https://keycube.github.io).
 
 The Heatmap 3D experience is integrated directly in this repository under:
 
-- `/heatmap3d/`
-- `/heatmap3d/preference/`
-- `/heatmap3d/reachability/`
-- `/heatmap3d/preference-fr/`
-- `/heatmap3d/reachability-fr/`
+- `/keycube-heatmap3d/`
+- `/keycube-heatmap3d/preference/`
+- `/keycube-heatmap3d/reachability/`
+
+Source of truth follows the website convention:
+
+- pages: `heatmap3d*.markdown`
+- layouts: `_layouts/heatmap3d-*.html`
 
 ## Documentation
 
