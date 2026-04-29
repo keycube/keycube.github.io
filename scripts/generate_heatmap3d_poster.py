@@ -13,6 +13,7 @@ OUT_DIR = ROOT / "assets" / "img" / "heatmap3d"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 AUTHOR = "Guy Junior Calvet"
+COURSE = "8INF206-Projet"
 PROJECT_URL = "https://keycube.org/heatmap3d/"
 REPO_URL = "github.com/keycube/heatmap3d"
 
@@ -145,8 +146,8 @@ def draw_list_panel(draw: ImageDraw.ImageDraw, box, title: str, items: list[str]
         x2 - x1 - 32,
         items,
         bullet_fill=ACCENT,
-        font_size=21,
-        line_gap=10,
+        font_size=19,
+        line_gap=8,
     )
 
 
@@ -197,9 +198,6 @@ def main():
     logo_path = ROOT / "assets" / "img" / "k3logo.png"
     qr_path = Path("/tmp/heatmap3d-qr.png")
 
-    if not qr_path.exists():
-        raise FileNotFoundError("QR code image /tmp/heatmap3d-qr.png is missing")
-
     canvas = Image.new("RGB", (WIDTH, HEIGHT), BG)
     draw = ImageDraw.Draw(canvas)
 
@@ -213,11 +211,13 @@ def main():
     small_font = font(35)
 
     draw.text((MARGIN, 120), "HEATMAP 3D", font=title_font, fill=TEXT)
-    draw.text((MARGIN, 300), "Affiche de présentation du module de visualisation 3D des études Keycube", font=subtitle_font, fill=TEXT)
+    draw.text((MARGIN, 300), "Module de visualisation 3D des études keycube", font=subtitle_font, fill=TEXT)
     draw.text((MARGIN, 386), AUTHOR, font=author_font, fill=ACCENT)
     draw.text((MARGIN, 438), "Étudiant en 3e année | Baccalauréat en informatique-sciences des données et de l'intelligence d'affaires | UQAC", font=small_font, fill=MUTED)
 
-    chip_y = 500
+    draw.text((MARGIN, 484), COURSE, font=font(34, bold=True), fill=TEXT)
+
+    chip_y = 540
     chip_w = 320
     chip_h = 128
     chip_gap = 24
@@ -233,16 +233,25 @@ def main():
 
     qr_box = (WIDTH - MARGIN - 330, 120, WIDTH - MARGIN, 450)
     rounded_box(draw, qr_box, radius=32, fill=CARD)
-    qr_img = Image.open(qr_path).convert("RGB").resize((230, 230), Image.Resampling.NEAREST)
-    canvas.paste(qr_img, (qr_box[0] + 50, qr_box[1] + 26))
-    draw.text((qr_box[0] + 36, qr_box[1] + 270), "QR vers la démo", font=font(28, bold=True), fill=TEXT)
+    if qr_path.exists():
+        qr_img = Image.open(qr_path).convert("RGB").resize((250, 250), Image.Resampling.NEAREST)
+    else:
+        previous_poster = OUT_DIR / "heatmap3d-poster-legal-fr.png"
+        if not previous_poster.exists():
+            raise FileNotFoundError("QR code image /tmp/heatmap3d-qr.png is missing")
+        qr_img = Image.open(previous_poster).convert("RGB").crop((3740, 146, 3970, 376)).resize((250, 250), Image.Resampling.NEAREST)
+    qr_x = qr_box[0] + (qr_box[2] - qr_box[0] - qr_img.width) // 2
+    qr_y = qr_box[1] + (qr_box[3] - qr_box[1] - qr_img.height) // 2
+    canvas.paste(qr_img, (qr_x, qr_y))
 
     logo_box = (WIDTH - MARGIN - 520, 120, WIDTH - MARGIN - 360, 280)
     rounded_box(draw, logo_box, radius=32, fill=CARD)
     logo = Image.open(logo_path).convert("RGBA").resize((104, 104), Image.Resampling.LANCZOS)
-    canvas.paste(logo, (logo_box[0] + 28, logo_box[1] + 22), mask=logo)
+    logo_x = logo_box[0] + (logo_box[2] - logo_box[0] - logo.width) // 2
+    logo_y = logo_box[1] + (logo_box[3] - logo_box[1] - logo.height) // 2
+    canvas.paste(logo, (logo_x, logo_y), mask=logo)
 
-    hero_box = (MARGIN, 700, 2380, 1580)
+    hero_box = (MARGIN, 700, 2220, 1580)
     rounded_box(draw, hero_box, radius=40, fill=CARD)
     hero_crop = (620, 330, 2380, 1780)
     hero = fit_image_contain(
@@ -254,10 +263,10 @@ def main():
     canvas.paste(hero, (hero_box[0] + 20, hero_box[1] + 20))
     draw.text((hero_box[0] + 28, hero_box[3] - 54), "Interface réelle du mode Accessibilité : sélection par main, doigt ou vue combinée.", font=font(30), fill=MUTED)
 
-    col_x1 = 2450
+    col_x1 = 2290
     col_x2 = WIDTH - MARGIN
 
-    summary_box = (col_x1, 690, col_x2, 994)
+    summary_box = (col_x1, 690, col_x2, 1025)
     rounded_box(draw, summary_box, radius=34, fill=CARD)
     draw_section_title(draw, summary_box[0] + 36, summary_box[1] + 28, "Résumé")
     summary_rows = [
@@ -272,9 +281,9 @@ def main():
         summary_rows,
     )
 
-    points_box = (col_x1, 1006, col_x2, 1292)
+    points_box = (col_x1, 1040, col_x2, 1325)
     rounded_box(draw, points_box, radius=34, fill=CARD)
-    draw_section_title(draw, points_box[0] + 36, points_box[1] + 28, "Points cles")
+    draw_section_title(draw, points_box[0] + 36, points_box[1] + 28, "Points clés")
     point_cards = [
         ("Visualiseur 3D", "Cube interactif synchronisé avec les données des études."),
         ("Deux modes", "Préférence et Accessibilité."),
@@ -283,32 +292,40 @@ def main():
     ]
     draw_feature_grid(draw, (points_box[0] + 34, points_box[1] + 114, points_box[2] - 34, points_box[3] - 26), point_cards)
 
-    tools_box = (col_x1, 1308, col_x2, 1650)
+    tools_box = (col_x1, 1340, col_x2, 1650)
     rounded_box(draw, tools_box, radius=34, fill=CARD)
-    draw_section_title(draw, tools_box[0] + 36, tools_box[1] + 28, "Outils et logiciels")
-    inner_gap = 26
+    draw_section_title(draw, tools_box[0] + 36, tools_box[1] + 28, "Stack technique")
+    inner_gap = 20
     panel_top = tools_box[1] + 118
     panel_bottom = tools_box[3] - 34
-    panel_mid = (tools_box[0] + tools_box[2]) // 2
-    left_panel = (tools_box[0] + 28, panel_top, panel_mid - inner_gap // 2, panel_bottom)
-    right_panel = (panel_mid + inner_gap // 2, panel_top, tools_box[2] - 28, panel_bottom)
+    panel_w = (tools_box[2] - tools_box[0] - 56 - 2 * inner_gap) // 3
+    left_panel = (tools_box[0] + 28, panel_top, tools_box[0] + 28 + panel_w, panel_bottom)
+    mid_panel = (left_panel[2] + inner_gap, panel_top, left_panel[2] + inner_gap + panel_w, panel_bottom)
+    right_panel = (mid_panel[2] + inner_gap, panel_top, tools_box[2] - 28, panel_bottom)
     draw_list_panel(
         draw,
         left_panel,
-        "Projet",
-        ["Jekyll", "Three.js", "JavaScript, HTML, CSS", "Données CSV intégrées"],
+        "Interface 3D",
+        ["Three.js + WebGL", "Modèle keycube interactif", "Contrôles caméra", "Heatmaps par touche"],
         fill="#fffaf2",
     )
     draw_list_panel(
         draw,
-        right_panel,
-        "Affiche",
-        ["Python + Pillow", "Captures d'écran du site", "Logo keycube", "QR code PNG vers la démo"],
+        mid_panel,
+        "Données",
+        ["CSV intégrés à Jekyll", "Préférence : 22 participants", "Accessibilité : 10 doigts", "Scores sur 80 touches"],
         fill="#fbf8f1",
     )
+    draw_list_panel(
+        draw,
+        right_panel,
+        "Production",
+        ["Jekyll + Liquid", "JavaScript, HTML, CSS", "Python + Pillow", "Captures + QR exportés"],
+        fill="#fffaf2",
+    )
 
-    card_y = 1640
-    card_h = 660
+    card_y = 1680
+    card_h = 680
     card_w = (WIDTH - 2 * MARGIN - 2 * GAP) // 3
     total_crop = (700, 330, 2300, 1780)
     preferred_crop = (700, 330, 2300, 1780)
@@ -338,15 +355,6 @@ def main():
         "Vue agrégée : ratio du doigt dominant par touche sur 22 participants.",
         VIOLET_SOFT,
     )
-
-    footer_y = HEIGHT - 120
-    draw.line((MARGIN, footer_y, WIDTH - MARGIN, footer_y), fill=ACCENT, width=3)
-    footer = (
-        f"Dépôt : {REPO_URL}   |   Démo : {PROJECT_URL}"
-    )
-    footer_bbox = draw.textbbox((0, 0), footer, font=font(26))
-    footer_x = (WIDTH - (footer_bbox[2] - footer_bbox[0])) / 2
-    draw.text((footer_x, footer_y + 18), footer, font=font(26), fill=MUTED)
 
     jpg_path = OUT_DIR / "heatmap3d-poster-legal-fr.jpg"
     png_path = OUT_DIR / "heatmap3d-poster-legal-fr.png"

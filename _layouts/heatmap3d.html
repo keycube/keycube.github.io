@@ -10,6 +10,23 @@
   <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" type="image/x-icon">
 </head>
 <body>
+  <nav class="heatmap3d-site-nav glass-panel" aria-label="Main">
+    {% for item in site.data.navigation %}
+      {% if page.url contains item.name or item.name == 'heatmap3d' %}
+        {% assign current_heatmap_nav = item.name %}
+      {% endif %}
+    {% endfor %}
+    {% assign current_heatmap_nav = page.nav_section | default: current_heatmap_nav | default: 'heatmap3d' %}
+
+    {% for item in site.data.navigation %}
+      {% if item.name == current_heatmap_nav %}
+        <span class="heatmap3d-site-nav-link active">{{ site.data.strings[item.name] }}</span>
+      {% else %}
+        <a class="heatmap3d-site-nav-link" href="{{ item.url | relative_url }}">{{ site.data.strings[item.name] }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
   {{ content }}
   <!-- Three.js import map -->
   <script type="importmap">
