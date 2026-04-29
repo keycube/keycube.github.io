@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="baseurl" content="{{ site.baseurl }}">
+  <meta name="default-mode" content="{{ page.default_mode | default: 'preference' }}">
+  <title>{{ page.title | default: "Keycube Heatmap 3D" }}</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/heatmap3d-landing.css">
+  <link rel="stylesheet" href="{{ '/assets/css/heatmap3d-dataviz.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <link rel="icon" href="{{ '/assets/img/heatmap3d-favicon.png' | relative_url }}" type="image/x-icon">
+</head>
+<body class="dataviz-with-shell">
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+      <a class="site-title" rel="author" href="https://keycube.io/">
+        <img class="site-logo" src="{{ site.baseurl }}/assets/img/heatmap3d-k3logo.png" alt="Keycube"/>
+      </a>
+
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="https://keycube.io/">About</a>
+          <a class="page-link" href="https://keycube.io/blog/">Blog</a>
+          <a class="page-link" href="https://keycube.io/research/">Research</a>
+          <a class="page-link" href="https://keycube.io/hardware/">Hardware</a>
+          <a class="page-link" href="https://keycube.io/software/">Software</a>
+          <span class="page-link">Heatmap 3D</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dataviz-content" aria-label="Content">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-wrapper">
+      <p class="footer-text">Keycube — The keycube is a kind of keyboard. A cubic device dedicated to text entry.</p>
+      <div class="footer-links">
+        <a href="https://keycube.io" target="_blank" rel="noopener">keycube.io</a>
+        <span class="separator">·</span>
+        <a href="https://github.com/keycube" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  {% include heatmap3d-model-viewer.html %}
+  {% include heatmap3d-dataviz-data.html %}
+  <script src="{{ '/assets/js/heatmap3d-dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+</body>
+</html>

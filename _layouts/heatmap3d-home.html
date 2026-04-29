@@ -1,0 +1,87 @@
+---
+layout: heatmap3d-landing
+---
+
+<section class="heatmap3d-hero">
+  <div class="heatmap3d-hero-copy">
+    <p class="heatmap3d-eyebrow">Research Visualization</p>
+    <h1>Heatmap 3D</h1>
+    <p class="heatmap3d-lead">Interactive visual analysis of the keycube studies, with per-participant preference scores and finger reachability mapped directly onto the 3D device.</p>
+    <div class="heatmap3d-actions">
+  <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="heatmap3d-primary-link is-active">Open Preference View</a>
+  <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="heatmap3d-secondary-link is-active">Open Reachability View</a>
+    </div>
+  </div>
+
+  <aside class="heatmap3d-summary">
+    <div class="heatmap3d-model-panel" aria-label="Wireframe keycube model">
+      <div id="landing-canvas"></div>
+    </div>
+    <h2>What is included</h2>
+    <ul class="heatmap3d-summary-list">
+      <li>22-participant preference dataset with aggregate view</li>
+      <li>Per-finger and combined reachability analysis across all faces</li>
+      <li>Interactive 3D keycube viewer tied to study data</li>
+    </ul>
+  </aside>
+</section>
+
+<section class="heatmap3d-section">
+  <div class="heatmap3d-section-heading">
+    <h2>Explore the two study modes</h2>
+    <p>Both visualizations share the same 3D model, but expose different interpretations of the studies.</p>
+  </div>
+
+  <div class="heatmap3d-card-grid">
+    <article class="heatmap3d-card heatmap3d-card-preference">
+      <p class="heatmap3d-card-kicker">Mode 01</p>
+      <h3>Preference</h3>
+      <p>Inspect individual participants or the mean of the full study. The viewer can isolate one face or show the whole keycube at once.</p>
+      <ul class="heatmap3d-card-points">
+        <li>Participant-by-participant selection</li>
+        <li>Aggregate mean across all 22 participants</li>
+        <li>Per-face filtering with on-key score labels</li>
+      </ul>
+  <a href="{{ '/heatmap3d/preference/' | relative_url }}" class="heatmap3d-card-link is-active">Launch Preference</a>
+    </article>
+
+    <article class="heatmap3d-card heatmap3d-card-reachability">
+      <p class="heatmap3d-card-kicker">Mode 02</p>
+      <h3>Reachability</h3>
+      <p>Measure what each finger can realistically access, then compare totals, per-hand reach, or the best-performing finger for every key.</p>
+      <ul class="heatmap3d-card-points">
+        <li>Per-finger heatmaps</li>
+        <li>Left hand, right hand, total, and best-finger views</li>
+        <li>Dynamic range adapted to the selected dataset</li>
+      </ul>
+  <a href="{{ '/heatmap3d/reachability/' | relative_url }}" class="heatmap3d-card-link is-active">Launch Reachability</a>
+    </article>
+  </div>
+</section>
+
+<section class="heatmap3d-section heatmap3d-section-metrics">
+  <div class="heatmap3d-metric">
+    <strong>31</strong>
+    <span>participants in study 1</span>
+  </div>
+  <div class="heatmap3d-metric">
+    <strong>22</strong>
+    <span>participants in study 2</span>
+  </div>
+  <div class="heatmap3d-metric">
+    <strong>77.4%</strong>
+    <span>preferred the diagonal holding position</span>
+  </div>
+  <div class="heatmap3d-metric">
+    <strong>80</strong>
+    <span>keys visualized in 3D</span>
+  </div>
+</section>
+
+<section class="heatmap3d-section heatmap3d-section-note">
+  <div>
+    <h2>Project context</h2>
+    <p>The official site now hosts Heatmap 3D as a dedicated experience with its own entry in the main navigation, while the source code remains available for inspection.</p>
+  </div>
+  <a href="https://github.com/keycube/heatmap3d" target="_blank" rel="noopener noreferrer" class="heatmap3d-secondary-link is-active">View Source on GitHub</a>
+</section>

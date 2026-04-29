@@ -49,7 +49,7 @@ controls.minDistance = fixedDistance * 0.82;
 controls.maxDistance = fixedDistance * 1.12;
 
 // Keep the cube upright while leaving every exposed face reachable.
-controls.minPolarAngle = Math.PI * 0.12;  // close enough to inspect the top face
+controls.minPolarAngle = 0;               // allow a full top-down view (top face straight toward camera)
 controls.maxPolarAngle = Math.PI * 0.88;  // low enough to inspect side faces comfortably
 
 // Auto-rotation settings (integrated with OrbitControls)

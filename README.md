@@ -5,6 +5,16 @@ The website is directly hosted on [GitHub Pages](https://pages.github.com) and p
 
 Visit the website at [https://keycube.github.io](https://keycube.github.io).
 
+## Heatmap 3D integration
+
+The Heatmap 3D experience is integrated directly in this repository under:
+
+- `/heatmap3d/`
+- `/heatmap3d/preference/`
+- `/heatmap3d/reachability/`
+- `/heatmap3d/preference-fr/`
+- `/heatmap3d/reachability-fr/`
+
 ## Documentation
 
 Find more information in the repository [Wiki](https://github.com/keycube/keycube.github.io/wiki).
