@@ -81,7 +81,8 @@ scene.add(ambientLight, directionalLight);
 
 // Main cube
 const cubeGeometry = new RoundedBoxGeometry(1, 1, 1, 4, 0.1);
-const cubeMaterial = new THREE.MeshStandardMaterial({ color: 0xD2B48C });
+// couleur changée : gris un peu plus clair encore
+const cubeMaterial = new THREE.MeshStandardMaterial({ color: 0xF5F5F5 });
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
 // Keycube group

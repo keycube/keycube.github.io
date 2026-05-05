@@ -71,8 +71,9 @@ const cubeWireframe = new THREE.LineSegments(edges, edgesMaterial);
 keycubeGroup.add(cubeWireframe);
 
 // Also add a very subtle solid cube for depth perception
+// changé en gris clair pour correspondre au viewer interactif
 const cubeSolidMaterial = new THREE.MeshStandardMaterial({ 
-  color: 0xf0f0f0, 
+  color: 0xF7F7F7, 
   transparent: true, 
   opacity: 0.15,
   wireframe: false
