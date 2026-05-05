@@ -2,6 +2,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="baseurl" content="{{ site.baseurl }}">
+  {% if page.default_mode %}
+  <meta name="default-mode" content="{{ page.default_mode }}">
+  {% endif %}
 
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
 
@@ -11,7 +15,7 @@
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {% if page.extra_css %}
     {% for stylesheet in page.extra_css %}
-  <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
+  <link rel="stylesheet" href="{{ stylesheet | relative_url }}?v={{ site.time | date: '%s' }}">
     {% endfor %}
   {% endif %}
   {%- feed_meta -%}

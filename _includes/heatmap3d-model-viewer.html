@@ -38,15 +38,15 @@ const maxTextureAnisotropy = renderer.capabilities.getMaxAnisotropy();
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;  // Slightly stronger inertia keeps movement deliberate
-controls.rotateSpeed = 0.42;    // Make face changes possible, but not too immediate
+controls.rotateSpeed = 0.36;    // Slightly slower manual orbit
 
 // Keep the interaction object-centric: orbit only, with a tightly bounded zoom.
 controls.enablePan = false;
 const fixedDistance = camera.position.length();
 controls.enableZoom = true;
-controls.zoomSpeed = 0.85;
-controls.minDistance = fixedDistance * 0.82;
-controls.maxDistance = fixedDistance * 1.12;
+controls.zoomSpeed = 0.95;
+controls.minDistance = fixedDistance * 0.74;
+controls.maxDistance = fixedDistance * 1.26;
 
 // Keep the cube upright while leaving every exposed face reachable.
 controls.minPolarAngle = 0;               // allow a full top-down view (top face straight toward camera)
@@ -54,28 +54,24 @@ controls.maxPolarAngle = Math.PI * 0.88;  // low enough to inspect side faces co
 
 // Auto-rotation settings (integrated with OrbitControls)
 controls.autoRotate = true;
-controls.autoRotateSpeed = 1.0;  // Slow rotation (degrees per second)
-let autoRotateResumeTimer = null;
-let autoRotateLocked = false;
+controls.autoRotateSpeed = 0.82;  // Slightly slower idle rotation
+let autoRotateStoppedByUser = false;
 
-function pauseAutoRotate() {
-  if (autoRotateLocked) return;
+function stopAutoRotate() {
+  autoRotateStoppedByUser = true;
   controls.autoRotate = false;
-  if (autoRotateResumeTimer) clearTimeout(autoRotateResumeTimer);
-  autoRotateResumeTimer = setTimeout(() => {
-    controls.autoRotate = true;
-  }, 2400);
 }
 
 function captureViewerGesture(event) {
   event.preventDefault();
-  pauseAutoRotate();
+  stopAutoRotate();
 }
 
 renderer.domElement.addEventListener('wheel', captureViewerGesture, { passive: false });
 renderer.domElement.addEventListener('touchmove', captureViewerGesture, { passive: false });
 renderer.domElement.addEventListener('gesturestart', captureViewerGesture, { passive: false });
 renderer.domElement.addEventListener('gesturechange', captureViewerGesture, { passive: false });
+controls.addEventListener('start', stopAutoRotate);
 
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -327,7 +323,7 @@ const DIAGONAL_ROTATION = -Math.PI * 3 / 4;
 
 // ─── Auto-rotation control ───
 ['pointerdown', 'wheel', 'touchstart'].forEach(evt => 
-  renderer.domElement.addEventListener(evt, pauseAutoRotate)
+  renderer.domElement.addEventListener(evt, stopAutoRotate)
 );
 
 // ─── Orbit pivot ───
@@ -431,9 +427,8 @@ window.updateModel = function(data) {
   if (data.resetView) {
     camera.position.copy(initialCameraPosition);
     controls.target.copy(initialControlsTarget);
-    autoRotateLocked = false;
+    autoRotateStoppedByUser = false;
     controls.autoRotate = true;
-    if (autoRotateResumeTimer) clearTimeout(autoRotateResumeTimer);
     camera.zoom = 1;
     camera.updateProjectionMatrix();
     controls.update();
@@ -512,11 +507,9 @@ window.updateModel = function(data) {
   }
 
   if (data.figure6View) {
-    autoRotateLocked = false;
-    controls.autoRotate = true;
+    controls.autoRotate = !autoRotateStoppedByUser;
   } else if (data.figure6View === false) {
-    autoRotateLocked = false;
-    controls.autoRotate = true;
+    controls.autoRotate = !autoRotateStoppedByUser;
   }
 };
 </script>

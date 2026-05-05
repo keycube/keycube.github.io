@@ -1,60 +1,64 @@
 ---
 layout: heatmap3d-landing
 ---
+{% assign is_french = false %}
+{% if page.lang == 'fr' %}
+  {% assign is_french = true %}
+{% endif %}
 
 <section class="heatmap3d-hero">
   <div class="heatmap3d-hero-copy">
-    <p class="heatmap3d-eyebrow">Research Visualization</p>
+    <p class="heatmap3d-eyebrow">{% if is_french %}Visualisation de recherche{% else %}Research Visualization{% endif %}</p>
     <h1>Heatmap 3D</h1>
-    <p class="heatmap3d-lead">Interactive visual analysis of the keycube studies, with per-participant preference scores and finger reachability mapped directly onto the 3D device.</p>
+    <p class="heatmap3d-lead">{% if is_french %}Analyse visuelle interactive des études keycube, avec les scores de préférence par participant et l’accessibilité des doigts directement projetés sur l’appareil 3D.{% else %}Interactive visual analysis of the keycube studies, with per-participant preference scores and finger reachability mapped directly onto the 3D device.{% endif %}</p>
     <div class="heatmap3d-actions">
-  <a href="{{ '/keycube-heatmap3d/preference/' | relative_url }}" class="heatmap3d-primary-link is-active">Open Preference View</a>
-  <a href="{{ '/keycube-heatmap3d/reachability/' | relative_url }}" class="heatmap3d-secondary-link is-active">Open Reachability View</a>
+  <a href="{{ '/keycube-heatmap3d/preference/' | relative_url }}" class="heatmap3d-primary-link is-active">{% if is_french %}Ouvrir la vue Préférence{% else %}Open Preference View{% endif %}</a>
+  <a href="{{ '/keycube-heatmap3d/reachability/' | relative_url }}" class="heatmap3d-secondary-link is-active">{% if is_french %}Ouvrir la vue Accessibilité{% else %}Open Reachability View{% endif %}</a>
     </div>
   </div>
 
   <aside class="heatmap3d-summary">
-    <div class="heatmap3d-model-panel" aria-label="Wireframe keycube model">
+    <div class="heatmap3d-model-panel" aria-label="{% if is_french %}Modèle filaire keycube{% else %}Wireframe keycube model{% endif %}">
       <div id="landing-canvas"></div>
     </div>
-    <h2>What is included</h2>
+    <h2>{% if is_french %}Contenu disponible{% else %}What is included{% endif %}</h2>
     <ul class="heatmap3d-summary-list">
-      <li>22-participant preference dataset with aggregate view</li>
-      <li>Per-finger and combined reachability analysis across all faces</li>
-      <li>Interactive 3D keycube viewer tied to study data</li>
+      <li>{% if is_french %}Jeu de données de préférence sur 22 participants avec vue agrégée{% else %}22-participant preference dataset with aggregate view{% endif %}</li>
+      <li>{% if is_french %}Analyse d’accessibilité par doigt et combinée sur toutes les faces{% else %}Per-finger and combined reachability analysis across all faces{% endif %}</li>
+      <li>{% if is_french %}Visualiseur 3D interactif keycube relié aux données des études{% else %}Interactive 3D keycube viewer tied to study data{% endif %}</li>
     </ul>
   </aside>
 </section>
 
 <section class="heatmap3d-section">
   <div class="heatmap3d-section-heading">
-    <h2>Explore the two study modes</h2>
-    <p>Both visualizations share the same 3D model, but expose different interpretations of the studies.</p>
+    <h2>{% if is_french %}Explorer les deux modes d’étude{% else %}Explore the two study modes{% endif %}</h2>
+    <p>{% if is_french %}Les deux visualisations partagent le même modèle 3D, mais exposent des lectures différentes des résultats.{% else %}Both visualizations share the same 3D model, but expose different interpretations of the studies.{% endif %}</p>
   </div>
 
   <div class="heatmap3d-card-grid">
     <article class="heatmap3d-card heatmap3d-card-preference">
       <p class="heatmap3d-card-kicker">Mode 01</p>
-      <h3>Preference</h3>
-      <p>Inspect individual participants or the mean of the full study. The viewer can isolate one face or show the whole keycube at once.</p>
+      <h3>{% if is_french %}Préférence{% else %}Preference{% endif %}</h3>
+      <p>{% if is_french %}Inspectez les participants individuellement ou la moyenne de l’étude complète. Le visualiseur peut isoler une face ou afficher tout le keycube.{% else %}Inspect individual participants or the mean of the full study. The viewer can isolate one face or show the whole keycube at once.{% endif %}</p>
       <ul class="heatmap3d-card-points">
-        <li>Participant-by-participant selection</li>
-        <li>Aggregate mean across all 22 participants</li>
-        <li>Per-face filtering with on-key score labels</li>
+        <li>{% if is_french %}Sélection participant par participant{% else %}Participant-by-participant selection{% endif %}</li>
+        <li>{% if is_french %}Moyenne agrégée sur 22 participants{% else %}Aggregate mean across all 22 participants{% endif %}</li>
+        <li>{% if is_french %}Filtrage par face avec labels de score sur les touches{% else %}Per-face filtering with on-key score labels{% endif %}</li>
       </ul>
-  <a href="{{ '/keycube-heatmap3d/preference/' | relative_url }}" class="heatmap3d-card-link is-active">Launch Preference</a>
+  <a href="{{ '/keycube-heatmap3d/preference/' | relative_url }}" class="heatmap3d-card-link is-active">{% if is_french %}Lancer Préférence{% else %}Launch Preference{% endif %}</a>
     </article>
 
     <article class="heatmap3d-card heatmap3d-card-reachability">
       <p class="heatmap3d-card-kicker">Mode 02</p>
-      <h3>Reachability</h3>
-      <p>Measure what each finger can realistically access, then compare totals, per-hand reach, or the best-performing finger for every key.</p>
+      <h3>{% if is_french %}Accessibilité{% else %}Reachability{% endif %}</h3>
+      <p>{% if is_french %}Mesurez ce que chaque doigt peut réellement atteindre, puis comparez les totaux, la main gauche/droite, ou le doigt le plus performant pour chaque touche.{% else %}Measure what each finger can realistically access, then compare totals, per-hand reach, or the best-performing finger for every key.{% endif %}</p>
       <ul class="heatmap3d-card-points">
-        <li>Per-finger heatmaps</li>
-        <li>Left hand, right hand, total, and best-finger views</li>
-        <li>Dynamic range adapted to the selected dataset</li>
+        <li>{% if is_french %}Heatmaps par doigt{% else %}Per-finger heatmaps{% endif %}</li>
+        <li>{% if is_french %}Vues main gauche, main droite, total et doigt préféré{% else %}Left hand, right hand, total, and best-finger views{% endif %}</li>
+        <li>{% if is_french %}Plage dynamique adaptée au jeu de données sélectionné{% else %}Dynamic range adapted to the selected dataset{% endif %}</li>
       </ul>
-  <a href="{{ '/keycube-heatmap3d/reachability/' | relative_url }}" class="heatmap3d-card-link is-active">Launch Reachability</a>
+  <a href="{{ '/keycube-heatmap3d/reachability/' | relative_url }}" class="heatmap3d-card-link is-active">{% if is_french %}Lancer Accessibilité{% else %}Launch Reachability{% endif %}</a>
     </article>
   </div>
 </section>
@@ -62,26 +66,26 @@ layout: heatmap3d-landing
 <section class="heatmap3d-section heatmap3d-section-metrics">
   <div class="heatmap3d-metric">
     <strong>31</strong>
-    <span>participants in study 1</span>
+    <span>{% if is_french %}participants dans l’étude 1{% else %}participants in study 1{% endif %}</span>
   </div>
   <div class="heatmap3d-metric">
     <strong>22</strong>
-    <span>participants in study 2</span>
+    <span>{% if is_french %}participants dans l’étude 2{% else %}participants in study 2{% endif %}</span>
   </div>
   <div class="heatmap3d-metric">
-    <strong>77.4%</strong>
-    <span>preferred the diagonal holding position</span>
+    <strong>{% if is_french %}77,4%{% else %}77.4%{% endif %}</strong>
+    <span>{% if is_french %}ont préféré la position diagonale{% else %}preferred the diagonal holding position{% endif %}</span>
   </div>
   <div class="heatmap3d-metric">
     <strong>80</strong>
-    <span>keys visualized in 3D</span>
+    <span>{% if is_french %}touches visualisées en 3D{% else %}keys visualized in 3D{% endif %}</span>
   </div>
 </section>
 
 <section class="heatmap3d-section heatmap3d-section-note">
   <div>
-    <h2>Project context</h2>
-    <p>The official site now hosts Heatmap 3D as a dedicated experience with its own entry in the main navigation, while the source code remains available for inspection.</p>
+    <h2>{% if is_french %}Contexte du projet{% else %}Project context{% endif %}</h2>
+    <p>{% if is_french %}Le site officiel héberge désormais Heatmap 3D comme une expérience dédiée, avec une entrée propre dans la navigation principale, tandis que le code source reste consultable.{% else %}The official site now hosts Heatmap 3D as a dedicated experience with its own entry in the main navigation, while the source code remains available for inspection.{% endif %}</p>
   </div>
-  <a href="https://github.com/keycube/heatmap3d" target="_blank" rel="noopener noreferrer" class="heatmap3d-secondary-link is-active">View Source on GitHub</a>
+  <a href="https://github.com/keycube/heatmap3d" target="_blank" rel="noopener noreferrer" class="heatmap3d-secondary-link is-active">{% if is_french %}Voir la source sur GitHub{% else %}View Source on GitHub{% endif %}</a>
 </section>

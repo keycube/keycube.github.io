@@ -9,7 +9,29 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentParticipant = null;
   var currentFace = null;
   var FACES = ['R','B','G','W','Y'];
+  var FINGER_CODES = ['LL', 'LR', 'LM', 'LI', 'LT', 'RT', 'RI', 'RM', 'RR', 'RL'];
   var isFrench = document.documentElement.lang === 'fr';
+
+  function computeFingerFrequencies(dataArray) {
+    var frequencies = {};
+    FACES.forEach(function (face) {
+      frequencies[face] = [];
+      for (var i = 0; i < 16; i++) {
+        var counts = {};
+        FINGER_CODES.forEach(function (code) { counts[code] = 0; });
+        dataArray.forEach(function (participant) {
+          var fingerCode = participant[face][i];
+          if (fingerCode >= 1 && fingerCode <= 10) {
+            counts[FINGER_CODES[fingerCode - 1]] += 1;
+          }
+        });
+        frequencies[face].push(counts);
+      }
+    });
+    return frequencies;
+  }
+
+  var preferenceFrequencies = computeFingerFrequencies(participantsData);
 
   // ─── Utility: compute aggregate data ───
   function computeAggregate(dataArray) {
@@ -65,39 +87,65 @@ document.addEventListener('DOMContentLoaded', function () {
     return null;
   }
 
+  function getParticipantPreferenceFigure(participant) {
+    var figure = { scores: {}, dominantFingers: {}, tiedFingers: {} };
+
+    FACES.forEach(function (face) {
+      figure.scores[face] = [];
+      figure.dominantFingers[face] = [];
+      figure.tiedFingers[face] = [];
+
+      for (var i = 0; i < 16; i++) {
+        var fingerNumber = participant[face][i];
+        var fingerCode = (fingerNumber >= 1 && fingerNumber <= 10)
+          ? FINGER_CODES[fingerNumber - 1]
+          : 'LT';
+        var count = preferenceFrequencies[face][i][fingerCode] || 0;
+        var ratio = +(count / participantsData.length).toFixed(2);
+
+        figure.scores[face].push(ratio);
+        figure.dominantFingers[face].push(fingerCode);
+        figure.tiedFingers[face].push([fingerCode]);
+      }
+    });
+
+    return figure;
+  }
+
   function applyPreferenceView() {
     if (!window.updateModel) return;
-    var data = getPreferenceData();
-    if (!data) {
+    var figureData = null;
+    var displayScores = null;
+    var displayScoreFormat = 'ratio';
+    if (currentParticipant === 'aggregate') figureData = preferenceAggregate;
+    else if (currentParticipant && typeof currentParticipant === 'object') {
+      figureData = getParticipantPreferenceFigure(currentParticipant);
+      displayScores = {
+        R: currentParticipant.R,
+        B: currentParticipant.B,
+        G: currentParticipant.G,
+        W: currentParticipant.W,
+        Y: currentParticipant.Y
+      };
+      displayScoreFormat = 'integer';
+    }
+
+    if (!figureData) {
       window.updateModel({ reset: true, hideScores: true });
       return;
     }
 
-    var isAggregatePreference = currentParticipant === 'aggregate';
-    var scores = isAggregatePreference
-      ? data
-      : { R: data.R, B: data.B, G: data.G, W: data.W, Y: data.Y };
-    var opts = isAggregatePreference
-      ? {
-          scores: scores,
-          showScores: true,
-          scoreFormat: 'ratio',
-          preferenceFigure: preferenceAggregate,
-          figure6View: true
-        }
-      : { heatmapMin: 1, heatmapMax: 10, heatmapInvert: true, scores: scores, showScores: true, scoreFormat: 'integer', figure6View: false };
+    if (!displayScores) displayScores = figureData.scores;
 
-    if (currentFace) {
-      if (isAggregatePreference) {
-        opts.preferenceFigureSingleFace = currentFace;
-      } else {
-        var singleFace = {};
-        singleFace[currentFace] = data[currentFace];
-        opts.heatmapSingleFace = singleFace;
-      }
-    } else {
-      if (!isAggregatePreference) opts.heatmap = scores;
-    }
+    var opts = {
+      scores: displayScores,
+      showScores: true,
+      scoreFormat: displayScoreFormat,
+      preferenceFigure: figureData,
+      figure6View: true
+    };
+
+    if (currentFace) opts.preferenceFigureSingleFace = currentFace;
     window.updateModel(opts);
   }
 
@@ -129,6 +177,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // ─── Participant selector ───
   var participantSelect = document.getElementById('participant-select');
   var colorButtons = document.querySelectorAll('.color-btn');
+
+  if (currentMode === 'preference') {
+    togglePreferenceLegend(false);
+    togglePreferenceHeatmapLegend(false);
+  }
   
   if (participantSelect) {
     participantSelect.addEventListener('change', function (e) {
@@ -141,21 +194,17 @@ document.addEventListener('DOMContentLoaded', function () {
         currentParticipant = 'aggregate';
         togglePreferenceLegend(true);
         togglePreferenceHeatmapLegend(false);
-        togglePreferenceFaceButtons(false);
+        togglePreferenceFaceButtons(true);
         if (summaryPanel) summaryPanel.style.display = 'none';
         updateSelectionBadge('📊', isFrench
           ? 'Préférence agrégée (ratio du doigt dominant sur 22 participants)'
           : 'Aggregate finger preference (dominant finger ratio across 22 participants)');
-        if (window.updateModel) window.updateModel({ reset: true, hideScores: true });
         applyPreferenceView();
       } else if (val !== '') {
         currentParticipant = participantsData[parseInt(val)];
-        togglePreferenceLegend(false);
-        togglePreferenceHeatmapLegend(true);
+        togglePreferenceLegend(true);
+        togglePreferenceHeatmapLegend(false);
         togglePreferenceFaceButtons(true);
-        if (window.updateModel) {
-          window.updateModel({ reset: true, handedness: currentParticipant.handedness });
-        }
         if (summaryPanel) {
           summaryPanel.style.display = 'block';
           ['handedness', 'circumferenceRight', 'lengthRight', 'spanRight'].forEach(function (key, i) {
@@ -165,13 +214,13 @@ document.addEventListener('DOMContentLoaded', function () {
           });
         }
         updateSelectionBadge('👤', isFrench
-          ? 'Participant ' + currentParticipant.number + ' (codage brut des doigts)'
-          : 'Participant ' + currentParticipant.number + ' finger-choice coding');
+          ? 'Participant ' + currentParticipant.number + ' (codage brut + couleur de confiance)'
+          : 'Participant ' + currentParticipant.number + ' (raw coding + confidence color)');
         applyPreferenceView();
       } else {
         currentParticipant = null;
         togglePreferenceLegend(false);
-        togglePreferenceHeatmapLegend(true);
+        togglePreferenceHeatmapLegend(false);
         togglePreferenceFaceButtons(true);
         if (summaryPanel) summaryPanel.style.display = 'none';
         updateSelectionBadge('🎯', isFrench ? 'Aucun participant sélectionné' : 'No participant selected');
