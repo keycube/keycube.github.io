@@ -32,7 +32,7 @@ layout: heatmap3d-dataviz
         <!-- Center: All + Best buttons -->
         <div class="hand-divider" style="display: flex; flex-direction: column; gap: 6px;">
           <button class="hand-action-btn active" id="btn-all-fingers" data-tooltip="{% if is_french %}Tous les doigts combinés{% else %}All fingers combined (total score){% endif %}">{% if is_french %}Tout{% else %}All{% endif %}</button>
-          <button class="hand-action-btn" id="btn-best-finger" data-tooltip="{% if is_french %}Doigt préféré par touche (Figure 7 droite){% else %}Preferred finger per key (Figure 7 right){% endif %}">⭐ {% if is_french %}Préféré{% else %}Preferred{% endif %}</button>
+          <button class="hand-action-btn" id="btn-best-finger" data-tooltip="{% if is_french %}Doigt préféré par touche (Figure 7 droite){% else %}Preferred finger per key (Figure 7 right){% endif %}">{% if is_french %}Préféré{% else %}Preferred{% endif %}</button>
         </div>
         <!-- Right Hand -->
         <div class="hand-analog" id="right-hand-analog">
@@ -61,7 +61,7 @@ layout: heatmap3d-dataviz
       <span>Reachable (3)</span>
     </div>
 
-    <button class="reset-view-btn" id="reset-view-btn">↻ {% if is_french %}Réinitialiser{% else %}Reset View{% endif %}</button>
+  <button class="reset-view-btn" id="reset-view-btn">{% if is_french %}Réinitialiser{% else %}Reset View{% endif %}</button>
   </div>
 
 </div>
@@ -82,7 +82,7 @@ layout: heatmap3d-dataviz
 </select>
 
 <!-- Side panel toggle -->
-<button class="side-panel-toggle" onclick="document.getElementById('info-panel').classList.toggle('hidden')">ℹ️ Info</button>
+<button class="side-panel-toggle" onclick="document.getElementById('info-panel').classList.toggle('hidden')">Info</button>
 
 <!-- Side panel -->
 <div id="info-panel" class="side-panel glass-panel hidden">
@@ -97,7 +97,7 @@ layout: heatmap3d-dataviz
   <h4>{% if is_french %}Correspondance Main-Face{% else %}Hand-Face Mapping{% endif %}</h4>
   <div class="hand-face-map" style="margin-top: 8px;">
     <div class="hand-face-card">
-      <div class="hand-face-title">{% if is_french %}🤚 Main gauche{% else %}🤚 Left Hand{% endif %}</div>
+  <div class="hand-face-title">{% if is_french %}Main gauche{% else %}Left Hand{% endif %}</div>
       <div class="face-tags">
         <span class="face-tag" style="background:#4dabf7;color:#fff;">B</span>
         <span class="face-tag" style="background:#f8f9fa;color:#333;border:1px solid #ccc;">W</span>
@@ -105,7 +105,7 @@ layout: heatmap3d-dataviz
       </div>
     </div>
     <div class="hand-face-card">
-      <div class="hand-face-title">{% if is_french %}Main droite 🤚{% else %}Right Hand 🤚{% endif %}</div>
+  <div class="hand-face-title">{% if is_french %}Main droite{% else %}Right Hand{% endif %}</div>
       <div class="face-tags">
         <span class="face-tag" style="background:#ffd43b;color:#333;">Y</span>
         <span class="face-tag" style="background:#51cf66;color:#fff;">G</span>
@@ -145,40 +145,40 @@ document.addEventListener('DOMContentLoaded', function () {
   var isFrench = document.documentElement.lang === 'fr';
   var fingerData = isFrench
     ? {
-        'total': { name: 'Tous les doigts (Total)', icon: '🖐️', info: 'Accessibilité combinée des 10 doigts et 22 participants. Figure 7 gauche.' },
-        'best': { name: 'Doigt préféré (par touche)', icon: '⭐', info: 'Affiche le score d’accessibilité du doigt préféré pour chaque touche, corrélé à la Figure 6. Figure 7 droite.' },
-        'left-all': { name: 'Main gauche (Tous)', icon: '🤚', info: 'La main gauche couvre Bleu (externe), Blanc (interne), et moitié gauche de Rouge (haut).' },
-        'right-all': { name: 'Main droite (Tous)', icon: '🤚', info: 'La main droite couvre Jaune (externe), Vert (interne), et moitié droite de Rouge (haut).' },
-        'LT': { name: 'Pouce gauche', icon: '👍', info: 'Pouce gauche — portée la plus large côté gauche.' },
-        'LI': { name: 'Index gauche', icon: '☝️', info: 'Index gauche — rangées supérieures face Bleue.' },
-        'LM': { name: 'Majeur gauche', icon: '🖕', info: 'Majeur gauche — rangées du milieu face Bleue.' },
-        'LR': { name: 'Annulaire gauche', icon: '💍', info: 'Annulaire gauche — rangées inférieures face Bleue.' },
-        'LL': { name: 'Auriculaire gauche', icon: '🤙', info: 'Auriculaire gauche — coin inférieur Bleu uniquement.' },
-        'RT': { name: 'Pouce droit', icon: '👍', info: 'Pouce droit — portée la plus large côté droit.' },
-        'RI': { name: 'Index droit', icon: '☝️', info: 'Index droit — rangées supérieures face Jaune.' },
-        'RM': { name: 'Majeur droit', icon: '🖕', info: 'Majeur droit — rangées du milieu face Jaune.' },
-        'RR': { name: 'Annulaire droit', icon: '💍', info: 'Annulaire droit — rangées inférieures face Jaune.' },
-        'RL': { name: 'Auriculaire droit', icon: '🤙', info: 'Auriculaire droit — coin inférieur Jaune uniquement.' }
+  'total': { name: 'Tous les doigts (Total)', icon: '', info: 'Accessibilité combinée des 10 doigts et 22 participants. Figure 7 gauche.' },
+  'best': { name: 'Doigt préféré (par touche)', icon: '', info: 'Affiche le score d’accessibilité du doigt préféré pour chaque touche, corrélé à la Figure 6. Figure 7 droite.' },
+  'left-all': { name: 'Main gauche (Tous)', icon: '', info: 'La main gauche couvre Bleu (externe), Blanc (interne), et moitié gauche de Rouge (haut).' },
+  'right-all': { name: 'Main droite (Tous)', icon: '', info: 'La main droite couvre Jaune (externe), Vert (interne), et moitié droite de Rouge (haut).' },
+  'LT': { name: 'Pouce gauche', icon: '', info: 'Pouce gauche — portée la plus large côté gauche.' },
+  'LI': { name: 'Index gauche', icon: '', info: 'Index gauche — rangées supérieures face Bleue.' },
+  'LM': { name: 'Majeur gauche', icon: '', info: 'Majeur gauche — rangées du milieu face Bleue.' },
+  'LR': { name: 'Annulaire gauche', icon: '', info: 'Annulaire gauche — rangées inférieures face Bleue.' },
+  'LL': { name: 'Auriculaire gauche', icon: '', info: 'Auriculaire gauche — coin inférieur Bleu uniquement.' },
+  'RT': { name: 'Pouce droit', icon: '', info: 'Pouce droit — portée la plus large côté droit.' },
+  'RI': { name: 'Index droit', icon: '', info: 'Index droit — rangées supérieures face Jaune.' },
+  'RM': { name: 'Majeur droit', icon: '', info: 'Majeur droit — rangées du milieu face Jaune.' },
+  'RR': { name: 'Annulaire droit', icon: '', info: 'Annulaire droit — rangées inférieures face Jaune.' },
+  'RL': { name: 'Auriculaire droit', icon: '', info: 'Auriculaire droit — coin inférieur Jaune uniquement.' }
       }
     : {
-        'total': { name: 'All Fingers (Total)', icon: '🖐️', info: 'Combined reachability across all 10 fingers and 22 participants. Figure 7 left.' },
-        'best': { name: 'Preferred Finger (per key)', icon: '⭐', info: 'Shows the reachability score of the preferred finger for each key, correlated with Figure 6. Figure 7 right.' },
-        'left-all': { name: 'Left Hand (All)', icon: '🤚', info: 'Left hand covers Blue (external), White (internal), and left half of Red (top).' },
-        'right-all': { name: 'Right Hand (All)', icon: '🤚', info: 'Right hand covers Yellow (external), Green (internal), and right half of Red (top).' },
-        'LT': { name: 'Left Thumb', icon: '👍', info: 'Left Thumb — widest reach on the left side.' },
-        'LI': { name: 'Left Index', icon: '☝️', info: 'Left Index — upper rows of Blue face.' },
-        'LM': { name: 'Left Middle', icon: '🖕', info: 'Left Middle — middle rows of Blue face.' },
-        'LR': { name: 'Left Ring', icon: '💍', info: 'Left Ring — lower rows of Blue face.' },
-        'LL': { name: 'Left Little', icon: '🤙', info: 'Left Little — bottom corner of Blue only.' },
-        'RT': { name: 'Right Thumb', icon: '👍', info: 'Right Thumb — widest reach on right side.' },
-        'RI': { name: 'Right Index', icon: '☝️', info: 'Right Index — upper rows of Yellow face.' },
-        'RM': { name: 'Right Middle', icon: '🖕', info: 'Right Middle — middle rows of Yellow face.' },
-        'RR': { name: 'Right Ring', icon: '💍', info: 'Right Ring — lower rows of Yellow face.' },
-        'RL': { name: 'Right Little', icon: '🤙', info: 'Right Little — bottom corner of Yellow only.' }
+  'total': { name: 'All Fingers (Total)', icon: '', info: 'Combined reachability across all 10 fingers and 22 participants. Figure 7 left.' },
+  'best': { name: 'Preferred Finger (per key)', icon: '', info: 'Shows the reachability score of the preferred finger for each key, correlated with Figure 6. Figure 7 right.' },
+  'left-all': { name: 'Left Hand (All)', icon: '', info: 'Left hand covers Blue (external), White (internal), and left half of Red (top).' },
+  'right-all': { name: 'Right Hand (All)', icon: '', info: 'Right hand covers Yellow (external), Green (internal), and right half of Red (top).' },
+  'LT': { name: 'Left Thumb', icon: '', info: 'Left Thumb — widest reach on the left side.' },
+  'LI': { name: 'Left Index', icon: '', info: 'Left Index — upper rows of Blue face.' },
+  'LM': { name: 'Left Middle', icon: '', info: 'Left Middle — middle rows of Blue face.' },
+  'LR': { name: 'Left Ring', icon: '', info: 'Left Ring — lower rows of Blue face.' },
+  'LL': { name: 'Left Little', icon: '', info: 'Left Little — bottom corner of Blue only.' },
+  'RT': { name: 'Right Thumb', icon: '', info: 'Right Thumb — widest reach on right side.' },
+  'RI': { name: 'Right Index', icon: '', info: 'Right Index — upper rows of Yellow face.' },
+  'RM': { name: 'Right Middle', icon: '', info: 'Right Middle — middle rows of Yellow face.' },
+  'RR': { name: 'Right Ring', icon: '', info: 'Right Ring — lower rows of Yellow face.' },
+  'RL': { name: 'Right Little', icon: '', info: 'Right Little — bottom corner of Yellow only.' }
       };
 
   function updateUI(key, activeFingers) {
-    var data = fingerData[key] || { name: key, icon: '🖐️', info: '' };
+  var data = fingerData[key] || { name: key, icon: '', info: '' };
     if (selectionText) selectionText.textContent = data.name;
     if (selectionIcon) selectionIcon.textContent = data.icon;
     if (fingerContext) fingerContext.textContent = data.info;

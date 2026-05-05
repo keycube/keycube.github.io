@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
         togglePreferenceHeatmapLegend(false);
         togglePreferenceFaceButtons(true);
         if (summaryPanel) summaryPanel.style.display = 'none';
-        updateSelectionBadge('📊', isFrench
+        updateSelectionBadge('', isFrench
           ? 'Préférence agrégée (ratio du doigt dominant sur 22 participants)'
           : 'Aggregate finger preference (dominant finger ratio across 22 participants)');
         applyPreferenceView();
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (el) el.textContent = currentParticipant[key];
           });
         }
-        updateSelectionBadge('👤', isFrench
+        updateSelectionBadge('', isFrench
           ? 'Participant ' + currentParticipant.number + ' (codage brut + couleur de confiance)'
           : 'Participant ' + currentParticipant.number + ' (raw coding + confidence color)');
         applyPreferenceView();
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
         togglePreferenceHeatmapLegend(false);
         togglePreferenceFaceButtons(true);
         if (summaryPanel) summaryPanel.style.display = 'none';
-        updateSelectionBadge('🎯', isFrench ? 'Aucun participant sélectionné' : 'No participant selected');
+  updateSelectionBadge('', isFrench ? 'Aucun participant sélectionné' : 'No participant selected');
         if (window.updateModel) window.updateModel({ reset: true, hideScores: true });
       }
     });

@@ -18,7 +18,7 @@ layout: heatmap3d-dataviz
   <div class="top-bar">
     <select id="participant-select">
       <option value="">{% if is_french %}Choisir un participant...{% else %}Choose a participant...{% endif %}</option>
-      <option value="aggregate">{% if is_french %}Vue agrégée de l'étude (22 participants){% else %}📊 Aggregate Study View (22 participants){% endif %}</option>
+  <option value="aggregate">{% if is_french %}Vue agrégée de l'étude (22 participants){% else %}Aggregate Study View (22 participants){% endif %}</option>
       {% for row in site.data.preferences %}
         <option value="{{ forloop.index0 }}">
           {% if is_french %}
