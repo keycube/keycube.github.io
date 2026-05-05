@@ -24,7 +24,7 @@ Find more information in the repository [Wiki](https://github.com/keycube/keycub
 
 ## License
 See the [LICENSE](https://github.com/keycube/keycube.github.io/blob/master/LICENSE) file.
-Specificly for Heatmap 3d, See the [LICENCE](https://github.com/keycube/heatmap3d/blob/main/LICENSE) 
+And specifically for Heatmap 3d, See the [LICENCE](https://github.com/keycube/heatmap3d/blob/main/LICENSE) 
 
 Except where otherwise noted, the content of the website by keycube contributors is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
 
