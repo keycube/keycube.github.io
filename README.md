@@ -24,10 +24,11 @@ Find more information in the repository [Wiki](https://github.com/keycube/keycub
 
 ## License
 See the [LICENSE](https://github.com/keycube/keycube.github.io/blob/master/LICENSE) file.
+Specificly for Heatmap 3d, See the [LICENCE](https://github.com/keycube/heatmap3d/blob/main/LICENSE) 
 
 Except where otherwise noted, the content of the website by keycube contributors is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
 
 ## Credits
 <em>In alphabetical order of the first names</em>
 
-[Damien Brun](https://www.damienb.run), [Lucie Augier](https://github.com/lucieaugier), [Nina Grignola](https://github.com/grignolanina)
+[Damien Brun](https://www.damienb.run), [Lucie Augier](https://github.com/lucieaugier), [Nina Grignola](https://github.com/grignolanina), [Guy Junior Calvet](https://github.com/guyjuniorcalvet)
