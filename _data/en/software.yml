@@ -1,3 +1,9 @@
+- title : HeatMap 3D
+  description: "A 3D graphic representation of the keycube for a better understanding of the results of the research"
+  keywords: heatmap, 3d, research
+  url: https://keycube.github.io/keycube-heatmap3d
+  image: ""
+
 - title : k3Light
   description : "A light management module to create any sequential effect or use effects such as rainbow, breathing or ripple"
   keywords : backlight, effect, library

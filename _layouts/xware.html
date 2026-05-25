@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: heatmap3d-landing
 ---
 
 <header class="post-header">
@@ -36,7 +36,11 @@ layout: default
       </a>
     </div>
     {% else %}
-    <img class="xware-img" src="{{ xware.image }}" alt="{{ xware.title }}"/>
+    {% if xware.image == "" %}
+      <div id="landing-canvas" class="xware-img"></div>
+    {% else %}
+      <img class="xware-img" src="{{ xware.image }}" alt="{{ xware.title }}"/>
+    {% endif %}
     <h3>
       <a class="post-link" href="{{ xware.url }}">
         {{ xware.title }}
