@@ -1,7 +1,7 @@
 - title : HeatMap 3D
   description: "A 3D graphic representation of the keycube for a better understanding of the results of the research"
   keywords: heatmap, 3d, research
-  url: https://keycube.github.io/keycube-heatmap3d
+  url: "/heatmap.html"
   image: ""
 
 - title : k3Light
