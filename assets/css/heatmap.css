@@ -1,0 +1,189 @@
+#model-container {
+    width: 100%;
+    min-height: 740px;
+    display: block;
+    overflow: hidden;
+}
+
+#model-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Hand-face mapping */
+.holding-diagram { text-align: center; }
+.holding-info-text { font-size: 12px; color: #555; margin-bottom: 10px; line-height: 1.4; }
+.hand-face-map { display: flex; justify-content: center; gap: 8px; }
+.hand-face-card {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(248, 249, 250, 0.8);
+    border: 1px solid #e9ecef;
+}
+.hand-face-title { font-size: 11px; font-weight: 700; color: #333; margin-bottom: 5px; }
+.face-tags { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+.face-tag { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 10px; white-space: nowrap; }
+.face-tag.half-tag { font-size: 8px; opacity: 0.85; }
+
+/* Hand Selector */
+.hand-selector-container { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.hand-analog { display: flex; flex-direction: column; align-items: center; }
+.analog-ring {
+    position: relative;
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f8f8f8 0%, #ebebeb 70%, #ddd 100%);
+    border: 3px solid #ccc;
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.15s;
+}
+.analog-ring:hover { border-color: #888; box-shadow: 0 0 14px rgba(0, 0, 0, 0.10); transform: scale(1.04); }
+.analog-ring.active { border-color: #4dabf7; box-shadow: 0 0 18px rgba(77, 171, 247, 0.35); }
+.analog-stick {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fff, #e6e6e6);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.analog-center-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.1;
+    text-align: center;
+}
+
+/* Finger dots */
+.finger-dot {
+    position: absolute;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid #aaa;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+    padding: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.finger-dot:hover {
+    background: #4dabf7;
+    border-color: #4dabf7;
+    color: #fff;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(77, 171, 247, 0.5);
+    z-index: 100;
+}
+.finger-dot.active {
+    background: #4dabf7;
+    border-color: #228be6;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(77, 171, 247, 0.6);
+    transform: scale(1.15);
+}
+.finger-letter { font-size: 9px; font-weight: 700; line-height: 1; pointer-events: none; }
+
+/* Finger positions */
+.finger-thumb-left { top: 58%; right: -12px; }
+.finger-index-left { top: 4%; right: 4px; }
+.finger-middle-left { top: -10px; left: 50%; transform: translateX(-50%); }
+.finger-ring-left { top: 4%; left: 4px; }
+.finger-little-left { top: 42%; left: -12px; }
+.finger-thumb-right { top: 58%; left: -12px; }
+.finger-index-right { top: 4%; left: 4px; }
+.finger-middle-right { top: -10px; left: 50%; transform: translateX(-50%); }
+.finger-ring-right { top: 4%; right: 4px; }
+.finger-little-right { top: 42%; right: -12px; }
+
+/* Fix: Middle fingers need combined transform to keep centering on hover/active */
+.finger-middle-left:hover,
+.finger-middle-right:hover {
+    transform: translateX(-50%) scale(1.2);
+}
+.finger-middle-left.active,
+.finger-middle-right.active {
+    transform: translateX(-50%) scale(1.15);
+}
+
+.finger-dot[data-tooltip]:hover::after { bottom: 115%; font-size: 10px; }
+
+/* Hand divider & actions */
+.hand-divider { display: flex; align-items: center; color: #aaa; font-size: 12px; font-style: italic; position: relative; z-index: 10; }
+.hand-actions { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
+.hand-action-btn {
+    padding: 5px 12px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    background: rgba(248, 248, 248, 0.9);
+    color: #555;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.hand-action-btn:hover { background: #e8f4fd; border-color: #4dabf7; color: #228be6; transform: translateY(-1px); z-index: 100; }
+.hand-action-btn.active { background: #4dabf7; border-color: #228be6; color: #fff; }
+
+/* Finger context */
+.finger-context { font-size: 11px; color: #555; text-align: center; line-height: 1.3; min-height: 16px; font-style: italic; max-width: 320px; }
+
+.bottom-bar {
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    pointer-events: none;
+    flex-wrap: wrap;
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #555;
+}
+
+.heatmap-gradient {
+    width: 100px; height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #ff0000, #ffff00, #00ff00);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.reset-view-btn {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a2e;
+    transition: all 0.3s;
+    cursor: pointer;
+    padding: 7px 14px;
+}
+
+.reset-view-btn:hover {
+    background: rgba(74, 158, 255, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    border-color: rgba(74, 158, 255, 0.4);
+}

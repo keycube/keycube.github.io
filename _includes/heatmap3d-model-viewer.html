@@ -18,13 +18,13 @@ const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'hi
 const maxPixelRatio = 2.5;
 const renderPixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
 const container = document.getElementById('model-container');
+
+renderer.setPixelRatio(renderPixelRatio);
 if (container) {
-  renderer.setPixelRatio(renderPixelRatio);
   renderer.setSize(container.offsetWidth, container.offsetHeight);
   container.appendChild(renderer.domElement);
   camera.aspect = container.offsetWidth / container.offsetHeight;
 } else {
-  renderer.setPixelRatio(renderPixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -172,7 +172,7 @@ function createScoreLabel(axis, sign) {
 }
 
 // Track current mode for score formatting
-let isReachabilityMode = false;
+let isReachabilityMode = true;
 let currentScoreFormat = 'integer';
 
 // Update score label text - shows both key ID and score
