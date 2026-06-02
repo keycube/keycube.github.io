@@ -65,7 +65,6 @@ extra_css:
 
 <!-- 3D Render of the Keycube -->
 {% include heatmap3d-dataviz-data.html %}
-<script src="{{ '/assets/js/heatmap3d-dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
@@ -81,6 +80,8 @@ extra_css:
 
     <button class="reset-view-btn" id="reset-view-btn">Reset View</button>
 </div>
+
+<script src="{{ '/assets/js/heatmap3d-dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var fingerSelect = document.getElementById('finger-select');
