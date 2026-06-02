@@ -187,3 +187,59 @@
     transform: translateY(-2px);
     border-color: rgba(74, 158, 255, 0.4);
 }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .analog-ring { width: 90px; height: 90px; }
+    .analog-stick { width: 34px; height: 34px; }
+    .analog-center-label { font-size: 10px; }
+    .finger-dot { width: 22px; height: 22px; }
+    .finger-letter { font-size: 9px; }
+    select { min-width: 180px; font-size: 12px; }
+    #model-container { min-height: 860px}
+}
+
+@media (max-width: 768px) {
+    .bottom-bar { padding: 10px 14px; }
+    .finger-preference-legend {
+        position: static;
+        right: auto;
+        bottom: auto;
+    }
+    .hand-selector-container { gap: 8px; }
+    .analog-ring { width: 78px; height: 78px; }
+    .analog-stick { width: 30px; height: 30px; }
+    .analog-center-label { font-size: 10px; }
+    .finger-dot { width: 20px; height: 20px; }
+    .finger-letter { font-size: 9px; }
+    #model-container { min-height: 728px}
+}
+
+@media (max-width: 480px) {
+    .top-bar { gap: 6px; padding: 8px 10px; padding-top: 34px; }
+    .bottom-bar { gap: 6px; padding: 8px 10px; }
+    select { min-width: 140px; font-size: 12px; padding: 6px 10px; }
+    .color-btn { padding: 4px 8px; font-size: 10px; }
+    .reset-btn { padding: 4px 8px; font-size: 10px; }
+    .selection-badge { font-size: 11px; padding: 5px 10px; }
+    .selection-icon { font-size: 14px; }
+    .heatmap-legend { font-size: 10px; }
+    .heatmap-gradient { width: 60px; height: 8px; }
+    .hand-selector-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    .hand-divider { transform: none; }
+    .analog-ring { width: 68px; height: 68px; }
+    .analog-stick { width: 26px; height: 26px; }
+    .analog-center-label { font-size: 8px; }
+    .finger-dot { width: 16px; height: 16px; border-width: 1.5px; }
+    .finger-letter { font-size: 8px; }
+    .hand-action-btn { padding: 4px 7px; font-size: 9px; }
+    .side-panel { max-height: 60vh; }
+    .hand-face-map { flex-direction: column; align-items: center; }
+    #model-container { min-height: 440px}
+}
