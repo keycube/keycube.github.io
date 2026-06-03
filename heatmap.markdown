@@ -12,3 +12,5 @@ extra_css:
 # Heatmap3D
 
 {% include heatmap.html %}
+
+{% include heatmap-ui.html %}
