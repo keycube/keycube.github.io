@@ -11,8 +11,8 @@ extra_css:
 
 # Heatmap3D
 
+Ce rendu 3D est une analyse visuelle interactive d'une des [études menée sur le keycube](/research/), avec l’accessibilité de chaques doigts directement projetés sur le cube 3D.
+
 {% include heatmap.html %}
 
 {% include heatmap-ui-fr.html %}
-
-Ce rendu 3D  est une analyse visuelle interactive d'une des [études menée sur le keycube](/research/), avec l’accessibilité de chaques doigts directement projetés sur le cube 3D.
