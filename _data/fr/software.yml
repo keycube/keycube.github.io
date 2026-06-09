@@ -2,7 +2,7 @@
   description: "Une représentation graphique en 3D du Keycube pour mieux comprendre les résultats des recherches"
   keywords: heatmap, 3d, recherche
   url: "/software/heatmap"
-  image: ""
+  image: "../assets/img/k3-miniature.png"
 
 - title : k3Light
   description : "Un module de gestion de l'éclairage pour créer des effets séquentiels personnalisés ou utiliser des effets prédéfinis comme l'arc-en-ciel, la respiration ou l'onde"

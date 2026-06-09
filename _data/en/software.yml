@@ -2,7 +2,7 @@
   description: "A 3D graphic representation of the keycube for a better understanding of the results of the research"
   keywords: heatmap, 3d, research
   url: "/software/heatmap"
-  image: ""
+  image: "../assets/img/k3-miniature.png"
 
 - title : k3Light
   description : "A light management module to create any sequential effect or use effects such as rainbow, breathing or ripple"
