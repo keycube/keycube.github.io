@@ -15,4 +15,4 @@ Ce rendu 3D est une analyse visuelle interactive d'une des [études menée sur l
 
 {% include heatmap.html %}
 
-{% include heatmap-ui-fr.html %}
+{% include heatmap-ui.html %}

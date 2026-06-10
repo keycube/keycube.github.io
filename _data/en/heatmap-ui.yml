@@ -1,0 +1,35 @@
+# output hand (right or left) before finger name
+hf_format: h f
+
+# hands
+left: Left
+right: Right
+
+# fingers
+thumb: Thumb
+t: T
+index: Index
+i: I
+middle: Middle
+m: M
+ring: Ring
+r: R
+little: Little
+l: L
+
+# finger combination
+all_combined: All fingers combined (total score)
+all_button: All
+preferred: Preferred finger per key (Figure 7 right)
+preferred_button: Preferred
+
+# hidden select
+total: All Fingers (Total)
+
+# context and legend
+finger_context: Combined reachability across all 10 fingers and 22 participants.
+
+reachable: Reachable
+unreachable: Unreachable
+
+reset_view: Reset View

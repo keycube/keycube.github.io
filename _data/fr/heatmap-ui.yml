@@ -1,0 +1,35 @@
+# output hand (right or left) before finger name
+hf_format: f h
+
+# hands
+left: Gauche
+right: Droite
+
+# fingers
+thumb: Pouce
+t: P
+index: Index
+i: I
+middle: Majeur
+m: M
+ring: Annulaire
+r: An
+little: Auriculaire
+l: Au
+
+# finger combination
+all_combined: Tous les doigts combinés
+all_button: Tout
+preferred: Doigt préféré par touche (Figure 7 droite)
+preferred_button: Préféré
+
+# hidden select
+total: Tous les doigts (Total)
+
+# context and legend
+finger_context: Accessibilité combinée des 10 doigts et 22 participants.
+
+reachable: Accessible
+unreachable: Inaccessible
+
+reset_view: Réinitialiser la vue
