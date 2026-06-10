@@ -51,7 +51,7 @@
 </select>
 
 <!-- 3D Render of the Keycube -->
-{% include heatmap3d-dataviz-data.html %}
+{% include dataviz-data.html %}
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
@@ -68,7 +68,7 @@
     <button class="reset-view-btn" id="reset-view-btn">{{ e.reset_view }}</button>
 </div>
 
-<script src="{{ '/assets/js/heatmap3d-dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var fingerSelect = document.getElementById('finger-select');
