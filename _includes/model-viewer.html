@@ -19,15 +19,35 @@ const maxPixelRatio = 2.5;
 const renderPixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
 const container = document.getElementById('model-container');
 
-renderer.setPixelRatio(renderPixelRatio);
+// getting container's dimensions, then format them to square dimension (w = h)
+function getContainerSize() {
+    if (container) {
+        const width = Math.max(1, container.clientWidth);
+        const height = Math.max(1, container.clientHeight);
+        const size = Math.min(width, height);
+        return {
+            width: size,
+            height: size
+        };
+    }
+    const width = Math.max(1, window.innerWidth);
+    const height = Math.max(1, window.innerHeight);
+    const size = Math.min(width, height);
+    return {
+        width: size,
+        height: size
+    };
+}
+
+const initialSize = getContainerSize();
+renderer.setSize(initialSize.width, initialSize.height);
+
 if (container) {
-  renderer.setSize(container.offsetWidth, container.offsetHeight);
-  container.appendChild(renderer.domElement);
-  camera.aspect = container.offsetWidth / container.offsetHeight;
+    container.appendChild(renderer.domElement);
+    camera.aspect = initialSize.width / initialSize.height;
 } else {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
-  camera.aspect = window.innerWidth / window.innerHeight;
+    document.body.appendChild(renderer.domElement);
+    camera.aspect = initialSize.width / initialSize.height;
 }
 camera.updateProjectionMatrix();
 renderer.domElement.style.touchAction = 'none';
@@ -103,8 +123,6 @@ const faces = [
   { axis: 'x', sign: -1, prefix: 'W', color: 'white',  colAxis: 'y', colSign: 1,  rowAxis: 'z', rowSign: 1 },
   { axis: 'z', sign: 1,  prefix: 'G', color: 'green',  colAxis: 'x', colSign: 1,  rowAxis: 'y', rowSign: -1 }
 ];
-
-const faceByPrefix = Object.fromEntries(faces.map(face => [face.prefix, face]));
 
 const preferenceFigurePalette = {
   LL: { low: '#a5c0c6', high: '#275a66' },
@@ -333,6 +351,74 @@ const initialControlsTarget = controls.target.clone();
 
 scene.add(keycubeGroup);
 
+function computeBoundingSphere(object) {
+    // Force update des matrices et calcul de la bounding box
+    const bbox = new THREE.Box3().setFromObject(object);
+    const sphere = new THREE.Sphere();
+    bbox.getBoundingSphere(sphere);
+    return sphere; // { center: Vector3, radius: Number }
+}
+
+let lastComputedDistance = null;
+
+/**
+ * Fit the perspective camera so the given object fits in view.
+ * - camera: THREE.PerspectiveCamera
+ * - controls: OrbitControls (optional) to update target and distances
+ * - object: THREE.Object3D to fit
+ * - options: { margin: 1.1, offset: 1.0, preserveDirection: true }
+**/
+function fitCameraToObject(object, camera, controls, options = {}) {
+    const { margin = 1.0, offset = 1.0, preserveDirection = true } = options;
+    const sphere = computeBoundingSphere(object);
+    if (!sphere || sphere.radius === 0) return;
+
+    // aspect and fov half-angle
+    const aspect = renderer.domElement.clientWidth / Math.max(1, renderer.domElement.clientHeight);
+    const fov = (camera.fov * Math.PI) / 180;
+    const halfFov = fov / 2;
+
+    // distances needed to fit sphere vertically/horizontally
+    const distanceV = sphere.radius / Math.tan(halfFov);
+    const distanceH = sphere.radius / Math.tan(halfFov) / aspect;
+    const distance = Math.max(distanceV, distanceH) * margin;
+
+    // if distance = last distance, don't recompute
+    /*if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
+        return;
+    }
+    lastComputedDistance = distance;*/
+
+    // Decide the direction from target to camera.
+    // Prefer preserving current camera direction relative to target so rotation is preserved.
+    let dir = new THREE.Vector3(0, 0, 1);
+    if (preserveDirection) {
+        dir.copy(camera.position).sub(controls?.target || new THREE.Vector3(0, 0, 0));
+        if (dir.lengthSq() < 1e-6) dir.set(0, 0, 1);
+    }
+
+    dir.normalize();
+
+    // New camera position = center + dir * distance * offsetFactor
+    const newPos = new THREE.Vector3().copy(sphere.center).add(dir.multiplyScalar(distance * offset));
+
+    // Update camera and controls
+    camera.position.copy(newPos);
+    camera.near = Math.max(0.01, distance * 0.001); // small near plane but relative to distance
+    camera.far = Math.max(camera.far, distance * 10); // extend far if needed
+    camera.updateProjectionMatrix();
+
+    if (controls) {
+        controls.target.copy(sphere.center);
+        // Update sensible min/max distances relative to computed distance
+        controls.minDistance = Math.max(0.01, distance * 0.4);
+        controls.maxDistance = Math.max(distance * 1.8, controls.minDistance + 0.1);
+        controls.update();
+    }
+}
+
+fitCameraToObject(keycubeGroup, camera, controls);
+
 // Animation loop
 (function animate() {
   requestAnimationFrame(animate);
@@ -342,16 +428,28 @@ scene.add(keycubeGroup);
 
 // Window resize handler
 function handleResize() {
-  const c = document.getElementById('model-container');
-  const w = c ? c.offsetWidth : window.innerWidth;
-  const h = c ? c.offsetHeight : window.innerHeight;
+  const size = getContainerSize();
+  const w = size.width;
+  const h = size.height;
+
+  if (w === 0 || h === 0) return; // Ignored if hidden
+
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
+  renderer.setSize(w, h);
+
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
-  renderer.setSize(w, h);
+
+  fitCameraToObject(keycubeGroup, camera, controls);
 }
+
 window.addEventListener('resize', handleResize);
 window.addEventListener('orientationchange', () => setTimeout(handleResize, 100));
+
+if (container && window.ResizeObserver) {
+    const resizeObserver = new ResizeObserver(() => handleResize());
+    resizeObserver.observe(container);
+}
 
 // Update model function
 window.updateModel = function(data) {
@@ -512,5 +610,7 @@ window.updateModel = function(data) {
   } else if (data.figure6View === false) {
     controls.autoRotate = !autoRotateStoppedByUser;
   }
+
+  fitCameraToObject(keycubeGroup, camera, controls/*, { margin: 1.12, offset: 1.05, preserveDirection: true }*/);
 };
 </script>
