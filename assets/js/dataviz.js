@@ -1,26 +1,33 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var participantsData = window.participantsData;
-  var preferenceAggregate = window.preferenceAggregate;
-  var reachabilityData = window.reachabilityData;
-  var perFingerReachability = window.perFingerReachability;
+import datavizLang from "./dataviz-lang.json";
 
-  var defaultModeMeta = document.querySelector('meta[name="default-mode"]');
-  var currentMode = defaultModeMeta ? defaultModeMeta.getAttribute('content') : 'preference';
-  var currentParticipant = null;
-  var currentFace = null;
-  var FACES = ['R','B','G','W','Y'];
-  var FINGER_CODES = ['LL', 'LR', 'LM', 'LI', 'LT', 'RT', 'RI', 'RM', 'RR', 'RL'];
-  var isFrench = document.documentElement.lang === 'fr';
+document.addEventListener('DOMContentLoaded', function () {
+  import datavizLang from '/assets/js/dataviz-lang.json' with { type: "json" };
+
+  const participantsData = window.participantsData;
+  const preferenceAggregate = window.preferenceAggregate;
+  const reachabilityData = window.reachabilityData;
+  const perFingerReachability = window.perFingerReachability;
+
+  const defaultModeMeta = document.querySelector('meta[name="default-mode"]');
+  const currentMode = defaultModeMeta ? defaultModeMeta.getAttribute('content') : 'preference';
+  let currentParticipant = null;
+  let currentFace = null;
+
+  const FACES = ['R', 'B', 'G', 'W', 'Y'];
+  const FINGER_CODES = ['LL', 'LR', 'LM', 'LI', 'LT', 'RT', 'RI', 'RM', 'RR', 'RL'];
+
+  const lang = document.documentElement.lang
+  const datavizData = datavizLang[lang] ? datavizLang[lang] : datavizLang["en"];
 
   function computeFingerFrequencies(dataArray) {
-    var frequencies = {};
+    const frequencies = {};
     FACES.forEach(function (face) {
       frequencies[face] = [];
-      for (var i = 0; i < 16; i++) {
-        var counts = {};
+      for (let i = 0; i < 16; i++) {
+        const counts = {};
         FINGER_CODES.forEach(function (code) { counts[code] = 0; });
         dataArray.forEach(function (participant) {
-          var fingerCode = participant[face][i];
+          const fingerCode = participant[face][i];
           if (fingerCode >= 1 && fingerCode <= 10) {
             counts[FINGER_CODES[fingerCode - 1]] += 1;
           }
@@ -31,15 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
     return frequencies;
   }
 
-  var preferenceFrequencies = computeFingerFrequencies(participantsData);
+  let preferenceFrequencies = computeFingerFrequencies(participantsData);
 
   // ─── Utility: compute aggregate data ───
   function computeAggregate(dataArray) {
-    var result = {};
+    const result = {};
     FACES.forEach(function (face) {
       result[face] = [];
-      for (var i = 0; i < 16; i++) {
-        var sum = 0;
+      for (let i = 0; i < 16; i++) {
+        let sum = 0;
         dataArray.forEach(function (p) { sum += p[face][i]; });
         result[face].push(sum);
       }
@@ -48,60 +55,42 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function computeAggregateMean(dataArray) {
-    var result = computeAggregate(dataArray);
-    var count = dataArray.length;
+    const result = computeAggregate(dataArray);
+    const count = dataArray.length;
     FACES.forEach(function (face) {
       result[face] = result[face].map(function (v) { return +(v / count).toFixed(2); });
     });
     return result;
   }
 
-  var aggregatePreference = preferenceAggregate ? preferenceAggregate.scores : computeAggregateMean(participantsData);
-  var aggregateReachability = computeAggregate(reachabilityData);
+  const aggregatePreference = preferenceAggregate ? preferenceAggregate.scores : computeAggregateMean(participantsData);
+  const aggregateReachability = computeAggregate(reachabilityData);
 
   // ─── Per-finger aggregate reachability ───
   function getFingerReachability(finger) {
-    var fingerData = perFingerReachability[finger];
+    const fingerData = perFingerReachability[finger];
     return fingerData ? computeAggregate(fingerData) : { R: [], B: [], G: [], W: [], Y: [] };
-  }
-
-  // ─── Range utility ───
-  function getRange(data) {
-    var min = Infinity, max = -Infinity;
-    FACES.forEach(function (face) {
-      data[face].forEach(function (v) {
-        if (v < min) min = v;
-        if (v > max) max = v;
-      });
-    });
-    return { min: min, max: max };
   }
 
   // ═══════════════════════════════════════════════════════
   //  PREFERENCE MODE
   // ═══════════════════════════════════════════════════════
 
-  function getPreferenceData() {
-    if (currentParticipant === 'aggregate') return aggregatePreference;
-    if (currentParticipant && typeof currentParticipant === 'object') return currentParticipant;
-    return null;
-  }
-
   function getParticipantPreferenceFigure(participant) {
-    var figure = { scores: {}, dominantFingers: {}, tiedFingers: {} };
+    const figure = {scores: {}, dominantFingers: {}, tiedFingers: {}};
 
     FACES.forEach(function (face) {
       figure.scores[face] = [];
       figure.dominantFingers[face] = [];
       figure.tiedFingers[face] = [];
 
-      for (var i = 0; i < 16; i++) {
-        var fingerNumber = participant[face][i];
-        var fingerCode = (fingerNumber >= 1 && fingerNumber <= 10)
-          ? FINGER_CODES[fingerNumber - 1]
-          : 'LT';
-        var count = preferenceFrequencies[face][i][fingerCode] || 0;
-        var ratio = +(count / participantsData.length).toFixed(2);
+      for (let i = 0; i < 16; i++) {
+        const fingerNumber = participant[face][i];
+        const fingerCode = (fingerNumber >= 1 && fingerNumber <= 10)
+            ? FINGER_CODES[fingerNumber - 1]
+            : 'LT';
+        const count = preferenceFrequencies[face][i][fingerCode] || 0;
+        const ratio = +(count / participantsData.length).toFixed(2);
 
         figure.scores[face].push(ratio);
         figure.dominantFingers[face].push(fingerCode);
@@ -114,9 +103,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function applyPreferenceView() {
     if (!window.updateModel) return;
-    var figureData = null;
-    var displayScores = null;
-    var displayScoreFormat = 'ratio';
+    let figureData = null;
+    let displayScores = null;
+    let displayScoreFormat = 'ratio';
     if (currentParticipant === 'aggregate') figureData = preferenceAggregate;
     else if (currentParticipant && typeof currentParticipant === 'object') {
       figureData = getParticipantPreferenceFigure(currentParticipant);
@@ -137,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!displayScores) displayScores = figureData.scores;
 
-    var opts = {
+    const opts = {
       scores: displayScores,
       showScores: true,
       scoreFormat: displayScoreFormat,
@@ -150,33 +139,33 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateSelectionBadge(icon, text) {
-    var selectionIcon = document.getElementById('selection-icon');
-    var selectionText = document.getElementById('selection-text');
+    const selectionIcon = document.getElementById('selection-icon');
+    const selectionText = document.getElementById('selection-text');
     if (selectionIcon) selectionIcon.textContent = icon;
     if (selectionText) selectionText.textContent = text;
   }
 
   function togglePreferenceLegend(show) {
-    var legend = document.getElementById('finger-preference-legend');
+    const legend = document.getElementById('finger-preference-legend');
     if (!legend) return;
     legend.classList.toggle('hidden', !show);
   }
 
   function togglePreferenceHeatmapLegend(show) {
-    var legend = document.getElementById('preference-heatmap-legend');
+    const legend = document.getElementById('preference-heatmap-legend');
     if (!legend) return;
     legend.classList.toggle('hidden', !show);
   }
 
   function togglePreferenceFaceButtons(show) {
-    var buttons = document.getElementById('preference-face-buttons');
+    const buttons = document.getElementById('preference-face-buttons');
     if (!buttons) return;
     buttons.classList.toggle('hidden', !show);
   }
 
   // ─── Participant selector ───
-  var participantSelect = document.getElementById('participant-select');
-  var colorButtons = document.querySelectorAll('.color-btn');
+  const participantSelect = document.getElementById('participant-select');
+  const colorButtons = document.querySelectorAll('.color-btn');
 
   if (currentMode === 'preference') {
     togglePreferenceLegend(false);
@@ -185,10 +174,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
   if (participantSelect) {
     participantSelect.addEventListener('change', function (e) {
-      var val = e.target.value;
+      const val = e.target.value;
       currentFace = null;
       colorButtons.forEach(function (b) { b.classList.remove('active'); });
-      var summaryPanel = document.getElementById('participant-summary');
+      const summaryPanel = document.getElementById('participant-summary');
 
       if (val === 'aggregate') {
         currentParticipant = 'aggregate';
@@ -196,9 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
         togglePreferenceHeatmapLegend(false);
         togglePreferenceFaceButtons(true);
         if (summaryPanel) summaryPanel.style.display = 'none';
-        updateSelectionBadge('', isFrench
-          ? 'Préférence agrégée (ratio du doigt dominant sur 22 participants)'
-          : 'Aggregate finger preference (dominant finger ratio across 22 participants)');
+        updateSelectionBadge('', datavizData["afp"]);
         applyPreferenceView();
       } else if (val !== '') {
         currentParticipant = participantsData[parseInt(val)];
@@ -208,14 +195,14 @@ document.addEventListener('DOMContentLoaded', function () {
         if (summaryPanel) {
           summaryPanel.style.display = 'block';
           ['handedness', 'circumferenceRight', 'lengthRight', 'spanRight'].forEach(function (key, i) {
-            var ids = ['summary-handedness', 'summary-circumference', 'summary-length', 'summary-span'];
-            var el = document.getElementById(ids[i]);
+            const ids = ['summary-handedness', 'summary-circumference', 'summary-length', 'summary-span'];
+            const el = document.getElementById(ids[i]);
             if (el) el.textContent = currentParticipant[key];
           });
         }
-        updateSelectionBadge('', isFrench
-          ? 'Participant ' + currentParticipant.number + ' (codage brut + couleur de confiance)'
-          : 'Participant ' + currentParticipant.number + ' (raw coding + confidence color)');
+        updateSelectionBadge('',
+            datavizData["participant"] + ' ' + currentParticipant.number + ' ' + datavizData["p_participant"]
+          );
         applyPreferenceView();
       } else {
         currentParticipant = null;
@@ -223,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
         togglePreferenceHeatmapLegend(false);
         togglePreferenceFaceButtons(true);
         if (summaryPanel) summaryPanel.style.display = 'none';
-  updateSelectionBadge('', isFrench ? 'Aucun participant sélectionné' : 'No participant selected');
+        updateSelectionBadge('', datavizData["no_participant"]);
         if (window.updateModel) window.updateModel({ reset: true, hideScores: true });
       }
     });
@@ -241,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ─── Reset / Show All button ───
-  var resetBtn = document.querySelector('.reset-btn');
+  const resetBtn = document.querySelector('.reset-btn');
   if (resetBtn) {
     resetBtn.addEventListener('click', function () {
       colorButtons.forEach(function (b) { b.classList.remove('active'); });
@@ -257,11 +244,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function applyReachabilityView() {
     if (!window.updateModel) return;
-    var fingerEl = document.getElementById('finger-select');
+    const fingerEl = document.getElementById('finger-select');
     if (!fingerEl) return;
-    var isTotal = fingerEl.value === 'total';
-    var data = isTotal ? aggregateReachability : getFingerReachability(fingerEl.value);
-    var range = isTotal ? { min: 0, max: 198 } : { min: 0, max: 66 };
+    const isTotal = fingerEl.value === 'total';
+    const data = isTotal ? aggregateReachability : getFingerReachability(fingerEl.value);
+    const range = isTotal ? {min: 0, max: 198} : {min: 0, max: 66};
     window.updateModel({ 
       heatmap: data, 
       heatmapMin: range.min,
@@ -275,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Finger filter for reachability
-  var fingerSelect = document.getElementById('finger-select');
+  const fingerSelect = document.getElementById('finger-select');
   if (fingerSelect) {
     fingerSelect.addEventListener('change', function () {
       if (currentMode === 'reachability') applyReachabilityView();
@@ -299,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Helper for simple control bindings
   function bindControl(id, event, handler) {
-    var el = document.getElementById(id);
+    const el = document.getElementById(id);
     if (el) el.addEventListener(event, handler);
   }
 
@@ -315,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.updateModel) window.updateModel({ resetView: true });
   });
 
-  var lightValueSpan = document.getElementById('light-intensity-value');
+  const lightValueSpan = document.getElementById('light-intensity-value');
   bindControl('light-intensity', 'input', function (e) {
     if (lightValueSpan) lightValueSpan.textContent = e.target.value;
     if (window.updateModel) window.updateModel({ lightingIntensity: parseInt(e.target.value) / 100 });

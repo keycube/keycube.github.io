@@ -1,0 +1,14 @@
+{
+  "en": {
+    "afp": "Aggregate finger preference (dominant finger ratio across 22 participants)",
+    "participant": "Participant",
+    "participant_p": "(raw coding + confidence color)",
+    "no_participant": "No participant selected"
+  },
+  "fr": {
+    "afp": "Préférence agrégée (ratio du doigt dominant sur 22 participants)",
+    "participant": "Participant",
+    "participant_p": "(codage brut + couleur de confiance)",
+    "no_participant": "Aucun participant sélectionné"
+  }
+}
