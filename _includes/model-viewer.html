@@ -16,7 +16,7 @@ const initialCameraPosition = camera.position.clone();
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 const maxPixelRatio = 2.5;
-const renderPixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
+//const renderPixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
 const container = document.getElementById('model-container');
 
 // getting container's dimensions, then format them to square dimension (w = h)
@@ -384,10 +384,10 @@ function fitCameraToObject(object, camera, controls, options = {}) {
     const distance = Math.max(distanceV, distanceH) * margin;
 
     // if distance = last distance, don't recompute
-    /*if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
+    if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
         return;
     }
-    lastComputedDistance = distance;*/
+    lastComputedDistance = distance;
 
     // Decide the direction from target to camera.
     // Prefer preserving current camera direction relative to target so rotation is preserved.

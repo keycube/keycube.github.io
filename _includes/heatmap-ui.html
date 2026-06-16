@@ -70,7 +70,7 @@
 
 <script src="{{ '/assets/js/dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <script type="module">
-    import langFinger from '/assets/js/ui.json' with {type:"json"};
+    import langFinger from '/assets/js/ui-lang.json' with {type:"json"};
 
     document.addEventListener('DOMContentLoaded', function () {
         const fingerSelect = document.getElementById('finger-select');
@@ -86,37 +86,37 @@
         const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
 
         const lang = document.documentElement.lang
-        var fingerData = langFinger[lang] ? langFinger[lang] : langFinger["en"];
+        const fingerData = langFinger[lang] ? langFinger[lang] : langFinger["en"];
 
 
         function updateUI(key, activeFingers) {
-            var data = fingerData[key] || { name: key, icon: '', info: '' };
+            const data = fingerData[key] || {name: key, icon: '', info: ''};
             if (selectionText) selectionText.textContent = data.name;
             if (selectionIcon) selectionIcon.textContent = data.icon;
             if (fingerContext) fingerContext.textContent = data.info;
 
             allFingerDots.forEach(function (dot) {
-                var f = dot.getAttribute('data-finger');
+                const f = dot.getAttribute('data-finger');
                 dot.classList.toggle('active', activeFingers ? activeFingers.indexOf(f) !== -1 : f === key);
             });
             analogRings.forEach(function (ring) { ring.classList.remove('active'); });
             if (activeFingers && activeFingers.length === ALL_FINGERS.length) {
-                var leftRing = document.querySelector('.analog-ring[data-hand="left"]');
-                var rightRing = document.querySelector('.analog-ring[data-hand="right"]');
+                const leftRing = document.querySelector('.analog-ring[data-hand="left"]');
+                const rightRing = document.querySelector('.analog-ring[data-hand="right"]');
                 if (leftRing) leftRing.classList.add('active');
                 if (rightRing) rightRing.classList.add('active');
             } else if (key.charAt(0) === 'L' || key === 'left-all') {
-                var lr = document.querySelector('.analog-ring[data-hand="left"]');
+                const lr = document.querySelector('.analog-ring[data-hand="left"]');
                 if (lr) lr.classList.add('active');
             } else if (key.charAt(0) === 'R' || key === 'right-all') {
-                var rr = document.querySelector('.analog-ring[data-hand="right"]');
+                const rr = document.querySelector('.analog-ring[data-hand="right"]');
                 if (rr) rr.classList.add('active');
             }
         }
 
         function applyHeatmap(data, fixedRange) {
-            var min = fixedRange ? fixedRange.min : Infinity;
-            var max = fixedRange ? fixedRange.max : -Infinity;
+            let min = fixedRange ? fixedRange.min : Infinity;
+            let max = fixedRange ? fixedRange.max : -Infinity;
             if (!fixedRange) {
                 FACES.forEach(function (f) { data[f].forEach(function (v) { if (v < min) min = v; if (v > max) max = v; }); });
             }
@@ -126,13 +126,13 @@
         }
 
         function computeHandData(fingers) {
-            var result = {};
+            const result = {};
             FACES.forEach(function (face) {
                 result[face] = [];
-                for (var i = 0; i < 16; i++) {
-                    var sum = 0;
+                for (let i = 0; i < 16; i++) {
+                    let sum = 0;
                     fingers.forEach(function (f) {
-                        var fData = window.perFingerReachability[f];
+                        const fData = window.perFingerReachability[f];
                         if (fData) fData.forEach(function (p) { sum += p[face][i]; });
                     });
                     result[face].push(sum);
@@ -149,24 +149,26 @@
         }
 
         function handleHandAll(hand) {
-            var fingers = hand === 'left' ? ['LT','LI','LM','LR','LL'] : ['RT','RI','RM','RR','RL'];
+            const fingers = hand === 'left' ? ['LT', 'LI', 'LM', 'LR', 'LL'] : ['RT', 'RI', 'RM', 'RR', 'RL'];
             applyHeatmap(computeHandData(fingers));
             updateUI(hand + '-all', fingers);
             handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
         }
 
         function handleBestFinger() {
-            var preferenceAggregate = window.preferenceAggregate;
+            const preferenceAggregate = window.preferenceAggregate;
             if (!preferenceAggregate) return;
-            var result = {};
+            const result = {};
             FACES.forEach(function (face) {
                 result[face] = [];
-                for (var i = 0; i < 16; i++) {
-                    var best = 0;
-                    var preferredFingers = preferenceAggregate.tiedFingers[face][i];
+                for (let i = 0; i < 16; i++) {
+                    let best = 0;
+                    const preferredFingers = preferenceAggregate.tiedFingers[face][i];
                     preferredFingers.forEach(function (f) {
-                        var fData = window.perFingerReachability[f];
-                        if (fData) { var s = 0; fData.forEach(function (p) { s += p[face][i]; }); if (s > best) best = s; }
+                        const fData = window.perFingerReachability[f];
+                        if (fData) {
+                            let s = 0;
+                            fData.forEach(function (p) { s += p[face][i]; }); if (s > best) best = s; }
                     });
                     result[face].push(best);
                 }
