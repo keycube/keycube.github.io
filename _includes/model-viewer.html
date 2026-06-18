@@ -87,7 +87,7 @@ function captureViewerGesture(event) {
   stopAutoRotate();
 }
 
-renderer.domElement.addEventListener('wheel', captureViewerGesture, { passive: false });
+//renderer.domElement.addEventListener('wheel', captureViewerGesture, { passive: false });
 renderer.domElement.addEventListener('touchmove', captureViewerGesture, { passive: false });
 renderer.domElement.addEventListener('gesturestart', captureViewerGesture, { passive: false });
 renderer.domElement.addEventListener('gesturechange', captureViewerGesture, { passive: false });
