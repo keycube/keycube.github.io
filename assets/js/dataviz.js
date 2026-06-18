@@ -1,7 +1,6 @@
-import datavizLang from "./dataviz-lang.json";
-
-document.addEventListener('DOMContentLoaded', function () {
-  import datavizLang from '/assets/js/dataviz-lang.json' with { type: "json" };
+document.addEventListener('DOMContentLoaded', async function () {
+  const response = await fetch('/assets/js/dataviz-lang.json');
+  const datavizLang = await response.json();
 
   const participantsData = window.participantsData;
   const preferenceAggregate = window.preferenceAggregate;

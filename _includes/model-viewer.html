@@ -63,8 +63,8 @@ controls.rotateSpeed = 0.36;    // Slightly slower manual orbit
 // Keep the interaction object-centric: orbit only, with a tightly bounded zoom.
 controls.enablePan = false;
 const fixedDistance = camera.position.length();
-controls.enableZoom = true;
-controls.zoomSpeed = 0.95;
+controls.enableZoom = false;
+//controls.zoomSpeed = 0.95;
 controls.minDistance = fixedDistance * 0.74;
 controls.maxDistance = fixedDistance * 1.26;
 
@@ -366,10 +366,10 @@ let lastComputedDistance = null;
  * - camera: THREE.PerspectiveCamera
  * - controls: OrbitControls (optional) to update target and distances
  * - object: THREE.Object3D to fit
- * - options: { margin: 1.1, offset: 1.0, preserveDirection: true }
+ * - options: { margin: 1.0, offset: 1.0, preserveDirection: true }
 **/
 function fitCameraToObject(object, camera, controls, options = {}) {
-    const { margin = 1.0, offset = 1.0, preserveDirection = true } = options;
+    const { margin = 1.0, offset = 0.8, preserveDirection = true } = options;
     const sphere = computeBoundingSphere(object);
     if (!sphere || sphere.radius === 0) return;
 
