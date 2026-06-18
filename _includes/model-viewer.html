@@ -341,7 +341,7 @@ keycubeGroup.rotation.y = -Math.PI * 3 / 4;  // -135° to show G and W faces
 const DIAGONAL_ROTATION = -Math.PI * 3 / 4;
 
 // ─── Auto-rotation control ───
-['pointerdown', 'wheel', 'touchstart'].forEach(evt => 
+['pointerdown', 'touchstart'].forEach(evt =>
   renderer.domElement.addEventListener(evt, stopAutoRotate)
 );
 
