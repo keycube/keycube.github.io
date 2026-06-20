@@ -65,10 +65,12 @@
         <span>{{ e.reachable }}</span>
     </div>
 
-    <button class="reset-view-btn" id="reset-view-btn">{{ e.reset_view }}</button>
+    <div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center;">
+        <button class="reset-view-btn" id="reset-view-btn">{{ e.reset_view }}</button>
+    </div>
 </div>
 
-<script src="{{ '/assets/js/dataviz.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="/assets/js/dataviz.js"></script>
 <script type="module">
     import langFinger from '/assets/js/ui-lang.json' with {type:"json"};
 
