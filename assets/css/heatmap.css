@@ -1,14 +1,25 @@
 #model-container {
-    width: 100%;
-    min-height: 740px;
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 100px);
+    aspect-ratio: 1 / 1 !important;
+    /*max-height: 80vh;*/
     display: block;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 auto;
     overflow: hidden;
 }
 
 #model-container canvas {
     display: block;
-    width: 100% !important;
-    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #model-container canvas:hover {
@@ -189,7 +200,6 @@
     .finger-dot { width: 2em; height: 2em; }
     .finger-letter { font-size: 0.8em; }
     select { min-width: 180px; font-size: 12px; }
-    #model-container { min-height: 860px }
 }
 
 @media (max-width: 768px) {
@@ -205,7 +215,6 @@
     .analog-center-label { font-size: 10px; }
     .finger-dot { width: 2em; height: 2em; }
     .finger-letter { font-size: 0.8em; }
-    #model-container { min-height: 728px }
 }
 
 @media (max-width: 480px) {
@@ -234,5 +243,4 @@
     .hand-action-btn { padding: 4px 7px; font-size: 9px; }
     .side-panel { max-height: 60vh; }
     .hand-face-map { flex-direction: column; align-items: center; }
-    #model-container { min-height: 440px }
 }
