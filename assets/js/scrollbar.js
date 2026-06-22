@@ -1,7 +1,9 @@
-const html = document.documentElement;
-const isScrollable = html.scrollHeight > html.clientHeight;
+window.addEventListener('resize', function() {
+    const html = document.documentElement;
+    let isScrollable = html.scrollHeight > html.clientHeight;
 
-const isMobileDevice = window.matchMedia("(pointer:coarse) and (width <= 800px)").matches;
+    let isMobileDevice = window.matchMedia("(pointer:coarse) and (width <= 800px)").matches;
 
-if (!isMobileDevice && isScrollable)
-    html.style += "scrollbar-gutter: stable;";
+    if (!isMobileDevice && isScrollable)
+        html.style += "scrollbar-gutter: stable;";
+});

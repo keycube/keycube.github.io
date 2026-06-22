@@ -369,7 +369,7 @@ let lastComputedDistance = null;
  * - options: { margin: 1.0, offset: 1.0, preserveDirection: true }
 **/
 function fitCameraToObject(object, camera, controls, options = {}) {
-    const { margin = 1.0, offset = 0.8, preserveDirection = true } = options;
+    const { margin = 1.0, offset = 0.736, preserveDirection = true } = options;
     const sphere = computeBoundingSphere(object);
     if (!sphere || sphere.radius === 0) return;
 
@@ -384,10 +384,10 @@ function fitCameraToObject(object, camera, controls, options = {}) {
     const distance = Math.max(distanceV, distanceH) * margin;
 
     // if distance = last distance, don't recompute
-    if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
+    /*if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
         return;
     }
-    lastComputedDistance = distance;
+    lastComputedDistance = distance;*/
 
     // Decide the direction from target to camera.
     // Prefer preserving current camera direction relative to target so rotation is preserved.
@@ -407,6 +407,9 @@ function fitCameraToObject(object, camera, controls, options = {}) {
     camera.near = Math.max(0.01, distance * 0.001); // small near plane but relative to distance
     camera.far = Math.max(camera.far, distance * 10); // extend far if needed
     camera.updateProjectionMatrix();
+
+    // Force camera to look at object's bounding sphere center (assure centrage visuel)
+    camera.lookAt(sphere.center);
 
     if (controls) {
         controls.target.copy(sphere.center);
@@ -531,6 +534,7 @@ window.updateModel = function(data) {
     camera.zoom = 1;
     camera.updateProjectionMatrix();
     controls.update();
+    fitCameraToObject(keycubeGroup, camera, controls);
   }
 
   if (data.lightingIntensity !== undefined) directionalLight.intensity = data.lightingIntensity;
