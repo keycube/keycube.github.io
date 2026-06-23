@@ -8,7 +8,10 @@
     align-items: center;
     box-sizing: border-box;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
+    /*background: radial-gradient(circle at center, #fff 0%, #fdfdfd 70%);*/
+    background: radial-gradient(circle at center, #888 0%, #fff 70%);
+    object-fit: cover;
 }
 
 #model-container canvas {

@@ -5,7 +5,7 @@ import { RoundedBoxGeometry } from 'three/rgb';
 
 // Scene Setup
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#fdfdfd');
+//scene.background = new THREE.Color('#fdfdfd');
 
 // Camera — slightly above center, looking at the cube from behind.
 // User stands BEHIND the cube, sees Yellow (right hand) on left, Blue (left hand) on right.
@@ -14,7 +14,8 @@ camera.position.set(0, 2, -4);
 const initialCameraPosition = camera.position.clone();
 
 // Renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', alpha: true });
+renderer.setClearColor('#000000', 0)
 const maxPixelRatio = 2.5;
 //const renderPixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
 const container = document.getElementById('model-container');
@@ -524,7 +525,7 @@ window.updateModel = function(data) {
     scene.traverse(c => { if (c.isMesh && !c.userData?.isLabel) c.material.wireframe = data.wireframe; });
   }
 
-  if (data.backgroundColor) renderer.setClearColor(data.backgroundColor);
+  /*if (data.backgroundColor) renderer.setClearColor(data.backgroundColor);*/
 
   if (data.resetView) {
     camera.position.copy(initialCameraPosition);
