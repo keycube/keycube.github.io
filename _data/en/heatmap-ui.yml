@@ -1,7 +1,8 @@
 # output hand (right or left) before finger name
-hf_format: h f
+hf_format: "%h% %f%"
 
 # hands
+hand: Hand
 left: Left
 right: Right
 

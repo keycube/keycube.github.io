@@ -1,60 +1,64 @@
 {% assign e = site.data[page.lang]['heatmap-ui'] %}
 
 <!-- ── Top bar: hand selector + quick actions ── -->
-<div class="top-bar">
-    <div class="glass-panel" style="padding: 8px 14px;">
-        <div class="hand-selector-container">
-            <!-- Left Hand -->
-            <div class="hand-analog" id="left-hand-analog">
-                <div class="analog-ring" data-hand="left">
-                    <div class="analog-stick"><span class="analog-center-label">{{ e.left }}</span></div>
-                    <button class="finger-dot finger-thumb-left" data-finger="LT" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.thumb }}"><span class="finger-letter">{{ e.t }}</span></button>
-                    <button class="finger-dot finger-index-left" data-finger="LI" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.index }}"><span class="finger-letter">{{ e.i }}</span></button>
-                    <button class="finger-dot finger-middle-left" data-finger="LM" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.middle }}"><span class="finger-letter">{{ e.m }}</span></button>
-                    <button class="finger-dot finger-ring-left" data-finger="LR" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.ring }}"><span class="finger-letter">{{ e.r }}</span></button>
-                    <button class="finger-dot finger-little-left" data-finger="LL" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.little }}"><span class="finger-letter">{{ e.l }}</span></button>
-                </div>
-            </div>
-            <!-- Center: All + Best buttons -->
-            <div class="hand-divider" style="display: flex; flex-direction: column; gap: 6px; margin: 20px;">
-                <button class="hand-action-btn active" id="btn-all-fingers" data-tooltip="{{ e.all_combined }}">{{ e.all_button }}</button>
-                <button class="hand-action-btn" id="btn-best-finger" data-tooltip="{{ e.preferred }}">{{ e.preferred_button }}</button>
-            </div>
-            <!-- Right Hand -->
-            <div class="hand-analog" id="right-hand-analog">
-                <div class="analog-ring" data-hand="right">
-                    <div class="analog-stick"><span class="analog-center-label">{{ e.right }}</span></div>
-                    <button class="finger-dot finger-thumb-right" data-finger="RT" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.thumb }}"><span class="finger-letter">{{ e.t }}</span></button>
-                    <button class="finger-dot finger-index-right" data-finger="RI" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.index }}"><span class="finger-letter">{{ e.i }}</span></button>
-                    <button class="finger-dot finger-middle-right" data-finger="RM" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.middle }}"><span class="finger-letter">{{ e.m }}</span></button>
-                    <button class="finger-dot finger-ring-right" data-finger="RR" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.ring }}"><span class="finger-letter">{{ e.r }}</span></button>
-                    <button class="finger-dot finger-little-right" data-finger="RL" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.little }}"><span class="finger-letter">{{ e.l }}</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Hidden select for dataviz.js compatibility -->
-<select class="finger-select" id="finger-select" style="display:none;">
-    <option value="total">{{ e.total }}</option>
-    <option value="LT">{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.thumb }}</option>
-    <option value="LI">{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.index }}</option>
-    <option value="LM">{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.middle }}</option>
-    <option value="LR">{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.ring }}</option>
-    <option value="LL">{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.little }}</option>
-    <option value="RT">{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.thumb }}</option>
-    <option value="RI">{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.index }}</option>
-    <option value="RM">{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.middle }}</option>
-    <option value="RR">{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.ring }}</option>
-    <option value="RL">{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.little }}</option>
-</select>
+<!--<div class="top-bar">-->
+<!--    <div class="glass-panel" style="padding: 8px 14px;">-->
+<!--        <div class="hand-selector-container">-->
+<!--            &lt;!&ndash; Left Hand &ndash;&gt;-->
+<!--            <div class="hand-analog" id="left-hand-analog">-->
+<!--                <div class="analog-ring" data-hand="left">-->
+<!--                    <div class="analog-stick"><span class="analog-center-label">{{ e.left }}</span></div>-->
+<!--                    <button class="finger-dot finger-thumb-left" data-finger="LT" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.thumb }}"><span class="finger-letter">{{ e.t }}</span></button>-->
+<!--                    <button class="finger-dot finger-index-left" data-finger="LI" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.index }}"><span class="finger-letter">{{ e.i }}</span></button>-->
+<!--                    <button class="finger-dot finger-middle-left" data-finger="LM" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.middle }}"><span class="finger-letter">{{ e.m }}</span></button>-->
+<!--                    <button class="finger-dot finger-ring-left" data-finger="LR" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.ring }}"><span class="finger-letter">{{ e.r }}</span></button>-->
+<!--                    <button class="finger-dot finger-little-left" data-finger="LL" data-tooltip="{{ e.hf_format | replace: 'h', e.left | replace: 'f', e.little }}"><span class="finger-letter">{{ e.l }}</span></button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Center: All + Best buttons &ndash;&gt;-->
+<!--            <div class="hand-divider" style="display: flex; flex-direction: column; gap: 6px; margin: 20px;">-->
+<!--                <button class="hand-action-btn active" id="btn-all-fingers" data-tooltip="{{ e.all_combined }}">{{ e.all_button }}</button>-->
+<!--                <button class="hand-action-btn" id="btn-best-finger" data-tooltip="{{ e.preferred }}">{{ e.preferred_button }}</button>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Right Hand &ndash;&gt;-->
+<!--            <div class="hand-analog" id="right-hand-analog">-->
+<!--                <div class="analog-ring" data-hand="right">-->
+<!--                    <div class="analog-stick"><span class="analog-center-label">{{ e.right }}</span></div>-->
+<!--                    <button class="finger-dot finger-thumb-right" data-finger="RT" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.thumb }}"><span class="finger-letter">{{ e.t }}</span></button>-->
+<!--                    <button class="finger-dot finger-index-right" data-finger="RI" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.index }}"><span class="finger-letter">{{ e.i }}</span></button>-->
+<!--                    <button class="finger-dot finger-middle-right" data-finger="RM" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.middle }}"><span class="finger-letter">{{ e.m }}</span></button>-->
+<!--                    <button class="finger-dot finger-ring-right" data-finger="RR" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.ring }}"><span class="finger-letter">{{ e.r }}</span></button>-->
+<!--                    <button class="finger-dot finger-little-right" data-finger="RL" data-tooltip="{{ e.hf_format | replace: 'h', e.right | replace: 'f', e.little }}"><span class="finger-letter">{{ e.l }}</span></button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!-- 3D Render of the Keycube -->
 {% include dataviz-data.html %}
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
+    <div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center;">
+        <select class="finger-select" id="finger-select">
+            <option value="total">{{ e.total }}</option>
+            <option value="preferred">{{ e.preferred }}</option>
+            <option value="LH">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}</option>
+            <option value="RH">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</option>
+            <option value="LT">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.thumb }}</option>
+            <option value="LI">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.index }}</option>
+            <option value="LM">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.middle }}</option>
+            <option value="LR">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.ring }}</option>
+            <option value="LL">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.little }}</option>
+            <option value="RT">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.thumb }}</option>
+            <option value="RI">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.index }}</option>
+            <option value="RM">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.middle }}</option>
+            <option value="RR">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.ring }}</option>
+            <option value="RL">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.little }}</option>
+        </select>
+    </div>
+
     <div class="finger-context" id="finger-context">
         {{ e.finger_context }}
     </div>
@@ -181,6 +185,25 @@
             btnBestFinger.classList.add('active');
         }
 
+        function handleSelect() {
+            const selectValue = fingerSelect.value;
+            if (selectValue === "total") {
+                updateSelection("total");
+            } else if (selectValue === "preferred") {
+                handleBestFinger();
+            } else {
+                if (selectValue.charAt(1) === 'H') {
+                    if (selectValue.charAt(0) === 'L') {
+                        handleHandAll('left')
+                    } else {
+                        handleHandAll('right')
+                    }
+                } else {
+                    updateSelection(selectValue)
+                }
+            }
+        }
+
         allFingerDots.forEach(function (dot) {
             dot.addEventListener('click', function (e) { e.stopPropagation(); updateSelection(dot.getAttribute('data-finger')); });
         });
@@ -189,5 +212,9 @@
         });
         if (btnAllFingers) btnAllFingers.addEventListener('click', function () { updateSelection('total'); });
         if (btnBestFinger) btnBestFinger.addEventListener('click', handleBestFinger);
+
+        if (fingerSelect) {
+            fingerSelect.addEventListener('change', handleSelect);
+        }
     });
 </script>

@@ -98,6 +98,10 @@
 }
 .finger-letter { font-size: 0.8em; font-weight: 700; line-height: 1; pointer-events: none; }
 
+.finger-select {
+    margin: 12px auto; box-sizing: border-box; justify-content: center; align-content: center;
+}
+
 /* Finger positions */
 .finger-thumb-left { top: 58%; right: -12px; }
 .finger-index-left { top: 4%; right: 4px; }
