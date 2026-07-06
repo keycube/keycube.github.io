@@ -71,11 +71,11 @@ controls.maxDistance = fixedDistance * 1.26;
 
 // Keep the cube upright while leaving every exposed face reachable.
 controls.minPolarAngle = 0;               // allow a full top-down view (top face straight toward camera)
-controls.maxPolarAngle = Math.PI * 0.88;  // low enough to inspect side faces comfortably
+controls.maxPolarAngle = Math.PI;  // low enough to inspect side faces comfortably
 
 // Auto-rotation settings (integrated with OrbitControls)
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.82;  // Slightly slower idle rotation
+controls.autoRotateSpeed = 0.5;  // Slightly slower idle rotation
 let autoRotateStoppedByUser = false;
 
 function stopAutoRotate() {
@@ -124,22 +124,6 @@ const faces = [
   { axis: 'x', sign: -1, prefix: 'W', color: 'white',  colAxis: 'y', colSign: 1,  rowAxis: 'z', rowSign: 1 },
   { axis: 'z', sign: 1,  prefix: 'G', color: 'green',  colAxis: 'x', colSign: 1,  rowAxis: 'y', rowSign: -1 }
 ];
-
-const preferenceFigurePalette = {
-  LL: { low: '#a5c0c6', high: '#275a66' },
-  LR: { low: '#c2d5d8', high: '#688c97' },
-  LM: { low: '#d1e0e3', high: '#8aa8b0' },
-  LI: { low: '#dee9eb', high: '#aec6cb' },
-  LT: { low: '#eef6f7', high: '#b8d3d9' },
-  RT: { low: '#f7eef2', high: '#e0c2cf' },
-  RI: { low: '#f1dee7', high: '#d3afc1' },
-  RM: { low: '#e8cdd9', high: '#bc8ba3' },
-  RR: { low: '#ddb9cc', high: '#a56784' },
-  RL: { low: '#cfa0b8', high: '#7c2f52' }
-};
-
-const aggregatePreferenceRange = { min: 0.41, max: 1.0 };
-const preferenceFigureTextureCache = new Map();
 
 // Orient a plane to face outward from a surface
 function orientPlane(mesh, axis, sign) {
@@ -243,63 +227,6 @@ function getLabelPosition(face, row, col, lift) {
   return pos;
 }
 
-function toLinearColor(hex) {
-  return new THREE.Color(hex).convertSRGBToLinear();
-}
-
-function lerpHexColor(startHex, endHex, t) {
-  return toLinearColor(startHex).lerp(toLinearColor(endHex), t);
-}
-
-function getPreferenceFigureColor(fingerCode, score) {
-  const palette = preferenceFigurePalette[fingerCode] || preferenceFigurePalette.LT;
-  const t = THREE.MathUtils.clamp(
-    (score - aggregatePreferenceRange.min) / (aggregatePreferenceRange.max - aggregatePreferenceRange.min),
-    0,
-    1
-  );
-  return lerpHexColor(palette.low, palette.high, t);
-}
-
-function createPreferenceFigureTexture(keyID, colors) {
-  const cacheKey = `${keyID}:${colors.join('|')}`;
-  if (preferenceFigureTextureCache.has(cacheKey)) return preferenceFigureTextureCache.get(cacheKey);
-
-  const canvas = document.createElement('canvas');
-  canvas.width = canvas.height = 256;
-  const ctx = canvas.getContext('2d');
-
-  if (colors.length === 1) {
-    ctx.fillStyle = colors[0];
-    ctx.fillRect(0, 0, 256, 256);
-  } else {
-    ctx.fillStyle = colors[0];
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(256, 0);
-    ctx.lineTo(0, 256);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = colors[1];
-    ctx.beginPath();
-    ctx.moveTo(256, 0);
-    ctx.lineTo(256, 256);
-    ctx.lineTo(0, 256);
-    ctx.closePath();
-    ctx.fill();
-  }
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.minFilter = THREE.LinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-  texture.generateMipmaps = true;
-  texture.anisotropy = Math.min(8, maxTextureAnisotropy);
-  preferenceFigureTextureCache.set(cacheKey, texture);
-  return texture;
-}
-
 // Create keys
 faces.forEach((face) => {
   const { axis, sign, prefix, color } = face;
@@ -385,10 +312,10 @@ function fitCameraToObject(object, camera, controls, options = {}) {
     const distance = Math.max(distanceV, distanceH) * margin;
 
     // if distance = last distance, don't recompute
-    /*if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
+    if (lastComputedDistance !== null && Math.abs(distance - lastComputedDistance) < 0.001) {
         return;
     }
-    lastComputedDistance = distance;*/
+    lastComputedDistance = distance;
 
     // Decide the direction from target to camera.
     // Prefer preserving current camera direction relative to target so rotation is preserved.
@@ -525,8 +452,6 @@ window.updateModel = function(data) {
     scene.traverse(c => { if (c.isMesh && !c.userData?.isLabel) c.material.wireframe = data.wireframe; });
   }
 
-  /*if (data.backgroundColor) renderer.setClearColor(data.backgroundColor);*/
-
   if (data.resetView) {
     camera.position.copy(initialCameraPosition);
     controls.target.copy(initialControlsTarget);
@@ -542,46 +467,6 @@ window.updateModel = function(data) {
 
   // Heatmap color: invert=true → low=green (preference), invert=false → high=green (reachability)
   const heatmapColor = (norm, invert) => new THREE.Color().setHSL((invert ? 1 - norm : norm) * 0.33, 0.9, 0.5);
-
-  const applyPreferenceFigure = (figureData, singleFace) => {
-    keycubeGroup.children.forEach(child => {
-      if (!child.userData?.face || !child.userData?.index) return;
-
-      const face = child.userData.face;
-      const faceData = figureData.scores[face];
-      if (!faceData) {
-        child.material.color.set(child.userData.originalColor);
-        child.material.emissive?.set(0x000000);
-        child.material.map = null;
-        child.material.needsUpdate = true;
-        return;
-      }
-
-      const shouldDim = singleFace && face !== singleFace;
-      if (shouldDim) {
-        child.material.color.copy(toLinearColor('#eceff1'));
-        child.material.emissive?.set(toLinearColor('#dfe5e8'));
-        child.material.map = null;
-        child.material.needsUpdate = true;
-        return;
-      }
-
-      const score = figureData.scores[face][child.userData.index - 1];
-      const tiedFingers = figureData.tiedFingers[face][child.userData.index - 1];
-      const textureColors = tiedFingers.map(function (fingerCode) {
-        return `#${getPreferenceFigureColor(fingerCode, score).convertLinearToSRGB().getHexString()}`;
-      });
-      const averageColor = tiedFingers
-        .map(fingerCode => getPreferenceFigureColor(fingerCode, score))
-        .reduce((acc, color, index, arr) => acc.add(color.clone().multiplyScalar(1 / arr.length)), new THREE.Color(0, 0, 0));
-
-      const splitTexture = textureColors.length > 1 ? createPreferenceFigureTexture(child.userData.id, textureColors) : null;
-      child.material.map = splitTexture;
-      child.material.color.copy(splitTexture ? toLinearColor('#ffffff') : averageColor);
-      child.material.emissive?.copy(averageColor.clone().multiplyScalar(splitTexture ? 0.18 : 0.42));
-      child.material.needsUpdate = true;
-    });
-  };
 
   // Apply heatmap to keys
   const applyHeatmap = (heatmapData, min, max, invert, dimOthers) => {
@@ -605,9 +490,6 @@ window.updateModel = function(data) {
   }
   if (data.heatmapSingleFace) {
     applyHeatmap(data.heatmapSingleFace, data.heatmapMin ?? 0, data.heatmapMax ?? 1, !!data.heatmapInvert, true);
-  }
-  if (data.preferenceFigure) {
-    applyPreferenceFigure(data.preferenceFigure, data.preferenceFigureSingleFace || null);
   }
 
   if (data.figure6View) {

@@ -15,4 +15,4 @@ This 3D render is an interactive visual analysis of the one of the [keycube stud
 
 {% include heatmap.html %}
 
-{% include heatmap-ui.html %}
+{% include heatmap-ui2.html %}

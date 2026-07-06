@@ -5,23 +5,51 @@
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
-    <div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center; pointer-events: auto">
-        <select class="finger-select" id="finger-select">
-            <option value="total">{{ e.total }}</option>
-            <option value="preferred">{{ e.preferred }}</option>
-            <option value="LH">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}</option>
-            <option value="RH">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</option>
-            <option value="LT">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.thumb }}</option>
-            <option value="LI">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.index }}</option>
-            <option value="LM">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.middle }}</option>
-            <option value="LR">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.ring }}</option>
-            <option value="LL">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.little }}</option>
-            <option value="RT">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.thumb }}</option>
-            <option value="RI">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.index }}</option>
-            <option value="RM">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.middle }}</option>
-            <option value="RR">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.ring }}</option>
-            <option value="RL">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.little }}</option>
-        </select>
+    <div style="flex-basis: 100%; display: flex; justify-content: right; align-items: center; pointer-events: auto; flex-direction: column">
+        <p>
+            <label for="all-fingers">
+                {{ e.total }}
+            </label>
+            <input type="radio" id="all-fingers" name="finger-select" value="total" checked><br>
+            <label for="best-finger">
+                {{ e.preferred }}
+            </label>
+            <input type="radio" id="best-finger" name="finger-select" value="preferred"><br>
+            <label for="right-hand">
+                {{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}
+            </label>
+            <input type="radio" id="right-hand" name="finger-select" value="R"><br>
+            <label for="left-hand">
+                {{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}
+            </label>
+            <input type="radio" id="left-hand" name="finger-select" value="L"><br>
+        </p>
+        <p id="finger-radio" style="display: none">
+            <label for="finger-all">
+                {{ e.all_button }}
+            </label>
+            <input type="radio" id="finger-all" name="finger" value="H" checked><br>
+            <label for="finger-thumb">
+                {{ e.thumb }}
+            </label>
+            <input type="radio" id="finger-thumb" name="finger" value="T"><br>
+            <label for="finger-index">
+                {{ e.index }}
+            </label>
+            <input type="radio" id="finger-index" name="finger" value="I"><br>
+            <label for="finger-middle">
+                {{ e.middle }}
+            </label>
+            <input type="radio" id="finger-middle" name="finger" value="M"><br>
+            <label for="finger-ring">
+                {{ e.ring }}
+            </label>
+            <input type="radio" id="finger-ring" name="finger" value="R"><br>
+            <label for="finger-little">
+                {{ e.little }}
+            </label>
+            <input type="radio" id="finger-little" name="finger" value="L"><br>
+        </p>
     </div>
 
     <div class="finger-context" id="finger-context">
@@ -44,21 +72,18 @@
     import langFinger from '/assets/js/ui-lang.json' with {type:"json"};
 
     document.addEventListener('DOMContentLoaded', function () {
-        const fingerSelect = document.getElementById('finger-select');
         const selectionText = document.getElementById('selection-text');
         const selectionIcon = document.querySelector('#selection-badge .selection-icon');
         const fingerContext = document.getElementById('finger-context');
         const allFingerDots = document.querySelectorAll('.finger-dot');
         const analogRings = document.querySelectorAll('.analog-ring');
-        const btnAllFingers = document.getElementById('btn-all-fingers');
-        const btnBestFinger = document.getElementById('btn-best-finger');
-        const handActionBtns = document.querySelectorAll('.hand-action-btn');
+        const fingerRadio = document.getElementById('finger-radio');
+
         const FACES = ['R', 'B', 'G', 'W', 'Y'];
         const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
 
         const lang = document.documentElement.lang
         const fingerData = langFinger[lang] ? langFinger[lang] : langFinger["en"];
-
 
         function updateUI(key, activeFingers) {
             const data = fingerData[key] || {name: key, icon: '', info: ''};
@@ -113,17 +138,14 @@
         }
 
         function updateSelection(fingerValue) {
-            if (fingerSelect) { fingerSelect.value = fingerValue; fingerSelect.dispatchEvent(new Event('change')); }
+            applyHeatmap(computeHandData(fingerValue === 'total' ? ALL_FINGERS : [fingerValue]));
             updateUI(fingerValue, fingerValue === 'total' ? ALL_FINGERS : null);
-            handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
-            if (fingerValue === 'total') btnAllFingers.classList.add('active');
         }
 
         function handleHandAll(hand) {
             const fingers = hand === 'left' ? ['LT', 'LI', 'LM', 'LR', 'LL'] : ['RT', 'RI', 'RM', 'RR', 'RL'];
             applyHeatmap(computeHandData(fingers));
             updateUI(hand + '-all', fingers);
-            handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
         }
 
         function handleBestFinger() {
@@ -146,40 +168,38 @@
             });
             applyHeatmap(result, { min: 0, max: 66 });
             updateUI('best', ALL_FINGERS);
-            handActionBtns.forEach(function (btn) { btn.classList.remove('active'); });
-            btnBestFinger.classList.add('active');
         }
 
         function handleSelect() {
-            const selectValue = fingerSelect.value;
+            let selectValue = document.querySelector('input[name="finger-select"]:checked').value;
             if (selectValue === "total") {
+                if (fingerRadio.style.display !== 'none')
+                    fingerRadio.style.display = "none";
                 updateSelection("total");
             } else if (selectValue === "preferred") {
+                if (fingerRadio.style.display !== 'none')
+                    fingerRadio.style.display = "none";
                 handleBestFinger();
             } else {
-                if (selectValue.charAt(1) === 'H') {
-                    if (selectValue.charAt(0) === 'L') {
+                fingerRadio.style.removeProperty("display");
+                let selectFinger = document.querySelector('input[name="finger"]:checked').value;
+                if (selectFinger === 'H') {
+                    if (selectValue === 'L') {
                         handleHandAll('left')
                     } else {
                         handleHandAll('right')
                     }
                 } else {
-                    updateSelection(selectValue)
+                    updateSelection(selectValue + selectFinger)
                 }
             }
         }
 
-        allFingerDots.forEach(function (dot) {
-            dot.addEventListener('click', function (e) { e.stopPropagation(); updateSelection(dot.getAttribute('data-finger')); });
-        });
-        analogRings.forEach(function (ring) {
-            ring.addEventListener('click', function (e) { if (!e.target.closest('.finger-dot')) handleHandAll(ring.getAttribute('data-hand')); });
-        });
-        if (btnAllFingers) btnAllFingers.addEventListener('click', function () { updateSelection('total'); });
-        if (btnBestFinger) btnBestFinger.addEventListener('click', handleBestFinger);
+        if (document.querySelectorAll('input[type="radio"]'))
+            document.querySelectorAll('input[type="radio"]').forEach(elem => {
+               elem.addEventListener('change', handleSelect);
+            });
 
-        if (fingerSelect) {
-            fingerSelect.addEventListener('change', handleSelect);
-        }
+        handleSelect();
     });
 </script>
