@@ -9,9 +9,13 @@
     box-sizing: border-box;
     margin: 0 auto;
     overflow: visible;
-    /*background: radial-gradient(circle at center, #fff 0%, #fdfdfd 70%);*/
-    background: radial-gradient(circle at center, #888 0%, #fff 70%);
     object-fit: cover;
+
+    background: url('/assets/img/keycube-loading.png') center/contain no-repeat;
+}
+
+#model-container.active {
+    background: radial-gradient(circle at center, #888 0%, #fff 70%);
 }
 
 #model-container canvas {
@@ -23,13 +27,19 @@
     box-sizing: border-box;
     max-width: 100%;
     max-height: 100%;
+
+    visibility: hidden;
 }
 
-#model-container canvas:hover {
+#model-container.active canvas {
+    visibility: visible;
+}
+
+#model-container.active canvas:hover {
     cursor: grab;
 }
 
-#model-container canvas:active {
+#model-container.active canvas:active {
     cursor: grabbing;
 }
 
