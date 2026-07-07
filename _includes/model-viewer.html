@@ -151,7 +151,7 @@
 
     // Create text label as a small plane decal stuck on the key surface
     function createTextLabel(text, axis, sign) {
-        const {mesh, canvas, texture} = createLabelPlane(0.13, 512, axis, sign);
+        const {mesh, canvas, texture} = createLabelPlane(0.13, 256, axis, sign);
         const ctx = canvas.getContext('2d');
         ctx.font = 'bold 224px Arial';
         ctx.textAlign = 'center';
@@ -168,7 +168,7 @@
 
     // Create dynamic score label (initially hidden)
     function createScoreLabel(axis, sign) {
-        const {mesh, canvas, texture} = createLabelPlane(0.14, 512, axis, sign);
+        const {mesh, canvas, texture} = createLabelPlane(0.14, 256, axis, sign);
         mesh.userData = {isScoreLabel: true, canvas, texture, lastScore: null};
         mesh.visible = false;
         return mesh;
@@ -187,16 +187,16 @@
 
         const {canvas, texture} = mesh.userData;
         const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, 512, 512);
+        ctx.clearRect(0, 0, 256, 256);
 
-        ctx.font = 'bold 80px Arial';
+        ctx.font = 'bold 56px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.strokeStyle = 'black';
-        ctx.lineWidth = 8;
-        ctx.strokeText(keyID, 256, 130);
+        ctx.lineWidth = 6;
+        ctx.strokeText(keyID, 128, 75);
         ctx.fillStyle = '#FFFF00';
-        ctx.fillText(keyID, 256, 130);
+        ctx.fillText(keyID, 128, 75);
 
         // Draw score
         const scoreText = currentScoreFormat === 'ratio'
@@ -204,12 +204,12 @@
             : String(Math.round(score));
         const fontSize = currentScoreFormat === 'ratio'
             ? 356
-            : (isReachabilityMode && score >= 100 ? 100 : 140);
+            : (isReachabilityMode && score >= 100 ? 71 : 100);
         ctx.font = `bold ${fontSize}px Arial`;
-        ctx.lineWidth = 10;
-        ctx.strokeText(scoreText, 256, 390);
+        ctx.lineWidth = 7;
+        ctx.strokeText(scoreText, 128, 175);
         ctx.fillStyle = 'white';
-        ctx.fillText(scoreText, 256, 390);
+        ctx.fillText(scoreText, 128, 175);
 
         texture.needsUpdate = true;
         mesh.userData.lastScore = score;
