@@ -43,118 +43,27 @@
     cursor: grabbing;
 }
 
-/* Hand Selector */
-.hand-selector-container { display: flex; align-items: center; justify-content: center; gap: 10px; }
-.hand-analog { display: flex; flex-direction: column; align-items: center; }
-.analog-ring {
-    position: relative;
-    width: 9em; height: 9em;
-    border-radius: 50%;
-    background: radial-gradient(circle, #f8f8f8 0%, #ebebeb 70%, #ddd 100%);
-    border: 3px solid #ccc;
-    cursor: pointer;
-    transition: border-color 0.25s, box-shadow 0.25s, transform 0.15s;
-}
-.analog-ring:hover { border-color: #888; box-shadow: 0 0 14px rgba(0, 0, 0, 0.10); transform: scale(1.04); }
-.analog-ring.active { border-color: #4dabf7; box-shadow: 0 0 18px rgba(77, 171, 247, 0.35); }
-.analog-stick {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #fff, #e6e6e6);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-}
-.analog-center-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: #444;
-    line-height: 1.1;
-    text-align: center;
-}
-
-/* Finger dots */
-.finger-dot {
-    position: absolute;
-    width: 3em; height: 3em;
-    border-radius: 50%;
-    border: 2px solid #aaa;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    z-index: 2;
-    padding: 0;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-.finger-dot:hover {
-    background: #4dabf7;
-    border-color: #4dabf7;
-    color: #fff;
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(77, 171, 247, 0.5);
-    z-index: 100;
-}
-.finger-dot.active {
-    background: #4dabf7;
-    border-color: #228be6;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(77, 171, 247, 0.6);
-    transform: scale(1.15);
-}
-.finger-letter { font-size: 0.8em; font-weight: 700; line-height: 1; pointer-events: none; }
-
 .finger-select {
-    margin: 12px auto; box-sizing: border-box; justify-content: center; align-content: center;
+    font: inherit;
+    font-size: 75%;
+
+    top: 9px;
+    right: 15px;
+    background-color: #fff;
+    border: 2px solid #e8e8e8;
+    border-radius: 5px;
 }
 
-/* Finger positions */
-.finger-thumb-left { top: 58%; right: -12px; }
-.finger-index-left { top: 4%; right: 4px; }
-.finger-middle-left { top: -10px; left: 50%; transform: translateX(-50%); }
-.finger-ring-left { top: 4%; left: 4px; }
-.finger-little-left { top: 42%; left: -12px; }
-.finger-thumb-right { top: 58%; left: -12px; }
-.finger-index-right { top: 4%; left: 4px; }
-.finger-middle-right { top: -10px; left: 50%; transform: translateX(-50%); }
-.finger-ring-right { top: 4%; right: 4px; }
-.finger-little-right { top: 42%; right: -12px; }
+.finger-radio {
+    padding: 5px;
+    font-size: 75%;
 
-/* Fix: Middle fingers need combined transform to keep centering on hover/active */
-.finger-middle-left:hover,
-.finger-middle-right:hover {
-    transform: translateX(-50%) scale(1.2);
+    top: 9px;
+    right: 15px;
+    background-color: #fff;
+    border: 2px solid #e8e8e8;
+    border-radius: 5px;
 }
-.finger-middle-left.active,
-.finger-middle-right.active {
-    transform: translateX(-50%) scale(1.15);
-}
-
-.finger-dot[data-tooltip]:hover::after { bottom: 115%; font-size: 10px; }
-
-/* Hand divider & actions */
-.hand-divider { display: flex; align-items: center; color: #aaa; font-size: 12px; font-style: italic; position: relative; z-index: 10; }
-.hand-actions { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
-.hand-action-btn {
-    padding: 5px 12px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
-    background: rgba(248, 248, 248, 0.9);
-    color: #555;
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-.hand-action-btn:hover { background: #e8f4fd; border-color: #4dabf7; color: #228be6; transform: translateY(-1px); z-index: 100; }
-.hand-action-btn.active { background: #4dabf7; border-color: #228be6; color: #fff; }
 
 /* Finger context */
 .finger-context { font-size: 11px; color: #555; text-align: center; line-height: 1.3; min-height: 16px; font-style: italic; max-width: 320px; }
@@ -211,53 +120,16 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-    .analog-ring { width: 9em; height: 9em; }
-    .analog-stick { width: 34px; height: 34px; }
-    .analog-center-label { font-size: 10px; }
-    .finger-dot { width: 2em; height: 2em; }
-    .finger-letter { font-size: 0.8em; }
     select { min-width: 180px; font-size: 12px; }
 }
 
 @media (max-width: 768px) {
     .bottom-bar { padding: 10px 14px; }
-    .finger-preference-legend {
-        position: static;
-        right: auto;
-        bottom: auto;
-    }
-    .hand-selector-container { gap: 8px; }
-    .analog-ring { width: 9em; height: 9em; }
-    .analog-stick { width: 30px; height: 30px; }
-    .analog-center-label { font-size: 10px; }
-    .finger-dot { width: 2em; height: 2em; }
-    .finger-letter { font-size: 0.8em; }
 }
 
 @media (max-width: 480px) {
-    .top-bar { gap: 6px; padding: 8px 10px; padding-top: 34px; }
     .bottom-bar { gap: 6px; padding: 8px 10px; }
     select { min-width: 140px; font-size: 12px; padding: 6px 10px; }
-    .color-btn { padding: 4px 8px; font-size: 10px; }
-    .reset-btn { padding: 4px 8px; font-size: 10px; }
-    .selection-badge { font-size: 11px; padding: 5px 10px; }
-    .selection-icon { font-size: 14px; }
     .heatmap-legend { font-size: 10px; }
     .heatmap-gradient { width: 60px; height: 8px; }
-    .hand-selector-container {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-    }
-    .hand-divider { transform: none; }
-    .analog-ring { width: 7em; height: 7em; }
-    .analog-stick { width: 26px; height: 26px; }
-    .analog-center-label { font-size: 8px; }
-    .finger-dot { width: 2em; height: 2em; border-width: 1.5px; }
-    .finger-letter { font-size: 8px; }
-    .hand-action-btn { padding: 4px 7px; font-size: 9px; }
-    .side-panel { max-height: 60vh; }
-    .hand-face-map { flex-direction: column; align-items: center; }
 }

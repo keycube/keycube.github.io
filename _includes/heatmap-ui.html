@@ -28,13 +28,10 @@
         {{ e.finger_context }}
     </div>
 
-    <div class="heatmap-legend">
+    <div class="heatmap-legend" style="flex-basis: 100%; display: flex; justify-content: center; align-items: center;">
         <span>{{ e.unreachable }}</span>
         <div class="heatmap-gradient"></div>
         <span>{{ e.reachable }}</span>
-    </div>
-
-    <div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center;">
         <button class="reset-view-btn" id="reset-view-btn">{{ e.reset_view }}</button>
     </div>
 </div>

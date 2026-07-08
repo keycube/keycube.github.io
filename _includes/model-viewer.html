@@ -308,7 +308,7 @@
      * - camera: THREE.PerspectiveCamera
      * - controls: OrbitControls (optional) to update target and distances
      * - object: THREE.Object3D to fit
-     * - options: { margin: 1.0, offset: 1.0, preserveDirection: true }
+     * - options: { margin: 1.0, offset: 0.736, preserveDirection: true }
      **/
     function fitCameraToObject(object, camera, controls, options = {}) {
         const {margin = 1.0, offset = 0.736, preserveDirection = true} = options;
@@ -514,6 +514,6 @@
             controls.autoRotate = !autoRotateStoppedByUser;
         }
 
-        fitCameraToObject(keycubeGroup, camera, controls/*, { margin: 1.12, offset: 1.05, preserveDirection: true }*/);
+        fitCameraToObject(keycubeGroup, camera, controls);
     };
 </script>
