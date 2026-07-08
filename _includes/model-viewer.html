@@ -287,10 +287,6 @@
         renderer.domElement.addEventListener(evt, stopAutoRotate)
     );
 
-    // ─── Orbit pivot ───
-    controls.target.set(0, 0, 0);
-    const initialControlsTarget = controls.target.clone();
-
     scene.add(keycubeGroup);
 
     function computeBoundingSphere(object) {
