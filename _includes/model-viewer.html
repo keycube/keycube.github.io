@@ -11,7 +11,7 @@
     // User stands BEHIND the cube, sees Yellow (right hand) on left, Blue (left hand) on right.
     const camera = new THREE.PerspectiveCamera(25, 1, 0.1, 1000);
     camera.position.set(0, 2, -4);
-    const initialCameraPosition = camera.position.clone();
+    let initialCameraPosition = camera.position.clone();
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({antialias: true, powerPreference: 'high-performance', alpha: true});
@@ -360,6 +360,8 @@
             controls.maxDistance = Math.max(distance * 1.8, controls.minDistance + 0.1);
             controls.update();
         }
+
+        initialCameraPosition = camera.position.clone();
     }
 
     fitCameraToObject(keycubeGroup, camera, controls);
@@ -470,12 +472,8 @@
 
         if (data.resetView) {
             camera.position.copy(initialCameraPosition);
-            controls.target.copy(initialControlsTarget);
             autoRotateStoppedByUser = false;
             controls.autoRotate = true;
-            camera.zoom = 1;
-            camera.updateProjectionMatrix();
-            controls.update();
             fitCameraToObject(keycubeGroup, camera, controls);
         }
 
