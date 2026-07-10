@@ -21,11 +21,11 @@ l: Au
 # finger combination
 all_combined: Tous les doigts combinés
 all_button: Tout
-preferred: Doigt préféré par touche (Figure 7 droite)
+preferred: Doigt préféré par touche
 preferred_button: Préféré
 
 # hidden select
-total: Tous les doigts (Total)
+total: Tous les doigts
 
 # context and legend
 finger_context: Accessibilité combinée des 10 doigts et 22 participants.

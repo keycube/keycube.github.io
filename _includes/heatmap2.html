@@ -1,57 +1,73 @@
 {% assign e = site.data[page.lang]['heatmap-ui'] %}
 
+<div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center; pointer-events: auto; gap: 30px; height: 137px">
+    <p class="finger-radio">
+        <label for="all-fingers">
+            {{ e.total }}
+        </label>
+        <input checked id="all-fingers" name="finger-select" type="radio" value="total"><br>
+        <label for="best-finger">
+            {{ e.preferred }}
+        </label>
+        <input id="best-finger" name="finger-select" type="radio" value="preferred"><br>
+        <label for="right-hand">
+            {{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}
+        </label>
+        <input id="right-hand" name="finger-select" type="radio" value="R"><br>
+        <label for="left-hand">
+            {{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}
+        </label>
+        <input id="left-hand" name="finger-select" type="radio" value="L"><br>
+    </p>
+    <p class="finger-radio" id="finger-radio" style="visibility: hidden">
+        <label for="finger-all">
+            {{ e.all_button }}
+        </label>
+        <input checked id="finger-all" name="finger" type="radio" value="H"><br>
+        <label for="finger-thumb">
+            {{ e.thumb }}
+        </label>
+        <input id="finger-thumb" name="finger" type="radio" value="T"><br>
+        <label for="finger-index">
+            {{ e.index }}
+        </label>
+        <input id="finger-index" name="finger" type="radio" value="I"><br>
+        <label for="finger-middle">
+            {{ e.middle }}
+        </label>
+        <input id="finger-middle" name="finger" type="radio" value="M"><br>
+        <label for="finger-ring">
+            {{ e.ring }}
+        </label>
+        <input id="finger-ring" name="finger" type="radio" value="R"><br>
+        <label for="finger-little">
+            {{ e.little }}
+        </label>
+        <input id="finger-little" name="finger" type="radio" value="L"><br>
+    </p>
+</div>
+
+<div id="model-container"></div>
+
+<!-- Three.js import map -->
+<script type="importmap">
+    {
+      "imports": {
+        "three": "/assets/js/three.module.js",
+        "three/oc": "/assets/js/OrbitControls.js",
+        "three/rgb": "/assets/js/RoundedBoxGeometry.js"
+      }
+    }
+</script>
+
+<!-- Heatmap3D Canvas -->
+{% include model-viewer.html %}
+
 <!-- 3D Render of the Keycube -->
 {% include dataviz-data.html %}
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
-    <div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center; pointer-events: auto; gap: 30px; height: 137px">
-        <p class="finger-radio">
-            <label for="all-fingers">
-                {{ e.total }}
-            </label>
-            <input checked id="all-fingers" name="finger-select" type="radio" value="total"><br>
-            <label for="best-finger">
-                {{ e.preferred }}
-            </label>
-            <input id="best-finger" name="finger-select" type="radio" value="preferred"><br>
-            <label for="right-hand">
-                {{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}
-            </label>
-            <input id="right-hand" name="finger-select" type="radio" value="R"><br>
-            <label for="left-hand">
-                {{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}
-            </label>
-            <input id="left-hand" name="finger-select" type="radio" value="L"><br>
-        </p>
-        <p class="finger-radio" id="finger-radio" style="display: none">
-            <label for="finger-all">
-                {{ e.all_button }}
-            </label>
-            <input checked id="finger-all" name="finger" type="radio" value="H"><br>
-            <label for="finger-thumb">
-                {{ e.thumb }}
-            </label>
-            <input id="finger-thumb" name="finger" type="radio" value="T"><br>
-            <label for="finger-index">
-                {{ e.index }}
-            </label>
-            <input id="finger-index" name="finger" type="radio" value="I"><br>
-            <label for="finger-middle">
-                {{ e.middle }}
-            </label>
-            <input id="finger-middle" name="finger" type="radio" value="M"><br>
-            <label for="finger-ring">
-                {{ e.ring }}
-            </label>
-            <input id="finger-ring" name="finger" type="radio" value="R"><br>
-            <label for="finger-little">
-                {{ e.little }}
-            </label>
-            <input id="finger-little" name="finger" type="radio" value="L"><br>
-        </p>
-    </div>
-
     <div class="finger-context" id="finger-context">
         {{ e.finger_context }}
     </div>
@@ -170,15 +186,15 @@
         function handleSelect() {
             let selectValue = document.querySelector('input[name="finger-select"]:checked').value;
             if (selectValue === "total") {
-                if (fingerRadio.style.display !== 'none')
-                    fingerRadio.style.display = "none";
+                if (fingerRadio.style.visibility !== 'hidden')
+                    fingerRadio.style.visibility = "hidden";
                 updateSelection("total");
             } else if (selectValue === "preferred") {
-                if (fingerRadio.style.display !== 'none')
-                    fingerRadio.style.display = "none";
+                if (fingerRadio.style.visibility !== 'hidden')
+                    fingerRadio.style.visibility = "hidden";
                 handleBestFinger();
             } else {
-                fingerRadio.style.removeProperty("display");
+                fingerRadio.style.removeProperty("visibility");
                 let selectFinger = document.querySelector('input[name="finger"]:checked').value;
                 if (selectFinger === 'H') {
                     if (selectValue === 'L') {
