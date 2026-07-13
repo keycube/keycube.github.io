@@ -52,6 +52,14 @@
     background-color: #fff;
     border: 2px solid #e8e8e8;
     border-radius: 5px;
+
+    opacity: 50%;
+    pointer-events: none;
+}
+
+.finger-select.active {
+    opacity: 100%;
+    pointer-events: auto;
 }
 
 .finger-radio {
@@ -61,6 +69,14 @@
     background-color: #fff;
     border: 2px solid #e8e8e8;
     border-radius: 5px;
+
+    opacity: 50%;
+    pointer-events: none;
+}
+
+.finger-radio.active {
+    opacity: 100%;
+    pointer-events: auto;
 }
 
 .row {

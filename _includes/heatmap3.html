@@ -1,50 +1,20 @@
 {% assign e = site.data[page.lang]['heatmap-ui'] %}
 
-<div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center; pointer-events: auto; gap: 30px; height: 137px">
-    <p class="finger-radio active">
-        <label for="all-fingers">
-            {{ e.total }}
-        </label>
-        <input checked id="all-fingers" name="finger-select" type="radio" value="total"><br>
-        <label for="best-finger">
-            {{ e.preferred }}
-        </label>
-        <input id="best-finger" name="finger-select" type="radio" value="preferred"><br>
-        <label for="right-hand">
-            {{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}
-        </label>
-        <input id="right-hand" name="finger-select" type="radio" value="R"><br>
-        <label for="left-hand">
-            {{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}
-        </label>
-        <input id="left-hand" name="finger-select" type="radio" value="L"><br>
-    </p>
-    <p class="finger-radio" id="finger-radio">
-        <label for="finger-all">
-            {{ e.all_button }}
-        </label>
-        <input checked id="finger-all" name="finger" type="radio" value="H"><br>
-        <label for="finger-thumb">
-            {{ e.thumb }}
-        </label>
-        <input id="finger-thumb" name="finger" type="radio" value="T"><br>
-        <label for="finger-index">
-            {{ e.index }}
-        </label>
-        <input id="finger-index" name="finger" type="radio" value="I"><br>
-        <label for="finger-middle">
-            {{ e.middle }}
-        </label>
-        <input id="finger-middle" name="finger" type="radio" value="M"><br>
-        <label for="finger-ring">
-            {{ e.ring }}
-        </label>
-        <input id="finger-ring" name="finger" type="radio" value="R"><br>
-        <label for="finger-little">
-            {{ e.little }}
-        </label>
-        <input id="finger-little" name="finger" type="radio" value="L"><br>
-    </p>
+<div style="flex-basis: 100%; display: flex; justify-content: center; align-items: center; pointer-events: auto; gap: 30px">
+    <select class="finger-select active" id="all-fingers">
+        <option value="total">{{ e.total }}</option>
+        <option value="preferred">{{ e.preferred }}</option>
+        <option value="L">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}</option>
+        <option value="H">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</option>
+    </select>
+    <select class="finger-select" id="finger-select">
+        <option value="H">{{ e.all_button }}</option>
+        <option value="T">{{ e.thumb }}</option>
+        <option value="I">{{ e.index }}</option>
+        <option value="M">{{ e.middle }}</option>
+        <option value="R">{{ e.ring }}</option>
+        <option value="L">{{ e.little }}</option>
+    </select>
 </div>
 
 <div id="model-container"></div>
@@ -88,7 +58,8 @@
         const selectionText = document.getElementById('selection-text');
         const selectionIcon = document.querySelector('#selection-badge .selection-icon');
         const fingerContext = document.getElementById('finger-context');
-        const fingerRadio = document.getElementById('finger-radio');
+        const fingerSelect = document.getElementById('finger-select');
+        const allFingers = document.getElementById('all-fingers');
 
         const FACES = ['R', 'B', 'G', 'W', 'Y'];
         const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
@@ -184,18 +155,22 @@
         }
 
         function handleSelect() {
-            let selectValue = document.querySelector('input[name="finger-select"]:checked').value;
+            let selectValue = allFingers.value;
             if (selectValue === "total") {
-                if (fingerRadio.classList.contains('active'))
-                    fingerRadio.classList.remove('active');
+                if (fingerSelect.classList.contains('active')) {
+                    fingerSelect.classList.remove('active');
+                    fingerSelect.value = "H"
+                }
                 updateSelection("total");
             } else if (selectValue === "preferred") {
-                if (fingerRadio.classList.contains('active'))
-                    fingerRadio.classList.remove('active');
+                if (fingerSelect.classList.contains('active')) {
+                    fingerSelect.classList.remove('active');
+                    fingerSelect.value = "H"
+                }
                 handleBestFinger();
             } else {
-                fingerRadio.classList.add('active');
-                let selectFinger = document.querySelector('input[name="finger"]:checked').value;
+                fingerSelect.classList.add('active')
+                let selectFinger = fingerSelect.value;
                 if (selectFinger === 'H') {
                     if (selectValue === 'L') {
                         handleHandAll('left')
@@ -208,9 +183,8 @@
             }
         }
 
-        document.querySelectorAll('input[type="radio"]').forEach(elem => {
-            elem.addEventListener('change', handleSelect);
-        });
+        allFingers.addEventListener('change', handleSelect)
+        fingerSelect.addEventListener('change', handleSelect)
 
         handleSelect();
         document.getElementById('model-container').classList.add('active');
