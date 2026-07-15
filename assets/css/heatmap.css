@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 4rem auto 0;
     overflow: visible;
     object-fit: cover;
 
@@ -95,6 +95,53 @@
     height: 26px;
     border-radius: 13px;
     pointer-events: auto;
+}
+
+#interface {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start;
+    pointer-events: auto;
+    gap: 30px;
+    user-select: none;
+}
+
+.select-checkbox {
+    display: none;
+}
+
+.select {
+    border: 1px solid #e8e8e8;
+    border-radius: .5em;
+    padding: .5em;
+    background-color: white;
+    flex-direction: row;
+
+    opacity: 50%;
+    pointer-events: none;
+}
+
+.select.active {
+    opacity: 100%;
+    pointer-events: auto;
+}
+
+.select-options {
+    display: flex;
+    flex-direction: column;
+    color: #383838;
+    background-color: white;
+}
+
+.select-checkbox ~ .select-options {
+    display: none;
+}
+
+.select-checkbox:checked ~ .select-options {
+    display: flex;
+    padding-top: 0.2em;
 }
 
 /* Finger context */

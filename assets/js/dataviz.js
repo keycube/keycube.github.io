@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const perFingerReachability = window.perFingerReachability;
 
   const defaultModeMeta = document.querySelector('meta[name="default-mode"]');
-  const currentMode = defaultModeMeta ? defaultModeMeta.getAttribute('content') : 'reachability';
 
   const FACES = ['R', 'B', 'G', 'W', 'Y'];
 
@@ -61,14 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
       isReachability: true,
       scoreFormat: 'integer',
       figure6View: false
-    });
-  }
-
-  // Finger filter for reachability
-  const fingerSelect = document.getElementById('finger-select');
-  if (fingerSelect) {
-    fingerSelect.addEventListener('change', function () {
-      if (currentMode === 'reachability') applyReachabilityView();
     });
   }
 
