@@ -1,7 +1,7 @@
 {% assign e = site.data[page.lang]['heatmap-ui'] %}
 
 <div id="interface">
-    <div id="hand-select" class="select active" role="select">
+    <div class="select active" id="hand-select" role="select">
         <input class="select-checkbox" id="hand-select-checkbox" type="checkbox">
         <label for="hand-select-checkbox" style="display: flex; justify-content:  space-between">
             <span id="hand-selected">{{ e.total }}</span>
@@ -33,23 +33,6 @@
 
 <div id="model-container"></div>
 
-<!-- Three.js import map -->
-<script type="importmap">
-    {
-      "imports": {
-        "three": "/assets/js/three.module.js",
-        "three/oc": "/assets/js/OrbitControls.js",
-        "three/rgb": "/assets/js/RoundedBoxGeometry.js"
-      }
-    }
-</script>
-
-<!-- Heatmap3D Canvas -->
-{% include model-viewer.html %}
-
-<!-- 3D Render of the Keycube -->
-{% include dataviz-data.html %}
-
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
     <div class="finger-context" id="finger-context">
@@ -64,178 +47,207 @@
     </div>
 </div>
 
-<script src="/assets/js/dataviz.js"></script>
+<!-- Three.js import map -->
+<script type="importmap">
+    {
+      "imports": {
+        "three": "/assets/js/three.module.js",
+        "three/oc": "/assets/js/OrbitControls.js",
+        "three/rgb": "/assets/js/RoundedBoxGeometry.js"
+      }
+    }
+</script>
+
+<!-- Data for the 3D render of the Keycube -->
+{% include dataviz-data.html %}
+
 <script type="module">
+    import { Keycube } from '/assets/js/model-viewer.js';
+
+    const heatmap = new Keycube(document.getElementById('model-container'), true, 'integer')
+
     import langFinger from '/assets/js/ui-lang.json' with {type: 'json'};
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const handLabel = document.getElementById('hand-selected')
-        const fingerLabel = document.getElementById('finger-selected')
-        const fingerSelect = document.getElementById('finger-select')
-        const handCheckbox = document.getElementById('hand-select-checkbox')
-        const fingerCheckbox = document.getElementById('finger-select-checkbox')
+    const handLabel = document.getElementById('hand-selected')
+    const fingerLabel = document.getElementById('finger-selected')
+    const fingerSelect = document.getElementById('finger-select')
+    const handCheckbox = document.getElementById('hand-select-checkbox')
+    const fingerCheckbox = document.getElementById('finger-select-checkbox')
 
-        const selectionText = document.getElementById('selection-text');
-        const selectionIcon = document.querySelector('#selection-badge .selection-icon');
-        const fingerContext = document.getElementById('finger-context');
-        const handOptions = document.querySelectorAll('#hand-select-options .select-option');
-        console.log(handOptions)
-        const fingerOptions = document.querySelectorAll('#finger-select-options .select-option');
+    const selectionText = document.getElementById('selection-text');
+    const selectionIcon = document.querySelector('#selection-badge .selection-icon');
+    const fingerContext = document.getElementById('finger-context');
+    const handOptions = document.querySelectorAll('#hand-select-options .select-option');
+    const fingerOptions = document.querySelectorAll('#finger-select-options .select-option');
 
-        let allFingerOption = fingerOptions[0];
+    let allFingerOption = fingerOptions[0];
+    const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
 
-        const FACES = ['R', 'B', 'G', 'W', 'Y'];
-        const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
+    const lang = document.documentElement.lang
+    const fingerData = langFinger[lang] ? langFinger[lang] : langFinger["en"];
 
-        const lang = document.documentElement.lang
-        const fingerData = langFinger[lang] ? langFinger[lang] : langFinger["en"];
+    const FACES = ['R', 'B', 'G', 'W', 'Y'];
 
-        function updateUI(key) {
-            const data = fingerData[key] || {name: key, icon: '', info: ''};
-            if (selectionText) selectionText.textContent = data.name;
-            if (selectionIcon) selectionIcon.textContent = data.icon;
-            if (fingerContext) fingerContext.textContent = data.info;
+    // Helper for simple control bindings
+    function bindControl(id, event, handler) {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener(event, handler);
+    }
+
+    function updateUI(key) {
+        const data = fingerData[key] || {name: key, icon: '', info: ''};
+        if (selectionText) selectionText.textContent = data.name;
+        if (selectionIcon) selectionIcon.textContent = data.icon;
+        if (fingerContext) fingerContext.textContent = data.info;
+    }
+
+    function applyHeatmap(data, fixedRange) {
+        let min = fixedRange ? fixedRange.min : Infinity;
+        let max = fixedRange ? fixedRange.max : -Infinity;
+        if (!fixedRange) {
+            FACES.forEach(function (f) {
+                data[f].forEach(function (v) {
+                    if (v < min) min = v;
+                    if (v > max) max = v;
+                });
+            });
         }
+        heatmap.updateModel({
+            heatmap: data,
+            heatmapMin: min,
+            heatmapMax: max,
+            scores: data,
+            showScores: true,
+            isReachability: true,
+            scoreFormat: 'integer',
+            figure6View: false
+        });
 
-        function applyHeatmap(data, fixedRange) {
-            let min = fixedRange ? fixedRange.min : Infinity;
-            let max = fixedRange ? fixedRange.max : -Infinity;
-            if (!fixedRange) {
-                FACES.forEach(function (f) {
-                    data[f].forEach(function (v) {
-                        if (v < min) min = v;
-                        if (v > max) max = v;
+    }
+
+    function computeHandData(fingers) {
+        const result = {};
+        FACES.forEach(function (face) {
+            result[face] = [];
+            for (let i = 0; i < 16; i++) {
+                let sum = 0;
+                fingers.forEach(function (f) {
+                    const fData = perFingerReachability[f];
+                    if (fData) fData.forEach(function (p) {
+                        sum += p[face][i];
                     });
                 });
+                result[face].push(sum);
             }
-            if (window.updateModel) {
-                window.updateModel({
-                    heatmap: data,
-                    heatmapMin: min,
-                    heatmapMax: max,
-                    scores: data,
-                    showScores: true,
-                    isReachability: true,
-                    scoreFormat: 'integer',
-                    figure6View: false
-                });
-            }
-        }
+        });
+        return result;
+    }
 
-        function computeHandData(fingers) {
-            const result = {};
-            FACES.forEach(function (face) {
-                result[face] = [];
-                for (let i = 0; i < 16; i++) {
-                    let sum = 0;
-                    fingers.forEach(function (f) {
-                        const fData = window.perFingerReachability[f];
-                        if (fData) fData.forEach(function (p) {
-                            sum += p[face][i];
+    function updateSelection(fingerValue) {
+        applyHeatmap(computeHandData(fingerValue === 'total' ? ALL_FINGERS : [fingerValue]));
+        updateUI(fingerValue, fingerValue === 'total' ? ALL_FINGERS : null);
+    }
+
+    function handleHandAll(hand) {
+        const fingers = hand === 'left' ? ['LT', 'LI', 'LM', 'LR', 'LL'] : ['RT', 'RI', 'RM', 'RR', 'RL'];
+        applyHeatmap(computeHandData(fingers));
+        updateUI(hand + '-all', fingers);
+    }
+
+    function handleBestFinger() {
+        if (!preferenceAggregate) return;
+        const result = {};
+        FACES.forEach(function (face) {
+            result[face] = [];
+            for (let i = 0; i < 16; i++) {
+                let best = 0;
+                const preferredFingers = preferenceAggregate.tiedFingers[face][i];
+                preferredFingers.forEach(function (f) {
+                    const fData = perFingerReachability[f];
+                    allFingerOption.classList.add('choose');
+                    if (fData) {
+                        let s = 0;
+                        fData.forEach(function (p) {
+                            s += p[face][i];
                         });
-                    });
-                    result[face].push(sum);
-                }
-            });
-            return result;
-        }
-
-        function updateSelection(fingerValue) {
-            applyHeatmap(computeHandData(fingerValue === 'total' ? ALL_FINGERS : [fingerValue]));
-            updateUI(fingerValue, fingerValue === 'total' ? ALL_FINGERS : null);
-        }
-
-        function handleHandAll(hand) {
-            const fingers = hand === 'left' ? ['LT', 'LI', 'LM', 'LR', 'LL'] : ['RT', 'RI', 'RM', 'RR', 'RL'];
-            applyHeatmap(computeHandData(fingers));
-            updateUI(hand + '-all', fingers);
-        }
-
-        function handleBestFinger() {
-            const preferenceAggregate = window.preferenceAggregate;
-            if (!preferenceAggregate) return;
-            const result = {};
-            FACES.forEach(function (face) {
-                result[face] = [];
-                for (let i = 0; i < 16; i++) {
-                    let best = 0;
-                    const preferredFingers = preferenceAggregate.tiedFingers[face][i];
-                    preferredFingers.forEach(function (f) {
-                        const fData = window.perFingerReachability[f];
-                        allFingerOption.classList.add('choose');
-                        if (fData) {
-                            let s = 0;
-                            fData.forEach(function (p) {
-                                s += p[face][i];
-                            });
-                            if (s > best) best = s;
-                        }
-                    });
-                    result[face].push(best);
-                }
-            });
-            applyHeatmap(result, {min: 0, max: 66});
-            updateUI('best', ALL_FINGERS);
-        }
-
-        function handleCustomSelect(value) {
-            switch (value) {
-                case "{{ e.total }}":
-                    return "total";
-                case "{{ e.preferred }}":
-                    return "preferred";
-                case "{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}":
-                    return "L";
-                case "{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}":
-                    return "R";
-                case "{{ e.all_button }}":
-                    return "H";
-                case "{{ e.thumb }}":
-                    return "T";
-                case "{{ e.index }}":
-                    return "I";
-                case "{{ e.middle }}":
-                    return "M";
-                case "{{ e.ring }}":
-                    return "R";
-                case "{{ e.little }}":
-                    return "L";
-            }
-        }
-
-        function handleFirstSelect(e) {
-            if (e === 'start') {
-                updateSelection("total");
-            } else {
-                let selectValue = handleCustomSelect(e.textContent);
-                if (selectValue === "total") {
-                    if (fingerSelect.classList.contains('active')) {
-                        fingerSelect.classList.remove('active');
-                        fingerCheckbox.checked = false;
-                        fingerLabel.textContent = '{{ e.all_button }}'
-                        fingerOptions.forEach(elem => {
-                            elem.classList.remove('choose')
-                        })
-                        allFingerOption.classList.add('choose');
+                        if (s > best) best = s;
                     }
-                    updateSelection("total");
-                    handLabel.textContent = e.textContent;
-                    handCheckbox.checked = false;
-                    handOptions.forEach(elem => {
+                });
+                result[face].push(best);
+            }
+        });
+        applyHeatmap(result, {min: 0, max: 66});
+        updateUI('best', ALL_FINGERS);
+    }
+
+    function handleCustomSelect(value) {
+        switch (value) {
+            case "{{ e.total }}":
+                return "total";
+            case "{{ e.preferred }}":
+                return "preferred";
+            case "{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}":
+                return "L";
+            case "{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}":
+                return "R";
+            case "{{ e.all_button }}":
+                return "H";
+            case "{{ e.thumb }}":
+                return "T";
+            case "{{ e.index }}":
+                return "I";
+            case "{{ e.middle }}":
+                return "M";
+            case "{{ e.ring }}":
+                return "R";
+            case "{{ e.little }}":
+                return "L";
+        }
+    }
+
+    function handleFirstSelect(e) {
+        if (e === 'start') {
+            updateSelection("total");
+        } else {
+            let selectValue = handleCustomSelect(e.textContent);
+            if (selectValue === "total") {
+                if (fingerSelect.classList.contains('active')) {
+                    fingerSelect.classList.remove('active');
+                    fingerCheckbox.checked = false;
+                    fingerLabel.textContent = '{{ e.all_button }}'
+                    fingerOptions.forEach(elem => {
                         elem.classList.remove('choose')
                     })
-                    e.classList.add('choose');
-                } else if (selectValue === "preferred") {
-                    if (fingerSelect.classList.contains('active')) {
-                        fingerSelect.classList.remove('active');
-                        fingerCheckbox.checked = false;
-                        fingerLabel.textContent = '{{ e.all_button }}'
-                        fingerOptions.forEach(elem => {
-                            elem.classList.remove('choose')
-                        })
-                        allFingerOption.classList.add('choose');
-                    }
-                    handleBestFinger();
+                    allFingerOption.classList.add('choose');
+                }
+                updateSelection("total");
+                handLabel.textContent = e.textContent;
+                handCheckbox.checked = false;
+                handOptions.forEach(elem => {
+                    elem.classList.remove('choose')
+                })
+                e.classList.add('choose');
+            } else if (selectValue === "preferred") {
+                if (fingerSelect.classList.contains('active')) {
+                    fingerSelect.classList.remove('active');
+                    fingerCheckbox.checked = false;
+                    fingerLabel.textContent = '{{ e.all_button }}'
+                    fingerOptions.forEach(elem => {
+                        elem.classList.remove('choose')
+                    })
+                    allFingerOption.classList.add('choose');
+                }
+                handleBestFinger();
+                handLabel.textContent = e.textContent;
+                handCheckbox.checked = false;
+                handOptions.forEach(elem => {
+                    elem.classList.remove('choose')
+                })
+                e.classList.add('choose');
+            } else {
+                fingerSelect.classList.add('active')
+                if (selectValue === 'L') {
+                    handleHandAll('left')
                     handLabel.textContent = e.textContent;
                     handCheckbox.checked = false;
                     handOptions.forEach(elem => {
@@ -243,87 +255,80 @@
                     })
                     e.classList.add('choose');
                 } else {
-                    fingerSelect.classList.add('active')
-                    if (selectValue === 'L') {
-                        handleHandAll('left')
-                        handLabel.textContent = e.textContent;
-                        handCheckbox.checked = false;
-                        handOptions.forEach(elem => {
-                            elem.classList.remove('choose')
-                        })
-                        e.classList.add('choose');
-                    } else {
-                        handleHandAll('right')
-                        handLabel.textContent = e.textContent;
-                        handCheckbox.checked = false;
-                        handOptions.forEach(elem => {
-                            elem.classList.remove('choose')
-                        })
-                        e.classList.add('choose');
-                    }
+                    handleHandAll('right')
+                    handLabel.textContent = e.textContent;
+                    handCheckbox.checked = false;
+                    handOptions.forEach(elem => {
+                        elem.classList.remove('choose')
+                    })
+                    e.classList.add('choose');
                 }
             }
         }
+    }
 
-        function handleSecondSelect(e) {
-            let selectValue = handleCustomSelect(e.textContent);
-            switch (selectValue) {
-                case "H":
-                    if (handleCustomSelect(handLabel.textContent) === 'L') {
-                        handleHandAll('left')
-                        fingerLabel.textContent = e.textContent;
-                        fingerCheckbox.checked = false;
-                        fingerOptions.forEach(elem => {
-                            elem.classList.remove('choose')
-                        })
-                        e.classList.add('choose');
-                    } else {
-                        handleHandAll('right')
-                        fingerLabel.textContent = e.textContent;
-                        fingerCheckbox.checked = false;
-                        fingerOptions.forEach(elem => {
-                            elem.classList.remove('choose')
-                        })
-                        e.classList.add('choose');
-                    }
-                    break;
-                case "T":
-                case "I":
-                case "M":
-                case "R":
-                case "L":
-                    updateSelection(handleCustomSelect(handLabel.textContent) + selectValue);
+    function handleSecondSelect(e) {
+        let selectValue = handleCustomSelect(e.textContent);
+        switch (selectValue) {
+            case "H":
+                if (handleCustomSelect(handLabel.textContent) === 'L') {
+                    handleHandAll('left')
                     fingerLabel.textContent = e.textContent;
                     fingerCheckbox.checked = false;
                     fingerOptions.forEach(elem => {
                         elem.classList.remove('choose')
                     })
                     e.classList.add('choose');
-                    break;
-            }
+                } else {
+                    handleHandAll('right')
+                    fingerLabel.textContent = e.textContent;
+                    fingerCheckbox.checked = false;
+                    fingerOptions.forEach(elem => {
+                        elem.classList.remove('choose')
+                    })
+                    e.classList.add('choose');
+                }
+                break;
+            case "T":
+            case "I":
+            case "M":
+            case "R":
+            case "L":
+                updateSelection(handleCustomSelect(handLabel.textContent) + selectValue);
+                fingerLabel.textContent = e.textContent;
+                fingerCheckbox.checked = false;
+                fingerOptions.forEach(elem => {
+                    elem.classList.remove('choose')
+                })
+                e.classList.add('choose');
+                break;
         }
+    }
 
-        fingerCheckbox.addEventListener('change', () => {
-            handCheckbox.checked = false;
-        })
+    fingerCheckbox.addEventListener('change', () => {
+        handCheckbox.checked = false;
+    })
 
-        handCheckbox.addEventListener('change', () => {
-            fingerCheckbox.checked = false;
-        })
+    handCheckbox.addEventListener('change', () => {
+        fingerCheckbox.checked = false;
+    })
 
-        handOptions.forEach(elem => {
-            elem.addEventListener('click', () => {
-                handleFirstSelect(elem);
-            });
-        })
+    handOptions.forEach(elem => {
+        elem.addEventListener('click', () => {
+            handleFirstSelect(elem);
+        });
+    })
 
-        fingerOptions.forEach(elem => {
-            elem.addEventListener('click', () => {
-                handleSecondSelect(elem);
-            });
-        })
+    fingerOptions.forEach(elem => {
+        elem.addEventListener('click', () => {
+            handleSecondSelect(elem);
+        });
+    })
 
-        handleFirstSelect('start');
-        document.getElementById('model-container').classList.add('active');
-    });
+    bindControl('reset-view-btn', 'click', function () {
+        heatmap.updateModel({resetView: true});
+    })
+
+    handleFirstSelect('start');
+    document.getElementById('model-container').classList.add('active');
 </script>

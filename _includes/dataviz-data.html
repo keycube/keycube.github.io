@@ -1,6 +1,6 @@
 <script>
   // Données CSV intégrées (généré par Jekyll)
-  window.participantsData = [
+  let participantsData = [
     {% for row in site.data.preferences %}
     {
       number: {{ row.Number }},
@@ -23,7 +23,7 @@
   // Reachability data (total per key, summed across all fingers per participant)
   {% assign fingers = "LT,LI,LM,LR,LL,RT,RI,RM,RR,RL" | split: "," %}
   {% assign faceNames = "R,B,G,W,Y" | split: "," %}
-  window.reachabilityData = [
+  let reachabilityData = [
     {% for row in site.data.reachability %}
     {
       number: {{ row.Number }},
@@ -35,9 +35,9 @@
   ];
 
   // Per-finger reachability data
-  window.perFingerReachability = {};
+  let perFingerReachability = {};
   {% for f in fingers %}
-  window.perFingerReachability['{{ f }}'] = [
+  perFingerReachability['{{ f }}'] = [
     {% for row in site.data.reachability %}
     {
       {% for face in faceNames %}
@@ -48,35 +48,37 @@
   ];
   {% endfor %}
 
+  let preferenceAggregate;
+
   (function () {
-    var faces = ['R', 'B', 'G', 'W', 'Y'];
-    var fingerMap = ['LL', 'LR', 'LM', 'LI', 'LT', 'RT', 'RI', 'RM', 'RR', 'RL'];
-    var aggregate = { scores: {}, dominantFingers: {}, tiedFingers: {} };
+    let faces = ['R', 'B', 'G', 'W', 'Y'];
+    let fingerMap = ['LL', 'LR', 'LM', 'LI', 'LT', 'RT', 'RI', 'RM', 'RR', 'RL'];
+    let aggregate = { scores: {}, dominantFingers: {}, tiedFingers: {} };
 
     faces.forEach(function (face) {
       aggregate.scores[face] = [];
       aggregate.dominantFingers[face] = [];
       aggregate.tiedFingers[face] = [];
 
-      for (var i = 0; i < 16; i++) {
-        var counts = new Array(10).fill(0);
+      for (let i = 0; i < 16; i++) {
+        let counts = new Array(10).fill(0);
 
-        window.participantsData.forEach(function (participant) {
-          var fingerCode = participant[face][i];
+        participantsData.forEach(function (participant) {
+          let fingerCode = participant[face][i];
           if (fingerCode >= 1 && fingerCode <= 10) counts[fingerCode - 1] += 1;
         });
 
-        var maxCount = Math.max.apply(null, counts);
-        var tiedFingerCodes = counts
+        let maxCount = Math.max.apply(null, counts);
+        let tiedFingerCodes = counts
           .map(function (count, index) { return count === maxCount ? fingerMap[index] : null; })
           .filter(Boolean);
 
-        aggregate.scores[face].push(+(maxCount / window.participantsData.length).toFixed(2));
+        aggregate.scores[face].push(+(maxCount / participantsData.length).toFixed(2));
         aggregate.dominantFingers[face].push(tiedFingerCodes[0]);
         aggregate.tiedFingers[face].push(tiedFingerCodes);
       }
     });
 
-    window.preferenceAggregate = aggregate;
+    preferenceAggregate = aggregate;
   })();
 </script>
