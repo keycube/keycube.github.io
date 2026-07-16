@@ -195,11 +195,10 @@
     .heatmap-legend { font-size: 10px; }
     .heatmap-gradient { width: 60px; height: 8px; }
     #interface { gap: 1em; }
-    #hand-select { width: 12em }
+    #hand-select { width: 13em }
     #finger-select { width: 6em }
 }
 
 @media (max-width: 360px) {
-    #hand-select { width: 11em }
-    #finger-select { width: 5em }
+    #interface { gap: 0.5em; }
 }
