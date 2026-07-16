@@ -1,7 +1,7 @@
 {% assign e = site.data[page.lang]['heatmap-ui'] %}
 
 <div id="interface">
-    <div class="select active" role="select" style="width: 13em">
+    <div id="hand-select" class="select active" role="select">
         <input class="select-checkbox" id="hand-select-checkbox" type="checkbox">
         <label for="hand-select-checkbox" style="display: flex; justify-content:  space-between">
             <span id="hand-selected">{{ e.total }}</span>
@@ -14,7 +14,7 @@
             <span class="select-option">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</span>
         </div>
     </div>
-    <div class="select" id="finger-select" role="select" style="width: 7em">
+    <div class="select" id="finger-select" role="select">
         <input class="select-checkbox" id="finger-select-checkbox" type="checkbox">
         <label for="finger-select-checkbox" style="display: flex; justify-content: space-between">
             <span id="finger-selected">{{ e.all_button }}</span>
@@ -208,7 +208,6 @@
                 updateSelection("total");
             } else {
                 let selectValue = handleCustomSelect(e.textContent);
-                debugger;
                 if (selectValue === "total") {
                     if (fingerSelect.classList.contains('active')) {
                         fingerSelect.classList.remove('active');

@@ -54,6 +54,14 @@
     user-select: none;
 }
 
+#hand-select {
+    width: 13em
+}
+
+#finger-select {
+    width: 7em
+}
+
 .select-checkbox {
     display: none;
 }
@@ -99,19 +107,11 @@
     padding-top: 0.2em;
 }
 
-.select-checkbox:checked ~ label[for="hand-select-checkbox"] img {
+.select-checkbox:checked ~ label img {
     transform: rotate(0deg);
 }
 
-.select-checkbox ~ label[for="hand-select-checkbox"] img {
-    transform: rotate(-90deg);
-}
-
-.select-checkbox:checked ~ label[for="finger-select-checkbox"] img {
-    transform: rotate(0deg);
-}
-
-.select-checkbox ~ label[for="finger-select-checkbox"] img {
+.select-checkbox ~ label img {
     transform: rotate(-90deg);
 }
 
@@ -173,7 +173,7 @@
     pointer-events: auto;
 }
 
-.reset-view-btn:hover {
+.reset-view-btn:active {
     background: rgba(74, 158, 255, 0.9);
     color: white;
     transform: translateY(-2px);
@@ -195,4 +195,6 @@
     .heatmap-legend { font-size: 10px; }
     .heatmap-gradient { width: 60px; height: 8px; }
     #interface { gap: 1em; }
+    #hand-select { width: 11em }
+    #finger-select { width: 5em }
 }
