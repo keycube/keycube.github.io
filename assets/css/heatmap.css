@@ -50,7 +50,7 @@
     display: flex;
     align-items: flex-start;
     pointer-events: auto;
-    gap: 30px;
+    gap: 2em;
     user-select: none;
 }
 
@@ -81,6 +81,15 @@
     background-color: white;
 }
 
+.select-option {
+    margin-top: 0.4em;
+    color: #DC800F;
+}
+
+.select-option:hover, .select-option.choose {
+    color: #111
+}
+
 .select-checkbox ~ .select-options {
     display: none;
 }
@@ -88,6 +97,22 @@
 .select-checkbox:checked ~ .select-options {
     display: flex;
     padding-top: 0.2em;
+}
+
+.select-checkbox:checked ~ label[for="hand-select-checkbox"] img {
+    transform: rotate(0deg);
+}
+
+.select-checkbox ~ label[for="hand-select-checkbox"] img {
+    transform: rotate(-90deg);
+}
+
+.select-checkbox:checked ~ label[for="finger-select-checkbox"] img {
+    transform: rotate(0deg);
+}
+
+.select-checkbox ~ label[for="finger-select-checkbox"] img {
+    transform: rotate(-90deg);
 }
 
 /* Finger context */
@@ -169,4 +194,5 @@
     select { min-width: 140px; font-size: 12px; padding: 6px 10px; }
     .heatmap-legend { font-size: 10px; }
     .heatmap-gradient { width: 60px; height: 8px; }
+    #interface { gap: 1em; }
 }

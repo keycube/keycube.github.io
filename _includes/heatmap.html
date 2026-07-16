@@ -7,8 +7,8 @@
             <span id="hand-selected">{{ e.total }}</span>
             <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
         </label>
-        <div id="hand-select-options" class="select-options">
-            <span class="select-option">{{ e.total }}</span>
+        <div class="select-options" id="hand-select-options">
+            <span class="select-option choose">{{ e.total }}</span>
             <span class="select-option">{{ e.preferred }}</span>
             <span class="select-option">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}</span>
             <span class="select-option">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</span>
@@ -20,8 +20,8 @@
             <span id="finger-selected">{{ e.all_button }}</span>
             <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
         </label>
-        <div id="finger-select-options" class="select-options">
-            <span class="select-option">{{ e.all_button }}</span>
+        <div class="select-options" id="finger-select-options">
+            <span class="select-option choose">{{ e.all_button }}</span>
             <span class="select-option">{{ e.thumb }}</span>
             <span class="select-option">{{ e.index }}</span>
             <span class="select-option">{{ e.middle }}</span>
@@ -78,6 +78,11 @@
         const selectionText = document.getElementById('selection-text');
         const selectionIcon = document.querySelector('#selection-badge .selection-icon');
         const fingerContext = document.getElementById('finger-context');
+        const handOptions = document.querySelectorAll('#hand-select-options .select-option');
+        console.log(handOptions)
+        const fingerOptions = document.querySelectorAll('#finger-select-options .select-option');
+
+        let allFingerOption = fingerOptions[0];
 
         const FACES = ['R', 'B', 'G', 'W', 'Y'];
         const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
@@ -157,6 +162,7 @@
                     const preferredFingers = preferenceAggregate.tiedFingers[face][i];
                     preferredFingers.forEach(function (f) {
                         const fData = window.perFingerReachability[f];
+                        allFingerOption.classList.add('choose');
                         if (fData) {
                             let s = 0;
                             fData.forEach(function (p) {
@@ -197,54 +203,103 @@
             }
         }
 
-        function handleFirstSelect(value) {
-            let selectValue = handleCustomSelect(value);
-            if (selectValue === "total") {
-                if (fingerSelect.classList.contains('active')) {
-                    fingerSelect.classList.remove('active');
-                    fingerCheckbox.checked = false;
-                    fingerLabel.textContent = '{{ e.all_button }}'
-                }
+        function handleFirstSelect(e) {
+            if (e === 'start') {
                 updateSelection("total");
-                handLabel.textContent = value;
-            } else if (selectValue === "preferred") {
-                if (fingerSelect.classList.contains('active')) {
-                    fingerSelect.classList.remove('active');
-                    fingerCheckbox.checked = false;
-                    fingerLabel.textContent = '{{ e.all_button }}'
-                }
-                handleBestFinger();
-                handLabel.textContent = value;
             } else {
-                fingerSelect.classList.add('active')
-                if (selectValue === 'L') {
-                    handleHandAll('left')
-                    handLabel.textContent = value;
+                let selectValue = handleCustomSelect(e.textContent);
+                debugger;
+                if (selectValue === "total") {
+                    if (fingerSelect.classList.contains('active')) {
+                        fingerSelect.classList.remove('active');
+                        fingerCheckbox.checked = false;
+                        fingerLabel.textContent = '{{ e.all_button }}'
+                        fingerOptions.forEach(elem => {
+                            elem.classList.remove('choose')
+                        })
+                        allFingerOption.classList.add('choose');
+                    }
+                    updateSelection("total");
+                    handLabel.textContent = e.textContent;
+                    handCheckbox.checked = false;
+                    handOptions.forEach(elem => {
+                        elem.classList.remove('choose')
+                    })
+                    e.classList.add('choose');
+                } else if (selectValue === "preferred") {
+                    if (fingerSelect.classList.contains('active')) {
+                        fingerSelect.classList.remove('active');
+                        fingerCheckbox.checked = false;
+                        fingerLabel.textContent = '{{ e.all_button }}'
+                        fingerOptions.forEach(elem => {
+                            elem.classList.remove('choose')
+                        })
+                        allFingerOption.classList.add('choose');
+                    }
+                    handleBestFinger();
+                    handLabel.textContent = e.textContent;
+                    handCheckbox.checked = false;
+                    handOptions.forEach(elem => {
+                        elem.classList.remove('choose')
+                    })
+                    e.classList.add('choose');
                 } else {
-                    handleHandAll('right')
-                    handLabel.textContent = value;
+                    fingerSelect.classList.add('active')
+                    if (selectValue === 'L') {
+                        handleHandAll('left')
+                        handLabel.textContent = e.textContent;
+                        handCheckbox.checked = false;
+                        handOptions.forEach(elem => {
+                            elem.classList.remove('choose')
+                        })
+                        e.classList.add('choose');
+                    } else {
+                        handleHandAll('right')
+                        handLabel.textContent = e.textContent;
+                        handCheckbox.checked = false;
+                        handOptions.forEach(elem => {
+                            elem.classList.remove('choose')
+                        })
+                        e.classList.add('choose');
+                    }
                 }
             }
         }
 
-        function handleSecondSelect(value) {
-            let selectValue = handleCustomSelect(value);
+        function handleSecondSelect(e) {
+            let selectValue = handleCustomSelect(e.textContent);
             switch (selectValue) {
                 case "H":
                     if (handleCustomSelect(handLabel.textContent) === 'L') {
                         handleHandAll('left')
-                        fingerLabel.textContent = value;
+                        fingerLabel.textContent = e.textContent;
+                        fingerCheckbox.checked = false;
+                        fingerOptions.forEach(elem => {
+                            elem.classList.remove('choose')
+                        })
+                        e.classList.add('choose');
                     } else {
                         handleHandAll('right')
-                        fingerLabel.textContent = value;
-                    } break;
+                        fingerLabel.textContent = e.textContent;
+                        fingerCheckbox.checked = false;
+                        fingerOptions.forEach(elem => {
+                            elem.classList.remove('choose')
+                        })
+                        e.classList.add('choose');
+                    }
+                    break;
                 case "T":
                 case "I":
                 case "M":
                 case "R":
                 case "L":
                     updateSelection(handleCustomSelect(handLabel.textContent) + selectValue);
-                    fingerLabel.textContent = value;
+                    fingerLabel.textContent = e.textContent;
+                    fingerCheckbox.checked = false;
+                    fingerOptions.forEach(elem => {
+                        elem.classList.remove('choose')
+                    })
+                    e.classList.add('choose');
                     break;
             }
         }
@@ -257,19 +312,19 @@
             fingerCheckbox.checked = false;
         })
 
-        document.querySelectorAll('#hand-select-options .select-option').forEach(elem => {
+        handOptions.forEach(elem => {
             elem.addEventListener('click', () => {
-                handleFirstSelect(elem.textContent);
+                handleFirstSelect(elem);
             });
         })
 
-        document.querySelectorAll('#finger-select-options .select-option').forEach(elem => {
+        fingerOptions.forEach(elem => {
             elem.addEventListener('click', () => {
-                handleSecondSelect(elem.textContent);
+                handleSecondSelect(elem);
             });
         })
 
-        handleFirstSelect('{{ e.total }}');
+        handleFirstSelect('start');
         document.getElementById('model-container').classList.add('active');
     });
 </script>
