@@ -82,8 +82,8 @@ export class Keycube {
         this.controls.addEventListener('start', this.stopAutoRotate);
 
         // Lighting
-        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        this.directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        this.ambientLight = new THREE.AmbientLight(0xffffff);
+        this.directionalLight = new THREE.DirectionalLight(0xffffff);
         this.directionalLight.position.set(5, 5, 5);
         this.scene.add(this.ambientLight, this.directionalLight);
 
