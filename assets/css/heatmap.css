@@ -54,12 +54,17 @@
     user-select: none;
 }
 
-#hand-select {
+/*#hand-select {
     width: 13em
 }
 
 #finger-select {
     width: 7em
+}*/
+
+.select-option:hover, .select-option.choose, #reset-view-btn:hover {
+    color: #111;
+    text-decoration: underline;
 }
 
 .select-checkbox {
@@ -72,6 +77,8 @@
     padding: .5em;
     background-color: white;
     flex-direction: row;
+
+    width: 13em;
 
     opacity: 50%;
     pointer-events: none;
@@ -91,11 +98,6 @@
 
 .select-option {
     margin-top: 0.4em;
-    color: #DC800F;
-}
-
-.select-option:hover, .select-option.choose {
-    color: #111
 }
 
 .select-checkbox ~ .select-options {
@@ -136,7 +138,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 1em;
     padding: 14px 20px;
     pointer-events: none;
     flex-wrap: wrap;
@@ -157,27 +159,28 @@
     border: 1px solid rgb(192, 192, 192);
 }
 
-.reset-view-btn {
-    background: rgba(255, 255, 255, 0.82);
+#reset-view-btn {
+    /*background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);*/
     font-size: 12px;
     font-weight: 600;
-    color: #1a1a2e;
-    transition: all 0.3s;
+    /*color: #1a1a2e;
+    transition: all 0.3s;*/
     cursor: pointer;
-    padding: 7px 14px;
+    /*padding: 7px 14px;*/
     pointer-events: auto;
+    user-select: none;
 }
 
-.reset-view-btn:active {
-    background: rgba(74, 158, 255, 0.9);
+#reset-view-btn:active {
+    /*background: rgba(74, 158, 255, 0.9);
     color: white;
     transform: translateY(-2px);
-    border-color: rgba(74, 158, 255, 0.4);
+    border-color: rgba(74, 158, 255, 0.4);*/
 }
 
 /* Responsive */
@@ -195,8 +198,8 @@
     .heatmap-legend { font-size: 10px; }
     .heatmap-gradient { width: 60px; height: 8px; }
     #interface { gap: 1em; }
-    #hand-select { width: 13em }
-    #finger-select { width: 6em }
+    #hand-select { width: 9em }
+    #finger-select { width: 9em }
 }
 
 @media (max-width: 360px) {

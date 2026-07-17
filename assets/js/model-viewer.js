@@ -71,7 +71,7 @@ export class Keycube {
         this.controls.minPolarAngle = 0;
         this.controls.maxPolarAngle = Math.PI;
 
-        // Auto-rotation settings (integrated with OrbitControls)
+        // Autorotation settings (integrated with OrbitControls)
         this.controls.autoRotate = true;
         this.controls.autoRotateSpeed = 0.5;  // Slightly slower idle rotation
         this.autoRotateStoppedByUser = false;

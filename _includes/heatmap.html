@@ -1,12 +1,34 @@
+{% assign current_nav = page.nav_section | default: page.code %}
+{% if current_nav == nil %}
+{% for item in site.data.navigation %}
+{% if page.url contains item.name %}
+{% assign current_nav = item.name %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% assign current_nav = current_nav | default: "about" %}
+
 {% assign e = site.data[page.lang]['heatmap-ui'] %}
 
+<!-- style for the select options and the reset view button -->
+<style>
+    .select-option, #reset-view-btn {
+        color: #{{site.data.colors[current_nav]}};
+    }
+</style>
+
+<!-- the interface of the 3d render, with 2 home-made select -->
 <div id="interface">
+    <!-- the first select -->
     <div class="select active" id="hand-select" role="select">
         <input class="select-checkbox" id="hand-select-checkbox" type="checkbox">
+        <!-- the select content, the checkbox allow the switch for the display of the options -->
         <label for="hand-select-checkbox" style="display: flex; justify-content:  space-between">
             <span id="hand-selected">{{ e.total }}</span>
             <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
         </label>
+        <!-- the select options -->
         <div class="select-options" id="hand-select-options">
             <span class="select-option choose">{{ e.total }}</span>
             <span class="select-option">{{ e.preferred }}</span>
@@ -14,12 +36,15 @@
             <span class="select-option">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</span>
         </div>
     </div>
+    <!-- the second select -->
     <div class="select" id="finger-select" role="select">
         <input class="select-checkbox" id="finger-select-checkbox" type="checkbox">
+        <!-- the select content, the checkbox allow the switch for the display of the options -->
         <label for="finger-select-checkbox" style="display: flex; justify-content: space-between">
             <span id="finger-selected">{{ e.all_button }}</span>
             <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
         </label>
+        <!-- the select options -->
         <div class="select-options" id="finger-select-options">
             <span class="select-option choose">{{ e.all_button }}</span>
             <span class="select-option">{{ e.thumb }}</span>
@@ -31,6 +56,7 @@
     </div>
 </div>
 
+<!-- the model container, that contain the 3d render of the Keycube -->
 <div id="model-container"></div>
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
@@ -43,8 +69,9 @@
         <span>{{ e.unreachable }}</span>
         <div class="heatmap-gradient"></div>
         <span>{{ e.reachable }}</span>
-        <button class="reset-view-btn" id="reset-view-btn">{{ e.reset_view }}</button>
     </div>
+
+    <span id="reset-view-btn">{{ e.reset_view }}</span>
 </div>
 
 <!-- Three.js import map -->
@@ -61,6 +88,7 @@
 <!-- Data for the 3D render of the Keycube -->
 {% include dataviz-data.html %}
 
+<!-- process the data and handle the interface to display the Keycube -->
 <script type="module">
     import { Keycube } from '/assets/js/model-viewer.js';
 
@@ -68,21 +96,24 @@
 
     import langFinger from '/assets/js/ui-lang.json' with {type: 'json'};
 
-    const handLabel = document.getElementById('hand-selected')
-    const fingerLabel = document.getElementById('finger-selected')
-    const fingerSelect = document.getElementById('finger-select')
-    const handCheckbox = document.getElementById('hand-select-checkbox')
-    const fingerCheckbox = document.getElementById('finger-select-checkbox')
-
-    const selectionText = document.getElementById('selection-text');
-    const selectionIcon = document.querySelector('#selection-badge .selection-icon');
-    const fingerContext = document.getElementById('finger-context');
+    // select element
+    const handLabel = document.getElementById('hand-selected');
+    const fingerLabel = document.getElementById('finger-selected');
+    const fingerSelect = document.getElementById('finger-select');
+    const handCheckbox = document.getElementById('hand-select-checkbox');
+    const fingerCheckbox = document.getElementById('finger-select-checkbox');
     const handOptions = document.querySelectorAll('#hand-select-options .select-option');
     const fingerOptions = document.querySelectorAll('#finger-select-options .select-option');
 
-    let allFingerOption = fingerOptions[0];
+    // finger context element
+    const selectionText = document.getElementById('selection-text');
+    const selectionIcon = document.querySelector('#selection-badge .selection-icon');
+    const fingerContext = document.getElementById('finger-context');
+
+    const allFingerOption = fingerOptions[0];
     const ALL_FINGERS = ['LT', 'LI', 'LM', 'LR', 'LL', 'RT', 'RI', 'RM', 'RR', 'RL'];
 
+    // language handler
     const lang = document.documentElement.lang
     const fingerData = langFinger[lang] ? langFinger[lang] : langFinger["en"];
 
@@ -94,6 +125,7 @@
         if (el) el.addEventListener(event, handler);
     }
 
+    // update finger context
     function updateUI(key) {
         const data = fingerData[key] || {name: key, icon: '', info: ''};
         if (selectionText) selectionText.textContent = data.name;
@@ -101,6 +133,7 @@
         if (fingerContext) fingerContext.textContent = data.info;
     }
 
+    // update heatmap with data and define range
     function applyHeatmap(data, fixedRange) {
         let min = fixedRange ? fixedRange.min : Infinity;
         let max = fixedRange ? fixedRange.max : -Infinity;
@@ -125,6 +158,7 @@
 
     }
 
+    // add-up every score per key for each chosen finger
     function computeHandData(fingers) {
         const result = {};
         FACES.forEach(function (face) {
@@ -143,17 +177,20 @@
         return result;
     }
 
+    // update the heatmap + finger context for all finger or some
     function updateSelection(fingerValue) {
         applyHeatmap(computeHandData(fingerValue === 'total' ? ALL_FINGERS : [fingerValue]));
         updateUI(fingerValue, fingerValue === 'total' ? ALL_FINGERS : null);
     }
 
+    // update the heatmap + finger context for one hand (right or left)
     function handleHandAll(hand) {
         const fingers = hand === 'left' ? ['LT', 'LI', 'LM', 'LR', 'LL'] : ['RT', 'RI', 'RM', 'RR', 'RL'];
         applyHeatmap(computeHandData(fingers));
         updateUI(hand + '-all', fingers);
     }
 
+    // update the heatmap + finger context for preferred finger per key
     function handleBestFinger() {
         if (!preferenceAggregate) return;
         const result = {};
@@ -180,6 +217,7 @@
         updateUI('best', ALL_FINGERS);
     }
 
+    // transform the select option text content into processable input
     function handleCustomSelect(value) {
         switch (value) {
             case "{{ e.total }}":
@@ -205,6 +243,7 @@
         }
     }
 
+    // handle the signals for the first select
     function handleFirstSelect(e) {
         if (e === 'start') {
             updateSelection("total");
@@ -267,6 +306,7 @@
         }
     }
 
+    // handle the signals for the second select
     function handleSecondSelect(e) {
         let selectValue = handleCustomSelect(e.textContent);
         switch (selectValue) {
@@ -305,30 +345,37 @@
         }
     }
 
+    // close the hand select if the finger one is open
     fingerCheckbox.addEventListener('change', () => {
         handCheckbox.checked = false;
     })
 
+    // close the finger select if the hand one is open
     handCheckbox.addEventListener('change', () => {
         fingerCheckbox.checked = false;
     })
 
+    // the first select options start the first select handler
     handOptions.forEach(elem => {
         elem.addEventListener('click', () => {
             handleFirstSelect(elem);
         });
     })
 
+    // the second select options start the second select handler
     fingerOptions.forEach(elem => {
         elem.addEventListener('click', () => {
             handleSecondSelect(elem);
         });
     })
 
+    // the reset-view-btn reset the 3d render view on click
     bindControl('reset-view-btn', 'click', function () {
         heatmap.updateModel({resetView: true});
     })
 
+    // define the default view of the 3d render
     handleFirstSelect('start');
+    // the 3d render is now visible
     document.getElementById('model-container').classList.add('active');
 </script>
