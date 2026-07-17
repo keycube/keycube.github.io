@@ -200,12 +200,12 @@ export class Keycube {
         };
     }
 
-    stopAutoRotate() {
+    stopAutoRotate = () => {
         this.autoRotateStoppedByUser = true;
         this.controls.autoRotate = false;
     }
 
-    captureViewerGesture(event) {
+    captureViewerGesture = (event) => {
         event.preventDefault();
         this.stopAutoRotate();
     }
@@ -380,7 +380,7 @@ export class Keycube {
     }
 
     // Window resize handler
-    handleResize() {
+    handleResize = () => {
         const size = this.getContainerSize();
         const w = size.width;
         const h = size.height;
