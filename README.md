@@ -5,19 +5,6 @@ The website is directly hosted on [GitHub Pages](https://pages.github.com) and p
 
 Visit the website at [https://keycube.github.io](https://keycube.github.io).
 
-## Heatmap 3D integration
-
-The Heatmap 3D experience is integrated directly in this repository under:
-
-- `/keycube-heatmap3d/`
-- `/keycube-heatmap3d/preference/`
-- `/keycube-heatmap3d/reachability/`
-
-Source of truth follows the website convention:
-
-- pages: `heatmap3d*.markdown`
-- layouts: `_layouts/heatmap3d-*.html`
-
 ## Documentation
 
 Find more information in the repository [Wiki](https://github.com/keycube/keycube.github.io/wiki).
@@ -31,4 +18,4 @@ Except where otherwise noted, the content of the website by keycube contributors
 ## Credits
 <em>In alphabetical order of the first names</em>
 
-[Damien Brun](https://www.damienb.run), [Lucie Augier](https://github.com/lucieaugier), [Nina Grignola](https://github.com/grignolanina), [Guy Junior Calvet](https://github.com/guyjuniorcalvet)
+[Damien Brun](https://www.damienb.run), [Guy Junior Calvet](https://github.com/guyjuniorcalvet), [Lucie Augier](https://github.com/lucieaugier), [Nina Grignola](https://github.com/grignolanina), [Pierre-André Rigat](https://github.com/RIGAT-Pierre-andre-2326090par)
