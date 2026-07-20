@@ -42,20 +42,13 @@
     cursor: grabbing;
 }
 
-.buffer {
-    height: 4rem;
-}
-
 #interface {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     pointer-events: auto;
     gap: 2em;
     user-select: none;
-    /*max-height: 80vh;*/
 }
 
 .select-option:hover, .select-option.choose, #reset-view-btn:hover {
@@ -95,6 +88,17 @@ label {
     flex-direction: column;
     color: #383838;
     background-color: white;
+
+    transform: translateX(calc(-.5em - 1px));
+
+    position: absolute;
+    width: inherit;
+    padding: inherit;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    border-bottom-left-radius: .5em;
+    border-bottom-right-radius: .5em;
 }
 
 .select-option {
