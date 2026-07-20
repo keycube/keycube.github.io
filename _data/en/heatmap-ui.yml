@@ -28,7 +28,7 @@ preferred_button: Preferred
 total: All Fingers
 
 # context and legend
-finger_context: Combined reachability across all 10 fingers and 22 participants. Figure 7 left.
+finger_context: Combined reachability across all 10 fingers and 22 participants.
 
 reachable: Reachable
 unreachable: Unreachable

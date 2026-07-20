@@ -89,7 +89,6 @@ export class Keycube {
 
         // Main cube
         this.cubeGeometry = new RoundedBoxGeometry(1, 1, 1, 4, 0.1);
-        // couleur changée : gris un peu plus clair encore
         this.cubeMaterial = new THREE.MeshStandardMaterial({color: 0xF5F5F5});
         this.cube = new THREE.Mesh(this.cubeGeometry, this.cubeMaterial);
 

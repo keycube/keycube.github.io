@@ -1,7 +1,7 @@
 {
   "en": {
-    "total": { "name": "All Fingers (Total)", "icon": "", "info": "Combined reachability across all 10 fingers and 22 participants. Figure 7 left." },
-    "best": { "name": "Preferred Finger (per key)", "icon": "", "info": "Shows the reachability score of the preferred finger for each key, correlated with Figure 6. Figure 7 right." },
+    "total": { "name": "All Fingers (Total)", "icon": "", "info": "Combined reachability across all 10 fingers and 22 participants." },
+    "best": { "name": "Preferred Finger (per key)", "icon": "", "info": "Shows the reachability score of the preferred finger for each key, correlated with Figure 6." },
     "left-all": { "name": "Left Hand (All)", "icon": "", "info": "Left hand covers Blue (external), White (internal), and left half of Red (top)." },
     "right-all": { "name": "Right Hand (All)", "icon": "", "info": "Right hand covers Yellow (external), Green (internal), and right half of Red (top)." },
     "LT": { "name": "Left Thumb", "icon": "", "info": "Left Thumb — widest reach on the left side." },
@@ -16,8 +16,8 @@
     "RL": { "name": "Right Little", "icon": "", "info": "Right Little — bottom corner of Yellow only." }
   },
   "fr": {
-    "total": { "name": "Tous les doigts (Total)", "icon": "", "info": "Accessibilité combinée des 10 doigts et 22 participants. Figure 7 gauche." },
-    "best": { "name": "Doigt préféré (par touche)", "icon": "", "info": "Affiche le score d’accessibilité du doigt préféré pour chaque touche, corrélé à la Figure 6. Figure 7 droite." },
+    "total": { "name": "Tous les doigts (Total)", "icon": "", "info": "Accessibilité combinée des 10 doigts et 22 participants." },
+    "best": { "name": "Doigt préféré (par touche)", "icon": "", "info": "Affiche le score d’accessibilité du doigt préféré pour chaque touche, corrélé à la Figure 6." },
     "left-all": { "name": "Main gauche (Tous)", "icon": "", "info": "La main gauche couvre Bleu (externe), Blanc (interne), et moitié gauche de Rouge (haut)." },
     "right-all": { "name": "Main droite (Tous)", "icon": "", "info": "La main droite couvre Jaune (externe), Vert (interne), et moitié droite de Rouge (haut)." },
     "LT": { "name": "Pouce gauche", "icon": "", "info": "Pouce gauche — portée la plus large côté gauche." },
