@@ -1,0 +1,17 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.landing-content a {
+  color: #43aad6;
+}
+
+
+.landing-content {
+  padding: 3rem 0;
+}
+
+.landing-content--wide {
+  max-width: 960px;
+  margin: 0 auto;
+}
