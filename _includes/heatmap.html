@@ -19,39 +19,41 @@
 </style>
 
 <!-- the interface of the 3d render, with 2 home-made select -->
-<div id="interface">
-    <!-- the first select -->
-    <div class="select active" id="hand-select" role="select">
-        <input class="select-checkbox" id="hand-select-checkbox" type="checkbox">
-        <!-- the select content, the checkbox allow the switch for the display of the options -->
-        <label for="hand-select-checkbox" style="display: flex; justify-content:  space-between">
-            <span id="hand-selected">{{ e.total }}</span>
-            <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
-        </label>
-        <!-- the select options -->
-        <div class="select-options" id="hand-select-options">
-            <span class="select-option choose">{{ e.total }}</span>
-            <span class="select-option">{{ e.preferred }}</span>
-            <span class="select-option">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}</span>
-            <span class="select-option">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</span>
+<div class="buffer">
+    <div id="interface">
+        <!-- the first select -->
+        <div class="select active" id="hand-select" role="select">
+            <input class="select-checkbox" id="hand-select-checkbox" type="checkbox">
+            <!-- the select content, the checkbox allow the switch for the display of the options -->
+            <label for="hand-select-checkbox" style="display: flex; justify-content:  space-between">
+                <span id="hand-selected">{{ e.total }}</span>
+                <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
+            </label>
+            <!-- the select options -->
+            <div class="select-options" id="hand-select-options">
+                <span class="select-option choose">{{ e.total }}</span>
+                <span class="select-option">{{ e.preferred }}</span>
+                <span class="select-option">{{ e.hf_format | replace: '%h%', e.left | replace: '%f%', e.hand }}</span>
+                <span class="select-option">{{ e.hf_format | replace: '%h%', e.right | replace: '%f%', e.hand }}</span>
+            </div>
         </div>
-    </div>
-    <!-- the second select -->
-    <div class="select" id="finger-select" role="select">
-        <input class="select-checkbox" id="finger-select-checkbox" type="checkbox">
-        <!-- the select content, the checkbox allow the switch for the display of the options -->
-        <label for="finger-select-checkbox" style="display: flex; justify-content: space-between">
-            <span id="finger-selected">{{ e.all_button }}</span>
-            <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
-        </label>
-        <!-- the select options -->
-        <div class="select-options" id="finger-select-options">
-            <span class="select-option choose">{{ e.all_button }}</span>
-            <span class="select-option">{{ e.thumb }}</span>
-            <span class="select-option">{{ e.index }}</span>
-            <span class="select-option">{{ e.middle }}</span>
-            <span class="select-option">{{ e.ring }}</span>
-            <span class="select-option">{{ e.little }}</span>
+        <!-- the second select -->
+        <div class="select" id="finger-select" role="select">
+            <input class="select-checkbox" id="finger-select-checkbox" type="checkbox">
+            <!-- the select content, the checkbox allow the switch for the display of the options -->
+            <label for="finger-select-checkbox" style="display: flex; justify-content: space-between">
+                <span id="finger-selected">{{ e.all_button }}</span>
+                <img alt="arrow_down" src="/assets/img/arrow_down.png" style="aspect-ratio: 1 / 1; height: 1.6em;">
+            </label>
+            <!-- the select options -->
+            <div class="select-options" id="finger-select-options">
+                <span class="select-option choose">{{ e.all_button }}</span>
+                <span class="select-option">{{ e.thumb }}</span>
+                <span class="select-option">{{ e.index }}</span>
+                <span class="select-option">{{ e.middle }}</span>
+                <span class="select-option">{{ e.ring }}</span>
+                <span class="select-option">{{ e.little }}</span>
+            </div>
         </div>
     </div>
 </div>
@@ -90,11 +92,10 @@
 
 <!-- process the data and handle the interface to display the Keycube -->
 <script type="module">
-    import { Keycube } from '/assets/js/model-viewer.js';
+    import {Keycube} from '/assets/js/model-viewer.js';
+    import langFinger from '/assets/js/ui-lang.json' with {type: 'json'};
 
     const heatmap = new Keycube(document.getElementById('model-container'), true, 'integer')
-
-    import langFinger from '/assets/js/ui-lang.json' with {type: 'json'};
 
     // select element
     const handLabel = document.getElementById('hand-selected');

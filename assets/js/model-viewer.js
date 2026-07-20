@@ -73,7 +73,7 @@ export class Keycube {
 
         // Autorotation settings (integrated with OrbitControls)
         this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = 0.5;  // Slightly slower idle rotation
+        this.controls.autoRotateSpeed = 0.5  // Slightly slower idle rotation
         this.autoRotateStoppedByUser = false;
 
         this.renderer.domElement.addEventListener('touchmove', this.captureViewerGesture, {passive: false});
@@ -478,7 +478,7 @@ export class Keycube {
         if (data.lightingIntensity !== undefined) this.directionalLight.intensity = data.lightingIntensity;
 
         // Heatmap color: invert=true → low=green (preference), invert=false → high=green (reachability)
-        const heatmapColor = (norm, invert) => new THREE.Color().setHSL((invert ? 1 - norm : norm) * 0.33, 0.9, 0.5);
+        const heatmapColor = (norm, invert) => new THREE.Color().setHSL((invert ? 1 - norm : norm) * 0.33, 1, 0.5);
 
         // Apply heatmap to keys
         const applyHeatmap = (heatmapData, min, max, invert, dimOthers) => {
