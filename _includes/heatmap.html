@@ -61,14 +61,14 @@
 
 <!-- ── Bottom bar: badge + finger context + legend + reset ── -->
 <div class="bottom-bar">
-    <div class="finger-context" id="finger-context">
-        {{ e.finger_context }}
+    <div class="heatmap-legend">
+        <span style="text-align: right">{{ e.unreachable }}</span>
+        <div class="heatmap-gradient"></div>
+        <span style="text-align: left">{{ e.reachable }}</span>
     </div>
 
-    <div class="heatmap-legend" style="flex-basis: 100%; display: flex; justify-content: center; align-items: center;">
-        <span>{{ e.unreachable }}</span>
-        <div class="heatmap-gradient"></div>
-        <span>{{ e.reachable }}</span>
+    <div class="finger-context" id="finger-context">
+        {{ e.finger_context }}
     </div>
 
     <span id="reset-view-btn">{{ e.reset_view }}</span>
@@ -96,6 +96,7 @@
     const heatmap = new Keycube(document.getElementById('model-container'), true, 'integer')
 
     // select element
+    const handSelect = document.getElementById('hand-select');
     const handLabel = document.getElementById('hand-selected');
     const fingerLabel = document.getElementById('finger-selected');
     const fingerSelect = document.getElementById('finger-select');
@@ -345,14 +346,14 @@
     }
 
     // close the hand select if the finger one is open
-    fingerCheckbox.addEventListener('change', () => {
+    /*fingerCheckbox.addEventListener('change', () => {
         handCheckbox.checked = false;
     })
 
     // close the finger select if the hand one is open
     handCheckbox.addEventListener('change', () => {
         fingerCheckbox.checked = false;
-    })
+    })*/
 
     // the first select options start the first select handler
     handOptions.forEach(elem => {
@@ -371,6 +372,15 @@
     // the reset-view-btn reset the 3d render view on click
     bindControl('reset-view-btn', 'click', function () {
         heatmap.updateModel({resetView: true});
+    })
+
+    // click outside the hand select options close the hand select
+    document.addEventListener('click', (event) => {
+        if (handCheckbox.checked) {
+            handCheckbox.checked = handSelect.contains(event.target);
+        } else if (fingerCheckbox.checked) {
+            fingerCheckbox.checked = fingerSelect.contains(event.target);
+        }
     })
 
     // define the default view of the 3d render
