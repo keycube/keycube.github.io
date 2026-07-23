@@ -237,14 +237,14 @@ export class Keycube {
     createTextLabel(text, axis, sign) {
         const {mesh, canvas, texture} = this.createLabelPlane(0.13, 256, axis, sign);
         const ctx = canvas.getContext('2d');
-        ctx.font = 'bold 224px Arial';
+        ctx.font = 'bold 112px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.strokeStyle = 'rgba(0,0,0,0.7)';
         ctx.lineWidth = 16;
-        ctx.strokeText(text, 256, 256);
+        ctx.strokeText(text, 128, 128);
         ctx.fillStyle = 'white';
-        ctx.fillText(text, 256, 256);
+        ctx.fillText(text, 128, 128);
         texture.needsUpdate = true;
         mesh.userData = {isLabel: true};
         return mesh;
@@ -314,7 +314,7 @@ export class Keycube {
         const bbox = new THREE.Box3().setFromObject(object);
         const sphere = new THREE.Sphere();
         bbox.getBoundingSphere(sphere);
-        return sphere; // { center: Vector3, radius: Number }
+        return sphere;
     }
 
     /**
