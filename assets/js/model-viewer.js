@@ -73,7 +73,7 @@ export class Keycube {
 
         // Autorotation settings (integrated with OrbitControls)
         this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = 0.5  // Slightly slower idle rotation
+        this.controls.autoRotateSpeed = 0.5;  // Slower idle rotation
         this.autoRotateStoppedByUser = false;
 
         this.renderer.domElement.addEventListener('touchmove', this.captureViewerGesture, {passive: false});
@@ -88,9 +88,9 @@ export class Keycube {
         this.scene.add(this.ambientLight, this.directionalLight);
 
         // Main cube
-        this.cubeGeometry = new RoundedBoxGeometry(1, 1, 1, 4, 0.1);
-        this.cubeMaterial = new THREE.MeshStandardMaterial({color: 0xF5F5F5});
-        this.cube = new THREE.Mesh(this.cubeGeometry, this.cubeMaterial);
+        const cubeGeometry = new RoundedBoxGeometry(1, 1, 1, 4, 0.1);
+        const cubeMaterial = new THREE.MeshStandardMaterial({color: 0xF5F5F5});
+        this.cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
         // Keycube group
         this.keycubeGroup = new THREE.Group();
@@ -159,7 +159,7 @@ export class Keycube {
 
         this.scene.add(this.keycubeGroup);
 
-        this.fitCameraToObject(this.keycubeGroup, this.camera, this.controls);
+        this.fitCameraToObject(this.cube, this.camera, this.controls);
 
         window.addEventListener('resize', this.handleResize);
         window.addEventListener('orientationchange', () => setTimeout(this.handleResize, 100));
@@ -392,7 +392,7 @@ export class Keycube {
         this.camera.aspect = w / h;
         this.camera.updateProjectionMatrix();
 
-        this.fitCameraToObject(this.keycubeGroup, this.camera, this.controls);
+        this.fitCameraToObject(this.cube, this.camera, this.controls);
     }
 
     // Update model function
@@ -471,7 +471,7 @@ export class Keycube {
             this.camera.position.copy(this.initialCameraPosition);
             this.autoRotateStoppedByUser = false;
             this.controls.autoRotate = true;
-            this.fitCameraToObject(this.keycubeGroup, this.camera, this.controls);
+            this.fitCameraToObject(this.cube, this.camera, this.controls);
         }
 
         if (data.lightingIntensity !== undefined) this.directionalLight.intensity = data.lightingIntensity;
@@ -509,6 +509,6 @@ export class Keycube {
             this.controls.autoRotate = !this.autoRotateStoppedByUser;
         }
 
-        this.fitCameraToObject(this.keycubeGroup, this.camera, this.controls);
+        this.fitCameraToObject(this.cube, this.camera, this.controls);
     };
 }
