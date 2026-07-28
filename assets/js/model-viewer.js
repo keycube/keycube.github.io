@@ -73,7 +73,7 @@ export class Keycube {
 
         // Autorotation settings (integrated with OrbitControls)
         this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = 0.5;  // Slower idle rotation
+        this.controls.autoRotateSpeed = 0.5;  // Slower speed rotation
         this.autoRotateStoppedByUser = false;
 
         this.renderer.domElement.addEventListener('touchmove', this.captureViewerGesture, {passive: false});

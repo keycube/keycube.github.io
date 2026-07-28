@@ -64,21 +64,40 @@
 }
 
 .select {
+    border: 1px solid #e8e8e8;
+    border-radius: .5em;
+    background-color: white;
     flex-direction: row;
+    width: 15em;
+
+    position: relative;
 
     opacity: 50%;
     pointer-events: none;
 }
 
 label[for='hand-select-checkbox'], label[for='finger-select-checkbox'] {
-    border: 1px solid #e8e8e8;
-    border-radius: .5em;
     padding: .5em;
-    background-color: white;
-    width: 13em;
+    cursor: pointer;
 
     display: flex;
     align-items: center;
+    justify-content:  space-between;
+
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+label span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+label img {
+    pointer-events: none;
 }
 
 .select.active {
@@ -95,7 +114,10 @@ label[for='hand-select-checkbox'], label[for='finger-select-checkbox'] {
     transform: translateY(-.5em);
 
     position: absolute;
-    width: 13em;
+    top: 100%;
+    left: -1px;
+    width: 101%;
+    box-sizing: border-box;
     padding: .5em;
     border-left: 1px solid #e8e8e8;
     border-right: 1px solid #e8e8e8;
@@ -106,6 +128,7 @@ label[for='hand-select-checkbox'], label[for='finger-select-checkbox'] {
 
 .select-option {
     margin-top: 0.4em;
+    cursor: pointer;
 }
 
 .select-checkbox ~ .select-options {
@@ -144,7 +167,6 @@ label[for='hand-select-checkbox'], label[for='finger-select-checkbox'] {
 
     padding: 14px 20px;
     pointer-events: none;
-    flex-wrap: wrap;
 }
 
 .heatmap-legend {
